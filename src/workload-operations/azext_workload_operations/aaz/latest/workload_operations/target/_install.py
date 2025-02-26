@@ -13,7 +13,6 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-operations target install",
-    is_preview=True,
 )
 class Install(AAZCommand):
     """Post request to deploy
@@ -22,7 +21,7 @@ class Install(AAZCommand):
     _aaz_info = {
         "version": "2025-01-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/private.edge/targets/{}/install", "2025-01-01-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/targets/{}/installsolution", "2025-01-01-preview"],
         ]
     }
 
@@ -68,13 +67,13 @@ class Install(AAZCommand):
             required=True,
         )
         _args_schema.solution = AAZStrArg(
-            options=["--solution"],
+            options=["--solution-template"],
             arg_group="Body",
             help="Solution Name",
             required=True,
         )
         _args_schema.solution_version = AAZStrArg(
-            options=["--solution-version"],
+            options=["--solution-template-version"],
             arg_group="Body",
             help="Solution Version Name",
             required=True,
@@ -83,7 +82,7 @@ class Install(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
-        yield self.TargetsInstall(ctx=self.ctx)()
+        yield self.TargetsInstallSolution(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -94,7 +93,7 @@ class Install(AAZCommand):
     def post_operations(self):
         pass
 
-    class TargetsInstall(AAZHttpOperation):
+    class TargetsInstallSolution(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -115,7 +114,7 @@ class Install(AAZCommand):
         @property
         def url(self):
             return self.client.format_url(
-                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/private.edge/targets/{targetName}/install",
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
                 **self.url_parameters
             )
 
