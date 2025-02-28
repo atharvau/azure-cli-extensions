@@ -334,6 +334,8 @@ class Create(AAZCommand):
         def __call__(self, *args, **kwargs):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
+            ## Save the Post Call response and use it for Output
+            self.post_response_session = session
             if session.http_response.status_code in [202]:
                 return self.client.build_lro_polling(
                     self.ctx.args.no_wait,
@@ -421,19 +423,16 @@ class Create(AAZCommand):
             _builder.set_prop("updateType", AAZStrType, ".update_type", typ_kwargs={"flags": {"required": True}})
 
             solution_template_version = _builder.get(".solutionTemplateVersion")
-            print("Solution template version:", solution_template_version)
             if solution_template_version is not None:
                 solution_template_version.set_prop("properties", AAZObjectType)
 
             properties = _builder.get(".solutionTemplateVersion.properties")
-            print("Properties:", properties)
             if properties is not None:
                 properties.set_prop("configurations", AAZStrType, ".configurations", typ_kwargs={"flags": {"required": True}})
                 properties.set_prop("orchestratorType", AAZStrType, ".orchestrator_type", typ_kwargs={"flags": {"required": True}})
                 properties.set_prop("specification", AAZFreeFormDictType, ".specification", typ_kwargs={"flags": {"required": True}})
 
             specification = _builder.get(".solutionTemplateVersion.properties.specification")
-            print("Specification:", specification)
             if specification is not None:
                 specification.set_anytype_elements(".")
             return self.serialize_content(_content_value)
@@ -441,8 +440,7 @@ class Create(AAZCommand):
 
 
         def on_200(self, session):
-            data = self.deserialize_http_content(session)
-            print("this is data ",data)
+            data = self.deserialize_http_content(self.post_response_session)
             self.ctx.set_var(
                 "instance",
                 data,
