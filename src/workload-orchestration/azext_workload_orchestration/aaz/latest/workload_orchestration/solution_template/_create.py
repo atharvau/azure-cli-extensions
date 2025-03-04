@@ -34,6 +34,20 @@ class Create(AAZCommand):
 
     _args_schema = None
 
+    class UpdateTypeFormat(AAZStrArgFormat):
+        """
+        Custom format that validates the update_type argument
+        to accept Major/Minor/Patch values in a case-insensitive manner.
+        """
+        def validate(self, value):
+            allowed_values = ["major", "minor", "patch"]
+            if value.lower() not in allowed_values:
+                raise AAZInvalidValueError(
+                    f"Invalid update type: {value}. Allowed values are 'Major', 'Minor', 'Patch'."
+                )
+            return value.capitalize()  # Return "Major", "Minor", or "Patch"
+
+
     @classmethod
     def _build_arguments_schema(cls, *args, **kwargs):
         if cls._args_schema is not None:
@@ -74,9 +88,9 @@ class Create(AAZCommand):
         _args_schema.update_type = AAZStrArg(
             options=["--update-type"],
             arg_group="Body",
-            help="Update type",
+            help="Update type : Major/Minor/Patch",
             required=True,
-            enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
+            fmt=UpdateTypeFormat()  # Use the custom format
         )
         _args_schema.configurations = AAZFileArg(
             options=["--config-template"],
