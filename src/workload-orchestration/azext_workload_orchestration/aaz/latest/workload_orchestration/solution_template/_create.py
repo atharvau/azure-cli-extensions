@@ -9,6 +9,7 @@
 # flake8: noqa
 
 from azure.cli.core.aaz import *
+import time
 
 
 @register_command(
@@ -118,6 +119,9 @@ class Create(AAZCommand):
     def _execute_operations(self):
         self.pre_operations()
         yield self.SolutionTemplatesCreateOrUpdate(ctx=self.ctx)()
+        for i in range(1, 6):
+          print(f"sleeping for 2 seconds, iteration {i}")
+          time.sleep(2)
         yield self.SolutionTemplatesCreateVersion(ctx=self.ctx)()
         self.post_operations()
 
@@ -330,7 +334,7 @@ class Create(AAZCommand):
 
     class SolutionTemplatesCreateVersion(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
-
+  
         def __call__(self, *args, **kwargs):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
@@ -421,19 +425,16 @@ class Create(AAZCommand):
             _builder.set_prop("updateType", AAZStrType, ".update_type", typ_kwargs={"flags": {"required": True}})
 
             solution_template_version = _builder.get(".solutionTemplateVersion")
-            print("Solution template version:", solution_template_version)
             if solution_template_version is not None:
                 solution_template_version.set_prop("properties", AAZObjectType)
 
             properties = _builder.get(".solutionTemplateVersion.properties")
-            print("Properties:", properties)
             if properties is not None:
                 properties.set_prop("configurations", AAZStrType, ".configurations", typ_kwargs={"flags": {"required": True}})
                 properties.set_prop("orchestratorType", AAZStrType, ".orchestrator_type", typ_kwargs={"flags": {"required": True}})
                 properties.set_prop("specification", AAZFreeFormDictType, ".specification", typ_kwargs={"flags": {"required": True}})
 
             specification = _builder.get(".solutionTemplateVersion.properties.specification")
-            print("Specification:", specification)
             if specification is not None:
                 specification.set_anytype_elements(".")
             return self.serialize_content(_content_value)
@@ -442,7 +443,6 @@ class Create(AAZCommand):
 
         def on_200(self, session):
             data = self.deserialize_http_content(session)
-            print("this is data ",data)
             self.ctx.set_var(
                 "instance",
                 data,
