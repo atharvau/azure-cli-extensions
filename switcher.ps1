@@ -5,8 +5,8 @@ param (
 
 # Define the root folder and blacklist folders
 # Define the root folder and blacklist folders
-$rootFolder = "src\workload-orchestration\azext_workload_orchestration\aaz\latest\workload_orchestrator" # Add your root folder path here
-$blacklist = @("src\workload-orchestration\azext_workload_orchestration\aaz\latest\workload_orchestrator\configuration") # Add your blacklist folder paths here
+$rootFolder = "src\workload-orchestration\azext_workload_orchestration\aaz\latest\workload_orchestration" # Add your root folder path here
+$blacklist = @("src\workload-orchestration\azext_workload_orchestration\aaz\latest\workload_orchestration\configuration") # Add your blacklist folder paths here
 
 # Get all files in the folder and subfolders, excluding blacklisted folders
 $files = Get-ChildItem -Path $rootFolder -Recurse -File | Where-Object {
