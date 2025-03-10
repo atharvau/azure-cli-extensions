@@ -230,8 +230,8 @@ class RemoveRevision(AAZCommand):
             )
             _builder.set_prop("solutionDependencies", AAZListType, ".solution_dependencies")
             _builder.set_prop("solutionInstanceName", AAZStrType, ".solution_instance_name")
-            _builder.set_prop("solutionTemplate", AAZStrType, ".solution_template", typ_kwargs={"flags": {"required": True}})
-            _builder.set_prop("solutionTemplateVersion", AAZStrType, ".solution_template_version", typ_kwargs={"flags": {"required": True}})
+            _builder.set_prop("solution", AAZStrType, ".solution_template", typ_kwargs={"flags": {"required": True}})
+            _builder.set_prop("solutionVersion", AAZStrType, ".solution_template_version", typ_kwargs={"flags": {"required": True}})
 
             solution_dependencies = _builder.get(".solutionDependencies")
             if solution_dependencies is not None:
@@ -248,8 +248,8 @@ class _RemoveRevisionHelper:
         if _builder is None:
             return
         _builder.set_prop("dependencies", AAZListType, ".dependencies")
-        _builder.set_prop("solutionTemplateId", AAZStrType, ".solution_template_id")
-        _builder.set_prop("solutionTemplateVersion", AAZStrType, ".solution_template_version")
+        _builder.set_prop("solution", AAZStrType, ".solution_template_id")
+        _builder.set_prop("solutionVersion", AAZStrType, ".solution_template_version")
         _builder.set_prop("solutionVersionId", AAZStrType, ".solution_version_id")
         _builder.set_prop("targetId", AAZStrType, ".target_id")
 
