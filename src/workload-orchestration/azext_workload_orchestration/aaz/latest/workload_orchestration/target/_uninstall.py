@@ -60,20 +60,17 @@ class Uninstall(AAZCommand):
         # define Arg Group "Body"
 
         _args_schema = cls._args_schema
+        _args_schema.solution_instance_name = AAZStrArg(
+            options=["--solution-instance-name"],
+            arg_group="Body",
+            help="Solution Instance Name",
+        )
         _args_schema.solution_name = AAZStrArg(
             options=["--solution-name"],
             arg_group="Body",
             help="Solution Name",
             required=True,
         )
-
-        _args_schema.solution_instance_name = AAZStrArg(
-            options=["--solution-instance-name"],
-            arg_group="Body",
-            help="solution Instance Name",
-            required=False,
-        )
-        
         return cls._args_schema
 
     def _execute_operations(self):
@@ -166,8 +163,8 @@ class Uninstall(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+            _builder.set_prop("solutionInstanceName", AAZStrType, ".solution_instance_name")
             _builder.set_prop("solutionName", AAZStrType, ".solution_name", typ_kwargs={"flags": {"required": True}})
-            _builder.set_prop("solutionInstanceName", AAZStrType, ".solution_instance_name", typ_kwargs={"flags": {"required": False}})
 
             return self.serialize_content(_content_value)
 
