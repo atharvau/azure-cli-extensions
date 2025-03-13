@@ -75,13 +75,13 @@ class Resolve(AAZCommand):
             ),
         )
         _args_schema.solution_template = AAZStrArg(
-            options=["--solution-name"],
+            options=["--solution-template-name"],
             arg_group="Body",
             help="Solution Template Name",
             required=True,
         )
         _args_schema.solution_template_version = AAZStrArg(
-            options=["--solution-version"],
+            options=["--solution-template-version"],
             arg_group="Body",
             help="Solution Template Version Name",
             required=True,

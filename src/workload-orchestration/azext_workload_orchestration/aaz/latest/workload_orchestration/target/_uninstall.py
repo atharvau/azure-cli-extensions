@@ -61,7 +61,7 @@ class Uninstall(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.solution_instance_name = AAZStrArg(
-            options=["--solution-instance"],
+            options=["--solution-instance-name"],
             arg_group="Body",
             help="Solution Instance Name",
         )
