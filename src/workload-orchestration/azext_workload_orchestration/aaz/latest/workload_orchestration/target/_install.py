@@ -61,7 +61,7 @@ class Install(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.solution = AAZStrArg(
-            options=["--solution"],
+            options=["--solution-name"],
             arg_group="Body",
             help="Solution Name",
             required=True,

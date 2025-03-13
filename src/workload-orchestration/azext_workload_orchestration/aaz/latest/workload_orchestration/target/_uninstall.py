@@ -66,7 +66,7 @@ class Uninstall(AAZCommand):
             help="Solution Instance Name",
         )
         _args_schema.solution_name = AAZStrArg(
-            options=["--solution"],
+            options=["--solution-name"],
             arg_group="Body",
             help="Solution Name",
             required=True,

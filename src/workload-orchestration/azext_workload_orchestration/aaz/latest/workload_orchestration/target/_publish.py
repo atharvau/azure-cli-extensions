@@ -67,7 +67,7 @@ class Publish(AAZCommand):
             required=True,
         )
         _args_schema.solution = AAZStrArg(
-            options=["--solution"],
+            options=["--solution-name"],
             arg_group="Body",
             help="Solution Name",
             required=True,
