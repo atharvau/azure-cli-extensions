@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target review2",
-    is_preview=True,
+    is_preview=False,
 )
 class Review(AAZCommand):
     """Post request to review configuration

@@ -81,7 +81,7 @@ class Create(AAZCommand):
             enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
         )
         _args_schema.configurations = AAZFileArg(
-            options=["--config-template"],
+            options=["--configuration-template-file"],
             help="Link to File containing Config expressions  for this solution version",
         )
         _args_schema.orchestrator_type = AAZStrArg(
@@ -426,7 +426,13 @@ class Create(AAZCommand):
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
             _builder.set_prop("solutionTemplateVersion", AAZObjectType)
-            _builder.set_prop("updateType", AAZStrType, ".update_type", typ_kwargs={"flags": {"required": True}})
+            update_type = _builder.get(".updateType")
+            if update_type is not None:
+                update_type_value = self.ctx.args.update_type.lower().capitalize()
+                print(f"update_type_value: {update_type_value}")
+                if update_type_value:
+                    update_type.value = update_type_value
+
 
             solution_template_version = _builder.get(".solutionTemplateVersion")
             if solution_template_version is not None:

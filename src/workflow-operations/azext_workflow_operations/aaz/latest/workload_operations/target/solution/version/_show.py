@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target solution version show",
-    is_preview=True,
+    is_preview=False,
 )
 class Show(AAZCommand):
     """Get a Solution Version Resource

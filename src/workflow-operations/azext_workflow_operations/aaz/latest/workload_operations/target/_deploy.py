@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target deploy",
-    is_preview=True,
+    is_preview=False,
 )
 class Deploy(AAZCommand):
     """Post request to deploy

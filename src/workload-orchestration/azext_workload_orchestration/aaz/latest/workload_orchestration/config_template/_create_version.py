@@ -186,7 +186,13 @@ class CreateVersion(AAZCommand):
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
             _builder.set_prop("configTemplateVersion", AAZObjectType, ".config_template_version", typ_kwargs={"flags": {"required": True}})
-            _builder.set_prop("updateType", AAZStrType, ".update_type", typ_kwargs={"flags": {"required": True}})
+
+            if self.ctx.args.update_type:
+                update_type_value = self.ctx.args.update_type.lower().capitalize()
+                _builder.set_prop("updateType", AAZStrType, typ_kwargs={"flags": {"required": True}})
+                update_type = _builder.get(".updateType")
+                update_type.value = update_type_value
+                print(f"update_type_value: {update_type_value}")
 
             config_template_version = _builder.get(".configTemplateVersion")
             if config_template_version is not None:

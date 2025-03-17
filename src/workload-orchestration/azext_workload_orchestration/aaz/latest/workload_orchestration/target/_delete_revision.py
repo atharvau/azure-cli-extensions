@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target delete-revision",
-    is_preview=True,
+    is_preview=False,
 )
 class DeleteRevision(AAZCommand):
     """Post request to delete solution version revision

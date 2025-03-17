@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target resolve",
-    is_preview=True,
+    is_preview=False,
 )
 class Resolve(AAZCommand):
     """Post request to resolve configuration

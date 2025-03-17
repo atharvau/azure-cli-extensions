@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target update",
-    is_preview=True,
+    is_preview=False,
 )
 class Update(AAZCommand):
     """Update a Target Resource

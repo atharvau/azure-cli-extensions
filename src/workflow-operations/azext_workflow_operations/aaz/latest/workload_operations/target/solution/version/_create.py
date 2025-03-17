@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target solution version create",
-    is_preview=True,
+    is_preview=False,
 )
 class Create(AAZCommand):
     """Create a Solution Version Resource

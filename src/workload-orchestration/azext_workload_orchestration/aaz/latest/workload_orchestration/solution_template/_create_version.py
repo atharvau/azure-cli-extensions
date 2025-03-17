@@ -13,7 +13,7 @@ import json
 
 @register_command(
     "workload-orchestration solution-template create-version",
-    is_preview=True,
+    is_preview=False,
 )
 class CreateVersion(AAZCommand):
     """Create a Solution Template Version Resource

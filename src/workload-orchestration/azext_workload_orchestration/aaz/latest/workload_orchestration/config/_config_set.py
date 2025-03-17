@@ -17,8 +17,8 @@ from azure.cli.core.aaz import *
 
 
 @register_command(
-    "workload-orchestration config set",
-    is_preview=True,
+    "workload-orchestration configuration set",
+    is_preview=False,
 )
 class ShowConfig2(AAZCommand):
     """To set the values to configurations available at specified hierarchical entity

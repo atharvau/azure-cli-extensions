@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration solution-template list-untitled1",
-    is_preview=True,
+    is_preview=False,
 )
 class ListUntitled1(AAZCommand):
     """List by specified resource group

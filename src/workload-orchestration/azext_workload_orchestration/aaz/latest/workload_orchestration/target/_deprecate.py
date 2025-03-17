@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target deprecate",
-    is_preview=True,
+    is_preview=False,
 )
 class Deprecate(AAZCommand):
     """Deprecate resource

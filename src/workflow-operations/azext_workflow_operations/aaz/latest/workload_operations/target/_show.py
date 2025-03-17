@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target show",
-    is_preview=True,
+    is_preview=False,
 )
 class Show(AAZCommand):
     """Get a Target Resource

@@ -13,7 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "workload-orchestration target solution delete",
-    is_preview=True,
+    is_preview=False,
     confirmation="Are you sure you want to perform this operation?",
 )
 class Delete(AAZCommand):

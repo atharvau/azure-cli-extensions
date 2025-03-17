@@ -12,7 +12,7 @@ from azure.cli.core.aaz import *
 
 
 @register_command_group(
-    "workload-orchestration config",
+    "workload-orchestration configuration",
 )
 class __CMDGroup(AAZCommandGroup):
     """workload-orchestration config helps to manage configurations
