@@ -12,10 +12,10 @@ from azure.cli.core.aaz import *
 
 
 @register_command_group(
-    "workload-orchestration configuration",
+    "workload-orchestration schema version",
 )
 class __CMDGroup(AAZCommandGroup):
-    """workload-orchestration config helps to manage configurations
+    """This is for edge Config-Manager
     """
     pass
 
