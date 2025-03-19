@@ -15,7 +15,7 @@ from azure.cli.core.aaz import *
     "workload-orchestration configuration",
 )
 class __CMDGroup(AAZCommandGroup):
-    """workload-orchestration config helps to manage configurations
+    """workload-orchestration configuration helps to manage configurations
     """
     pass
 
