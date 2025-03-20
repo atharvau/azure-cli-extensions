@@ -490,36 +490,9 @@ class Create(AAZCommand):
             _schema_on_200.endTime = AAZStrType(serialized_name="endTime")
 
             _schema_on_200.properties = AAZObjectType(serialized_name="properties")
-            _schema_on_200.properties.solutionTemplate = AAZObjectType(serialized_name="solutionTemplate")
-            _schema_on_200.properties.solutionTemplate.properties = AAZObjectType(serialized_name="properties")
-
-            _schema_on_200.properties.solutionTemplate.properties.description = AAZStrType(serialized_name="description")
-            _schema_on_200.properties.solutionTemplate.properties.capabilities = AAZListType(serialized_name="capabilities")
-            _schema_on_200.properties.solutionTemplate.properties.capabilities.Element = AAZStrType()
-
-            _schema_on_200.properties.solutionTemplate.properties.latestVersion = AAZStrType(serialized_name="latestVersion")
-            _schema_on_200.properties.solutionTemplate.properties.provisioningState = AAZStrType(serialized_name="provisioningState")
-
-            _schema_on_200.properties.solutionTemplate.eTag = AAZStrType(serialized_name="eTag")
-            _schema_on_200.properties.solutionTemplate.location = AAZStrType(serialized_name="location")
-            _schema_on_200.properties.solutionTemplate.tags = AAZDictType(serialized_name="tags")
-            _schema_on_200.properties.solutionTemplate.id = AAZStrType(serialized_name="id")
-            _schema_on_200.properties.solutionTemplate.name = AAZStrType(serialized_name="name")
-            _schema_on_200.properties.solutionTemplate.type = AAZStrType(serialized_name="type")
-
-            _schema_on_200.properties.solutionTemplateVersion = AAZObjectType(serialized_name="solutionTemplateVersion")
-            _schema_on_200.properties.solutionTemplateVersion.properties = AAZObjectType(serialized_name="properties")
-
-            _schema_on_200.properties.solutionTemplateVersion.properties.configurations = AAZStrType(serialized_name="configurations")
-
-            _schema_on_200.properties.solutionTemplateVersion.properties.orchestratorType = AAZStrType(serialized_name="orchestratorType")
-            _schema_on_200.properties.solutionTemplateVersion.properties.provisioningState = AAZStrType(serialized_name="provisioningState")
-
-            _schema_on_200.properties.solutionTemplateVersion.eTag = AAZStrType(serialized_name="eTag")
-            _schema_on_200.properties.solutionTemplateVersion.id = AAZStrType(serialized_name="id")
-            _schema_on_200.properties.solutionTemplateVersion.name = AAZStrType(serialized_name="name")
-            _schema_on_200.properties.solutionTemplateVersion.type = AAZStrType(serialized_name="type")
-
+            _schema_on_200.properties.solutionTemplateVersionId = AAZStrType(serialized_name="solutionTemplateVersionId")
+            _schema_on_200.properties.solutionTemplateVersionName = AAZStrType(serialized_name="solutionTemplateVersionName")
+            _schema_on_200.properties.solutionTemplateId = AAZStrType(serialized_name="solutionTemplateId")
 
             return cls._schema_on_200
 
