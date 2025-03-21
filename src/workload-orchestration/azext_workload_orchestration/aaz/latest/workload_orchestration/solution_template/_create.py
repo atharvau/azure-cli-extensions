@@ -77,8 +77,14 @@ class Create(AAZCommand):
             options=["--update-type"],
             arg_group="Body",
             help="Update type",
-            required=True,
+            required=False,
             enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
+        )
+        _args_schema.version = AAZStrArg(
+            options=["--version"],
+            arg_group="Body",
+            help="Version of the solution template",
+            required=False,
         )
         def normalize_update_type(value):
             if value.lower() == "major":
@@ -437,7 +443,8 @@ class Create(AAZCommand):
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
             _builder.set_prop("solutionTemplateVersion", AAZObjectType)
-            _builder.set_prop("updateType", AAZStrType, ".update_type", typ_kwargs={"flags": {"required": True}})
+            _builder.set_prop("updateType", AAZStrType, ".update_type")
+            _builder.set_prop("version", AAZStrType, ".version")
 
             solution_template_version = _builder.get(".solutionTemplateVersion")
             if solution_template_version is not None:
@@ -459,7 +466,7 @@ class Create(AAZCommand):
 
 
         def on_200(self, session):
-            data = self.deserialize_http_content(self.post_response_session)
+            data = self.deserialize_http_content(session)
             self.ctx.set_var(
                 "instance",
                 data,

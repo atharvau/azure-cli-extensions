@@ -21,7 +21,7 @@ class Create(AAZCommand):
     _aaz_info = {
         "version": "2025-01-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/configtemplates/{}", "2025-01-01-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/Microsoft.Edge/configtemplates/{}", "2025-01-01-preview"],
         ]
     }
 
@@ -88,23 +88,18 @@ class Create(AAZCommand):
             options=["--update-type"],
             arg_group="Body",
             help="Update type",
-            required=True,
+            required=False,
             enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
         )
-        def normalize_update_type(value):
-            if value.lower() == "major":
-                return "Major"
-            elif value.lower() == "minor":
-                return "Minor"
-            elif value.lower() == "patch":
-                return "Patch"
-            else:
-                raise ValueError("Invalid update type: {}".format(value))
-    
-        _args_schema.update_type._fmt = AAZStrArgFormat(
-            pattern="^(Major|Minor|Patch)$",
+
+
+        _args_schema = cls._args_schema
+        _args_schema.version = AAZStrArg(
+            options=["--version"],
+            arg_group="Body",
+            help="Version of the config template",
+            required=False
         )
-        _args_schema.update_type._validate = normalize_update_type
 
         _args_schema.configurations = AAZFileArg(
             options=["--configuration-template-file"],
@@ -401,9 +396,10 @@ class Create(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+            
             _builder.set_prop("configTemplateVersion", AAZObjectType)
-            _builder.set_prop("updateType", AAZStrType, ".update_type", typ_kwargs={"flags": {"required": True}})
-
+            _builder.set_prop("updateType", AAZStrType, ".update_type")
+            _builder.set_prop("version", AAZStrType, ".version")
             config_template_version = _builder.get(".configTemplateVersion")
             if config_template_version is not None:
                 config_template_version.set_prop("properties", AAZObjectType)
