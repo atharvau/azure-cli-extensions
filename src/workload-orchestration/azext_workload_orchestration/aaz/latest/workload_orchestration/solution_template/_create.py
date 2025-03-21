@@ -458,7 +458,9 @@ class Create(AAZCommand):
             if specification is not None:
                 specification.set_anytype_elements(".")
             
-            data = self.serialize_content(_content_value)            
+            data = self.serialize_content(_content_value)    
+            data["solutionTemplateVersion"]["properties"]["orchestratorType"] = "TO"
+        
             return data
 
 
