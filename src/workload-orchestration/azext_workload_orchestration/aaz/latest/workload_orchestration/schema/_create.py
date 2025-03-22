@@ -75,12 +75,7 @@ class Create(AAZCommand):
             arg_group="Resource",
             help="Resource tags.",
         )
-        _args_schema.update_type = AAZStrArg(
-                options=["--update-type"],
-                arg_group="Body",
-                help="Update type",
-                enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
-            )
+
         _args_schema.version = AAZStrArg(
                 options=["--version"],
                 arg_group="Body",
@@ -394,7 +389,6 @@ class Create(AAZCommand):
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
             _builder.set_prop("schemaVersion", AAZObjectType, ".schema_version", typ_kwargs={"flags": {"required": True}})
-            _builder.set_prop("updateType", AAZStrType, ".update_type")
             _builder.set_prop("version", AAZStrType, ".version")
 
             _builder.set_prop("schemaVersion", AAZObjectType)

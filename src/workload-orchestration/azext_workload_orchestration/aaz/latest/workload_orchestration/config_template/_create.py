@@ -84,13 +84,7 @@ class Create(AAZCommand):
         tags.Element = AAZStrArg()
 
         _args_schema = cls._args_schema
-        _args_schema.update_type = AAZStrArg(
-            options=["--update-type"],
-            arg_group="Body",
-            help="Update type",
-            required=False,
-            enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
-        )
+    
 
 
         _args_schema = cls._args_schema
@@ -398,7 +392,6 @@ class Create(AAZCommand):
             )
             
             _builder.set_prop("configTemplateVersion", AAZObjectType)
-            _builder.set_prop("updateType", AAZStrType, ".update_type")
             _builder.set_prop("version", AAZStrType, ".version")
             config_template_version = _builder.get(".configTemplateVersion")
             if config_template_version is not None:

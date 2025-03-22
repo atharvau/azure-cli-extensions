@@ -73,33 +73,13 @@ class Create(AAZCommand):
             help="State of resource",
             enum={"active": "active", "inactive": "inactive"},
         )
-        _args_schema.update_type = AAZStrArg(
-            options=["--update-type"],
-            arg_group="Body",
-            help="Update type",
-            required=False,
-            enum={"Major": "Major", "Minor": "Minor", "Patch": "Patch"},
-        )
+       
         _args_schema.version = AAZStrArg(
             options=["--version"],
             arg_group="Body",
             help="Version of the solution template",
             required=False,
         )
-        def normalize_update_type(value):
-            if value.lower() == "major":
-                return "Major"
-            elif value.lower() == "minor":
-                return "Minor"
-            elif value.lower() == "patch":
-                return "Patch"
-            else:
-                raise ValueError("Invalid update type: {}".format(value))
-    
-        _args_schema.update_type._fmt = AAZStrArgFormat(
-            pattern="^(Major|Minor|Patch)$",
-        )
-        _args_schema.update_type._validate = normalize_update_type
 
 
         _args_schema.configurations = AAZFileArg(
@@ -443,7 +423,6 @@ class Create(AAZCommand):
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
             _builder.set_prop("solutionTemplateVersion", AAZObjectType)
-            _builder.set_prop("updateType", AAZStrType, ".update_type")
             _builder.set_prop("version", AAZStrType, ".version")
 
             solution_template_version = _builder.get(".solutionTemplateVersion")
