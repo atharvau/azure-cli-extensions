@@ -493,7 +493,6 @@ class Create(AAZCommand):
 
             _schema_on_200.properties = AAZObjectType(serialized_name="properties")
             _schema_on_200.properties.solutionTemplateVersionId = AAZStrType(serialized_name="solutionTemplateVersionId")
-            _schema_on_200.properties.solutionTemplateVersionName = AAZStrType(serialized_name="solutionTemplateVersionName")
             _schema_on_200.properties.solutionTemplateId = AAZStrType(serialized_name="solutionTemplateId")
 
             return cls._schema_on_200
