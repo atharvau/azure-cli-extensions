@@ -7,21 +7,16 @@
 
 # pylint: skip-file
 # flake8: noqa
-import os
-import platform
-import subprocess
-import tempfile
-import sys
-import json
+
 from azure.cli.core.aaz import *
 
 
 @register_command(
-    "workload-orchestration configuration set",
+    "workload-orchestration configuration show",
     is_preview=False,
 )
-class ShowConfig2(AAZCommand):
-    """To set the values to configurations available at specified hierarchical entity
+class ShowConfig(AAZCommand):
+    """To get a configurations available at specified hierarchical entity
     """
 
     _aaz_info = {
@@ -52,9 +47,9 @@ class ShowConfig2(AAZCommand):
         )
         _args_schema.solution_name = AAZStrArg(
             options=["--solution-template-name"],
-            help="The name of the Solution, This is required only to set solution configurations",
+            help="The name of the Solution, This is required only to get solution configurations",
             # required=True,
-
+            id_part="name",
             fmt=AAZStrArgFormat(
                 pattern="^[a-zA-Z0-9-]{3,24}$",
             ),
@@ -63,8 +58,9 @@ class ShowConfig2(AAZCommand):
         _args_schema = cls._args_schema
         _args_schema.level_name = AAZStrArg(
             options=["--target-name"],
-            help="The Deployment Target or Site name at which values needs to be set",
-            required=True,
+            help="The Target or Site name at which values needs to be set",
+
+            required = True,
             fmt=AAZStrArgFormat(
                 pattern="^[a-zA-Z0-9-]{3,24}$",
             ),
@@ -72,13 +68,13 @@ class ShowConfig2(AAZCommand):
 
         # define Arg Group "Resource"
 
-        # _args_schema = cls._args_schema
-        # _args_schema.tags = AAZDictArg(
-        #     options=["--tags"],
-        #     arg_group="Resource",
-        #     help="Resource tags.",
-        #     nullable=True,
-        # )
+        _args_schema = cls._args_schema
+        _args_schema.tags = AAZDictArg(
+            options=["--tags"],
+            arg_group="Resource",
+            help="Resource tags.",
+            nullable=True,
+        )
 
         #
         # _args_schema.properties = AAZFreeFormDictArg(
@@ -120,37 +116,10 @@ class ShowConfig2(AAZCommand):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
             if session.http_response.status_code in [200]:
-                response = self.get_config_to_update(session)
-                config_to_set = response["properties"]["values"]
-                editor= "vi"
-                if platform.system() == "Windows":
-                    editor = "notepad"
-                temp_file = tempfile.NamedTemporaryFile(delete=False)
-                temp_file.write(bytes(config_to_set, "utf-8"))
-                temp_file.close()
-                editor_output = subprocess.run([editor, temp_file.name], stdout=sys.stdout, stdin=sys.stdin,
-                                               stderr=sys.stdout, check=False)
-                if editor_output.returncode != 0:
-                    os.unlink(temp_file.name)
-                    raise CLIInternalError("Failed to update instance")
-                with open(temp_file.name, "rb") as f:
-                    config_to_set = f.read().decode("utf-8")
-                os.unlink(temp_file.name)
-                # print(config_to_set)
-                new_content = dict()
-                new_content["properties"] = response["properties"]
-                new_content["properties"]["values"] = config_to_set
-
-                request = self.client._request(
-                    "PUT", self.url, self.query_parameters, self.header_parameters2,
-                    new_content, self.form_content, self.stream_content)
-                session = self.client.send_request(request=request, stream=False, **kwargs)
-                if session.http_response.status_code in [200]:
-                    return self.on_200(session)
-                # return self.on_error(session.http_response)
+                return self.on_200(session)
             config = dict()
             config["properties"] = dict()
-            config["properties"]["values"] = "No config found."
+            config["properties"]["values"] = "{}"
             # # config.config = AAZStrType()
             # # config.config = "[]"
             if session.http_response.status_code in [404]:
@@ -224,20 +193,6 @@ class ShowConfig2(AAZCommand):
             }
             return parameters
 
-        @property
-        def header_parameters2(self):
-            parameters = {
-                **self.serialize_header_param(
-                    "Content-Type", "application/json",
-                ),
-                **self.serialize_header_param(
-                    "Accept", "application/json",
-                ),
-            }
-            return parameters
-        def get_config_to_update(self,session):
-            data = self.deserialize_http_content(session)
-            return data
         def on_200(self, session):
             data = self.deserialize_http_content(session)
             self.ctx.set_var(
@@ -316,4 +271,4 @@ class _ShowHelper:
     """Helper class for Show"""
 
 
-__all__ = ["ShowConfig2"]
+__all__ = ["ShowConfig"]
