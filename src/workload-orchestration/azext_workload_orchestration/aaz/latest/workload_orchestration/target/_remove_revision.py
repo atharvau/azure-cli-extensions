@@ -67,7 +67,7 @@ class RemoveRevision(AAZCommand):
             required=True,
         )
         _args_schema.solution_version = AAZStrArg(
-            options=["--version"],
+            options=["--solution-version"],
             arg_group="Body",
             help="Solution Version Name",
             required=True,

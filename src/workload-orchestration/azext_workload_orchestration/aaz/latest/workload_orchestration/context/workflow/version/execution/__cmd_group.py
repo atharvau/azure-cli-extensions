@@ -15,7 +15,7 @@ from azure.cli.core.aaz import *
     "workload-orchestration context workflow version execution",
 )
 class __CMDGroup(AAZCommandGroup):
-    """This is for edge Config-Manager
+    """Manage workflow version execution context in workload orchestration.
     """
     pass
 
