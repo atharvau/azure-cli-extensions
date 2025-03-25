@@ -51,7 +51,7 @@ class Show(AAZCommand):
             ),
         )
         _args_schema.config_template_version_name = AAZStrArg(
-            options=["-n", "--name", "--config-template-version-name"],
+            options=["-n", "--name", "--version"],
             help="The name of the ConfigTemplateVersion",
             required=True,
             id_part="child_name_1",

@@ -68,7 +68,7 @@ class DeleteRevision(AAZCommand):
             required=True,
         )
         _args_schema.solution_template_version = AAZStrArg(
-            options=["--solution-template-version"],
+            options=["--version"],
             arg_group="Body",
             help="Solution Template Version Name",
             required=True,

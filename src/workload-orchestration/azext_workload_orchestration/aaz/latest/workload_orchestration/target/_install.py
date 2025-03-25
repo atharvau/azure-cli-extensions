@@ -67,7 +67,7 @@ class Install(AAZCommand):
             required=True,
         )
         _args_schema.solution_version = AAZStrArg(
-            options=["--solution-version"],
+            options=["--version"],
             arg_group="Body",
             help="Solution Version Name",
             required=True,
