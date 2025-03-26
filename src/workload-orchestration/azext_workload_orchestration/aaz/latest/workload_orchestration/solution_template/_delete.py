@@ -103,6 +103,10 @@ class Delete(AAZCommand):
                     lro_options={"final-state-via": "location"},
                     path_format_arguments=self.url_parameters,
                 )
+            if session.http_response.status_code in [400]:
+                response = session.http_response
+                error_message = response.text() + "\n\n\n" + "Please use this command to delete versions of the solution template:\n" + "az workload-orchestration solution-template remove-version  --solution-template-name <solution-template-name> --resource-group <resource-group> --version <version>\n"
+                raise Exception(error_message)
 
             return self.on_error(session.http_response)
 
