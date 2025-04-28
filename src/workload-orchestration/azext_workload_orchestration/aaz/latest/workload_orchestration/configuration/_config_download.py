@@ -97,9 +97,8 @@ class Download(AAZCommand):
         # Create filename based on target_name and solution_template_name
         target_name = str(self.ctx.args.target_name)
         if target_name.endswith("Config"):
-        #     # Remove the "Config" suffix for the filename
-        #     if len(target_name) > 18 and target_name.endswith("Config"):
-            target_name = target_name[:len(target_name)-6]  # Remove "Config" suffix
+            # Remove the "Config" suffix for the filename
+            target_name = target_name[:len(target_name)-6]
         
         solution_name = str(self.ctx.args.solution_template_name)
         filename = f"{target_name}_{solution_name}.yaml"
@@ -113,11 +112,7 @@ class Download(AAZCommand):
                 file.write(config_values)
             print(f"Configuration saved to: {absolute_path}")
         except Exception as e:
-            print(f"Error saving configuration to file: {str(e)}")
-
-        # result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
-        # print(result["properties"]["values"]) # TODO:REMOVE:PRINTS THE CONFIGS
-        # pass
+            print(f"Error saving configuration to file: {str(e)}")            
 
     class DynamicConfigurationVersionsGet(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
