@@ -12,7 +12,7 @@ from azure.cli.core.aaz import *
 
 
 @register_command(
-    "workload-orchestration update-external-validation-status",
+    "workload-orchestration target update-external-validation-status",
 )
 class UpdateExternalValidationStatus(AAZCommand):
     """Post request to update external validation status
@@ -21,7 +21,7 @@ class UpdateExternalValidationStatus(AAZCommand):
     _aaz_info = {
         "version": "2025-01-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/private.edge/targets/{}/updateexternalvalidationstatus", "2025-01-01-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/targets/{}/updateexternalvalidationstatus", "2025-01-01-preview"],
         ]
     }
 
@@ -62,7 +62,9 @@ class UpdateExternalValidationStatus(AAZCommand):
         _args_schema = cls._args_schema
         _args_schema.error_details = AAZFreeFormDictArg(
             options=["--error-details"],
-            help="Error Details if any failure is there"
+            arg_group="Body",
+            help="Error Details if any failure is there",
+            required=False,
         )
         _args_schema.external_validation_id = AAZStrArg(
             options=["--external-validation-id"],
@@ -132,7 +134,7 @@ class UpdateExternalValidationStatus(AAZCommand):
         @property
         def url(self):
             return self.client.format_url(
-                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/private.Edge/targets/{targetName}/updateExternalValidationStatus",
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/updateExternalValidationStatus",
                 **self.url_parameters
             )
 
