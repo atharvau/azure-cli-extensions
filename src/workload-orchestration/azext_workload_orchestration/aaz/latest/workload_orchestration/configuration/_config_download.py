@@ -8,20 +8,22 @@
 # pylint: skip-file
 # flake8: noqa
 
+import os
 from azure.cli.core.aaz import *
 
 
 @register_command(
-    "workload-orchestration solution-template show",
+    "workload-orchestration configuration download",
+    is_preview=False,
 )
-class Show(AAZCommand):
-    """Get a Solution Template Resource
+class Download(AAZCommand):
+    """Download configurations available at specified hierarchical entity
     """
 
     _aaz_info = {
-        "version": "2025-01-01-preview",
+        "version": "2024-09-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/solutiontemplates/{}", "2025-01-01-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/configurations/{}/dynamicconfigurations/{}/versions/version1", "2024-09-01-preview"],
         ]
     }
 
@@ -41,23 +43,38 @@ class Show(AAZCommand):
         # define Arg Group ""
 
         _args_schema = cls._args_schema
-        _args_schema.resource_group = AAZResourceGroupNameArg(
-            required=True,
-        )
-        _args_schema.solution_template_name = AAZStrArg(
-            options=["-n", "--name", "--solution-template-name"],
-            help="The name of the SolutionTemplate",
+        _args_schema.target_name = AAZStrArg(
+            options=["--target-name"],
+            help="The name of the Configuration",
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
                 pattern="^[a-zA-Z0-9-]{3,24}$",
             ),
         )
+        _args_schema.solution_template_name = AAZStrArg(
+            options=["--solution-template-name"],
+            help="The name of the DynamicConfiguration",
+            required=False,
+            id_part="child_name_1",
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z0-9-]{3,24}$",
+            ),
+        )
+        _args_schema.resource_group = AAZResourceGroupNameArg(
+            required=True,
+        )
         return cls._args_schema
 
     def _execute_operations(self):
         self.pre_operations()
-        self.SolutionTemplatesGet(ctx=self.ctx)()
+        config_name = str(self.ctx.args.target_name)
+        if len(config_name) > 18:
+            config_name = config_name[:18] + "Config"
+        else:
+            config_name = config_name + "Config"
+        self.ctx.args.target_name = config_name
+        self.DynamicConfigurationVersionsGet(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -70,9 +87,34 @@ class Show(AAZCommand):
 
     def _output(self, *args, **kwargs):
         result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
-        return result
+        config_values = result["properties"]["values"]
+        
+        # Check if config is empty
+        if config_values == "{}":
+            print("No config found.")
+            return
+        
+        # Create filename based on target_name and solution_template_name
+        target_name = str(self.ctx.args.target_name)
+        if target_name.endswith("Config"):
+            # Remove the "Config" suffix for the filename
+            target_name = target_name[:len(target_name)-6]
+        
+        solution_name = str(self.ctx.args.solution_template_name)
+        filename = f"{target_name}_{solution_name}.yaml"
+        
+        # Get absolute path
+        absolute_path = os.path.abspath(filename)
+        
+        # Save to yaml file
+        try:
+            with open(filename, 'w', encoding='utf-8') as file:
+                file.write(config_values)
+            print(f"Configuration saved to: {absolute_path}")
+        except Exception as e:
+            print(f"Error saving configuration to file: {str(e)}")            
 
-    class SolutionTemplatesGet(AAZHttpOperation):
+    class DynamicConfigurationVersionsGet(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -80,13 +122,23 @@ class Show(AAZCommand):
             session = self.client.send_request(request=request, stream=False, **kwargs)
             if session.http_response.status_code in [200]:
                 return self.on_200(session)
+            config = dict()
+            config["properties"] = dict()
+            config["properties"]["values"] = "{}"
+            if session.http_response.status_code in [404]:
+                self.ctx.set_var(
+                    "instance",
+                    config,
+                    schema_builder=self._build_schema_on_404
+                )
+            else:
+                return self.on_error(session.http_response)
 
-            return self.on_error(session.http_response)
 
         @property
         def url(self):
             return self.client.format_url(
-                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/version1",
                 **self.url_parameters
             )
 
@@ -100,13 +152,21 @@ class Show(AAZCommand):
 
         @property
         def url_parameters(self):
+            solution_template_name = "common"
+            if has_value(self.ctx.args.solution_template_name):
+                solution_template_name = self.ctx.args.solution_template_name
+
             parameters = {
                 **self.serialize_url_param(
-                    "resourceGroupName", self.ctx.args.resource_group,
+                    "configurationName", self.ctx.args.target_name,
                     required=True,
                 ),
                 **self.serialize_url_param(
-                    "solutionTemplateName", self.ctx.args.solution_template_name,
+                    "dynamicConfigurationName", solution_template_name,
+                    required=True,
+                ),
+                **self.serialize_url_param(
+                    "resourceGroupName", self.ctx.args.resource_group,
                     required=True,
                 ),
                 **self.serialize_url_param(
@@ -120,7 +180,7 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2025-01-01-preview",
+                    "api-version", "2024-09-01-preview",
                     required=True,
                 ),
             }
@@ -146,6 +206,14 @@ class Show(AAZCommand):
         _schema_on_200 = None
 
         @classmethod
+        def _build_schema_on_404(cls):
+            cls._schema_on_200 = AAZObjectType()
+            _schema_on_200 = cls._schema_on_200
+            _schema_on_200.properties = AAZFreeFormDictType()
+            return cls._schema_on_200
+
+
+        @classmethod
         def _build_schema_on_200(cls):
             if cls._schema_on_200 is not None:
                 return cls._schema_on_200
@@ -153,15 +221,8 @@ class Show(AAZCommand):
             cls._schema_on_200 = AAZObjectType()
 
             _schema_on_200 = cls._schema_on_200
-            _schema_on_200.e_tag = AAZStrType(
-                serialized_name="eTag",
-                flags={"read_only": True},
-            )
             _schema_on_200.id = AAZStrType(
                 flags={"read_only": True},
-            )
-            _schema_on_200.location = AAZStrType(
-                flags={"required": True},
             )
             _schema_on_200.name = AAZStrType(
                 flags={"read_only": True},
@@ -171,33 +232,22 @@ class Show(AAZCommand):
                 serialized_name="systemData",
                 flags={"read_only": True},
             )
-            _schema_on_200.tags = AAZDictType()
             _schema_on_200.type = AAZStrType(
                 flags={"read_only": True},
             )
 
             properties = cls._schema_on_200.properties
-            properties.capabilities = AAZListType(
-                flags={"required": True},
-            )
-            properties.description = AAZStrType(
-                flags={"required": True},
-            )
-            properties.enable_external_validation = AAZBoolType(
-                serialized_name="enableExternalValidation",
-            )
-            properties.latest_version = AAZStrType(
-                serialized_name="latestVersion",
-                flags={"read_only": True},
-            )
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
             )
-            properties.state = AAZStrType()
-
-            capabilities = cls._schema_on_200.properties.capabilities
-            capabilities.Element = AAZStrType()
+            properties.schema_id = AAZStrType(
+                serialized_name="schemaId",
+                flags={"read_only": True},
+            )
+            properties.values = AAZStrType(
+                flags={"required": True},
+            )
 
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
@@ -219,14 +269,11 @@ class Show(AAZCommand):
                 serialized_name="lastModifiedByType",
             )
 
-            tags = cls._schema_on_200.tags
-            tags.Element = AAZStrType()
-
             return cls._schema_on_200
 
 
-class _ShowHelper:
-    """Helper class for Show"""
+class _DownloadHelper:
+    """Helper class for Download"""
 
 
-__all__ = ["Show"]
+__all__ = ["Download"]

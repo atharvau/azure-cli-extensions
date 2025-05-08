@@ -14,7 +14,7 @@ import tempfile
 import sys
 import json
 from azure.cli.core.aaz import *
-
+from azure.cli.core.azclierror import CLIInternalError
 
 @register_command(
     "workload-orchestration configuration set",
@@ -70,6 +70,12 @@ class ShowConfig2(AAZCommand):
             ),
         )
 
+        _args_schema.file_path = AAZFileArg(
+            options=["--file"],
+            help="Path to a file containing the configuration values. If provided, the editor will not be opened.",
+            required=False,
+        )
+
         # define Arg Group "Resource"
 
         # _args_schema = cls._args_schema
@@ -122,20 +128,27 @@ class ShowConfig2(AAZCommand):
             if session.http_response.status_code in [200]:
                 response = self.get_config_to_update(session)
                 config_to_set = response["properties"]["values"]
-                editor= "vi"
-                if platform.system() == "Windows":
-                    editor = "notepad"
-                temp_file = tempfile.NamedTemporaryFile(delete=False)
-                temp_file.write(bytes(config_to_set, "utf-8"))
-                temp_file.close()
-                editor_output = subprocess.run([editor, temp_file.name], stdout=sys.stdout, stdin=sys.stdin,
-                                               stderr=sys.stdout, check=False)
-                if editor_output.returncode != 0:
+                # Check if file path is provided
+                if hasattr(self.ctx.args, 'file_path') and self.ctx.args.file_path:
+                    try:
+                        config_to_set = str(self.ctx.args.file_path)
+                    except Exception as e:
+                        raise CLIInternalError(f"Failed to process file content: {str(e)}")
+                else:
+                    editor= "vi"
+                    if platform.system() == "Windows":
+                        editor = "notepad"
+                    temp_file = tempfile.NamedTemporaryFile(delete=False)
+                    temp_file.write(bytes(config_to_set, "utf-8"))
+                    temp_file.close()
+                    editor_output = subprocess.run([editor, temp_file.name], stdout=sys.stdout, stdin=sys.stdin,
+                                                stderr=sys.stdout, check=False)
+                    if editor_output.returncode != 0:
+                        os.unlink(temp_file.name)
+                        raise CLIInternalError("Failed to update instance")
+                    with open(temp_file.name, "rb") as f:
+                        config_to_set = f.read().decode("utf-8")
                     os.unlink(temp_file.name)
-                    raise CLIInternalError("Failed to update instance")
-                with open(temp_file.name, "rb") as f:
-                    config_to_set = f.read().decode("utf-8")
-                os.unlink(temp_file.name)
                 # print(config_to_set)
                 new_content = dict()
                 new_content["properties"] = response["properties"]
