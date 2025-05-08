@@ -10,5 +10,3 @@
 
 from .__cmd_group import *
 from ._migrate_to_new_pricing_model import *
-from ._query_execute import *
-from ._query_show import *

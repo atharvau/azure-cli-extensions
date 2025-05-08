@@ -20,7 +20,6 @@ TEST_DIR = os.path.abspath(os.path.join(os.path.abspath(__file__), '..'))
 
 class QuantumTargetsScenarioTest(ScenarioTest):
 
-    @live_only()
     def test_targets(self):
         # set current workspace:
         self.cmd(f'az quantum workspace set -g {get_test_resource_group()} -w {get_test_workspace()} -l {get_test_workspace_location()}')

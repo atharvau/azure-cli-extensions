@@ -4,12 +4,7 @@
 # --------------------------------------------------------------------------------------------
 
 from knack.log import get_logger
-from azure.cli.command_modules.acr._docker_utils import (
-    get_access_credentials,
-    request_data_from_registry,
-    RegistryAccessTokenPermission,
-    RepoAccessTokenPermission
-)
+from azure.cli.command_modules.acr._docker_utils import get_access_credentials, request_data_from_registry, RegistryAccessTokenPermission, RepoAccessTokenPermission
 
 logger = get_logger(__name__)
 

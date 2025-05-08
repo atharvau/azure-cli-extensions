@@ -44,7 +44,7 @@ class Create(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
-                pattern="^[-\\w\\._]+$",
+                pattern="^[-\w\._]+$",
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -55,7 +55,7 @@ class Create(AAZCommand):
             help="Name of the user-invoked script execution resource",
             required=True,
             fmt=AAZStrArgFormat(
-                pattern="^[-\\w\\._]+$",
+                pattern="^[-\w\._]+$",
             ),
         )
 
@@ -110,7 +110,7 @@ class Create(AAZCommand):
         cls._build_args_script_execution_parameter_create(hidden_parameters.Element)
 
         named_outputs = cls._args_schema.named_outputs
-        named_outputs.Element = AAZFreeFormDictArg(
+        named_outputs.Element = AAZObjectArg(
             blank={},
         )
 
@@ -307,11 +307,7 @@ class Create(AAZCommand):
 
             named_outputs = _builder.get(".properties.namedOutputs")
             if named_outputs is not None:
-                named_outputs.set_elements(AAZFreeFormDictType, ".")
-
-            _elements = _builder.get(".properties.namedOutputs{}")
-            if _elements is not None:
-                _elements.set_anytype_elements(".")
+                named_outputs.set_elements(AAZObjectType, ".")
 
             output = _builder.get(".properties.output")
             if output is not None:
@@ -414,7 +410,7 @@ class Create(AAZCommand):
             information.Element = AAZStrType()
 
             named_outputs = cls._schema_on_200_201.properties.named_outputs
-            named_outputs.Element = AAZFreeFormDictType()
+            named_outputs.Element = AAZObjectType()
 
             output = cls._schema_on_200_201.properties.output
             output.Element = AAZStrType()
@@ -466,7 +462,7 @@ class _CreateHelper:
 
         disc_credential = _builder.get("{type:Credential}")
         if disc_credential is not None:
-            disc_credential.set_prop("password", AAZStrType, ".credential.password", typ_kwargs={"flags": {"secret": True}})
+            disc_credential.set_prop("password", AAZStrType, ".credential.password")
             disc_credential.set_prop("username", AAZStrType, ".credential.username")
 
         disc_secure_value = _builder.get("{type:SecureValue}")
@@ -521,9 +517,7 @@ class _CreateHelper:
         )
 
         disc_credential = _schema_script_execution_parameter_read.discriminate_by("type", "Credential")
-        disc_credential.password = AAZStrType(
-            flags={"secret": True},
-        )
+        disc_credential.password = AAZStrType()
         disc_credential.username = AAZStrType()
 
         disc_secure_value = _schema_script_execution_parameter_read.discriminate_by("type", "SecureValue")

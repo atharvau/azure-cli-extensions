@@ -168,9 +168,7 @@ class CheckTrialAvailability(AAZCommand):
                 serialized_name="availableHosts",
                 flags={"read_only": True},
             )
-            _schema_on_200.status = AAZStrType(
-                flags={"read_only": True},
-            )
+            _schema_on_200.status = AAZStrType()
 
             return cls._schema_on_200
 

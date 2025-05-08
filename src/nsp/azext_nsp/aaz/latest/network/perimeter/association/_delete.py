@@ -16,16 +16,16 @@ from azure.cli.core.aaz import *
     confirmation="Are you sure you want to perform this operation?",
 )
 class Delete(AAZCommand):
-    """Delete a network security perimeter association.
+    """Deletes an NSP association resource.
 
-    :example: Delete a network security perimeter association
+    :example: Delete NSP Association
         az network perimeter association delete -n MyAssociation --perimeter-name MyPerimeter -g MyResourceGroup
     """
 
     _aaz_info = {
-        "version": "2024-07-01",
+        "version": "2023-08-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/resourceassociations/{}", "2024-07-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/resourceassociations/{}", "2023-08-01-preview"],
         ]
     }
 
@@ -51,20 +51,12 @@ class Delete(AAZCommand):
             help="The name of the NSP association.",
             required=True,
             id_part="child_name_1",
-            fmt=AAZStrArgFormat(
-                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
-                max_length=80,
-            ),
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
-            fmt=AAZStrArgFormat(
-                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
-                max_length=80,
-            ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -73,7 +65,7 @@ class Delete(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
-        yield self.NetworkSecurityPerimeterAssociationsDelete(ctx=self.ctx)()
+        yield self.NspAssociationsDelete(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -84,7 +76,7 @@ class Delete(AAZCommand):
     def post_operations(self):
         pass
 
-    class NetworkSecurityPerimeterAssociationsDelete(AAZHttpOperation):
+    class NspAssociationsDelete(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -161,7 +153,7 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2024-07-01",
+                    "api-version", "2023-08-01-preview",
                     required=True,
                 ),
             }

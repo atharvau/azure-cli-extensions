@@ -74,7 +74,7 @@ def step_update(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
-        "az networkfabric neighborgroup update --resource-group {rg} --resource-name {name} --destination {destinationUpdate}",
+        "az networkfabric neighborgroup update --resource-group {rg} --resource-name {name} --destination {destination_Update}",
         checks=checks,
     )
 
@@ -99,7 +99,9 @@ class GA_NeighborGroupScenarioTest1(ScenarioTest):
                 "rg": CONFIG.get("NEIGHBOR_GROUP", "resource_group"),
                 "location": CONFIG.get("NEIGHBOR_GROUP", "location"),
                 "destination": CONFIG.get("NEIGHBOR_GROUP", "destination"),
-                "destinationUpdate": CONFIG.get("NEIGHBOR_GROUP", "destination_update"),
+                "destination_Update": CONFIG.get(
+                    "NEIGHBOR_GROUP", "destination_Update"
+                ),
             }
         )
 

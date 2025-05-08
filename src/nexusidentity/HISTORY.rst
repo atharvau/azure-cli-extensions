@@ -3,14 +3,6 @@
 Release History
 ===============
 
-1.0.0b5
-+++++++
-* Adding support for older algorithm ssh keys
-
-1.0.0b4
-+++++++
-* Adding support for Linux platform
-
 1.0.0b3
 ++++++
 * Adding print statements to o/p creation & update of extensions.

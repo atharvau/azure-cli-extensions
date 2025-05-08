@@ -10,7 +10,7 @@ from enum import Enum
 from azure.core import CaseInsensitiveEnumMeta
 
 
-class Aggregation(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class AggregationType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Aggregation type."""
 
     AVERAGE = "Average"
@@ -44,21 +44,23 @@ class Aggregation(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 class CertificateType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Types of certificates supported."""
 
-    KEY_VAULT_CERTIFICATE_URI = "AKV_CERT_URI"
+    AKV_CERT_URI = "AKV_CERT_URI"
     """If the certificate is stored in an Azure Key Vault."""
 
 
-class CreatedByType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """The type of the entity that created the test run. (E.x. User, ScheduleTrigger, etc)."""
+class FileStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """File status."""
 
-    USER = "User"
-    """Entity was created by a user."""
-    SCHEDULED_TRIGGER = "ScheduledTrigger"
-    """Entity was created by a scheduled trigger."""
-    AZURE_PIPELINES = "AzurePipelines"
-    """Entity was created by Azure DevOps pipelines."""
-    GIT_HUB_WORKFLOWS = "GitHubWorkflows"
-    """Entity was created by GitHub Workflows."""
+    NOT_VALIDATED = "NOT_VALIDATED"
+    """File is not validated."""
+    VALIDATION_SUCCESS = "VALIDATION_SUCCESS"
+    """File is validated."""
+    VALIDATION_FAILURE = "VALIDATION_FAILURE"
+    """File validation is failed."""
+    VALIDATION_INITIATED = "VALIDATION_INITIATED"
+    """File validation is in progress."""
+    VALIDATION_NOT_REQUIRED = "VALIDATION_NOT_REQUIRED"
+    """Validation is not required."""
 
 
 class FileType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -76,47 +78,6 @@ class FileType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """If the file is a JSON config file to define the requests for a URL test."""
     TEST_SCRIPT = "TEST_SCRIPT"
     """If the file is a test script."""
-
-
-class FileValidationStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """File status."""
-
-    NOT_VALIDATED = "NOT_VALIDATED"
-    """File is not validated."""
-    VALIDATION_SUCCESS = "VALIDATION_SUCCESS"
-    """File is validated."""
-    VALIDATION_FAILURE = "VALIDATION_FAILURE"
-    """File validation is failed."""
-    VALIDATION_INITIATED = "VALIDATION_INITIATED"
-    """File validation is in progress."""
-    VALIDATION_NOT_REQUIRED = "VALIDATION_NOT_REQUIRED"
-    """Validation is not required."""
-
-
-class Frequency(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Frequency of recurrence for a trigger."""
-
-    CRON = "Cron"
-    """Recurrence defined by a cron expression."""
-    HOURLY = "Hourly"
-    """Recurrence defined on an hourly basis, as specified by HourlyRecurrence."""
-    DAILY = "Daily"
-    """Recurrence defined on a daily basis, as specified by DailyRecurrence."""
-    WEEKLY = "Weekly"
-    """Recurrence defined on a weekly basis, as specified by WeeklyRecurrence."""
-    MONTHLY_BY_DAYS = "MonthlyByDays"
-    """Recurrence defined monthly on specific days, as specified by MonthlyRecurrenceByWeekDays."""
-    MONTHLY_BY_DATES = "MonthlyByDates"
-    """Recurrence defined monthly on specific dates, as specified by MonthlyRecurrenceByDates."""
-
-
-class ManagedIdentityType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Managed identity type."""
-
-    SYSTEM_ASSIGNED = "SystemAssigned"
-    """System-assigned managed identity."""
-    USER_ASSIGNED = "UserAssigned"
-    """User-assigned managed identity."""
 
 
 class MetricUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -140,93 +101,66 @@ class MetricUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Count per second"""
 
 
-class NotificationEventType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Notification event type."""
-
-    TEST_RUN_ENDED = "TestRunEnded"
-    """Test run ended event. This event would occur when a test run reaches terminal state."""
-    TEST_RUN_STARTED = "TestRunStarted"
-    """Test run started event. This event would occur when a new test run is triggered."""
-    TRIGGER_COMPLETED = "TriggerCompleted"
-    """Trigger completed event. This event would occur when a trigger completes."""
-    TRIGGER_DISABLED = "TriggerDisabled"
-    """Trigger disabled event. This event would occur when a trigger is disabled."""
-
-
-class NotificationScopeType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Scope type of a notification rule."""
-
-    TESTS = "Tests"
-    """Notification rule is for Tests."""
-
-
-class OperationKind(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Kind of the long running operation."""
-
-    CLONE_TEST = "CloneTest"
-    """Operation represents a clone test operation"""
-
-
-class OperationState(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Enum describing allowed operation states."""
-
-    NOT_STARTED = "NotStarted"
-    """The operation has not started."""
-    RUNNING = "Running"
-    """The operation is in progress."""
-    SUCCEEDED = "Succeeded"
-    """The operation has completed successfully."""
-    FAILED = "Failed"
-    """The operation has failed."""
-    CANCELED = "Canceled"
-    """The operation has been canceled by the user."""
-
-
-class PassFailAction(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class PFAction(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Action to take on failure of pass/fail criteria."""
 
-    CONTINUE = "continue"
+    CONTINUE_ENUM = "continue"
     """Test will continue to run even if pass fail metric criteria metric gets failed."""
     STOP = "stop"
     """Test run will stop if pass fail criteria metric is not passed."""
 
 
-class PassFailAggregationFunction(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class PFAgFunc(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Aggregation functions for pass/fail criteria."""
 
     COUNT = "count"
     """Criteria applies for count value."""
     PERCENTAGE = "percentage"
     """Criteria applies for given percentage value."""
-    AVERAGE = "avg"
+    AVG = "avg"
     """Criteria applies for avg value."""
-    PERCENTILE50 = "p50"
+    P50 = "p50"
     """Criteria applies for 50th percentile value."""
-    PERCENTILE75 = "p75"
+    P75 = "p75"
     """Criteria applies for 75th percentile value."""
-    PERCENTILE90 = "p90"
+    P90 = "p90"
     """Criteria applies for 90th percentile value."""
-    PERCENTILE95 = "p95"
+    P95 = "p95"
     """Criteria applies for 95th percentile value."""
-    PERCENTILE96 = "p96"
+    P96 = "p96"
     """Criteria applies for 96th percentile value."""
-    PERCENTILE97 = "p97"
+    P97 = "p97"
     """Criteria applies for 97th percentile value."""
-    PERCENTILE98 = "p98"
+    P98 = "p98"
     """Criteria applies for 98th percentile value."""
-    PERCENTILE99 = "p99"
+    P99 = "p99"
     """Criteria applies for 99th percentile value."""
-    PERCENTILE999 = "p99.9"
+    P99_9 = "p99.9"
     """Criteria applies for 99.9th percentile value."""
-    PERCENTILE9999 = "p99.99"
+    P99_99 = "p99.99"
     """Criteria applies for 99.99th percentile value."""
-    MINIMUM = "min"
+    MIN = "min"
     """Criteria applies for minimum value."""
-    MAXIMUM = "max"
+    MAX = "max"
     """Criteria applies for maximum value."""
 
 
-class PassFailResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class PFMetrics(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Metrics for pass/fail criteria."""
+
+    RESPONSE_TIME_MS = "response_time_ms"
+    """Pass fail criteria for response time metric in milliseconds."""
+    LATENCY = "latency"
+    """Pass fail criteria for latency metric in milliseconds."""
+    ERROR = "error"
+    """Pass fail criteria for error metric."""
+    REQUESTS = "requests"
+    """Pass fail criteria for total requests."""
+    REQUESTS_PER_SEC = "requests_per_sec"
+    """Pass fail criteria for request per second."""
+
+
+class PFResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Pass/fail criteria result."""
 
     PASSED = "passed"
@@ -237,7 +171,7 @@ class PassFailResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Given pass fail criteria metric has failed."""
 
 
-class PassFailTestResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class PFTestResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Test result based on pass/fail criteria."""
 
     PASSED = "PASSED"
@@ -246,21 +180,6 @@ class PassFailTestResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Pass/fail criteria is not applicable."""
     FAILED = "FAILED"
     """Pass/fail criteria has failed."""
-
-
-class PFMetrics(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Metrics for pass/fail criteria."""
-
-    RESPONSE_TIME_IN_MILLISECONDS = "response_time_ms"
-    """Pass fail criteria for response time metric in milliseconds."""
-    LATENCY = "latency"
-    """Pass fail criteria for latency metric in milliseconds."""
-    ERROR = "error"
-    """Pass fail criteria for error metric."""
-    REQUESTS = "requests"
-    """Pass fail criteria for total requests."""
-    REQUESTS_PER_SECOND = "requests_per_sec"
-    """Pass fail criteria for request per second."""
 
 
 class RecommendationCategory(str, Enum, metaclass=CaseInsensitiveEnumMeta):
@@ -292,48 +211,18 @@ class ResourceKind(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 class SecretType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Types of secrets supported."""
 
-    KEY_VAULT_SECRET_URI = "AKV_SECRET_URI"
+    AKV_SECRET_URI = "AKV_SECRET_URI"
     """If the secret is stored in an Azure Key Vault."""
     SECRET_VALUE = "SECRET_VALUE"
     """If the secret value provided as plain text."""
 
 
-class TestKind(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Test kind."""
-
-    URL = "URL"
-    """URL Test"""
-    JMX = "JMX"
-    """JMX Test"""
-    LOCUST = "Locust"
-    """Locust Test"""
-
-
-class TestProfileRunStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Test profile run status."""
-
-    ACCEPTED = "ACCEPTED"
-    """Test profile run request is accepted."""
-    NOT_STARTED = "NOTSTARTED"
-    """Test profile run is not yet started."""
-    EXECUTING = "EXECUTING"
-    """Test profile run has started executing."""
-    DONE = "DONE"
-    """Test profile run has completed successfully."""
-    CANCELLING = "CANCELLING"
-    """Test profile run is being cancelled."""
-    CANCELLED = "CANCELLED"
-    """Test profile run is cancelled."""
-    FAILED = "FAILED"
-    """Test profile run has failed."""
-
-
-class TestRunStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+class Status(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Test run status."""
 
     ACCEPTED = "ACCEPTED"
     """Test run request is accepted."""
-    NOT_STARTED = "NOTSTARTED"
+    NOTSTARTED = "NOTSTARTED"
     """Test run is not yet started."""
     PROVISIONING = "PROVISIONING"
     """Test run is provisioning."""
@@ -365,6 +254,36 @@ class TestRunStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Test run JMX file validation is failed."""
 
 
+class TestKind(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Test kind."""
+
+    URL = "URL"
+    """URL Test"""
+    JMX = "JMX"
+    """JMX Test"""
+    LOCUST = "Locust"
+    """Locust Test"""
+
+
+class TestProfileRunStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
+    """Test profile run status."""
+
+    ACCEPTED = "ACCEPTED"
+    """Test profile run request is accepted."""
+    NOTSTARTED = "NOTSTARTED"
+    """Test profile run is not yet started."""
+    EXECUTING = "EXECUTING"
+    """Test profile run has started executing."""
+    DONE = "DONE"
+    """Test profile run has completed successfully."""
+    CANCELLING = "CANCELLING"
+    """Test profile run is being cancelled."""
+    CANCELLED = "CANCELLED"
+    """Test profile run is cancelled."""
+    FAILED = "FAILED"
+    """Test profile run has failed."""
+
+
 class TimeGrain(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """Time Grain."""
 
@@ -378,42 +297,3 @@ class TimeGrain(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """5 minutes, available only if test run duration is greater than 1 minute."""
     PT1H = "PT1H"
     """1 hour, available only if test run duration is greater than 1 minute."""
-
-
-class TriggerState(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Current state of a trigger."""
-
-    ACTIVE = "Active"
-    """The trigger is active."""
-    PAUSED = "Paused"
-    """The trigger is paused manually."""
-    COMPLETED = "Completed"
-    """The trigger is completed."""
-    DISABLED = "Disabled"
-    """The trigger is disabled due to error."""
-
-
-class TriggerType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Type of a trigger."""
-
-    SCHEDULE_TESTS_TRIGGER = "ScheduleTestsTrigger"
-    """Trigger is a Scheduled Trigger on a Test."""
-
-
-class WeekDays(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Defines the days of the week."""
-
-    SUNDAY = "Sunday"
-    """Refers to Sunday."""
-    MONDAY = "Monday"
-    """Refers to Monday."""
-    TUESDAY = "Tuesday"
-    """Refers to Tuesday."""
-    WEDNESDAY = "Wednesday"
-    """Refers to Wednesday."""
-    THURSDAY = "Thursday"
-    """Refers to Thursday."""
-    FRIDAY = "Friday"
-    """Refers to Friday."""
-    SATURDAY = "Saturday"
-    """Refers to Saturday."""

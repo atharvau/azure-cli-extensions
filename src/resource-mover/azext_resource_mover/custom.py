@@ -6,7 +6,7 @@
 # --------------------------------------------------------------------------------------------
 
 # pylint: disable=too-many-lines
-# pylint: disable=too-many-statements, protected-access, raising-format-tuple
+# pylint: disable=too-many-statements
 
 from knack.log import get_logger
 from azure.cli.core.azclierror import UnrecognizedArgumentError

@@ -15,7 +15,7 @@ from azure.cli.core.aaz import *
     "network perimeter profile",
 )
 class __CMDGroup(AAZCommandGroup):
-    """Manage Network Security Perimeter Profiles.
+    """Manage Network Profiles under an NSP
     """
     pass
 

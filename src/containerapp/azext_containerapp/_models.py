@@ -278,8 +278,7 @@ ContainerApp = {
         "template": None,  # Template
         "workloadProfileName": None
     },
-    "tags": None,
-    "kind": None
+    "tags": None
 }
 
 ContainerAppsJob = {

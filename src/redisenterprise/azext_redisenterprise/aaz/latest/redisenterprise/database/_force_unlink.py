@@ -19,9 +19,9 @@ class ForceUnlink(AAZCommand):
     """
 
     _aaz_info = {
-        "version": "2025-05-01-preview",
+        "version": "2023-03-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/forceunlink", "2025-05-01-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/forceunlink", "2023-03-01-preview"],
         ]
     }
 
@@ -47,9 +47,6 @@ class ForceUnlink(AAZCommand):
             help="The name of the RedisEnterprise cluster.",
             required=True,
             id_part="name",
-            fmt=AAZStrArgFormat(
-                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
-            ),
         )
         _args_schema.database_name = AAZStrArg(
             options=["--database-name"],
@@ -57,9 +54,6 @@ class ForceUnlink(AAZCommand):
             required=True,
             id_part="child_name_1",
             default="default",
-            fmt=AAZStrArgFormat(
-                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
-            ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -76,7 +70,7 @@ class ForceUnlink(AAZCommand):
         )
 
         unlink_ids = cls._args_schema.unlink_ids
-        unlink_ids.Element = AAZResourceIdArg()
+        unlink_ids.Element = AAZStrArg()
         return cls._args_schema
 
     def _execute_operations(self):
@@ -160,7 +154,7 @@ class ForceUnlink(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2025-05-01-preview",
+                    "api-version", "2023-03-01-preview",
                     required=True,
                 ),
             }

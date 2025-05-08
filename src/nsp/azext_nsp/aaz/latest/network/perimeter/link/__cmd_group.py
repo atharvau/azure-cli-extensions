@@ -15,7 +15,7 @@ from azure.cli.core.aaz import *
     "network perimeter link",
 )
 class __CMDGroup(AAZCommandGroup):
-    """Manage Network Security Perimeter Links.
+    """Manage network security perimeter link
     """
     pass
 

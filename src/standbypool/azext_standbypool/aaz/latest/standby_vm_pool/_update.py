@@ -17,14 +17,14 @@ from azure.cli.core.aaz import *
 class Update(AAZCommand):
     """Update a StandbyVirtualMachinePoolResource
 
-    :example: StandbyVirtualMachinePool_Update
-        az standby-vm-pool update --resource-group rgstandbypool --name pool --max-ready-capacity 304 --min-ready-capacity 300 --vm-state Running --vmss-id /subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Compute/virtualMachineScaleSets/myVmss --tags "{}" --location West US --subscription 00000000-0000-0000-0000-000000000009
+    :example: Update standby virtual machine pool
+        az standby-vm-pool update --subscription 461fa159-654a-415f-853a-40b801021944 --resource-group myrg --name mypool --max-ready-capacity 3
     """
 
     _aaz_info = {
-        "version": "2025-03-01",
+        "version": "2024-03-01",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbyvirtualmachinepools/{}", "2025-03-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbyvirtualmachinepools/{}", "2024-03-01"],
         ]
     }
 
@@ -45,10 +45,11 @@ class Update(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.resource_group = AAZResourceGroupNameArg(
+            help="The resource group",
             required=True,
         )
-        _args_schema.name = AAZStrArg(
-            options=["-n", "--name"],
+        _args_schema.standby_virtual_machine_pool_name = AAZStrArg(
+            options=["-n", "--name", "--standby-virtual-machine-pool-name"],
             help="Name of the standby virtual machine pool",
             required=True,
             id_part="name",
@@ -91,7 +92,7 @@ class Update(AAZCommand):
             options=["--vm-state"],
             arg_group="Properties",
             help="Specifies the desired state of virtual machines in the pool.",
-            enum={"Deallocated": "Deallocated", "Hibernated": "Hibernated", "Running": "Running"},
+            enum={"Deallocated": "Deallocated", "Running": "Running"},
         )
         _args_schema.tags = AAZDictArg(
             options=["--tags"],
@@ -154,7 +155,7 @@ class Update(AAZCommand):
                     required=True,
                 ),
                 **self.serialize_url_param(
-                    "standbyVirtualMachinePoolName", self.ctx.args.name,
+                    "standbyVirtualMachinePoolName", self.ctx.args.standby_virtual_machine_pool_name,
                     required=True,
                 ),
                 **self.serialize_url_param(
@@ -168,7 +169,7 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2025-03-01",
+                    "api-version", "2024-03-01",
                     required=True,
                 ),
             }
@@ -204,7 +205,7 @@ class Update(AAZCommand):
 
             elasticity_profile = _builder.get(".properties.elasticityProfile")
             if elasticity_profile is not None:
-                elasticity_profile.set_prop("maxReadyCapacity", AAZIntType, ".max_ready_capacity", typ_kwargs={"flags": {"required": True}})
+                elasticity_profile.set_prop("maxReadyCapacity", AAZIntType, ".max_ready_capacity")
                 elasticity_profile.set_prop("minReadyCapacity", AAZIntType, ".min_ready_capacity")
 
             tags = _builder.get(".tags")

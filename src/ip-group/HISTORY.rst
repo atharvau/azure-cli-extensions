@@ -3,10 +3,6 @@
 Release History
 ===============
 
-1.0.1
-+++++
-* None
-
 1.0.0
 +++++
 * Make extension from preview to stable.

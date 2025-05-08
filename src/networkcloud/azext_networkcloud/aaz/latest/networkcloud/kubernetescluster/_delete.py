@@ -13,6 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud kubernetescluster delete",
+    is_preview=True,
     confirmation="Are you sure you want to perform this operation?",
 )
 class Delete(AAZCommand):
@@ -23,9 +24,9 @@ class Delete(AAZCommand):
     """
 
     _aaz_info = {
-        "version": "2025-02-01",
+        "version": "2024-10-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}", "2025-02-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}", "2024-10-01-preview"],
         ]
     }
 
@@ -46,14 +47,6 @@ class Delete(AAZCommand):
         # define Arg Group ""
 
         _args_schema = cls._args_schema
-        _args_schema.if_match = AAZStrArg(
-            options=["--if-match"],
-            help="The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
-        )
-        _args_schema.if_none_match = AAZStrArg(
-            options=["--if-none-match"],
-            help="Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
-        )
         _args_schema.kubernetes_cluster_name = AAZStrArg(
             options=["-n", "--name", "--kubernetes-cluster-name"],
             help="The name of the Kubernetes cluster.",
@@ -154,7 +147,7 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2025-02-01",
+                    "api-version", "2024-10-01-preview",
                     required=True,
                 ),
             }
@@ -163,12 +156,6 @@ class Delete(AAZCommand):
         @property
         def header_parameters(self):
             parameters = {
-                **self.serialize_header_param(
-                    "If-Match", self.ctx.args.if_match,
-                ),
-                **self.serialize_header_param(
-                    "If-None-Match", self.ctx.args.if_none_match,
-                ),
                 **self.serialize_header_param(
                     "Accept", "application/json",
                 ),

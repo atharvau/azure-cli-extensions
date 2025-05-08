@@ -9,7 +9,6 @@ import yaml
 import tempfile
 
 from .common import TEST_LOCATION
-from .custom_preparers import SubnetPreparer
 from .utils import create_containerapp_env
 from azext_containerapp.tests.latest.common import (write_test_file, clean_up_test_file)
 
@@ -192,9 +191,7 @@ tcpConnectionPool:
 class DaprComponentResiliencyTests(ScenarioTest):
     @AllowLargeResponse(8192)
     @ResourceGroupPreparer(location="eastus2")
-    @SubnetPreparer(location="centralus", delegations='Microsoft.App/environments',
-                    service_endpoints="Microsoft.Storage.Global")
-    def test_dapr_component_resiliency(self, resource_group, subnet_id, vnet_name, subnet_name):
+    def test_dapr_component_resiliency(self, resource_group):
         self.cmd('configure --defaults location={}'.format(TEST_LOCATION))
 
         env_name = self.create_random_name(prefix='containerapp-env', length=24)
@@ -205,7 +202,7 @@ class DaprComponentResiliencyTests(ScenarioTest):
         bad_env = "bad-env"
         resil_policy_count = 1
 
-        create_containerapp_env(self, env_name, resource_group, subnetId=subnet_id)
+        create_containerapp_env(self, env_name, resource_group)
 
         file_ref, dapr_file = tempfile.mkstemp(suffix=".yml")
 

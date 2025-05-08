@@ -36,8 +36,7 @@ def create_target_image(location, transient_resource_group_name, source_type, so
                                    '--name', target_storage_account_name,
                                    '--resource-group', transient_resource_group_name,
                                    '--location', location,
-                                   '--sku', 'Standard_LRS',
-                                   '--min-tls-version', 'TLS1_2'],
+                                   '--sku', 'Standard_LRS'],
                                   subscription=target_subscription,
                                   only_show_errors=only_show_errors)
 

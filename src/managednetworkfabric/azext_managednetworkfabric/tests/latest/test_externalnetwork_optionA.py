@@ -39,9 +39,7 @@ def step_create_s1(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
-        "az networkfabric externalnetwork create --resource-group {rg} --l3domain {l3Domain} --resource-name {name}"
-        " --peering-option {s2PeeringOption} --option-a-properties {optionAProperties} --nni-id {nniId}"
-        " --static-route-configuration {static_route_conf}",
+        "az networkfabric externalnetwork create --resource-group {rg} --l3domain {l3domain} --resource-name {name} --peering-option {s2_peering_option} --option-a-properties {optionAProperties} --import-route-policy {importRoutePolicy} --export-route-policy {exportRoutePolicy}",
         checks=checks,
     )
 
@@ -51,7 +49,7 @@ def step_show(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
-        "az networkfabric externalnetwork show --resource-name {name} --l3domain {l3Domain} --resource-group {rg}"
+        "az networkfabric externalnetwork show --resource-name {name} --l3domain {l3domain} --resource-group {rg}"
     )
 
 
@@ -60,7 +58,7 @@ def step_list_resource_group(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
-        "az networkfabric externalnetwork list --resource-group {rg} --l3domain {l3Domain}"
+        "az networkfabric externalnetwork list --resource-group {rg} --l3domain {l3domain}"
     )
 
 
@@ -69,7 +67,7 @@ def step_delete(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
-        "az networkfabric externalnetwork delete --resource-name {name} --l3domain {l3Domain} --resource-group {rg}"
+        "az networkfabric externalnetwork delete --resource-name {name} --l3domain {l3domain} --resource-group {rg}"
     )
 
 
@@ -80,10 +78,15 @@ class GA_ExternalNetworkOptionAScenarioTest1(ScenarioTest):
         super().__init__(*args, **kwargs)
         self.kwargs.update(
             {
-                "name": CONFIG.get("EXTERNAL_NETWORK", "optiona_name"),
-                "rg": CONFIG.get("EXTERNAL_NETWORK", "optiona_resource_group"),
-                "l3Domain": CONFIG.get("EXTERNAL_NETWORK", "optiona_l3_domain"),
-                "s2PeeringOption": CONFIG.get("EXTERNAL_NETWORK", "s2_peering_option"),
+                "name": CONFIG.get("EXTERNAL_NETWORK", "name"),
+                "rg": CONFIG.get("EXTERNAL_NETWORK", "resource_group"),
+                "l3domain": CONFIG.get("EXTERNAL_NETWORK", "l3domain"),
+                "s1_peering_option": CONFIG.get(
+                    "EXTERNAL_NETWORK", "s1_peering_option"
+                ),
+                "s2_peering_option": CONFIG.get(
+                    "EXTERNAL_NETWORK", "s2_peering_option"
+                ),
                 "importRoutePolicy": CONFIG.get(
                     "EXTERNAL_NETWORK", "import_route_policy"
                 ),
@@ -102,10 +105,7 @@ class GA_ExternalNetworkOptionAScenarioTest1(ScenarioTest):
                 "updatedOptionAProperties": CONFIG.get(
                     "EXTERNAL_NETWORK", "updated_option_a_properties"
                 ),
-                "nniId": CONFIG.get("EXTERNAL_NETWORK", "nni_id"),
-                "static_route_conf": CONFIG.get(
-                    "EXTERNAL_NETWORK", "static_route_conf"
-                ),
+                "nni_Id": CONFIG.get("EXTERNAL_NETWORK", "nni_Id"),
             }
         )
 

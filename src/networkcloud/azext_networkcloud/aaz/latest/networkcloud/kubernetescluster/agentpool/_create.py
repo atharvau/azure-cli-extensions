@@ -13,6 +13,7 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud kubernetescluster agentpool create",
+    is_preview=True,
 )
 class Create(AAZCommand):
     """Create a new Kubernetes cluster agent pool or update the properties of the existing one.
@@ -22,9 +23,9 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
-        "version": "2025-02-01",
+        "version": "2024-10-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}/agentpools/{}", "2025-02-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}/agentpools/{}", "2024-10-01-preview"],
         ]
     }
 
@@ -45,14 +46,6 @@ class Create(AAZCommand):
         # define Arg Group ""
 
         _args_schema = cls._args_schema
-        _args_schema.if_match = AAZStrArg(
-            options=["--if-match"],
-            help="The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
-        )
-        _args_schema.if_none_match = AAZStrArg(
-            options=["--if-none-match"],
-            help="Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
-        )
         _args_schema.agent_pool_name = AAZStrArg(
             options=["-n", "--name", "--agent-pool-name"],
             help="The name of the Kubernetes cluster agent pool.",
@@ -413,7 +406,7 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2025-02-01",
+                    "api-version", "2024-10-01-preview",
                     required=True,
                 ),
             }
@@ -422,12 +415,6 @@ class Create(AAZCommand):
         @property
         def header_parameters(self):
             parameters = {
-                **self.serialize_header_param(
-                    "If-Match", self.ctx.args.if_match,
-                ),
-                **self.serialize_header_param(
-                    "If-None-Match", self.ctx.args.if_none_match,
-                ),
                 **self.serialize_header_param(
                     "Content-Type", "application/json",
                 ),
@@ -561,9 +548,6 @@ class Create(AAZCommand):
             cls._schema_on_200_201 = AAZObjectType()
 
             _schema_on_200_201 = cls._schema_on_200_201
-            _schema_on_200_201.etag = AAZStrType(
-                flags={"read_only": True},
-            )
             _schema_on_200_201.extended_location = AAZObjectType(
                 serialized_name="extendedLocation",
             )

@@ -15,8 +15,11 @@ except ImportError:
     logger.warn("Wheel is not available, disabling bdist_wheel hook")
 
 
-VERSION = '3.3.2'
-
+VERSION = '3.1.3'
+try:
+    from azext_serviceconnector_passwordless.config import VERSION
+except ImportError:
+    pass
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
 CLASSIFIERS = [

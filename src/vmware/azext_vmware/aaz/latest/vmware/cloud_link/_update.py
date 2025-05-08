@@ -50,7 +50,7 @@ class Update(AAZCommand):
             required=True,
             id_part="child_name_1",
             fmt=AAZStrArgFormat(
-                pattern="^[-\\w\\._]+$",
+                pattern="^[-\w\._]+$",
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -59,7 +59,7 @@ class Update(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
-                pattern="^[-\\w\\._]+$",
+                pattern="^[-\w\._]+$",
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -380,9 +380,7 @@ class _UpdateHelper:
             serialized_name="provisioningState",
             flags={"read_only": True},
         )
-        properties.status = AAZStrType(
-            flags={"read_only": True},
-        )
+        properties.status = AAZStrType()
 
         system_data = _schema_cloud_link_read.system_data
         system_data.created_at = AAZStrType(

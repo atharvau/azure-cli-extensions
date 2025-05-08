@@ -3,10 +3,6 @@
 Release History
 ===============
 
-1.0.0b1
-+++++++++++++++
-* Update module documentation.
-
 0.1.3
 +++++++++++++++
 * Update SDK

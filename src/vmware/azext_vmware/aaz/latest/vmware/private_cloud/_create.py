@@ -48,7 +48,7 @@ class Create(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
-                pattern="^[-\\w\\._]+$",
+                pattern="^[-\w\._]+$",
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -390,9 +390,7 @@ class Create(AAZCommand):
                 serialized_name="dnsZoneType",
             )
             properties.encryption = AAZObjectType()
-            properties.endpoints = AAZObjectType(
-                flags={"read_only": True},
-            )
+            properties.endpoints = AAZObjectType()
             properties.extended_network_blocks = AAZListType(
                 serialized_name="extendedNetworkBlocks",
             )
@@ -418,7 +416,6 @@ class Create(AAZCommand):
             )
             properties.nsx_public_ip_quota_raised = AAZStrType(
                 serialized_name="nsxPublicIpQuotaRaised",
-                flags={"read_only": True},
             )
             properties.nsxt_certificate_thumbprint = AAZStrType(
                 serialized_name="nsxtCertificateThumbprint",
@@ -479,7 +476,6 @@ class Create(AAZCommand):
             )
             key_vault_properties.key_state = AAZStrType(
                 serialized_name="keyState",
-                flags={"read_only": True},
             )
             key_vault_properties.key_vault_url = AAZStrType(
                 serialized_name="keyVaultUrl",
@@ -489,7 +485,6 @@ class Create(AAZCommand):
             )
             key_vault_properties.version_type = AAZStrType(
                 serialized_name="versionType",
-                flags={"read_only": True},
             )
 
             endpoints = cls._schema_on_200_201.properties.endpoints

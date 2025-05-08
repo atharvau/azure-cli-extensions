@@ -2,15 +2,6 @@
 
 Release History
 ===============
-7.0.0
-++++++
-* Update control plane API to v2025-04-01-preview
-* Update data plane API to v2025-04-01-preview
-
-6.2.3
-++++++
-* Fix syntax errors in schedule dataplane commands
-
 6.2.2
 ++++++
 * Fix delay all and delay dev box/environment action if no next scheduled time

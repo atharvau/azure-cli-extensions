@@ -15,7 +15,7 @@ from azure.cli.core.aaz import *
     "network perimeter logging-configuration",
 )
 class __CMDGroup(AAZCommandGroup):
-    """Manage Network Security Perimeter Logging Configurations.
+    """Manage Network Security Perimeter Logging Configuration
     """
     pass
 

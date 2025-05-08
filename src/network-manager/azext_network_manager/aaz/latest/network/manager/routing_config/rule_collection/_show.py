@@ -23,9 +23,9 @@ class Show(AAZCommand):
     """
 
     _aaz_info = {
-        "version": "2024-05-01",
+        "version": "2023-03-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections/{}", "2024-05-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections/{}", "2023-03-01-preview"],
         ]
     }
 
@@ -150,7 +150,7 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2024-05-01",
+                    "api-version", "2023-03-01-preview",
                     required=True,
                 ),
             }
@@ -211,6 +211,10 @@ class Show(AAZCommand):
             properties.description = AAZStrType()
             properties.disable_bgp_route_propagation = AAZStrType(
                 serialized_name="disableBgpRoutePropagation",
+            )
+            properties.local_route_setting = AAZStrType(
+                serialized_name="localRouteSetting",
+                flags={"required": True},
             )
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",

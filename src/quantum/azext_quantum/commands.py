@@ -53,7 +53,10 @@ def transform_job(result):
 
 
 def transform_jobs(results):
-    return [transform_job(job) for job in results]
+    def creation(job):
+        return job['creationTime']
+
+    return [transform_job(job) for job in sorted(results, key=creation, reverse=True)]
 
 
 def transform_offerings(offerings):

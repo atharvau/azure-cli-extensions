@@ -5,7 +5,7 @@
 
 from azure.cli.core import AzCommandsLoader
 from azure.cli.core.profiles import ResourceType
-from azext_acrquery._help import helps  # pylint: disable=unused-import
+from azext_acrquery._help import helps
 
 
 class AcrqueryCommandsLoader(AzCommandsLoader):
@@ -16,8 +16,7 @@ class AcrqueryCommandsLoader(AzCommandsLoader):
         acrquery_custom = CliCommandType(
             operations_tmpl='azext_acrquery.custom#{}',
             client_factory=cf_metadata)
-        super().__init__(cli_ctx=cli_ctx, resource_type=ResourceType.MGMT_CONTAINERREGISTRY,
-                         operation_group='registries', custom_command_type=acrquery_custom)
+        super().__init__(cli_ctx=cli_ctx, resource_type=ResourceType.MGMT_CONTAINERREGISTRY, operation_group='registries', custom_command_type=acrquery_custom)
 
     def load_command_table(self, args):
         from azext_acrquery.commands import load_command_table

@@ -22,9 +22,9 @@ class List(AAZCommand):
     """
 
     _aaz_info = {
-        "version": "2024-08-01",
+        "version": "2024-03-01",
         "resources": [
-            ["mgmt-plane", "/{resourceuri}/providers/microsoft.kubernetesruntime/loadbalancers", "2024-08-01"],
+            ["mgmt-plane", "/{resourceuri}/providers/microsoft.kubernetesruntime/loadbalancers", "2024-03-01"],
         ]
     }
 
@@ -54,7 +54,7 @@ class List(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
-        self.LoadBalancersListByParent(ctx=self.ctx)()
+        self.LoadBalancersList(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -70,7 +70,7 @@ class List(AAZCommand):
         next_link = self.deserialize_output(self.ctx.vars.instance.next_link)
         return result, next_link
 
-    class LoadBalancersListByParent(AAZHttpOperation):
+    class LoadBalancersList(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -111,7 +111,7 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2024-08-01",
+                    "api-version", "2024-03-01",
                     required=True,
                 ),
             }
@@ -161,7 +161,9 @@ class List(AAZCommand):
             _element.name = AAZStrType(
                 flags={"read_only": True},
             )
-            _element.properties = AAZObjectType()
+            _element.properties = AAZObjectType(
+                flags={"client_flatten": True},
+            )
             _element.system_data = AAZObjectType(
                 serialized_name="systemData",
                 flags={"read_only": True},
@@ -181,7 +183,6 @@ class List(AAZCommand):
             properties.bgp_peers = AAZListType(
                 serialized_name="bgpPeers",
             )
-            properties.communities = AAZListType()
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -195,9 +196,6 @@ class List(AAZCommand):
 
             bgp_peers = cls._schema_on_200.value.Element.properties.bgp_peers
             bgp_peers.Element = AAZStrType()
-
-            communities = cls._schema_on_200.value.Element.properties.communities
-            communities.Element = AAZStrType()
 
             service_selector = cls._schema_on_200.value.Element.properties.service_selector
             service_selector.Element = AAZStrType()

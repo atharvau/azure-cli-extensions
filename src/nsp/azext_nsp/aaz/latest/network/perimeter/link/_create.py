@@ -15,16 +15,16 @@ from azure.cli.core.aaz import *
     "network perimeter link create",
 )
 class Create(AAZCommand):
-    """Create a network security perimeter link.
+    """Create NSP link resource.
 
-    :example: Create a network security perimeter link
-        az network perimeter link create --name link1 --perimeter-name nsp1 --resource-group rg1 --auto-remote-nsp-id <NspId> --local-inbound-profile "[\\'*\\']" --remote-inbound-profile "[\\'*\\']" '
+    :example: Create NSP Link
+        az network perimeter link create --name link1 --perimeter-name nsp1 --resource-group rg1 --auto-remote-nsp-id <NspId> --local-inbound-profile "[\'*\']" --remote-inbound-profile "[\'*\']" '
     """
 
     _aaz_info = {
-        "version": "2024-07-01",
+        "version": "2023-08-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/links/{}", "2024-07-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/links/{}", "2023-08-01-preview"],
         ]
     }
 
@@ -48,19 +48,11 @@ class Create(AAZCommand):
             options=["-n", "--name", "--link-name"],
             help="The name of the NSP link.",
             required=True,
-            fmt=AAZStrArgFormat(
-                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
-                max_length=80,
-            ),
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
-            fmt=AAZStrArgFormat(
-                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
-                max_length=80,
-            ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -69,7 +61,7 @@ class Create(AAZCommand):
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
-        _args_schema.auto_remote_nsp_id = AAZResourceIdArg(
+        _args_schema.auto_remote_nsp_id = AAZStrArg(
             options=["--auto-remote-nsp-id"],
             arg_group="Properties",
             help="Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.",
@@ -105,7 +97,7 @@ class Create(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
-        self.NetworkSecurityPerimeterLinksCreateOrUpdate(ctx=self.ctx)()
+        self.NspLinksCreateOrUpdate(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -117,10 +109,10 @@ class Create(AAZCommand):
         pass
 
     def _output(self, *args, **kwargs):
-        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
+        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=False)
         return result
 
-    class NetworkSecurityPerimeterLinksCreateOrUpdate(AAZHttpOperation):
+    class NspLinksCreateOrUpdate(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -172,7 +164,7 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2024-07-01",
+                    "api-version", "2023-08-01-preview",
                     required=True,
                 ),
             }
@@ -197,7 +189,7 @@ class Create(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
-            _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+            _builder.set_prop("properties", AAZObjectType)
 
             properties = _builder.get(".properties")
             if properties is not None:
@@ -234,19 +226,16 @@ class Create(AAZCommand):
             cls._schema_on_200_201 = AAZObjectType()
 
             _schema_on_200_201 = cls._schema_on_200_201
+            _schema_on_200_201.etag = AAZStrType(
+                flags={"read_only": True},
+            )
             _schema_on_200_201.id = AAZStrType(
                 flags={"read_only": True},
             )
             _schema_on_200_201.name = AAZStrType(
                 flags={"read_only": True},
             )
-            _schema_on_200_201.properties = AAZObjectType(
-                flags={"client_flatten": True},
-            )
-            _schema_on_200_201.system_data = AAZObjectType(
-                serialized_name="systemData",
-                flags={"read_only": True},
-            )
+            _schema_on_200_201.properties = AAZObjectType()
             _schema_on_200_201.type = AAZStrType(
                 flags={"read_only": True},
             )
@@ -297,26 +286,6 @@ class Create(AAZCommand):
 
             remote_outbound_profiles = cls._schema_on_200_201.properties.remote_outbound_profiles
             remote_outbound_profiles.Element = AAZStrType()
-
-            system_data = cls._schema_on_200_201.system_data
-            system_data.created_at = AAZStrType(
-                serialized_name="createdAt",
-            )
-            system_data.created_by = AAZStrType(
-                serialized_name="createdBy",
-            )
-            system_data.created_by_type = AAZStrType(
-                serialized_name="createdByType",
-            )
-            system_data.last_modified_at = AAZStrType(
-                serialized_name="lastModifiedAt",
-            )
-            system_data.last_modified_by = AAZStrType(
-                serialized_name="lastModifiedBy",
-            )
-            system_data.last_modified_by_type = AAZStrType(
-                serialized_name="lastModifiedByType",
-            )
 
             return cls._schema_on_200_201
 

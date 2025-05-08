@@ -28,10 +28,6 @@ def connection_create_ext(cmd, client,
                           spring=None, app=None, deployment='default',           # Resource.SpringCloud
                           # Resource.*Postgres, Resource.*Sql*
                           server=None, database=None,
-                          # Resource.FabricSQL
-                          connstr_props=None,
-                          fabric_workspace_uuid=None,
-                          fabric_sql_db_uuid=None,
                           **kwargs,
                           ):
     from azure.cli.command_modules.serviceconnector.custom import connection_create_func
@@ -56,9 +52,6 @@ def connection_create_ext(cmd, client,
                                   customized_keys=customized_keys,
                                   opt_out_list=opt_out_list,
                                   app_config_id=app_config_id,
-                                  connstr_props=connstr_props,
-                                  fabric_workspace_uuid=fabric_workspace_uuid,
-                                  fabric_sql_db_uuid=fabric_sql_db_uuid,
                                   **kwargs)
 
 

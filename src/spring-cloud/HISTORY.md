@@ -1,10 +1,5 @@
 Release History
 ===============
-
-3.1.9
----
-* Update module documentation.
-
 3.1.8
 ---
 * Fix `subscription_id` AAZSimpleValue type error

@@ -66,10 +66,8 @@ if ($AZURE_CLI_FOLDER) {
         Write-Host "Would you like to automatically rebase and setup? [Y/n]" -ForegroundColor Yellow
 
         try {
-            $input = Read-Host
-            if ([string]::IsNullOrEmpty($input)) {
-                $input = "Y"
-            }
+            $reader = [System.IO.StreamReader]::new("CON")
+            $input = $reader.ReadLine()
         } catch {
             Write-Host "Error reading input. Aborting push..." -ForegroundColor Red
             exit 1

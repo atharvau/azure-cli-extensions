@@ -15,16 +15,16 @@ from azure.cli.core.aaz import *
     "network perimeter link-reference show",
 )
 class Show(AAZCommand):
-    """Get a network security perimeter link reference.
+    """Get the specified NSP linkReference resource.
 
-    :example: Get a network security perimeter link reference
+    :example: Get a link reference
         az network perimeter link-reference show --perimeter-name nsp2 --resource-group rg1 --name linkref2
     """
 
     _aaz_info = {
-        "version": "2024-07-01",
+        "version": "2023-08-01-preview",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/linkreferences/{}", "2024-07-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/linkreferences/{}", "2023-08-01-preview"],
         ]
     }
 
@@ -49,20 +49,12 @@ class Show(AAZCommand):
             help="The name of the NSP linkReference.",
             required=True,
             id_part="child_name_1",
-            fmt=AAZStrArgFormat(
-                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
-                max_length=80,
-            ),
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
-            fmt=AAZStrArgFormat(
-                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
-                max_length=80,
-            ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -71,7 +63,7 @@ class Show(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
-        self.NetworkSecurityPerimeterLinkReferencesGet(ctx=self.ctx)()
+        self.NspLinkReferencesGet(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -83,10 +75,10 @@ class Show(AAZCommand):
         pass
 
     def _output(self, *args, **kwargs):
-        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
+        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=False)
         return result
 
-    class NetworkSecurityPerimeterLinkReferencesGet(AAZHttpOperation):
+    class NspLinkReferencesGet(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -138,7 +130,7 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
-                    "api-version", "2024-07-01",
+                    "api-version", "2023-08-01-preview",
                     required=True,
                 ),
             }
@@ -171,19 +163,16 @@ class Show(AAZCommand):
             cls._schema_on_200 = AAZObjectType()
 
             _schema_on_200 = cls._schema_on_200
+            _schema_on_200.etag = AAZStrType(
+                flags={"read_only": True},
+            )
             _schema_on_200.id = AAZStrType(
                 flags={"read_only": True},
             )
             _schema_on_200.name = AAZStrType(
                 flags={"read_only": True},
             )
-            _schema_on_200.properties = AAZObjectType(
-                flags={"client_flatten": True},
-            )
-            _schema_on_200.system_data = AAZObjectType(
-                serialized_name="systemData",
-                flags={"read_only": True},
-            )
+            _schema_on_200.properties = AAZObjectType()
             _schema_on_200.type = AAZStrType(
                 flags={"read_only": True},
             )
@@ -236,26 +225,6 @@ class Show(AAZCommand):
 
             remote_outbound_profiles = cls._schema_on_200.properties.remote_outbound_profiles
             remote_outbound_profiles.Element = AAZStrType()
-
-            system_data = cls._schema_on_200.system_data
-            system_data.created_at = AAZStrType(
-                serialized_name="createdAt",
-            )
-            system_data.created_by = AAZStrType(
-                serialized_name="createdBy",
-            )
-            system_data.created_by_type = AAZStrType(
-                serialized_name="createdByType",
-            )
-            system_data.last_modified_at = AAZStrType(
-                serialized_name="lastModifiedAt",
-            )
-            system_data.last_modified_by = AAZStrType(
-                serialized_name="lastModifiedBy",
-            )
-            system_data.last_modified_by_type = AAZStrType(
-                serialized_name="lastModifiedByType",
-            )
 
             return cls._schema_on_200
 

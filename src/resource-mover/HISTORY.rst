@@ -3,10 +3,6 @@
 Release History
 ===============
 
-1.0.0b2
-++++++
-* Update module documentation.
-
 1.0.0b1
 ++++++
 * Support moving regional azure virtual machine into zones within the same region.

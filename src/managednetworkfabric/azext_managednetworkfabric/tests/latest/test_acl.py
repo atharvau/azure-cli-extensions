@@ -41,10 +41,9 @@ def step_create(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
-        "az networkfabric acl create --resource-group {rg} --location {location} --resource-name {name} --configuration-type {configurationType}"
-        " --acl-type {aclType} --acls-url {aclsUrl} --default-action {defaultAction} --device-role {deviceRole}"
-        " --dynamic-match-configurations {dynamicMatchConfigurations} --global-access-control-list-actions enable-count={enableCount}"
-        " --match-configurations {matchConfigurations}",
+        "az networkfabric acl create --resource-group {rg} --location {location} --resource-name {name} --configuration-type {configuration_type}"
+        " --default-action {default_action} "
+        " --match-configurations {match_configurations}",
         checks=checks,
     )
 
@@ -62,8 +61,8 @@ def step_update(test, checks=None):
         checks = []
     test.cmd(
         "az networkfabric acl update --resource-group {rg} --resource-name {name}"
-        ' --configuration-type "Inline" --default-action {defaultAction}'
-        " --match-configurations {updatedMatchConfigurations}",
+        ' --configuration-type "Inline" --default-action {default_action}'
+        " --match-configurations {updated_match_configurations}",
         checks=checks,
     )
 
@@ -99,22 +98,18 @@ class GA_AccessControlListsScenarioTest1(ScenarioTest):
                 "name": CONFIG.get("ACCESS_CONTROL_LIST", "name"),
                 "rg": CONFIG.get("ACCESS_CONTROL_LIST", "resource_group"),
                 "location": CONFIG.get("ACCESS_CONTROL_LIST", "location"),
-                "configurationType": CONFIG.get(
+                "configuration_type": CONFIG.get(
                     "ACCESS_CONTROL_LIST", "configuration_type"
                 ),
-                "aclType": CONFIG.get("ACCESS_CONTROL_LIST", "acl_type"),
-                "aclsUrl": CONFIG.get("ACCESS_CONTROL_LIST", "acls_url"),
-                "defaultAction": CONFIG.get("ACCESS_CONTROL_LIST", "default_action"),
-                "deviceRole": CONFIG.get("ACCESS_CONTROL_LIST", "device_role"),
-                "dynamicMatchConfigurations": CONFIG.get(
+                "default_action": CONFIG.get("ACCESS_CONTROL_LIST", "default_action"),
+                "dynamic_match_configurations": CONFIG.get(
                     "ACCESS_CONTROL_LIST", "dynamic_match_configurations"
                 ),
-                "enableCount": CONFIG.get("ACCESS_CONTROL_LIST", "enable_count"),
-                "matchConfigurations": CONFIG.get(
-                    "ACCESS_CONTROL_LIST", "match_configurations"
-                ),
-                "updatedMatchConfigurations": CONFIG.get(
+                "updated_match_configurations": CONFIG.get(
                     "ACCESS_CONTROL_LIST", "updated_match_configurations"
+                ),
+                "match_configurations": CONFIG.get(
+                    "ACCESS_CONTROL_LIST", "match_configurations"
                 ),
             }
         )

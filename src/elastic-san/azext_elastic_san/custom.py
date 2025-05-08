@@ -12,7 +12,6 @@
 from knack.log import get_logger
 from .aaz.latest.elastic_san.volume_group import Create as _VolumeGroupCreate
 from .aaz.latest.elastic_san.volume_group import Update as _VolumeGroupUpdate
-from .aaz.latest.elastic_san import Create as _ElasticSanCreate
 
 logger = get_logger(__name__)
 
@@ -84,12 +83,3 @@ class VolumeGroupUpdate(_VolumeGroupUpdate):
                         args.encryption_properties.key_vault_properties):
                     args.encryption_properties.key_vault_properties = \
                         instance.properties.encryption_properties.key_vault_properties
-
-
-class ElasticSanCreate(_ElasticSanCreate):
-    @classmethod
-    def _build_arguments_schema(cls, *args, **kwargs):
-        args_schema = super()._build_arguments_schema(*args, **kwargs)
-        args_schema.base_size_tib._required = False
-        args_schema.extended_capacity_size_tib._required = False
-        return args_schema

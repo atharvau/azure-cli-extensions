@@ -65,7 +65,7 @@ def step_update(test, checks=None):
         checks = []
     test.cmd(
         "az networkfabric device update --resource-group {rg} --resource-name {name} "
-        " --serial-number {serialNumber}",
+        " --serial-number {serial_number}",
         checks=checks,
     )
 
@@ -80,7 +80,7 @@ class GA_DeviceScenarioTest1(ScenarioTest):
                 "name": CONFIG.get("NETWORK_DEVICE", "name"),
                 "rg": CONFIG.get("NETWORK_DEVICE", "resource_group"),
                 "host_name": CONFIG.get("NETWORK_DEVICE", "host_name"),
-                "serialNumber": CONFIG.get("NETWORK_DEVICE", "serial_number"),
+                "serial_number": CONFIG.get("NETWORK_DEVICE", "serial_number"),
             }
         )
 
