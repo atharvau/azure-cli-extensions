@@ -11,7 +11,10 @@ from typing import TYPE_CHECKING
 from ._configuration import LoadTestAdministrationClientConfiguration, LoadTestRunClientConfiguration
 
 if TYPE_CHECKING:
+<<<<<<< HEAD
     # pylint: disable=unused-import,ungrouped-imports
+=======
+>>>>>>> upstream/main
     from azure.core import PipelineClient
 
     from ._serialization import Deserializer, Serializer

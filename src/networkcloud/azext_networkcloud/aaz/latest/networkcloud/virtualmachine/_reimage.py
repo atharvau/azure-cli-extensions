@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud virtualmachine reimage",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class Reimage(AAZCommand):
     """Reimage the provided virtual machine.
@@ -23,9 +26,15 @@ class Reimage(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/virtualmachines/{}/reimage", "2024-10-01-preview"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/virtualmachines/{}/reimage", "2025-02-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -141,7 +150,11 @@ class Reimage(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

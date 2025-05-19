@@ -10,7 +10,11 @@ from setuptools import setup, find_packages
 
 
 # HISTORY.rst entry.
+<<<<<<< HEAD
 VERSION = '7.0.0'
+=======
+VERSION = '8.0.0b3'
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -36,7 +40,11 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
 setup(
     name='managednetworkfabric',
     version=VERSION,
+<<<<<<< HEAD
     description='Support for managednetworkfabric commands based on 2024-02-15-preview API version.',
+=======
+    description='Support for managednetworkfabric commands based on 2024-06-15-preview API version.',
+>>>>>>> upstream/main
     long_description=README + '\n\n' + HISTORY,
     license='MIT',
     author='Microsoft Corporation',

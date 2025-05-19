@@ -7,9 +7,17 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 # --------------------------------------------------------------------------
+<<<<<<< HEAD
 from azure.cli.core.aaz import has_value
 from .aaz.latest.spatial_anchors_account import Create as _SpatialAnchorsCreate
 from .aaz.latest.spatial_anchors_account.key import Renew as _SpatialAnchorsKeyRenew
+=======
+
+# pylint: skip-file
+# flake8: noqa
+
+from azure.cli.core.aaz import has_value
+>>>>>>> upstream/main
 from .aaz.latest.remote_rendering_account import Create as _RemoteRenderingCreate
 from .aaz.latest.remote_rendering_account.key import Renew as _RemoteRenderingKeyRenew
 from knack.log import get_logger
@@ -18,6 +26,7 @@ from knack.log import get_logger
 logger = get_logger(__name__)
 
 
+<<<<<<< HEAD
 class SpatialAnchorsCreate(_SpatialAnchorsCreate):
     def pre_operations(self):
         args = self.ctx.args
@@ -26,6 +35,8 @@ class SpatialAnchorsCreate(_SpatialAnchorsCreate):
             del args.kind
 
 
+=======
+>>>>>>> upstream/main
 class RemoteRenderingCreate(_RemoteRenderingCreate):
     @classmethod
     def _build_arguments_schema(cls, *args, **kwargs):
@@ -41,6 +52,7 @@ class RemoteRenderingCreate(_RemoteRenderingCreate):
         args.identity = {"type": "SystemAssigned"}
 
 
+<<<<<<< HEAD
 class SpatialAnchorsKeyRenew(_SpatialAnchorsKeyRenew):
     @classmethod
     def _build_arguments_schema(cls, *args, **kwargs):
@@ -65,12 +77,23 @@ class RemoteRenderingKeyRenew(_RemoteRenderingKeyRenew):
     @classmethod
     def _build_arguments_schema(cls, *args, **kwargs):
         from azure.cli.core.aaz import AAZStrArg, AAZArgEnum
+=======
+class RemoteRenderingKeyRenew(_RemoteRenderingKeyRenew):
+    @classmethod
+    def _build_arguments_schema(cls, *args, **kwargs):
+        from azure.cli.core.aaz import AAZStrArg
+
+>>>>>>> upstream/main
         args_schema = super()._build_arguments_schema(*args, **kwargs)
         args_schema.key = AAZStrArg(
             options=["--key", "-k"],
             help="Key to be regenerated.",
             default="primary",
+<<<<<<< HEAD
             enum={"primary": "primary", "secondary": "secondary"}
+=======
+            enum={"primary": "primary", "secondary": "secondary"},
+>>>>>>> upstream/main
         )
         args_schema.serial._registered = False
         return args_schema
@@ -78,4 +101,8 @@ class RemoteRenderingKeyRenew(_RemoteRenderingKeyRenew):
     def pre_operations(self):
         args = self.ctx.args
         if has_value(args.key):
+<<<<<<< HEAD
             args.serial = 1 if str(args.key).lower() == 'primary' else 2
+=======
+            args.serial = 1 if str(args.key).lower() == "primary" else 2
+>>>>>>> upstream/main

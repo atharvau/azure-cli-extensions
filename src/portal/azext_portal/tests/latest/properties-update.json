@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿{
   "lenses": {
     "0": {
@@ -22,13 +23,44 @@
   "metadata": {
     "model": {
       "timeRange": {
+=======
+{
+  "lenses": [
+    {
+      "order": 0,
+      "parts": [
+        {
+          "metadata": {
+            "inputs": [],
+            "settings":{},
+            "type": "Extension/HubsExtension/PartType/MarkdownPart"
+          },
+          "position": {
+            "colSpan": 5,
+            "rowSpan": 5,
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "model": {
+      "timeRange": {
+        "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange",
+>>>>>>> upstream/main
         "value": {
           "relative": {
             "duration": 12,
             "timeUnit": 1
           }
+<<<<<<< HEAD
         },
         "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+=======
+        }
+>>>>>>> upstream/main
       }
     }
   }

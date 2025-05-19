@@ -22,9 +22,15 @@ class Update(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/ipextendedcommunities/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/ipextendedcommunities/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,11 +56,18 @@ class Update(AAZCommand):
             help="Name of the IP Extended Community.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Body"
 
         _args_schema = cls._args_schema
@@ -67,18 +80,34 @@ class Update(AAZCommand):
         tags = cls._args_schema.tags
         tags.Element = AAZStrArg()
 
+=======
+>>>>>>> upstream/main
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
         _args_schema.annotation = AAZStrArg(
             options=["--annotation"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Description for underlying resource.",
+=======
+            help="Switch configuration description.",
+            nullable=True,
+>>>>>>> upstream/main
         )
         _args_schema.ip_extended_community_rules = AAZListArg(
             options=["--ip-extended-community-rules"],
             arg_group="Properties",
             help="List of IP Extended Community Rules.",
+<<<<<<< HEAD
+=======
+            nullable=True,
+        )
+        _args_schema.tags = AAZDictArg(
+            options=["--tags"],
+            arg_group="Properties",
+            help="Resource tags.",
+>>>>>>> upstream/main
         )
 
         ip_extended_community_rules = cls._args_schema.ip_extended_community_rules
@@ -87,7 +116,11 @@ class Update(AAZCommand):
         _element = cls._args_schema.ip_extended_community_rules.Element
         _element.action = AAZStrArg(
             options=["action"],
+<<<<<<< HEAD
             help="Action to be taken on the configuration. Example: Permit.",
+=======
+            help="Action to be taken on the configuration. Example: Permit | Deny.",
+>>>>>>> upstream/main
             required=True,
             enum={"Deny": "Deny", "Permit": "Permit"},
         )
@@ -110,11 +143,18 @@ class Update(AAZCommand):
         )
 
         route_targets = cls._args_schema.ip_extended_community_rules.Element.route_targets
+<<<<<<< HEAD
         route_targets.Element = AAZStrArg(
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
         )
+=======
+        route_targets.Element = AAZStrArg()
+
+        tags = cls._args_schema.tags
+        tags.Element = AAZStrArg()
+>>>>>>> upstream/main
         return cls._args_schema
 
     def _execute_operations(self):
@@ -198,7 +238,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -223,13 +267,22 @@ class Update(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+<<<<<<< HEAD
             _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+=======
+            _builder.set_prop("properties", AAZObjectType)
+>>>>>>> upstream/main
             _builder.set_prop("tags", AAZDictType, ".tags")
 
             properties = _builder.get(".properties")
             if properties is not None:
+<<<<<<< HEAD
                 properties.set_prop("annotation", AAZStrType, ".annotation")
                 properties.set_prop("ipExtendedCommunityRules", AAZListType, ".ip_extended_community_rules", typ_kwargs={"flags": {"required": True}})
+=======
+                properties.set_prop("annotation", AAZStrType, ".annotation", typ_kwargs={"nullable": True})
+                properties.set_prop("ipExtendedCommunityRules", AAZListType, ".ip_extended_community_rules", typ_kwargs={"nullable": True})
+>>>>>>> upstream/main
 
             ip_extended_community_rules = _builder.get(".properties.ipExtendedCommunityRules")
             if ip_extended_community_rules is not None:
@@ -304,6 +357,17 @@ class Update(AAZCommand):
                 serialized_name="ipExtendedCommunityRules",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+            properties.network_fabric_id = AAZStrType(
+                serialized_name="networkFabricId",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -328,6 +392,14 @@ class Update(AAZCommand):
             route_targets = cls._schema_on_200.properties.ip_extended_community_rules.Element.route_targets
             route_targets.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

@@ -13,7 +13,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_virtual_machines000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines?api-version=2023-09-01
   response:
@@ -33,7 +37,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:17 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:48 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -53,7 +61,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name --virtual-machine
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_virtual_machines000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-209?api-version=2023-09-01
   response:
@@ -73,7 +85,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:19 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:49 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -97,7 +113,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name --virtual-machine --restrict-movement
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: POST
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_virtual_machines000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-209/restrictMovement?api-version=2023-09-01
   response:
@@ -117,7 +137,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:21 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:52 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:

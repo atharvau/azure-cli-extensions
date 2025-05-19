@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command_group(
     "networkcloud l2network",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class __CMDGroup(AAZCommandGroup):
     """Manage layer 2 (l2) network

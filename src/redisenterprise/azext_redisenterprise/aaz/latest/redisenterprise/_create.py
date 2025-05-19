@@ -19,9 +19,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-09-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}", "2024-09-01-preview"],
+=======
+        "version": "2025-05-01-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -47,7 +53,11 @@ class Create(AAZCommand):
             help="The name of the RedisEnterprise cluster.",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -66,18 +76,42 @@ class Create(AAZCommand):
         # define Arg Group "Identity"
 
         _args_schema = cls._args_schema
+<<<<<<< HEAD
+=======
+        _args_schema.mi_system_assigned = AAZStrArg(
+            options=["--system-assigned", "--mi-system-assigned"],
+            arg_group="Identity",
+            help="Set the system managed identity.",
+            blank="True",
+        )
+>>>>>>> upstream/main
         _args_schema.identity_type = AAZStrArg(
             options=["--identity-type"],
             arg_group="Identity",
             help="Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
             enum={"None": "None", "SystemAssigned": "SystemAssigned", "SystemAssigned, UserAssigned": "SystemAssigned, UserAssigned", "UserAssigned": "UserAssigned"},
         )
+<<<<<<< HEAD
+=======
+        _args_schema.mi_user_assigned = AAZListArg(
+            options=["--user-assigned", "--mi-user-assigned"],
+            arg_group="Identity",
+            help="Set the user managed identities.",
+            blank=[],
+        )
+>>>>>>> upstream/main
         _args_schema.user_assigned_identities = AAZDictArg(
             options=["--assigned-identities", "--user-assigned-identities"],
             arg_group="Identity",
             help="The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         )
 
+<<<<<<< HEAD
+=======
+        mi_user_assigned = cls._args_schema.mi_user_assigned
+        mi_user_assigned.Element = AAZStrArg()
+
+>>>>>>> upstream/main
         user_assigned_identities = cls._args_schema.user_assigned_identities
         user_assigned_identities.Element = AAZObjectArg(
             blank={},
@@ -95,7 +129,11 @@ class Create(AAZCommand):
         _args_schema.user_assigned_identity_resource_id = AAZStrArg(
             options=["--identity-resource-id", "--user-assigned-identity-resource-id"],
             arg_group="KeyEncryptionKeyIdentity",
+<<<<<<< HEAD
             help="User assigned identity to use for accessing key encryption key Url. Ex: `/subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId`.",
+=======
+            help="User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.",
+>>>>>>> upstream/main
         )
 
         # define Arg Group "Parameters"
@@ -133,7 +171,10 @@ class Create(AAZCommand):
             options=["--high-availability"],
             arg_group="Properties",
             help="Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.",
+<<<<<<< HEAD
             is_preview=True,
+=======
+>>>>>>> upstream/main
             enum={"Disabled": "Disabled", "Enabled": "Enabled"},
         )
         _args_schema.minimum_tls_version = AAZStrArg(
@@ -241,7 +282,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -266,7 +311,11 @@ class Create(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+<<<<<<< HEAD
             _builder.set_prop("identity", AAZObjectType)
+=======
+            _builder.set_prop("identity", AAZIdentityObjectType)
+>>>>>>> upstream/main
             _builder.set_prop("location", AAZStrType, ".location", typ_kwargs={"flags": {"required": True}})
             _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
             _builder.set_prop("sku", AAZObjectType, ".", typ_kwargs={"flags": {"required": True}})
@@ -277,11 +326,23 @@ class Create(AAZCommand):
             if identity is not None:
                 identity.set_prop("type", AAZStrType, ".identity_type", typ_kwargs={"flags": {"required": True}})
                 identity.set_prop("userAssignedIdentities", AAZDictType, ".user_assigned_identities")
+<<<<<<< HEAD
+=======
+                identity.set_prop("userAssigned", AAZListType, ".mi_user_assigned", typ_kwargs={"flags": {"action": "create"}})
+                identity.set_prop("systemAssigned", AAZStrType, ".mi_system_assigned", typ_kwargs={"flags": {"action": "create"}})
+>>>>>>> upstream/main
 
             user_assigned_identities = _builder.get(".identity.userAssignedIdentities")
             if user_assigned_identities is not None:
                 user_assigned_identities.set_elements(AAZObjectType, ".")
 
+<<<<<<< HEAD
+=======
+            user_assigned = _builder.get(".identity.userAssigned")
+            if user_assigned is not None:
+                user_assigned.set_elements(AAZStrType, ".")
+
+>>>>>>> upstream/main
             properties = _builder.get(".properties")
             if properties is not None:
                 properties.set_prop("encryption", AAZObjectType)
@@ -338,7 +399,14 @@ class Create(AAZCommand):
             _schema_on_200_201.id = AAZStrType(
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
             _schema_on_200_201.identity = AAZObjectType()
+=======
+            _schema_on_200_201.identity = AAZIdentityObjectType()
+            _schema_on_200_201.kind = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             _schema_on_200_201.location = AAZStrType(
                 flags={"required": True},
             )

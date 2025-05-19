@@ -8,6 +8,10 @@
 from azure.cli.testsdk import *
 from azure.cli.testsdk.scenario_tests import AllowLargeResponse
 import os
+<<<<<<< HEAD
+=======
+import array
+>>>>>>> upstream/main
 
 TEST_DIR = os.path.abspath(os.path.join(os.path.abspath(__file__), '..'))
 
@@ -60,13 +64,21 @@ class StandbypoolScenario(ScenarioTest):
 
         # Get runtimeView
         standbyVMPool = self.cmd(
+<<<<<<< HEAD
             'az standby-vm-pool status --resource-group {rg} --name {standby_pool_name}',
+=======
+            'az standby-vm-pool status --resource-group {rg} --name {standby_pool_name} --version latest',
+>>>>>>> upstream/main
             checks=[
                 JMESPathCheck('name', 'latest'),
             ]
         ).get_output_in_json()
 
         assert len(standbyVMPool["instanceCountSummary"][0][ "instanceCountsByState"]) > 0
+<<<<<<< HEAD
+=======
+        assert len(standbyVMPool["status"][ "code"]) > 0    
+>>>>>>> upstream/main
 
         # list by resource group
         list_by_rg = self.cmd(
@@ -86,13 +98,21 @@ class StandbypoolScenario(ScenarioTest):
             'az standby-vm-pool delete --resource-group {rg} --name {standby_pool_name} -y'
         )
 
+<<<<<<< HEAD
     @ResourceGroupPreparer(location="eastus")
+=======
+    @ResourceGroupPreparer(location="centralindia")
+>>>>>>> upstream/main
     @AllowLargeResponse()
     def test_standby_container_group_pool_scenarios(self):
         self.kwargs.update({
             "vnet_name": 'myTestVnet',
             "subnet_name": "myTestSubnet",
+<<<<<<< HEAD
             "location": "eastus",
+=======
+            "location": "centralindia",
+>>>>>>> upstream/main
             "standby_pool_name": "cgname",
             "container_profile_name":  "testCGP",
             'template': os.path.join(TEST_DIR, 'CreateContainerGroupProfileTemplate.json')
@@ -117,7 +137,12 @@ class StandbypoolScenario(ScenarioTest):
             '--container-profile-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{rg}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{container_profile_name} '
             '--profile-revision 1 '
             '--subnet-ids [0].id=' + subnetId + ' '
+<<<<<<< HEAD
             '--max-ready-capacity 1 --location {location}',
+=======
+            '--max-ready-capacity 1 --location {location} '
+            '--zones [1]',
+>>>>>>> upstream/main
             checks=[
                 JMESPathCheck('name', self.kwargs.get('standby_pool_name', '')),
                 JMESPathCheck('provisioningState', 'Succeeded'),
@@ -135,13 +160,21 @@ class StandbypoolScenario(ScenarioTest):
 
         # get runtimeView
         standbyVMPool = self.cmd(
+<<<<<<< HEAD
             'az standby-container-group-pool status --resource-group {rg} --name {standby_pool_name}',
+=======
+            'az standby-container-group-pool status --resource-group {rg} --name {standby_pool_name} --version latest',
+>>>>>>> upstream/main
             checks=[
                 JMESPathCheck('name', 'latest'),
             ]
         ).get_output_in_json()
 
         assert len(standbyVMPool["instanceCountSummary"][0][ "instanceCountsByState"]) > 0
+<<<<<<< HEAD
+=======
+        assert len(standbyVMPool["status"][ "code"]) > 0
+>>>>>>> upstream/main
 
         # list by resource group
         list_by_rg = self.cmd(

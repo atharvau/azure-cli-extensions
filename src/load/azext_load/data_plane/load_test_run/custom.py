@@ -131,7 +131,11 @@ def list_test_runs(cmd, test_id, load_test_resource, resource_group_name=None):
 def stop_test_run(cmd, load_test_resource, test_run_id, resource_group_name=None):
     client = get_testrun_data_plane_client(cmd, load_test_resource, resource_group_name)
     logger.info("Stopping test run %s", test_run_id)
+<<<<<<< HEAD
     response = client.stop(test_run_id=test_run_id)
+=======
+    response = client.stop_test_run(test_run_id=test_run_id)
+>>>>>>> upstream/main
     logger.debug("Test run stopped with following response %s", response)
     logger.info("Stop test run completed")
     return response
@@ -523,7 +527,11 @@ def list_test_run_metrics(
                     interval=interval,
                     time_interval=time_interval,
                 )
+<<<<<<< HEAD
                 dimension_filter["values"] = metric_dimensions.value
+=======
+                dimension_filter["values"] = list(metric_dimensions)
+>>>>>>> upstream/main
 
         metrics = client.list_metrics(
             test_run_id,

@@ -2,18 +2,31 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+# pylint: disable=too-many-statements
+
+import logging
+>>>>>>> upstream/main
 
 from knack.util import CLIError  # pylint: disable=unused-import
 from knack.log import get_logger
 
+<<<<<<< HEAD
 import logging
 
+=======
+>>>>>>> upstream/main
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = get_logger(__name__)
 
 
+<<<<<<< HEAD
 def generate_nexus_identity_keys() -> None:
+=======
+def generate_nexus_identity_keys(algorithm=None):
+>>>>>>> upstream/main
 
     import os
     import subprocess
@@ -28,9 +41,25 @@ def generate_nexus_identity_keys() -> None:
     from msgraph.generated.models.o_data_errors.o_data_error import ODataError
 
     # Generate SSH key
+<<<<<<< HEAD
     if sys.platform.startswith("win"):
 
         dir_path = os.path.expanduser("~\\.ssh")
+=======
+    if sys.platform.startswith("win") or sys.platform.startswith("linux"):
+
+        algoToBeUsed = "ed25519-sk"
+        key_name = "id_ed25519_sk"
+
+        if algorithm and algorithm == "ecdsa-sk":
+            algoToBeUsed = "ecdsa-sk"
+            key_name = "id_ecdsa_sk"
+
+        if sys.platform.startswith("win"):
+            dir_path = os.path.expanduser("~\\.ssh")
+        elif sys.platform.startswith("linux"):
+            dir_path = os.path.expanduser("~/.ssh")
+>>>>>>> upstream/main
 
         # check if the ssh directory exists or not
         if not os.path.exists(dir_path):
@@ -39,6 +68,7 @@ def generate_nexus_identity_keys() -> None:
                 os.makedirs(dir_path)
             except OSError as e:
                 logger.error("Error creating directory: %s", e)
+<<<<<<< HEAD
                 raise CLIError(f"Error creating directory: {e}")
 
         # Generate ed25519-sk key
@@ -75,6 +105,52 @@ def generate_nexus_identity_keys() -> None:
         except Exception as e:
             logger.error("An unexpected error occurred: %s", e)
             raise CLIError(f"An unexpected error occurred: {e}")
+=======
+                raise CLIError(f"Error creating directory: {e}") from e
+
+        # Generate ed25519-sk key
+        subprocess.run(
+            [
+                "ssh-keygen",
+                "-t",
+                algoToBeUsed,
+                "-O",
+                "resident",
+                "-O",
+                "verify-required",
+                "-C",
+                "NexusIdentitySSHKey",
+                "-f",
+                os.path.join(dir_path, key_name),
+            ],
+            check=False,
+        )
+
+        # read the key from the file
+        try:
+            # Read public key
+            file_path = key_name + ".pub"
+            with open(
+                os.path.join(dir_path, file_path), "r", encoding="utf-8"
+            ) as key_file:
+                public_key = key_file.read()
+        except FileNotFoundError as e:
+            raise CLIError(f"Error reading public key: {e}") from e
+        except OSError as e:
+            raise CLIError(f"Unexpected error reading public key: {e}") from e
+
+        try:
+            credential = AzureCliCredential()
+            scopes = ["https://graph.microsoft.com//.default"]
+            graph_client = GraphServiceClient(credentials=credential, scopes=scopes)
+
+        except ClientAuthenticationError as e:
+            logger.error("Authentication failed: %s", e)
+            raise CLIError(f"Authentication failed: {e}") from e
+        except Exception as e:
+            logger.error("An unexpected error occurred: %s", e)
+            raise CLIError(f"An unexpected error occurred: {e}") from e
+>>>>>>> upstream/main
 
         async def me():
             extension_id = "com.nexusidentity.keys"
@@ -82,11 +158,20 @@ def generate_nexus_identity_keys() -> None:
             # Get user object
             user = await graph_client.me.get()
 
+<<<<<<< HEAD
             # Get extensions assoicated with the user
             extensions = await graph_client.me.extensions.get()
 
             extension_exists = any(
                 extension.id == extension_id for extension in extensions.value)
+=======
+            # Get extensions associated with the user
+            extensions = await graph_client.me.extensions.get()
+
+            extension_exists = any(
+                extension.id == extension_id for extension in extensions.value
+            )
+>>>>>>> upstream/main
 
             try:
                 # Update or create extension
@@ -95,16 +180,30 @@ def generate_nexus_identity_keys() -> None:
                         odata_type="microsoft.graph.openTypeExtension",
                         additional_data={
                             "extension_name": extension_id,
+<<<<<<< HEAD
                             "publicKey": public_key
                         }
                     )
                     await graph_client.me.extensions.by_extension_id(extension_id).patch(request_body)
 
                     print(f"Successfully updated public key to Microsoft Entra Id account {user.mail}")
+=======
+                            "publicKey": public_key,
+                        },
+                    )
+                    await graph_client.me.extensions.by_extension_id(
+                        extension_id
+                    ).patch(request_body)
+
+                    print(
+                        f"Successfully updated public key to Microsoft Entra Id account {user.mail}"
+                    )
+>>>>>>> upstream/main
                 else:
                     request_body = OpenTypeExtension(
                         odata_type="microsoft.graph.openTypeExtension",
                         extension_name=extension_id,
+<<<<<<< HEAD
                         additional_data={
                             "publicKey": public_key
                         }
@@ -118,8 +217,28 @@ def generate_nexus_identity_keys() -> None:
             except (HttpResponseError) as e:
                 logger.error("Failed to update or create extension: %s", e)
                 raise CLIError(f"Failed to update or create extension: {e}")
+=======
+                        additional_data={"publicKey": public_key},
+                    )
+                    await graph_client.me.extensions.post(request_body)
+
+                    print(
+                        f"Successfully uploaded public key to Microsoft Entra Id account {user.mail}"
+                    )
+            except ODataError as e:
+                logger.error("Error updating extension: %s", e)
+                raise CLIError(f"Error updating extension: {e}") from e
+            except HttpResponseError as e:
+                logger.error("Failed to update or create extension: %s", e)
+                raise CLIError(f"Failed to update or create extension: {e}") from e
+>>>>>>> upstream/main
 
         asyncio.run(me())
     else:
         logger.warning(
+<<<<<<< HEAD
             "This command is currently supported only on Windows platforms")
+=======
+            "This command is currently supported only on Windows and linux platforms"
+        )
+>>>>>>> upstream/main

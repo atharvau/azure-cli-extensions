@@ -1,6 +1,10 @@
 Microsoft Azure CLI 'mesh' Command Module
 ==============================================================
+<<<<<<< HEAD
 Official doc https://docs.microsoft.com/azure/service-fabric-mesh/
+=======
+Official doc https://learn.microsoft.com/azure/service-fabric-mesh/
+>>>>>>> upstream/main
 
 Run tests live using
 python tests/latest/test_mesh_commands.py

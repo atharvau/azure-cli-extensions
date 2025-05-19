@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud kubernetescluster restart-node",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class RestartNode(AAZCommand):
     """Restart a targeted node of a Kubernetes cluster.
@@ -23,9 +26,15 @@ class RestartNode(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}/restartnode", "2024-10-01-preview"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}/restartnode", "2025-02-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -151,7 +160,11 @@ class RestartNode(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

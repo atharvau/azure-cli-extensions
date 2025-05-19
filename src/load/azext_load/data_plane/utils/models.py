@@ -11,6 +11,15 @@ class IdentityType(str, Enum):
     UserAssigned = "UserAssigned"
 
 
+<<<<<<< HEAD
+=======
+class EngineIdentityType(str, Enum):
+    SystemAssigned = "SystemAssigned"
+    UserAssigned = "UserAssigned"
+    NoneValue = "None"
+
+
+>>>>>>> upstream/main
 class AllowedFileTypes(str, Enum):
     ADDITIONAL_ARTIFACTS = "ADDITIONAL_ARTIFACTS"
     JMX_FILE = "JMX_FILE"
@@ -36,11 +45,19 @@ class AllowedMetricNamespaces(str, Enum):
 class AllowedTestTypes(str, Enum):
     JMX = "JMX"
     URL = "URL"
+<<<<<<< HEAD
+=======
+    LOCUST = "Locust"
+>>>>>>> upstream/main
 
 
 class AllowedTestPlanFileExtensions(str, Enum):
     JMX = ".jmx"
     URL = ".json"
+<<<<<<< HEAD
+=======
+    LOCUST = ".py"
+>>>>>>> upstream/main
 
 
 class AllowedTrendsResponseTimeAggregations(str, Enum):

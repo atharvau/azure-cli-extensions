@@ -51,7 +51,11 @@ class RestrictMovement(AAZCommand):
             required=True,
             id_part="child_name_1",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -60,7 +64,11 @@ class RestrictMovement(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -72,7 +80,11 @@ class RestrictMovement(AAZCommand):
             required=True,
             id_part="child_name_2",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
 
@@ -110,7 +122,20 @@ class RestrictMovement(AAZCommand):
                 return self.client.build_lro_polling(
                     self.ctx.args.no_wait,
                     session,
+<<<<<<< HEAD
                     None,
+=======
+                    self.on_200,
+                    self.on_error,
+                    lro_options={"final-state-via": "location"},
+                    path_format_arguments=self.url_parameters,
+                )
+            if session.http_response.status_code in [200]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_200,
+>>>>>>> upstream/main
                     self.on_error,
                     lro_options={"final-state-via": "location"},
                     path_format_arguments=self.url_parameters,
@@ -189,6 +214,12 @@ class RestrictMovement(AAZCommand):
 
             return self.serialize_content(_content_value)
 
+<<<<<<< HEAD
+=======
+        def on_200(self, session):
+            pass
+
+>>>>>>> upstream/main
 
 class _RestrictMovementHelper:
     """Helper class for RestrictMovement"""

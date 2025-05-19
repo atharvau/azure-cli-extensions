@@ -22,9 +22,15 @@ class Deprovision(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabrics/{}/deprovision", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabrics/{}/deprovision", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,6 +56,12 @@ class Deprovision(AAZCommand):
             help="Name of the Network Fabric.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -137,7 +149,11 @@ class Deprovision(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -168,7 +184,30 @@ class Deprovision(AAZCommand):
                 return cls._schema_on_200
 
             cls._schema_on_200 = AAZObjectType()
+<<<<<<< HEAD
             _DeprovisionHelper._build_schema_common_post_action_response_for_device_update_read(cls._schema_on_200)
+=======
+
+            _schema_on_200 = cls._schema_on_200
+            _schema_on_200.configuration_state = AAZStrType(
+                serialized_name="configurationState",
+                flags={"read_only": True},
+            )
+            _schema_on_200.error = AAZObjectType()
+            _DeprovisionHelper._build_schema_error_detail_read(_schema_on_200.error)
+            _schema_on_200.failed_devices = AAZListType(
+                serialized_name="failedDevices",
+            )
+            _schema_on_200.successful_devices = AAZListType(
+                serialized_name="successfulDevices",
+            )
+
+            failed_devices = cls._schema_on_200.failed_devices
+            failed_devices.Element = AAZStrType()
+
+            successful_devices = cls._schema_on_200.successful_devices
+            successful_devices.Element = AAZStrType()
+>>>>>>> upstream/main
 
             return cls._schema_on_200
 
@@ -176,6 +215,7 @@ class Deprovision(AAZCommand):
 class _DeprovisionHelper:
     """Helper class for Deprovision"""
 
+<<<<<<< HEAD
     _schema_common_post_action_response_for_device_update_read = None
 
     @classmethod
@@ -214,6 +254,8 @@ class _DeprovisionHelper:
         _schema.failed_devices = cls._schema_common_post_action_response_for_device_update_read.failed_devices
         _schema.successful_devices = cls._schema_common_post_action_response_for_device_update_read.successful_devices
 
+=======
+>>>>>>> upstream/main
     _schema_error_detail_read = None
 
     @classmethod

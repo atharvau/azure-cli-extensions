@@ -2,6 +2,18 @@
 
 Release History
 ===============
+<<<<<<< HEAD
+=======
+
+1.2.1
+- Added support for listing all SKUs a cluster can scale to.
+- Added a new enum: NoCluster for Clustering policy.
+
+1.2.1b2
++++++++++
+- Update module documentation.
+
+>>>>>>> upstream/main
 1.2.1b1
 +++++++++
 - Fix: Make latest version as peview as last 2 versions(1.2.0 abd 1.1.0) are mistakenly not marked as preview.

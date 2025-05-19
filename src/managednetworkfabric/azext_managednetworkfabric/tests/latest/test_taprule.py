@@ -40,7 +40,12 @@ def step_create(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric taprule create --resource-group {rg} --location {location} --resource-name {name} --configuration-type {configurationType} --match-configurations {matchConfigurations}",
+=======
+        "az networkfabric taprule create --resource-group {rg} --location {location} --resource-name {name} --configuration-type {configurationType} --dynamic-match-configurations {dynamicMatchConfigurations}"
+        " --global-network-tap-rule-actions {globalNetworkTapRuleActions} --match-configurations {matchConfigurations} --polling-interval-in-seconds {pollingIntervalInSeconds} --tap-rules-url {tapRulesUrl}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -68,6 +73,18 @@ def step_list_subscription(test, checks=None):
     test.cmd("az networkfabric taprule list")
 
 
+<<<<<<< HEAD
+=======
+def step_update(test, checks=None):
+    """Network Tap Rule update operation"""
+    if checks is None:
+        checks = []
+    test.cmd(
+        "az networkfabric taprule update --resource-name {deleteName} --resource-group {rg} --match-configurations {updatedMatchConfigurations}"
+    )
+
+
+>>>>>>> upstream/main
 def step_delete(test, checks=None):
     """Network Tap Rule delete operation"""
     if checks is None:
@@ -94,10 +111,25 @@ class GA_TapRuleScenarioTest1(ScenarioTest):
                 "configurationType": CONFIG.get(
                     "NETWORK_TAP_RULE", "configuration_type"
                 ),
+<<<<<<< HEAD
+=======
+                "dynamicMatchConfigurations": CONFIG.get(
+                    "NETWORK_TAP_RULE", "dynamic_match_configurations"
+                ),
+>>>>>>> upstream/main
                 "tapRulesUrl": CONFIG.get("NETWORK_TAP_RULE", "tap_rules_url"),
                 "matchConfigurations": CONFIG.get(
                     "NETWORK_TAP_RULE", "match_configurations"
                 ),
+<<<<<<< HEAD
+=======
+                "globalNetworkTapRuleActions": CONFIG.get(
+                    "NETWORK_TAP_RULE", "global_network_tap_rule_actions"
+                ),
+                "updatedMatchConfigurations": CONFIG.get(
+                    "NETWORK_TAP_RULE", "updated_match_configurations"
+                ),
+>>>>>>> upstream/main
             }
         )
 

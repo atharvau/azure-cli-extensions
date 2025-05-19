@@ -11,6 +11,7 @@ class NexusidentityCommandsLoader(AzCommandsLoader):
 
     def __init__(self, cli_ctx=None):
         from azure.cli.core.commands import CliCommandType
+<<<<<<< HEAD
         custom_command_type = CliCommandType(
             operations_tmpl='azext_nexusidentity.custom#{}')
         super(
@@ -21,11 +22,26 @@ class NexusidentityCommandsLoader(AzCommandsLoader):
 
     def load_command_table(self, args):
         from azext_nexusidentity.commands import load_command_table
+=======
+
+        custom_command_type = CliCommandType(
+            operations_tmpl="azext_nexusidentity.custom#{}"
+        )
+        super().__init__(cli_ctx=cli_ctx, custom_command_type=custom_command_type)
+
+    def load_command_table(self, args):
+        from azext_nexusidentity.commands import load_command_table
+
+>>>>>>> upstream/main
         load_command_table(self, args)
         return self.command_table
 
     def load_arguments(self, command):
         from azext_nexusidentity._params import load_arguments
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
         load_arguments(self, command)
 
 

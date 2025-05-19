@@ -6,6 +6,7 @@
 
 Follow our quickstart for examples: https://aka.ms/azsdk/python/dpcodegen/python/customize
 """
+<<<<<<< HEAD
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -13,6 +14,12 @@ if TYPE_CHECKING:
     from typing import List
 
 __all__ = []  # type: List[str]  # Add all objects you want publicly available to users at this package level
+=======
+from typing import List
+
+__all__: List[str] = []  # Add all objects you want publicly available to users at this package level
+
+>>>>>>> upstream/main
 
 def patch_sdk():
     """Do not remove from this file.

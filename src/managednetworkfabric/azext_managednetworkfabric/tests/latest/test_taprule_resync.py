@@ -47,7 +47,11 @@ class GA_TapRuleResyncScenarioTest1(ScenarioTest):
         super().__init__(*args, **kwargs)
         self.kwargs.update(
             {
+<<<<<<< HEAD
                 "name": CONFIG.get("NETWORK_TAP_RULE", "resynctaprulename"),
+=======
+                "name": CONFIG.get("NETWORK_TAP_RULE", "resync_tap_rule_name"),
+>>>>>>> upstream/main
                 "rg": CONFIG.get("NETWORK_TAP_RULE", "resynctaprule_resource_group"),
             }
         )

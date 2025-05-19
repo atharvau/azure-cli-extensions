@@ -17,6 +17,7 @@ from azure.cli.core.aaz import *
 class Create(AAZCommand):
     """Create a StandbyVirtualMachinePoolResource
 
+<<<<<<< HEAD
     :example: Create standby virtual machine pool
         az standby-vm-pool create --subscription 461fa159-654a-415f-853a-40b801021944 --resource-group myrg --name mypool --max-ready-capacity 20 --min-ready-capacity 10 --vm-state Running --vmss-id /subscriptions/461fa159-654a-415f-853a-40b801021944/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss --location eastus
     """
@@ -25,6 +26,16 @@ class Create(AAZCommand):
         "version": "2024-03-01",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbyvirtualmachinepools/{}", "2024-03-01"],
+=======
+    :example: StandbyVirtualMachinePools_CreateOrUpdate
+        az standby-vm-pool create --resource-group rgstandbypool --name pool --max-ready-capacity 304 --min-ready-capacity 300 --vm-state Running --vmss-id /subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Compute/virtualMachineScaleSets/myVmss --tags "{}" --location West US --subscription 00000000-0000-0000-0000-000000000009
+    """
+
+    _aaz_info = {
+        "version": "2025-03-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbyvirtualmachinepools/{}", "2025-03-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -49,8 +60,13 @@ class Create(AAZCommand):
             help="The resource group",
             required=True,
         )
+<<<<<<< HEAD
         _args_schema.standby_virtual_machine_pool_name = AAZStrArg(
             options=["-n", "--name", "--standby-virtual-machine-pool-name"],
+=======
+        _args_schema.name = AAZStrArg(
+            options=["-n", "--name"],
+>>>>>>> upstream/main
             help="Name of the standby virtual machine pool",
             required=True,
             fmt=AAZStrArgFormat(
@@ -92,7 +108,11 @@ class Create(AAZCommand):
             options=["--vm-state"],
             arg_group="Properties",
             help="Specifies the desired state of virtual machines in the pool.",
+<<<<<<< HEAD
             enum={"Deallocated": "Deallocated", "Running": "Running"},
+=======
+            enum={"Deallocated": "Deallocated", "Hibernated": "Hibernated", "Running": "Running"},
+>>>>>>> upstream/main
         )
 
         # define Arg Group "Resource"
@@ -183,7 +203,11 @@ class Create(AAZCommand):
                     required=True,
                 ),
                 **self.serialize_url_param(
+<<<<<<< HEAD
                     "standbyVirtualMachinePoolName", self.ctx.args.standby_virtual_machine_pool_name,
+=======
+                    "standbyVirtualMachinePoolName", self.ctx.args.name,
+>>>>>>> upstream/main
                     required=True,
                 ),
                 **self.serialize_url_param(
@@ -197,7 +221,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-03-01",
+=======
+                    "api-version", "2025-03-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

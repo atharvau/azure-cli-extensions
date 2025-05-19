@@ -44,7 +44,11 @@ class Create(AAZCommand):
             help="Name of the cluster in the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.datastore_name = AAZStrArg(
@@ -52,7 +56,11 @@ class Create(AAZCommand):
             help="Name of the datastore in the private cloud cluster",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -60,7 +68,11 @@ class Create(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -294,7 +306,13 @@ class Create(AAZCommand):
                 serialized_name="provisioningState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
             properties.status = AAZStrType()
+=======
+            properties.status = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
 
             disk_pool_volume = cls._schema_on_200_201.properties.disk_pool_volume
             disk_pool_volume.lun_name = AAZStrType(

@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud clustermanager update",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class Update(AAZCommand):
     """Update properties of the provided cluster manager, or update the tags assigned to the cluster manager. Properties and tag updates can be done independently.
@@ -29,9 +32,15 @@ class Update(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clustermanagers/{}", "2024-10-01-preview"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clustermanagers/{}", "2025-02-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -51,6 +60,17 @@ class Update(AAZCommand):
         # define Arg Group ""
 
         _args_schema = cls._args_schema
+<<<<<<< HEAD
+=======
+        _args_schema.if_match = AAZStrArg(
+            options=["--if-match"],
+            help="The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
+        )
+        _args_schema.if_none_match = AAZStrArg(
+            options=["--if-none-match"],
+            help="Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
+        )
+>>>>>>> upstream/main
         _args_schema.cluster_manager_name = AAZStrArg(
             options=["-n", "--name", "--cluster-manager-name"],
             help="The name of the cluster manager.",
@@ -178,7 +198,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -188,6 +212,15 @@ class Update(AAZCommand):
         def header_parameters(self):
             parameters = {
                 **self.serialize_header_param(
+<<<<<<< HEAD
+=======
+                    "If-Match", self.ctx.args.if_match,
+                ),
+                **self.serialize_header_param(
+                    "If-None-Match", self.ctx.args.if_none_match,
+                ),
+                **self.serialize_header_param(
+>>>>>>> upstream/main
                     "Content-Type", "application/json",
                 ),
                 **self.serialize_header_param(
@@ -245,6 +278,12 @@ class Update(AAZCommand):
             cls._schema_on_200 = AAZObjectType()
 
             _schema_on_200 = cls._schema_on_200
+<<<<<<< HEAD
+=======
+            _schema_on_200.etag = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             _schema_on_200.id = AAZStrType(
                 flags={"read_only": True},
             )

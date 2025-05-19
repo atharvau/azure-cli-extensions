@@ -16,7 +16,11 @@ except ImportError:
 
 # TODO: Confirm this is the right version number you want and it matches your
 # HISTORY.rst entry.
+<<<<<<< HEAD
 VERSION = '1.0.0b3'
+=======
+VERSION = '1.0.0b5'
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -38,7 +42,11 @@ DEPENDENCIES = [
     'msgraph-sdk'
 ]
 
+<<<<<<< HEAD
 with open('README.rst', 'r', encoding='utf-8') as f:
+=======
+with open('README.md', 'r', encoding='utf-8') as f:
+>>>>>>> upstream/main
     README = f.read()
 with open('HISTORY.rst', 'r', encoding='utf-8') as f:
     HISTORY = f.read()

@@ -7,6 +7,10 @@
 
 import os
 
+<<<<<<< HEAD
+=======
+from azext_load.data_plane.utils.constants import LoadTestConfigKeys
+>>>>>>> upstream/main
 from azext_load.data_plane.utils.utils import (
     convert_yaml_to_test,
     create_autostop_criteria_from_args,
@@ -16,9 +20,20 @@ from azext_load.data_plane.utils.utils import (
     generate_trends_row,
     get_admin_data_plane_client,
     get_testrun_data_plane_client,
+<<<<<<< HEAD
     load_yaml,
     upload_file_to_test,
     upload_files_helper,
+=======
+    infer_test_type_from_test_plan,
+    load_yaml,
+    upload_file_to_test,
+    upload_files_helper,
+    merge_existing_app_components,
+    merge_existing_server_metrics,
+    parse_app_comps_and_server_metrics,
+    is_not_empty_dictionary,
+>>>>>>> upstream/main
 )
 from azext_load.data_plane.utils.models import (
     AllowedTestTypes,
@@ -46,6 +61,10 @@ def create_test(
     secrets=None,
     certificate=None,
     key_vault_reference_identity=None,
+<<<<<<< HEAD
+=======
+    metrics_reference_identity=None,
+>>>>>>> upstream/main
     subnet_id=None,
     split_csv=None,
     disable_public_ip=None,
@@ -53,7 +72,14 @@ def create_test(
     autostop=None,
     autostop_error_rate=None,
     autostop_error_rate_time_window=None,
+<<<<<<< HEAD
     regionwise_engines=None,
+=======
+    autostop_maximum_virtual_users_per_engine=None,
+    regionwise_engines=None,
+    engine_ref_id_type=None,
+    engine_ref_ids=None,
+>>>>>>> upstream/main
 ):
     client = get_admin_data_plane_client(cmd, load_test_resource, resource_group_name)
     logger.info("Create test has started for test ID : %s", test_id)
@@ -62,15 +88,31 @@ def create_test(
         body = client.get_test(test_id)
     except ResourceNotFoundError:
         pass
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
     if body is not None:
         msg = f"Test with given test ID : {test_id} already exist."
         logger.debug(msg)
         raise InvalidArgumentValueError(msg)
     body = {}
     yaml, yaml_test_body = None, None
+<<<<<<< HEAD
     autostop_criteria = create_autostop_criteria_from_args(
         autostop=autostop, error_rate=autostop_error_rate, time_window=autostop_error_rate_time_window)
     if load_test_config_file is None:
+=======
+    app_components, add_defaults_to_app_components, server_metrics = None, None, None
+    autostop_criteria = create_autostop_criteria_from_args(
+        autostop=autostop,
+        error_rate=autostop_error_rate,
+        time_window=autostop_error_rate_time_window,
+        max_vu_per_engine=autostop_maximum_virtual_users_per_engine)
+    if load_test_config_file is None:
+        test_type = test_type or infer_test_type_from_test_plan(test_plan)
+        logger.debug("Inferred test type: %s", test_type)
+>>>>>>> upstream/main
         body = create_or_update_test_without_config(
             test_id,
             body,
@@ -82,15 +124,35 @@ def create_test(
             secrets=secrets,
             certificate=certificate,
             key_vault_reference_identity=key_vault_reference_identity,
+<<<<<<< HEAD
+=======
+            metrics_reference_identity=metrics_reference_identity,
+>>>>>>> upstream/main
             subnet_id=subnet_id,
             split_csv=split_csv,
             disable_public_ip=disable_public_ip,
             autostop_criteria=autostop_criteria,
             regionwise_engines=regionwise_engines,
+<<<<<<< HEAD
+=======
+            engine_ref_id_type=engine_ref_id_type,
+            engine_ref_ids=engine_ref_ids,
+>>>>>>> upstream/main
         )
     else:
         yaml = load_yaml(load_test_config_file)
         yaml_test_body = convert_yaml_to_test(cmd, yaml)
+<<<<<<< HEAD
+=======
+        app_components, add_defaults_to_app_components, server_metrics = parse_app_comps_and_server_metrics(data=yaml)
+        test_type = (
+            test_type or
+            yaml.get(LoadTestConfigKeys.TEST_TYPE) or
+            infer_test_type_from_test_plan(test_plan) or
+            infer_test_type_from_test_plan(yaml.get(LoadTestConfigKeys.TEST_PLAN))
+        )
+        logger.debug("Inferred test type: %s", test_type)
+>>>>>>> upstream/main
         body = create_or_update_test_with_config(
             test_id,
             body,
@@ -103,11 +165,20 @@ def create_test(
             secrets=secrets,
             certificate=certificate,
             key_vault_reference_identity=key_vault_reference_identity,
+<<<<<<< HEAD
+=======
+            metrics_reference_identity=metrics_reference_identity,
+>>>>>>> upstream/main
             subnet_id=subnet_id,
             split_csv=split_csv,
             disable_public_ip=disable_public_ip,
             autostop_criteria=autostop_criteria,
             regionwise_engines=regionwise_engines,
+<<<<<<< HEAD
+=======
+            engine_ref_id_type=engine_ref_id_type,
+            engine_ref_ids=engine_ref_ids,
+>>>>>>> upstream/main
         )
     logger.debug("Creating test with test ID: %s and body : %s", test_id, body)
     response = client.create_or_update_test(test_id=test_id, body=body)
@@ -119,8 +190,37 @@ def create_test(
     upload_files_helper(
         client, test_id, yaml, test_plan, load_test_config_file, not custom_no_wait, evaluated_test_type
     )
+<<<<<<< HEAD
     response = client.get_test(test_id)
     logger.info("Upload files to test %s has completed", test_id)
+=======
+    logger.info("Upload files to test %s has completed", test_id)
+    if is_not_empty_dictionary(app_components):
+        # only get and patch the app components if its present in the yaml.
+        app_component_response = client.create_or_update_app_components(
+            test_id=test_id, body={"testId": test_id, "components": app_components}
+        )
+        logger.warning(
+            "Added app components for test ID: %s and response is %s", test_id, app_component_response
+        )
+    if is_not_empty_dictionary(server_metrics):
+        # only get and patch the app components if its present in the yaml.
+        server_metrics_existing = None
+        try:
+            server_metrics_existing = client.get_server_metrics_config(test_id)
+        except ResourceNotFoundError:
+            server_metrics_existing = {"metrics": {}}
+        server_metrics_merged = merge_existing_server_metrics(
+            add_defaults_to_app_components, server_metrics, server_metrics_existing.get("metrics", {})
+        )
+        server_metric_response = client.create_or_update_server_metrics_config(
+            test_id=test_id, body={"testId": test_id, "metrics": server_metrics_merged}
+        )
+        logger.warning(
+            "Added server metrics for test ID: %s and response is %s", test_id, server_metric_response
+        )
+    response = client.get_test(test_id)
+>>>>>>> upstream/main
     logger.info("Test %s has been created successfully", test_id)
     return response.as_dict()
 
@@ -139,6 +239,10 @@ def update_test(
     secrets=None,
     certificate=None,
     key_vault_reference_identity=None,
+<<<<<<< HEAD
+=======
+    metrics_reference_identity=None,
+>>>>>>> upstream/main
     subnet_id=None,
     split_csv=None,
     disable_public_ip=None,
@@ -146,7 +250,14 @@ def update_test(
     autostop=None,
     autostop_error_rate=None,
     autostop_error_rate_time_window=None,
+<<<<<<< HEAD
     regionwise_engines=None,
+=======
+    autostop_maximum_virtual_users_per_engine=None,
+    regionwise_engines=None,
+    engine_ref_id_type=None,
+    engine_ref_ids=None,
+>>>>>>> upstream/main
 ):
     client = get_admin_data_plane_client(cmd, load_test_resource, resource_group_name)
     logger.info("Update test has started for test ID : %s", test_id)
@@ -159,11 +270,24 @@ def update_test(
     logger.debug("Retrieved test with test ID: %s and body : %s", test_id, body)
 
     yaml, yaml_test_body = None, None
+<<<<<<< HEAD
     autostop_criteria = create_autostop_criteria_from_args(
         autostop=autostop, error_rate=autostop_error_rate, time_window=autostop_error_rate_time_window)
     if load_test_config_file is not None:
         yaml = load_yaml(load_test_config_file)
         yaml_test_body = convert_yaml_to_test(cmd, yaml)
+=======
+    app_components, server_metrics, add_defaults_to_app_components = None, None, None
+    autostop_criteria = create_autostop_criteria_from_args(
+        autostop=autostop,
+        error_rate=autostop_error_rate,
+        time_window=autostop_error_rate_time_window,
+        max_vu_per_engine=autostop_maximum_virtual_users_per_engine)
+    if load_test_config_file is not None:
+        yaml = load_yaml(load_test_config_file)
+        yaml_test_body = convert_yaml_to_test(cmd, yaml)
+        app_components, add_defaults_to_app_components, server_metrics = parse_app_comps_and_server_metrics(data=yaml)
+>>>>>>> upstream/main
         body = create_or_update_test_with_config(
             test_id,
             body,
@@ -175,11 +299,20 @@ def update_test(
             secrets=secrets,
             certificate=certificate,
             key_vault_reference_identity=key_vault_reference_identity,
+<<<<<<< HEAD
+=======
+            metrics_reference_identity=metrics_reference_identity,
+>>>>>>> upstream/main
             subnet_id=subnet_id,
             split_csv=split_csv,
             disable_public_ip=disable_public_ip,
             autostop_criteria=autostop_criteria,
             regionwise_engines=regionwise_engines,
+<<<<<<< HEAD
+=======
+            engine_ref_id_type=engine_ref_id_type,
+            engine_ref_ids=engine_ref_ids,
+>>>>>>> upstream/main
         )
     else:
         body = create_or_update_test_without_config(
@@ -192,11 +325,20 @@ def update_test(
             secrets=secrets,
             certificate=certificate,
             key_vault_reference_identity=key_vault_reference_identity,
+<<<<<<< HEAD
+=======
+            metrics_reference_identity=metrics_reference_identity,
+>>>>>>> upstream/main
             subnet_id=subnet_id,
             split_csv=split_csv,
             disable_public_ip=disable_public_ip,
             autostop_criteria=autostop_criteria,
             regionwise_engines=regionwise_engines,
+<<<<<<< HEAD
+=======
+            engine_ref_id_type=engine_ref_id_type,
+            engine_ref_ids=engine_ref_ids
+>>>>>>> upstream/main
         )
     logger.info("Updating test with test ID: %s", test_id)
     response = client.create_or_update_test(test_id=test_id, body=body)
@@ -207,6 +349,40 @@ def update_test(
     upload_files_helper(
         client, test_id, yaml, test_plan, load_test_config_file, not custom_no_wait, body.get("kind")
     )
+<<<<<<< HEAD
+=======
+
+    if is_not_empty_dictionary(app_components):
+        # only get and patch the app components if its present in the yaml.
+        try:
+            app_components_existing = client.get_app_components(test_id)
+        except ResourceNotFoundError:
+            app_components_existing = {"components": {}}
+        app_components_merged = merge_existing_app_components(
+            app_components, app_components_existing.get("components", {})
+        )
+        app_component_response = client.create_or_update_app_components(
+            test_id=test_id, body={"testId": test_id, "components": app_components_merged}
+        )
+        logger.warning(
+            "Added app components for test ID: %s and response is %s", test_id, app_component_response
+        )
+    if is_not_empty_dictionary(server_metrics):
+        # only get and patch the app components if its present in the yaml.
+        try:
+            server_metrics_existing = client.get_server_metrics_config(test_id)
+        except ResourceNotFoundError:
+            server_metrics_existing = {"metrics": {}}
+        server_metrics_merged = merge_existing_server_metrics(
+            add_defaults_to_app_components, server_metrics_existing.get("metrics", {}), server_metrics
+        )
+        server_metric_response = client.create_or_update_server_metrics_config(
+            test_id=test_id, body={"testId": test_id, "metrics": server_metrics_merged}
+        )
+        logger.warning(
+            "Added server metrics for test ID: %s and response is %s", test_id, server_metric_response
+        )
+>>>>>>> upstream/main
     response = client.get_test(test_id)
     logger.info("Upload files to test %s has completed", test_id)
     logger.info("Test %s has been updated successfully", test_id)

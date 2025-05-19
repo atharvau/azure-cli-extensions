@@ -20,7 +20,11 @@ class PrivateCloudCreate(_PrivateCloudCreate):
             help="Enable a system assigned identity."
         )
         # use mi_system_assigned to assign this value in pre_operations
+<<<<<<< HEAD
         args_schema.identity._registered = False
+=======
+        setattr(args_schema.identity, '_registered', False)
+>>>>>>> upstream/main
         return args_schema
 
     def load_arguments(self):
@@ -45,9 +49,17 @@ class PrivateCloudUpdate(_PrivateCloudUpdate):
     @classmethod
     def _build_arguments_schema(cls, *args, **kwargs):
         args_schema = super()._build_arguments_schema(*args, **kwargs)
+<<<<<<< HEAD
         args_schema.identity._registered = False
         # updated by vmware private-cloud enable-cmk-encryption/disable-cmk-encryption
         args_schema.encryption._registered = False
         # updated by vmware private-cloud add-identity-source/delete-identity-source
         args_schema.identity_sources._registered = False
+=======
+        setattr(args_schema.identity, '_registered', False)
+        # updated by vmware private-cloud enable-cmk-encryption/disable-cmk-encryption
+        setattr(args_schema.encryption, '_registered', False)
+        # updated by vmware private-cloud add-identity-source/delete-identity-source
+        setattr(args_schema.identity_sources, '_registered', False)
+>>>>>>> upstream/main
         return args_schema

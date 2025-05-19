@@ -19,9 +19,15 @@ class Update(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-09-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}", "2024-09-01-preview"],
+=======
+        "version": "2025-05-01-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,7 +56,11 @@ class Update(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.database_name = AAZStrArg(
@@ -60,7 +70,11 @@ class Update(AAZCommand):
             id_part="child_name_1",
             default="default",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]{1,60}$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -74,7 +88,10 @@ class Update(AAZCommand):
             options=["--access-keys-auth", "--access-keys-authentication"],
             arg_group="Properties",
             help="Access database using keys - default is enabled. This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.",
+<<<<<<< HEAD
             is_preview=True,
+=======
+>>>>>>> upstream/main
             nullable=True,
             enum={"Disabled": "Disabled", "Enabled": "Enabled"},
         )
@@ -85,6 +102,16 @@ class Update(AAZCommand):
             nullable=True,
             enum={"Encrypted": "Encrypted", "Plaintext": "Plaintext"},
         )
+<<<<<<< HEAD
+=======
+        _args_schema.clustering_policy = AAZStrArg(
+            options=["--clustering-policy"],
+            arg_group="Properties",
+            help="Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.",
+            nullable=True,
+            enum={"EnterpriseCluster": "EnterpriseCluster", "NoCluster": "NoCluster", "OSSCluster": "OSSCluster"},
+        )
+>>>>>>> upstream/main
         _args_schema.defer_upgrade = AAZStrArg(
             options=["--defer-upgrade"],
             arg_group="Properties",
@@ -213,7 +240,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -316,7 +347,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -380,6 +415,10 @@ class Update(AAZCommand):
             if properties is not None:
                 properties.set_prop("accessKeysAuthentication", AAZStrType, ".access_keys_authentication")
                 properties.set_prop("clientProtocol", AAZStrType, ".client_protocol")
+<<<<<<< HEAD
+=======
+                properties.set_prop("clusteringPolicy", AAZStrType, ".clustering_policy")
+>>>>>>> upstream/main
                 properties.set_prop("deferUpgrade", AAZStrType, ".defer_upgrade")
                 properties.set_prop("evictionPolicy", AAZStrType, ".eviction_policy")
                 properties.set_prop("persistence", AAZObjectType, ".persistence")

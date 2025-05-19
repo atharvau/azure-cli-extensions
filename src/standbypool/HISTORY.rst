@@ -3,6 +3,16 @@
 Release History
 ===============
 
+<<<<<<< HEAD
+=======
+2.0.0
+++++++
+* Upgrade api-version to 2025-03-01
+* `az standby-vm-pool status`: Add new StandbyPool Prediction and StandbyPool Health Status in the response.
+* `az standby-container-group-pool status`:Add new StandbyPool Prediction and StandbyPool Health Status in the response.
+* `az standby-container-group-pool create/update`: Add new properties `--zones` to support zonal StandbyPools.
+
+>>>>>>> upstream/main
 1.0.0
 ++++++
 * Upgrade api-version to 2024-03-01

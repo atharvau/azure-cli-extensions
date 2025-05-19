@@ -13,7 +13,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies?api-version=2023-09-01
   response:
@@ -33,7 +37,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:19:52 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:37 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -53,7 +61,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name --placement-policy-name
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -73,7 +85,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:19:54 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:40 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -101,7 +117,11 @@ interactions:
         --display-name --vm-members --host-members --affinity-type --affinity-strength
         --azure-hybrid-benefit
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -121,7 +141,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:19:57 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:42 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -142,7 +166,11 @@ interactions:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --state
         --vm-members --host-members --affinity-strength --azure-hybrid-benefit
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -162,7 +190,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:19:59 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:44 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -189,7 +221,11 @@ interactions:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --state
         --vm-members --host-members --affinity-strength --azure-hybrid-benefit
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -209,7 +245,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:19:59 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:44 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -231,7 +271,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -251,7 +295,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:02 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:47 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -277,7 +325,11 @@ interactions:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --state
         --display-name --vm-members --affinity-type
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -297,7 +349,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:05 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:50 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -318,7 +374,11 @@ interactions:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --state
         --vm-members
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -338,7 +398,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:07 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:52 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -364,7 +428,11 @@ interactions:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --state
         --vm-members
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -384,7 +452,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:07 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:52 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -406,7 +478,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --cluster-name --placement-policy-name --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_placement_policy000001/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/placementPolicies/policy1?api-version=2023-09-01
   response:
@@ -426,7 +502,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:09 GMT
+=======
+      - Thu, 13 Mar 2025 01:49:56 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:

@@ -50,7 +50,11 @@ class List(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -197,7 +201,13 @@ class List(AAZCommand):
             )
             properties.revision = AAZIntType()
             properties.source = AAZStrType()
+<<<<<<< HEAD
             properties.status = AAZStrType()
+=======
+            properties.status = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
 
             system_data = cls._schema_on_200.value.Element.system_data
             system_data.created_at = AAZStrType(

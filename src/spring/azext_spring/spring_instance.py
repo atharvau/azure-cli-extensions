@@ -27,6 +27,10 @@ from azure.cli.core.util import sdk_no_wait
 from knack.log import get_logger
 from ._marketplace import _spring_list_marketplace_plan
 from ._constant import (MARKETPLACE_OFFER_ID, MARKETPLACE_PUBLISHER_ID, AKS_RP)
+<<<<<<< HEAD
+=======
+from .migration.migration_operations import migration_aca_start
+>>>>>>> upstream/main
 
 logger = get_logger(__name__)
 
@@ -324,3 +328,13 @@ def spring_private_dns_zone_clean(cmd, client, resource_group, service):
     updated_resource = models.ServiceResource(location=resource.location, sku=resource.sku, properties=resource.properties, tags=resource.tags)
     return sdk_no_wait(False, client.services.begin_create_or_update,
                        resource_group_name=resource_group, service_name=service, resource=updated_resource)
+<<<<<<< HEAD
+=======
+
+
+def spring_migration_start(cmd, client, resource_group, service, target="aca", output_folder=None):
+    if target == "aca" or target == "azure-container-apps":
+        migration_aca_start(cmd, client, resource_group, service, output_folder)
+    else:
+        raise InvalidArgumentValueError("Invalid target value. The value must be 'aca' or 'azure-container-apps'.")
+>>>>>>> upstream/main

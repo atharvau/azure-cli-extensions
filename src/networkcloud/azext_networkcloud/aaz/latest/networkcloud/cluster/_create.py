@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud cluster create",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class Create(AAZCommand):
     """Create a new cluster or update the properties of the cluster if it exists.
@@ -29,9 +32,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clusters/{}", "2024-10-01-preview"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clusters/{}", "2025-02-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -52,6 +61,17 @@ class Create(AAZCommand):
         # define Arg Group ""
 
         _args_schema = cls._args_schema
+<<<<<<< HEAD
+=======
+        _args_schema.if_match = AAZStrArg(
+            options=["--if-match"],
+            help="The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
+        )
+        _args_schema.if_none_match = AAZStrArg(
+            options=["--if-none-match"],
+            help="Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
+        )
+>>>>>>> upstream/main
         _args_schema.cluster_name = AAZStrArg(
             options=["-n", "--name", "--cluster-name"],
             help="The name of the cluster.",
@@ -195,7 +215,11 @@ class Create(AAZCommand):
             help="The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.",
         )
         _args_schema.managed_resource_group_configuration = AAZObjectArg(
+<<<<<<< HEAD
             options=["--managed-resource-group-configuration"],
+=======
+            options=["--mrg", "--managed-resource-group-configuration"],
+>>>>>>> upstream/main
             arg_group="Properties",
             help="The configuration of the managed resource group associated with the resource.",
         )
@@ -660,7 +684,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -670,6 +698,15 @@ class Create(AAZCommand):
         def header_parameters(self):
             parameters = {
                 **self.serialize_header_param(
+<<<<<<< HEAD
+=======
+                    "If-Match", self.ctx.args.if_match,
+                ),
+                **self.serialize_header_param(
+                    "If-None-Match", self.ctx.args.if_none_match,
+                ),
+                **self.serialize_header_param(
+>>>>>>> upstream/main
                     "Content-Type", "application/json",
                 ),
                 **self.serialize_header_param(
@@ -821,6 +858,12 @@ class Create(AAZCommand):
             cls._schema_on_200_201 = AAZObjectType()
 
             _schema_on_200_201 = cls._schema_on_200_201
+<<<<<<< HEAD
+=======
+            _schema_on_200_201.etag = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             _schema_on_200_201.extended_location = AAZObjectType(
                 serialized_name="extendedLocation",
                 flags={"required": True},

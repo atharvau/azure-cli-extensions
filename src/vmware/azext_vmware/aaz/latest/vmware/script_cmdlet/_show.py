@@ -50,7 +50,11 @@ class Show(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -62,7 +66,11 @@ class Show(AAZCommand):
             required=True,
             id_part="child_name_2",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.script_package = AAZStrArg(
@@ -71,7 +79,11 @@ class Show(AAZCommand):
             required=True,
             id_part="child_name_1",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._@]+$",
+=======
+                pattern="^[-\\w\\._@]+$",
+>>>>>>> upstream/main
             ),
         )
         return cls._args_schema
@@ -200,7 +212,13 @@ class Show(AAZCommand):
             )
 
             properties = cls._schema_on_200.properties
+<<<<<<< HEAD
             properties.audience = AAZStrType()
+=======
+            properties.audience = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.description = AAZStrType(
                 flags={"read_only": True},
             )
@@ -223,9 +241,21 @@ class Show(AAZCommand):
                 flags={"read_only": True},
             )
             _element.name = AAZStrType()
+<<<<<<< HEAD
             _element.optional = AAZStrType()
             _element.type = AAZStrType()
             _element.visibility = AAZStrType()
+=======
+            _element.optional = AAZStrType(
+                flags={"read_only": True},
+            )
+            _element.type = AAZStrType(
+                flags={"read_only": True},
+            )
+            _element.visibility = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
 
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(

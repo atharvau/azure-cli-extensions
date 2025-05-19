@@ -1,6 +1,10 @@
 # Microsoft Azure CLI VMware Extension #
 
+<<<<<<< HEAD
 The Azure CLI extension for [Azure VMware Solution](https://docs.microsoft.com/azure/azure-vmware/) (AVS) is an extension for Azure CLI 2.0.
+=======
+The Azure CLI extension for [Azure VMware Solution](https://learn.microsoft.com/azure/azure-vmware/) (AVS) is an extension for Azure CLI 2.0.
+>>>>>>> upstream/main
 
 ## Install
 ``` sh
@@ -8,7 +12,11 @@ az extension add --name vmware
 ```
 
 ## Usage
+<<<<<<< HEAD
 See the [extension reference documentation](https://docs.microsoft.com/cli/azure/vmware).
+=======
+See the [extension reference documentation](https://learn.microsoft.com/cli/azure/vmware).
+>>>>>>> upstream/main
 
 ``` sh
 az vmware --help

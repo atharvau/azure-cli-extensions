@@ -92,9 +92,13 @@ class TestCommandOutputSettings(unittest.TestCase):
         args = Mock()
         args.command_output_settings.identity_type = "UserAssignedIdentity"
         args.command_output_settings.identity_resource_id = None
+<<<<<<< HEAD
         args.command_output_settings.container_url = (
             "the url to container"
         )
+=======
+        args.command_output_settings.container_url = "the url to container"
+>>>>>>> upstream/main
 
         with self.assertRaises(InvalidArgumentValueError):
             self.command_output_settings.pre_operations_update(args)

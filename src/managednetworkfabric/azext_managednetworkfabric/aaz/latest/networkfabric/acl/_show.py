@@ -22,9 +22,15 @@ class Show(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/accesscontrollists/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/accesscontrollists/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -49,6 +55,12 @@ class Show(AAZCommand):
             help="Name of the Access Control List",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -120,7 +132,11 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -175,6 +191,12 @@ class Show(AAZCommand):
             )
 
             properties = cls._schema_on_200.properties
+<<<<<<< HEAD
+=======
+            properties.acl_type = AAZStrType(
+                serialized_name="aclType",
+            )
+>>>>>>> upstream/main
             properties.acls_url = AAZStrType(
                 serialized_name="aclsUrl",
             )
@@ -194,9 +216,25 @@ class Show(AAZCommand):
             properties.default_action = AAZStrType(
                 serialized_name="defaultAction",
             )
+<<<<<<< HEAD
             properties.dynamic_match_configurations = AAZListType(
                 serialized_name="dynamicMatchConfigurations",
             )
+=======
+            properties.device_role = AAZStrType(
+                serialized_name="deviceRole",
+            )
+            properties.dynamic_match_configurations = AAZListType(
+                serialized_name="dynamicMatchConfigurations",
+            )
+            properties.global_access_control_list_actions = AAZObjectType(
+                serialized_name="globalAccessControlListActions",
+            )
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.last_synced_time = AAZStrType(
                 serialized_name="lastSyncedTime",
                 flags={"read_only": True},
@@ -258,6 +296,19 @@ class Show(AAZCommand):
             vlans = cls._schema_on_200.properties.dynamic_match_configurations.Element.vlan_groups.Element.vlans
             vlans.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            global_access_control_list_actions = cls._schema_on_200.properties.global_access_control_list_actions
+            global_access_control_list_actions.enable_count = AAZStrType(
+                serialized_name="enableCount",
+            )
+
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             match_configurations = cls._schema_on_200.properties.match_configurations
             match_configurations.Element = AAZObjectType()
 
@@ -283,8 +334,35 @@ class Show(AAZCommand):
             _element.counter_name = AAZStrType(
                 serialized_name="counterName",
             )
+<<<<<<< HEAD
             _element.type = AAZStrType()
 
+=======
+            _element.police_rate_configuration = AAZObjectType(
+                serialized_name="policeRateConfiguration",
+            )
+            _element.remark_comment = AAZStrType(
+                serialized_name="remarkComment",
+            )
+            _element.type = AAZStrType()
+
+            police_rate_configuration = cls._schema_on_200.properties.match_configurations.Element.actions.Element.police_rate_configuration
+            police_rate_configuration.bit_rate = AAZObjectType(
+                serialized_name="bitRate",
+            )
+            police_rate_configuration.burst_size = AAZObjectType(
+                serialized_name="burstSize",
+            )
+
+            bit_rate = cls._schema_on_200.properties.match_configurations.Element.actions.Element.police_rate_configuration.bit_rate
+            bit_rate.rate = AAZIntType()
+            bit_rate.unit = AAZStrType()
+
+            burst_size = cls._schema_on_200.properties.match_configurations.Element.actions.Element.police_rate_configuration.burst_size
+            burst_size.size = AAZIntType()
+            burst_size.unit = AAZStrType()
+
+>>>>>>> upstream/main
             match_conditions = cls._schema_on_200.properties.match_configurations.Element.match_conditions
             match_conditions.Element = AAZObjectType()
 
@@ -296,6 +374,12 @@ class Show(AAZCommand):
                 serialized_name="etherTypes",
             )
             _element.fragments = AAZListType()
+<<<<<<< HEAD
+=======
+            _element.icmp_configuration = AAZObjectType(
+                serialized_name="icmpConfiguration",
+            )
+>>>>>>> upstream/main
             _element.ip_condition = AAZObjectType(
                 serialized_name="ipCondition",
             )
@@ -305,6 +389,12 @@ class Show(AAZCommand):
             _element.port_condition = AAZObjectType(
                 serialized_name="portCondition",
             )
+<<<<<<< HEAD
+=======
+            _element.protocol_neighbors = AAZListType(
+                serialized_name="protocolNeighbors",
+            )
+>>>>>>> upstream/main
             _element.protocol_types = AAZListType(
                 serialized_name="protocolTypes",
             )
@@ -324,6 +414,17 @@ class Show(AAZCommand):
             fragments = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.fragments
             fragments.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            icmp_configuration = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.icmp_configuration
+            icmp_configuration.icmp_types = AAZListType(
+                serialized_name="icmpTypes",
+            )
+
+            icmp_types = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.icmp_configuration.icmp_types
+            icmp_types.Element = AAZStrType()
+
+>>>>>>> upstream/main
             ip_condition = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.ip_condition
             ip_condition.ip_group_names = AAZListType(
                 serialized_name="ipGroupNames",
@@ -368,6 +469,12 @@ class Show(AAZCommand):
             ports = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.port_condition.ports
             ports.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            protocol_neighbors = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.protocol_neighbors
+            protocol_neighbors.Element = AAZStrType()
+
+>>>>>>> upstream/main
             protocol_types = cls._schema_on_200.properties.match_configurations.Element.match_conditions.Element.protocol_types
             protocol_types.Element = AAZStrType()
 

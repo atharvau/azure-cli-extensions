@@ -20,7 +20,11 @@ class Wait(AAZWaitCommand):
 
     _aaz_info = {
         "resources": [
+<<<<<<< HEAD
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}", "2024-03-01"],
+=======
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}", "2025-03-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -44,8 +48,13 @@ class Wait(AAZWaitCommand):
             help="The resource group",
             required=True,
         )
+<<<<<<< HEAD
         _args_schema.standby_container_group_pool_name = AAZStrArg(
             options=["-n", "--name", "--standby-container-group-pool-name"],
+=======
+        _args_schema.name = AAZStrArg(
+            options=["-n", "--name"],
+>>>>>>> upstream/main
             help="Name of the standby container group pool",
             required=True,
             id_part="name",
@@ -106,7 +115,11 @@ class Wait(AAZWaitCommand):
                     required=True,
                 ),
                 **self.serialize_url_param(
+<<<<<<< HEAD
                     "standbyContainerGroupPoolName", self.ctx.args.standby_container_group_pool_name,
+=======
+                    "standbyContainerGroupPoolName", self.ctx.args.name,
+>>>>>>> upstream/main
                     required=True,
                 ),
                 **self.serialize_url_param(
@@ -120,7 +133,11 @@ class Wait(AAZWaitCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-03-01",
+=======
+                    "api-version", "2025-03-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -187,6 +204,10 @@ class Wait(AAZWaitCommand):
                 serialized_name="provisioningState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.zones = AAZListType()
+>>>>>>> upstream/main
 
             container_group_properties = cls._schema_on_200.properties.container_group_properties
             container_group_properties.container_group_profile = AAZObjectType(
@@ -220,6 +241,12 @@ class Wait(AAZWaitCommand):
                 serialized_name="refillPolicy",
             )
 
+<<<<<<< HEAD
+=======
+            zones = cls._schema_on_200.properties.zones
+            zones.Element = AAZStrType()
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

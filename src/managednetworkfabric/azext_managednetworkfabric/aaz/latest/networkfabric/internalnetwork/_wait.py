@@ -20,7 +20,11 @@ class Wait(AAZWaitCommand):
 
     _aaz_info = {
         "resources": [
+<<<<<<< HEAD
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/l3isolationdomains/{}/internalnetworks/{}", "2024-02-15-preview"],
+=======
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/l3isolationdomains/{}/internalnetworks/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -45,12 +49,24 @@ class Wait(AAZWaitCommand):
             help="Name of the Internal Network.",
             required=True,
             id_part="child_name_1",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.l3_isolation_domain_name = AAZStrArg(
             options=["--l3domain", "--l3-isolation-domain-name"],
             help="Name of the L3 Isolation Domain.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -126,7 +142,11 @@ class Wait(AAZWaitCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -197,6 +217,7 @@ class Wait(AAZWaitCommand):
             )
             properties.egress_acl_id = AAZStrType(
                 serialized_name="egressAclId",
+<<<<<<< HEAD
                 nullable=True,
             )
             properties.export_route_policy = AAZObjectType(
@@ -206,10 +227,16 @@ class Wait(AAZWaitCommand):
             properties.export_route_policy_id = AAZStrType(
                 serialized_name="exportRoutePolicyId",
                 nullable=True,
+=======
+            )
+            properties.export_route_policy = AAZObjectType(
+                serialized_name="exportRoutePolicy",
+>>>>>>> upstream/main
             )
             properties.extension = AAZStrType()
             properties.import_route_policy = AAZObjectType(
                 serialized_name="importRoutePolicy",
+<<<<<<< HEAD
                 nullable=True,
             )
             properties.import_route_policy_id = AAZStrType(
@@ -219,11 +246,30 @@ class Wait(AAZWaitCommand):
             properties.ingress_acl_id = AAZStrType(
                 serialized_name="ingressAclId",
                 nullable=True,
+=======
+            )
+            properties.ingress_acl_id = AAZStrType(
+                serialized_name="ingressAclId",
+>>>>>>> upstream/main
             )
             properties.is_monitoring_enabled = AAZStrType(
                 serialized_name="isMonitoringEnabled",
             )
+<<<<<<< HEAD
             properties.mtu = AAZIntType()
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+            properties.mtu = AAZIntType()
+            properties.native_ipv4_prefix_limit = AAZObjectType(
+                serialized_name="nativeIpv4PrefixLimit",
+            )
+            properties.native_ipv6_prefix_limit = AAZObjectType(
+                serialized_name="nativeIpv6PrefixLimit",
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -248,6 +294,12 @@ class Wait(AAZWaitCommand):
                 serialized_name="bfdConfiguration",
             )
             _WaitHelper._build_schema_bfd_configuration_read(bgp_configuration.bfd_configuration)
+<<<<<<< HEAD
+=======
+            bgp_configuration.bmp_configuration = AAZObjectType(
+                serialized_name="bmpConfiguration",
+            )
+>>>>>>> upstream/main
             bgp_configuration.default_route_originate = AAZStrType(
                 serialized_name="defaultRouteOriginate",
             )
@@ -271,6 +323,26 @@ class Wait(AAZWaitCommand):
                 serialized_name="peerASN",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            bgp_configuration.v4_over_v6_bgp_session = AAZStrType(
+                serialized_name="v4OverV6BgpSession",
+            )
+            bgp_configuration.v6_over_v4_bgp_session = AAZStrType(
+                serialized_name="v6OverV4BgpSession",
+            )
+
+            bmp_configuration = cls._schema_on_200.properties.bgp_configuration.bmp_configuration
+            bmp_configuration.bmp_configuration_state = AAZStrType(
+                serialized_name="bmpConfigurationState",
+            )
+            bmp_configuration.neighbor_ip_exclusions = AAZListType(
+                serialized_name="neighborIpExclusions",
+            )
+
+            neighbor_ip_exclusions = cls._schema_on_200.properties.bgp_configuration.bmp_configuration.neighbor_ip_exclusions
+            neighbor_ip_exclusions.Element = AAZStrType()
+>>>>>>> upstream/main
 
             ipv4_listen_range_prefixes = cls._schema_on_200.properties.bgp_configuration.ipv4_listen_range_prefixes
             ipv4_listen_range_prefixes.Element = AAZStrType()
@@ -297,16 +369,23 @@ class Wait(AAZWaitCommand):
             export_route_policy = cls._schema_on_200.properties.export_route_policy
             export_route_policy.export_ipv4_route_policy_id = AAZStrType(
                 serialized_name="exportIpv4RoutePolicyId",
+<<<<<<< HEAD
                 nullable=True,
             )
             export_route_policy.export_ipv6_route_policy_id = AAZStrType(
                 serialized_name="exportIpv6RoutePolicyId",
                 nullable=True,
+=======
+            )
+            export_route_policy.export_ipv6_route_policy_id = AAZStrType(
+                serialized_name="exportIpv6RoutePolicyId",
+>>>>>>> upstream/main
             )
 
             import_route_policy = cls._schema_on_200.properties.import_route_policy
             import_route_policy.import_ipv4_route_policy_id = AAZStrType(
                 serialized_name="importIpv4RoutePolicyId",
+<<<<<<< HEAD
                 nullable=True,
             )
             import_route_policy.import_ipv6_route_policy_id = AAZStrType(
@@ -314,6 +393,36 @@ class Wait(AAZWaitCommand):
                 nullable=True,
             )
 
+=======
+            )
+            import_route_policy.import_ipv6_route_policy_id = AAZStrType(
+                serialized_name="importIpv6RoutePolicyId",
+            )
+
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+            native_ipv4_prefix_limit = cls._schema_on_200.properties.native_ipv4_prefix_limit
+            native_ipv4_prefix_limit.prefix_limits = AAZListType(
+                serialized_name="prefixLimits",
+            )
+
+            prefix_limits = cls._schema_on_200.properties.native_ipv4_prefix_limit.prefix_limits
+            prefix_limits.Element = AAZObjectType()
+            _WaitHelper._build_schema_prefix_limit_properties_read(prefix_limits.Element)
+
+            native_ipv6_prefix_limit = cls._schema_on_200.properties.native_ipv6_prefix_limit
+            native_ipv6_prefix_limit.prefix_limits = AAZListType(
+                serialized_name="prefixLimits",
+            )
+
+            prefix_limits = cls._schema_on_200.properties.native_ipv6_prefix_limit.prefix_limits
+            prefix_limits.Element = AAZObjectType()
+            _WaitHelper._build_schema_prefix_limit_properties_read(prefix_limits.Element)
+
+>>>>>>> upstream/main
             static_route_configuration = cls._schema_on_200.properties.static_route_configuration
             static_route_configuration.bfd_configuration = AAZObjectType(
                 serialized_name="bfdConfiguration",
@@ -413,6 +522,11 @@ class _WaitHelper:
     def _build_schema_neighbor_address_read(cls, _schema):
         if cls._schema_neighbor_address_read is not None:
             _schema.address = cls._schema_neighbor_address_read.address
+<<<<<<< HEAD
+=======
+            _schema.bfd_administrative_state = cls._schema_neighbor_address_read.bfd_administrative_state
+            _schema.bgp_administrative_state = cls._schema_neighbor_address_read.bgp_administrative_state
+>>>>>>> upstream/main
             _schema.configuration_state = cls._schema_neighbor_address_read.configuration_state
             return
 
@@ -420,14 +534,57 @@ class _WaitHelper:
 
         neighbor_address_read = _schema_neighbor_address_read
         neighbor_address_read.address = AAZStrType()
+<<<<<<< HEAD
+=======
+        neighbor_address_read.bfd_administrative_state = AAZStrType(
+            serialized_name="bfdAdministrativeState",
+            flags={"read_only": True},
+        )
+        neighbor_address_read.bgp_administrative_state = AAZStrType(
+            serialized_name="bgpAdministrativeState",
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
         neighbor_address_read.configuration_state = AAZStrType(
             serialized_name="configurationState",
             flags={"read_only": True},
         )
 
         _schema.address = cls._schema_neighbor_address_read.address
+<<<<<<< HEAD
         _schema.configuration_state = cls._schema_neighbor_address_read.configuration_state
 
+=======
+        _schema.bfd_administrative_state = cls._schema_neighbor_address_read.bfd_administrative_state
+        _schema.bgp_administrative_state = cls._schema_neighbor_address_read.bgp_administrative_state
+        _schema.configuration_state = cls._schema_neighbor_address_read.configuration_state
+
+    _schema_prefix_limit_properties_read = None
+
+    @classmethod
+    def _build_schema_prefix_limit_properties_read(cls, _schema):
+        if cls._schema_prefix_limit_properties_read is not None:
+            _schema.idle_time_expiry = cls._schema_prefix_limit_properties_read.idle_time_expiry
+            _schema.maximum_routes = cls._schema_prefix_limit_properties_read.maximum_routes
+            _schema.threshold = cls._schema_prefix_limit_properties_read.threshold
+            return
+
+        cls._schema_prefix_limit_properties_read = _schema_prefix_limit_properties_read = AAZObjectType()
+
+        prefix_limit_properties_read = _schema_prefix_limit_properties_read
+        prefix_limit_properties_read.idle_time_expiry = AAZIntType(
+            serialized_name="idleTimeExpiry",
+        )
+        prefix_limit_properties_read.maximum_routes = AAZIntType(
+            serialized_name="maximumRoutes",
+        )
+        prefix_limit_properties_read.threshold = AAZIntType()
+
+        _schema.idle_time_expiry = cls._schema_prefix_limit_properties_read.idle_time_expiry
+        _schema.maximum_routes = cls._schema_prefix_limit_properties_read.maximum_routes
+        _schema.threshold = cls._schema_prefix_limit_properties_read.threshold
+
+>>>>>>> upstream/main
     _schema_static_route_properties_read = None
 
     @classmethod

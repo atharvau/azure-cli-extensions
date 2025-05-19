@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
     "azext.isPreview": true,
     "azext.minCliCoreVersion": "2.67.0"
 }
+=======
+    "azext.minCliCoreVersion": "2.61.0"
+}
+>>>>>>> upstream/main

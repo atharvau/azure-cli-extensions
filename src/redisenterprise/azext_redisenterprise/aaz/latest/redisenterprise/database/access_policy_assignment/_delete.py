@@ -24,9 +24,15 @@ class Delete(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-09-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/accesspolicyassignments/{}", "2024-09-01-preview"],
+=======
+        "version": "2025-05-01-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/accesspolicyassignments/{}", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -62,7 +68,11 @@ class Delete(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.database_name = AAZStrArg(
@@ -71,7 +81,11 @@ class Delete(AAZCommand):
             required=True,
             id_part="child_name_1",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]{1,60}$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -173,7 +187,11 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

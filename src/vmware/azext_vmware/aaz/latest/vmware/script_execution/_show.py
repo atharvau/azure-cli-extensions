@@ -50,7 +50,11 @@ class Show(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -62,7 +66,11 @@ class Show(AAZCommand):
             required=True,
             id_part="child_name_1",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         return cls._args_schema
@@ -242,7 +250,11 @@ class Show(AAZCommand):
             information.Element = AAZStrType()
 
             named_outputs = cls._schema_on_200.properties.named_outputs
+<<<<<<< HEAD
             named_outputs.Element = AAZObjectType()
+=======
+            named_outputs.Element = AAZFreeFormDictType()
+>>>>>>> upstream/main
 
             output = cls._schema_on_200.properties.output
             output.Element = AAZStrType()

@@ -50,7 +50,11 @@ class Show(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -62,7 +66,11 @@ class Show(AAZCommand):
             required=True,
             id_part="child_name_2",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         return cls._args_schema
@@ -196,6 +204,10 @@ class Show(AAZCommand):
             )
             properties.vm_type = AAZStrType(
                 serialized_name="vmType",
+<<<<<<< HEAD
+=======
+                flags={"read_only": True},
+>>>>>>> upstream/main
             )
 
             system_data = cls._schema_on_200.system_data

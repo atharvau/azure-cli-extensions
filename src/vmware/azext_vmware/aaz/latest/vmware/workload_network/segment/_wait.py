@@ -46,7 +46,11 @@ class Wait(AAZWaitCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -58,7 +62,11 @@ class Wait(AAZWaitCommand):
             required=True,
             id_part="child_name_2",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         return cls._args_schema
@@ -198,7 +206,13 @@ class Wait(AAZWaitCommand):
                 flags={"read_only": True},
             )
             properties.revision = AAZIntType()
+<<<<<<< HEAD
             properties.status = AAZStrType()
+=======
+            properties.status = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.subnet = AAZObjectType()
 
             port_vif = cls._schema_on_200.properties.port_vif

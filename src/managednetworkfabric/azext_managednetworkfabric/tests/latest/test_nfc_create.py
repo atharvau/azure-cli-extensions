@@ -37,8 +37,13 @@ def step_create(test, checks=None):
         checks = []
     test.cmd(
         "az networkfabric controller create --resource-group {rg} --location {location}  --resource-name {name}"
+<<<<<<< HEAD
         " --ipv4-address-space {ipv4AddressSpace} --is-workload-management-network-enabled {isWorkloadManagementNetworkEnabled} --nfc-sku {nfcSku}"
         " --infra-er-connections {infraERConnections} --workload-er-connections {workloadERConnections}",
+=======
+        " --ipv4-address-space {ipv4AddressSpace} --ipv6-address-space {ipv6AddressSpace} --is-workload-management-network-enabled {isWorkloadManagementNetworkEnabled} --nfc-sku {nfcSku}"
+        " --infra-er-connections {infraERConnections} --workload-er-connections {workloadERConnections} --mrg name={managedResourceGroupName} --mrg location={managedResourceGroupLocation}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -62,6 +67,12 @@ class GA_NFCCreateScenarioTest1(ScenarioTest):
                 "ipv4AddressSpace": CONFIG.get(
                     "NETWORK_FABRIC_CONTROLLER", "ipv4_address_space"
                 ),
+<<<<<<< HEAD
+=======
+                "ipv6AddressSpace": CONFIG.get(
+                    "NETWORK_FABRIC_CONTROLLER", "ipv6_address_space"
+                ),
+>>>>>>> upstream/main
                 "isWorkloadManagementNetworkEnabled": CONFIG.get(
                     "NETWORK_FABRIC_CONTROLLER",
                     "is_workload_management_network_enabled",
@@ -70,6 +81,15 @@ class GA_NFCCreateScenarioTest1(ScenarioTest):
                     "NETWORK_FABRIC_CONTROLLER", "delete_nfc_name"
                 ),
                 "nfcSku": CONFIG.get("NETWORK_FABRIC_CONTROLLER", "nfc_sku"),
+<<<<<<< HEAD
+=======
+                "managedResourceGroupName": CONFIG.get(
+                    "NETWORK_FABRIC_CONTROLLER", "mrg_name"
+                ),
+                "managedResourceGroupLocation": CONFIG.get(
+                    "NETWORK_FABRIC_CONTROLLER", "mrg_location"
+                ),
+>>>>>>> upstream/main
             }
         )
 

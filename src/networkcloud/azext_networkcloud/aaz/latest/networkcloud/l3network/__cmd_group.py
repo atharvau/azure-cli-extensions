@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command_group(
     "networkcloud l3network",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class __CMDGroup(AAZCommandGroup):
     """Manage layer 3 (l3) network

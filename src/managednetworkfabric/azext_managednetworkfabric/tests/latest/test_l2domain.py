@@ -43,7 +43,12 @@ def step_create(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric l2domain create --resource-group {rg} --resource-name {name} --location {location} --nf-id {nf_id} --vlan-id {vlan_id} --mtu {mtu}",
+=======
+        "az networkfabric l2domain create --resource-group {rg} --resource-name {name} --location {location} --nf-id {nfId}"
+        " --vlan-id {vlanId} --mtu {mtu} --extended-vlan {extendedVlan}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -62,7 +67,11 @@ def step_update(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric l2domain update --resource-group {rg} --resource-name {name} --mtu {updated_mtu}",
+=======
+        "az networkfabric l2domain update --resource-group {rg} --resource-name {name} --mtu {updatedMtu} --nni-id {nniId}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -86,7 +95,11 @@ def step_update_admin_state_Enable(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric l2domain update-admin-state --resource-group {rg} --resource-name {name} --state {state_Enable}"
+=======
+        "az networkfabric l2domain update-admin-state --resource-group {rg} --resource-name {name} --state {stateEnable}"
+>>>>>>> upstream/main
     )
 
 
@@ -95,7 +108,11 @@ def step_update_admin_state_Disable(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric l2domain update-admin-state --resource-group {rg} --resource-name {name} --state {state_Disable}"
+=======
+        "az networkfabric l2domain update-admin-state --resource-group {rg} --resource-name {name} --state {stateDisable}"
+>>>>>>> upstream/main
     )
 
 
@@ -118,12 +135,23 @@ class GA_L2DomainScenarioTest1(ScenarioTest):
                 "name": CONFIG.get("L2_ISOLATION_DOMAIN", "name"),
                 "rg": CONFIG.get("L2_ISOLATION_DOMAIN", "resource_group"),
                 "location": CONFIG.get("L2_ISOLATION_DOMAIN", "location"),
+<<<<<<< HEAD
                 "nf_id": CONFIG.get("L2_ISOLATION_DOMAIN", "nf_id"),
                 "mtu": CONFIG.get("L2_ISOLATION_DOMAIN", "mtu"),
                 "vlan_id": CONFIG.get("L2_ISOLATION_DOMAIN", "vlan_id"),
                 "updated_mtu": CONFIG.get("L2_ISOLATION_DOMAIN", "updated_mtu"),
                 "state_Enable": CONFIG.get("L2_ISOLATION_DOMAIN", "state_Enable"),
                 "state_Disable": CONFIG.get("L2_ISOLATION_DOMAIN", "state_Disable"),
+=======
+                "nfId": CONFIG.get("L2_ISOLATION_DOMAIN", "nf_id"),
+                "mtu": CONFIG.get("L2_ISOLATION_DOMAIN", "mtu"),
+                "vlanId": CONFIG.get("L2_ISOLATION_DOMAIN", "vlan_id"),
+                "updatedMtu": CONFIG.get("L2_ISOLATION_DOMAIN", "updated_mtu"),
+                "stateEnable": CONFIG.get("L2_ISOLATION_DOMAIN", "state_enable"),
+                "stateDisable": CONFIG.get("L2_ISOLATION_DOMAIN", "state_disable"),
+                "nniId": CONFIG.get("L2_ISOLATION_DOMAIN", "nni_id"),
+                "extendedVlan": CONFIG.get("L2_ISOLATION_DOMAIN", "extended_vlan"),
+>>>>>>> upstream/main
             }
         )
 

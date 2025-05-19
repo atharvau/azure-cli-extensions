@@ -17,16 +17,28 @@ from azure.cli.core.aaz import *
     confirmation="Are you sure you want to perform this operation?",
 )
 class Delete(AAZCommand):
+<<<<<<< HEAD
     """Delete a Neon Resource
 
     :example: Organizations_Delete
+=======
+    """Delete a Neon Postgres Organization
+
+    :example: Delete Neon Postgres Organization
+>>>>>>> upstream/main
         az neon postgres organization delete --subscription 12345678-1234-1234-1234-123456789abc --resource-group demoResourceGroup --name demoNeonResource
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/neon.postgres/organizations/{}", "2024-08-01-preview"],
+=======
+        "version": "2025-03-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/neon.postgres/organizations/{}", "2025-03-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -49,7 +61,11 @@ class Delete(AAZCommand):
         _args_schema = cls._args_schema
         _args_schema.name = AAZStrArg(
             options=["-n", "--name"],
+<<<<<<< HEAD
             help="Name of the Neon resource",
+=======
+            help="Name of the Neon organization",
+>>>>>>> upstream/main
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
@@ -59,7 +75,11 @@ class Delete(AAZCommand):
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
+<<<<<<< HEAD
             help="Name of the Resource Group",
+=======
+            help="The name of the Azure resource group",
+>>>>>>> upstream/main
             required=True,
         )
         return cls._args_schema
@@ -150,7 +170,11 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-08-01-preview",
+=======
+                    "api-version", "2025-03-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

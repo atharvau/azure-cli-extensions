@@ -15,16 +15,28 @@ from azure.cli.core.aaz import *
     "network perimeter logging-configuration show",
 )
 class Show(AAZCommand):
+<<<<<<< HEAD
     """Get NSP logging configuration.
 
     :example: Get Nsp Logging Configuration
+=======
+    """Get a network security perimeter logging configuration.
+
+    :example: Get a network security perimeter logging configuration
+>>>>>>> upstream/main
         az network perimeter logging-configuration show --resource-group rg1 --perimeter-name nsp1
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/loggingconfigurations/{}", "2023-08-01-preview"],
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/loggingconfigurations/{}", "2024-07-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,12 +62,26 @@ class Show(AAZCommand):
             required=True,
             id_part="child_name_1",
             default="instance",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -64,7 +90,11 @@ class Show(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         self.NspLoggingConfigurationGet(ctx=self.ctx)()
+=======
+        self.NetworkSecurityPerimeterLoggingConfigurationsGet(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -79,7 +109,11 @@ class Show(AAZCommand):
         result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
         return result
 
+<<<<<<< HEAD
     class NspLoggingConfigurationGet(AAZHttpOperation):
+=======
+    class NetworkSecurityPerimeterLoggingConfigurationsGet(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -131,7 +165,11 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -164,16 +202,29 @@ class Show(AAZCommand):
             cls._schema_on_200 = AAZObjectType()
 
             _schema_on_200 = cls._schema_on_200
+<<<<<<< HEAD
             _schema_on_200.etag = AAZStrType(
                 flags={"read_only": True},
             )
+=======
+>>>>>>> upstream/main
             _schema_on_200.id = AAZStrType(
                 flags={"read_only": True},
             )
             _schema_on_200.name = AAZStrType(
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
             _schema_on_200.properties = AAZObjectType()
+=======
+            _schema_on_200.properties = AAZObjectType(
+                flags={"client_flatten": True},
+            )
+            _schema_on_200.system_data = AAZObjectType(
+                serialized_name="systemData",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             _schema_on_200.type = AAZStrType(
                 flags={"read_only": True},
             )
@@ -187,6 +238,29 @@ class Show(AAZCommand):
             enabled_log_categories = cls._schema_on_200.properties.enabled_log_categories
             enabled_log_categories.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            system_data = cls._schema_on_200.system_data
+            system_data.created_at = AAZStrType(
+                serialized_name="createdAt",
+            )
+            system_data.created_by = AAZStrType(
+                serialized_name="createdBy",
+            )
+            system_data.created_by_type = AAZStrType(
+                serialized_name="createdByType",
+            )
+            system_data.last_modified_at = AAZStrType(
+                serialized_name="lastModifiedAt",
+            )
+            system_data.last_modified_by = AAZStrType(
+                serialized_name="lastModifiedBy",
+            )
+            system_data.last_modified_by_type = AAZStrType(
+                serialized_name="lastModifiedByType",
+            )
+
+>>>>>>> upstream/main
             return cls._schema_on_200
 
 

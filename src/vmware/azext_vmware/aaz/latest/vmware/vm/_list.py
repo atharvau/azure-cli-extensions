@@ -50,7 +50,11 @@ class List(AAZCommand):
             help="Name of the cluster in the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -58,7 +62,11 @@ class List(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -216,6 +224,10 @@ class List(AAZCommand):
             )
             properties.restrict_movement = AAZStrType(
                 serialized_name="restrictMovement",
+<<<<<<< HEAD
+=======
+                flags={"read_only": True},
+>>>>>>> upstream/main
             )
 
             system_data = cls._schema_on_200.value.Element.system_data

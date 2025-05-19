@@ -20,7 +20,11 @@ class Wait(AAZWaitCommand):
 
     _aaz_info = {
         "resources": [
+<<<<<<< HEAD
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/ipextendedcommunities/{}", "2024-02-15-preview"],
+=======
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/ipextendedcommunities/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -45,6 +49,12 @@ class Wait(AAZWaitCommand):
             help="Name of the IP Extended Community.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -116,7 +126,11 @@ class Wait(AAZWaitCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -184,6 +198,17 @@ class Wait(AAZWaitCommand):
                 serialized_name="ipExtendedCommunityRules",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+            properties.network_fabric_id = AAZStrType(
+                serialized_name="networkFabricId",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -208,6 +233,14 @@ class Wait(AAZWaitCommand):
             route_targets = cls._schema_on_200.properties.ip_extended_community_rules.Element.route_targets
             route_targets.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

@@ -50,7 +50,11 @@ class List(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -195,6 +199,10 @@ class List(AAZCommand):
             )
             properties.vm_type = AAZStrType(
                 serialized_name="vmType",
+<<<<<<< HEAD
+=======
+                flags={"read_only": True},
+>>>>>>> upstream/main
             )
 
             system_data = cls._schema_on_200.value.Element.system_data

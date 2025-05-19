@@ -28,7 +28,11 @@ def base_url(location):
 def _get_data_credentials(cli_ctx, subscription_id=None):
     from azure.cli.core._profile import Profile
     profile = Profile(cli_ctx=cli_ctx)
+<<<<<<< HEAD
     creds, _, _ = profile.get_login_credentials(subscription_id=subscription_id, resource="https://quantum.microsoft.com")
+=======
+    creds, _, _ = profile.get_login_credentials(subscription_id=subscription_id)
+>>>>>>> upstream/main
     return creds
 
 
@@ -38,7 +42,10 @@ def get_appid():
 
 # Control Plane clients
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 def cf_quantum_mgmt(cli_ctx, *_):
     from azure.cli.core.commands.client_factory import get_mgmt_service_client
     from .vendored_sdks.azure_mgmt_quantum import AzureQuantumManagementClient
@@ -62,6 +69,7 @@ def cf_offerings(cli_ctx, *_):
 
 # Data Plane clients
 
+<<<<<<< HEAD
 def cf_quantum(cli_ctx, subscription_id=None, resource_group_name=None, workspace_name=None, location=None):
     from .vendored_sdks.azure_quantum import QuantumClient
     creds = _get_data_credentials(cli_ctx, subscription_id)
@@ -79,6 +87,24 @@ def cf_jobs(cli_ctx, subscription_id=None, resource_group_name=None, workspace_n
 
 def cf_quotas(cli_ctx, subscription_id=None, resource_group_name=None, workspace_name=None, location=None):
     return cf_quantum(cli_ctx, subscription_id, resource_group_name, workspace_name, location).quotas
+=======
+def cf_quantum(cli_ctx, subscription_id=None, location=None):
+    from .vendored_sdks.azure_quantum import ServicesClient
+    creds = _get_data_credentials(cli_ctx, subscription_id)
+    return ServicesClient(location, creds)
+
+
+def cf_providers(cli_ctx, subscription_id=None, location=None):
+    return cf_quantum(cli_ctx, subscription_id, location).providers
+
+
+def cf_jobs(cli_ctx, subscription_id=None, location=None):
+    return cf_quantum(cli_ctx, subscription_id, location).jobs
+
+
+def cf_quotas(cli_ctx, subscription_id=None, location=None):
+    return cf_quantum(cli_ctx, subscription_id, location).quotas
+>>>>>>> upstream/main
 
 
 # Helper clients

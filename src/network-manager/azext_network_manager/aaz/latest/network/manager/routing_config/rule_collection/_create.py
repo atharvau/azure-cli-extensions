@@ -23,9 +23,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-03-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections/{}", "2023-03-01-preview"],
+=======
+        "version": "2024-05-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections/{}", "2024-05-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -91,12 +97,16 @@ class Create(AAZCommand):
             arg_group="Properties",
             help="Determines whether BGP route propagation is enabled. Defaults to true.",
             default="true",
+<<<<<<< HEAD
         )
         _args_schema.local_route_setting = AAZStrArg(
             options=["--local-route-setting"],
             arg_group="Properties",
             help="Indicates local route setting for this particular rule collection.",
             enum={"DirectRoutingWithinSubnet": "DirectRoutingWithinSubnet", "DirectRoutingWithinVNet": "DirectRoutingWithinVNet", "NotSpecified": "NotSpecified"},
+=======
+            enum={"False": "False", "True": "True"},
+>>>>>>> upstream/main
         )
 
         applies_to = cls._args_schema.applies_to
@@ -183,7 +193,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-03-01-preview",
+=======
+                    "api-version", "2024-05-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -215,7 +229,10 @@ class Create(AAZCommand):
                 properties.set_prop("appliesTo", AAZListType, ".applies_to", typ_kwargs={"flags": {"required": True}})
                 properties.set_prop("description", AAZStrType, ".description")
                 properties.set_prop("disableBgpRoutePropagation", AAZStrType, ".disable_bgp_route")
+<<<<<<< HEAD
                 properties.set_prop("localRouteSetting", AAZStrType, ".local_route_setting", typ_kwargs={"flags": {"required": True}})
+=======
+>>>>>>> upstream/main
 
             applies_to = _builder.get(".properties.appliesTo")
             if applies_to is not None:
@@ -274,10 +291,13 @@ class Create(AAZCommand):
             properties.disable_bgp_route_propagation = AAZStrType(
                 serialized_name="disableBgpRoutePropagation",
             )
+<<<<<<< HEAD
             properties.local_route_setting = AAZStrType(
                 serialized_name="localRouteSetting",
                 flags={"required": True},
             )
+=======
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},

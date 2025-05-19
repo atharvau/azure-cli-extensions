@@ -50,7 +50,11 @@ class Create(AAZCommand):
             help="NSX DNS Service identifier. Generally the same as the DNS Service's display name",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -58,7 +62,11 @@ class Create(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -287,7 +295,13 @@ class Create(AAZCommand):
                 flags={"read_only": True},
             )
             properties.revision = AAZIntType()
+<<<<<<< HEAD
             properties.status = AAZStrType()
+=======
+            properties.status = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
 
             fqdn_zones = cls._schema_on_200_201.properties.fqdn_zones
             fqdn_zones.Element = AAZStrType()

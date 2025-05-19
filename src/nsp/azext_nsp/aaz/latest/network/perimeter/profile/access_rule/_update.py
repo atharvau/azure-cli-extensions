@@ -15,16 +15,28 @@ from azure.cli.core.aaz import *
     "network perimeter profile access-rule update",
 )
 class Update(AAZCommand):
+<<<<<<< HEAD
     """Creates or updates a network access rule.
 
     :example: Update access rule
+=======
+    """Create or update a network security perimeter profile access rule.
+
+    :example: Update a network security perimeter profile access rule
+>>>>>>> upstream/main
         az network perimeter profile access-rule update -n MyAccessRule --profile-name MyProfile --perimeter-name MyPerimeter -g MyResourceGroup --address-prefixes "[10.10.0.0/16]"
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/profiles/{}/accessrules/{}", "2023-08-01-preview"],
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/profiles/{}/accessrules/{}", "2024-07-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -51,23 +63,45 @@ class Update(AAZCommand):
             help="The name of the NSP access rule.",
             required=True,
             id_part="child_name_2",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.profile_name = AAZStrArg(
             options=["--profile-name"],
             help="The name of the NSP profile.",
             required=True,
             id_part="child_name_1",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Parameters"
 
         _args_schema = cls._args_schema
@@ -91,6 +125,8 @@ class Update(AAZCommand):
             nullable=True,
         )
 
+=======
+>>>>>>> upstream/main
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
@@ -110,25 +146,41 @@ class Update(AAZCommand):
         _args_schema.email_addresses = AAZListArg(
             options=["--email-addresses"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Outbound rules email address format.",
+=======
+            help="Outbound rules in email address format. This access rule type is currently unavailable for use",
+>>>>>>> upstream/main
             nullable=True,
         )
         _args_schema.fqdn = AAZListArg(
             options=["--fqdn"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Outbound rules fully qualified domain name format.",
+=======
+            help="Outbound rules in fully qualified domain name format.",
+>>>>>>> upstream/main
             nullable=True,
         )
         _args_schema.phone_numbers = AAZListArg(
             options=["--phone-numbers"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Outbound rules phone number format.",
+=======
+            help="Outbound rules in phone number format. This access rule type is currently unavailable for use",
+>>>>>>> upstream/main
             nullable=True,
         )
         _args_schema.service_tags = AAZListArg(
             options=["--service-tags"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Inbound rules service tag names.",
+=======
+            help="Inbound rules of type service tag. This access rule type is currently unavailable for use.",
+>>>>>>> upstream/main
             nullable=True,
         )
         _args_schema.subscriptions = AAZListArg(
@@ -169,7 +221,11 @@ class Update(AAZCommand):
         )
 
         _element = cls._args_schema.subscriptions.Element
+<<<<<<< HEAD
         _element.id = AAZStrArg(
+=======
+        _element.id = AAZResourceIdArg(
+>>>>>>> upstream/main
             options=["id"],
             help="Subscription ID in the ARM ID fromat.",
             nullable=True,
@@ -178,12 +234,20 @@ class Update(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         self.NspAccessRulesGet(ctx=self.ctx)()
+=======
+        self.NetworkSecurityPerimeterAccessRulesGet(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.pre_instance_update(self.ctx.vars.instance)
         self.InstanceUpdateByJson(ctx=self.ctx)()
         self.InstanceUpdateByGeneric(ctx=self.ctx)()
         self.post_instance_update(self.ctx.vars.instance)
+<<<<<<< HEAD
         self.NspAccessRulesCreateOrUpdate(ctx=self.ctx)()
+=======
+        self.NetworkSecurityPerimeterAccessRulesCreateOrUpdate(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -203,10 +267,17 @@ class Update(AAZCommand):
         pass
 
     def _output(self, *args, **kwargs):
+<<<<<<< HEAD
         result = self.deserialize_output(self.ctx.vars.instance, client_flatten=False)
         return result
 
     class NspAccessRulesGet(AAZHttpOperation):
+=======
+        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
+        return result
+
+    class NetworkSecurityPerimeterAccessRulesGet(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -262,7 +333,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -297,7 +372,11 @@ class Update(AAZCommand):
 
             return cls._schema_on_200
 
+<<<<<<< HEAD
     class NspAccessRulesCreateOrUpdate(AAZHttpOperation):
+=======
+    class NetworkSecurityPerimeterAccessRulesCreateOrUpdate(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -353,7 +432,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -411,10 +494,14 @@ class Update(AAZCommand):
                 value=instance,
                 typ=AAZObjectType
             )
+<<<<<<< HEAD
             _builder.set_prop("location", AAZStrType, ".location")
             _builder.set_prop("name", AAZStrType, ".access_rule_name")
             _builder.set_prop("properties", AAZObjectType)
             _builder.set_prop("tags", AAZDictType, ".tags")
+=======
+            _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+>>>>>>> upstream/main
 
             properties = _builder.get(".properties")
             if properties is not None:
@@ -454,10 +541,13 @@ class Update(AAZCommand):
             if _elements is not None:
                 _elements.set_prop("id", AAZStrType, ".id")
 
+<<<<<<< HEAD
             tags = _builder.get(".tags")
             if tags is not None:
                 tags.set_elements(AAZStrType, ".")
 
+=======
+>>>>>>> upstream/main
             return _instance_value
 
     class InstanceUpdateByGeneric(AAZGenericInstanceUpdateOperation):
@@ -478,10 +568,16 @@ class _UpdateHelper:
     def _build_schema_nsp_access_rule_read(cls, _schema):
         if cls._schema_nsp_access_rule_read is not None:
             _schema.id = cls._schema_nsp_access_rule_read.id
+<<<<<<< HEAD
             _schema.location = cls._schema_nsp_access_rule_read.location
             _schema.name = cls._schema_nsp_access_rule_read.name
             _schema.properties = cls._schema_nsp_access_rule_read.properties
             _schema.tags = cls._schema_nsp_access_rule_read.tags
+=======
+            _schema.name = cls._schema_nsp_access_rule_read.name
+            _schema.properties = cls._schema_nsp_access_rule_read.properties
+            _schema.system_data = cls._schema_nsp_access_rule_read.system_data
+>>>>>>> upstream/main
             _schema.type = cls._schema_nsp_access_rule_read.type
             return
 
@@ -491,10 +587,23 @@ class _UpdateHelper:
         nsp_access_rule_read.id = AAZStrType(
             flags={"read_only": True},
         )
+<<<<<<< HEAD
         nsp_access_rule_read.location = AAZStrType()
         nsp_access_rule_read.name = AAZStrType()
         nsp_access_rule_read.properties = AAZObjectType()
         nsp_access_rule_read.tags = AAZDictType()
+=======
+        nsp_access_rule_read.name = AAZStrType(
+            flags={"read_only": True},
+        )
+        nsp_access_rule_read.properties = AAZObjectType(
+            flags={"client_flatten": True},
+        )
+        nsp_access_rule_read.system_data = AAZObjectType(
+            serialized_name="systemData",
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
         nsp_access_rule_read.type = AAZStrType(
             flags={"read_only": True},
         )
@@ -562,6 +671,7 @@ class _UpdateHelper:
         _element = _schema_nsp_access_rule_read.properties.subscriptions.Element
         _element.id = AAZStrType()
 
+<<<<<<< HEAD
         tags = _schema_nsp_access_rule_read.tags
         tags.Element = AAZStrType()
 
@@ -570,6 +680,32 @@ class _UpdateHelper:
         _schema.name = cls._schema_nsp_access_rule_read.name
         _schema.properties = cls._schema_nsp_access_rule_read.properties
         _schema.tags = cls._schema_nsp_access_rule_read.tags
+=======
+        system_data = _schema_nsp_access_rule_read.system_data
+        system_data.created_at = AAZStrType(
+            serialized_name="createdAt",
+        )
+        system_data.created_by = AAZStrType(
+            serialized_name="createdBy",
+        )
+        system_data.created_by_type = AAZStrType(
+            serialized_name="createdByType",
+        )
+        system_data.last_modified_at = AAZStrType(
+            serialized_name="lastModifiedAt",
+        )
+        system_data.last_modified_by = AAZStrType(
+            serialized_name="lastModifiedBy",
+        )
+        system_data.last_modified_by_type = AAZStrType(
+            serialized_name="lastModifiedByType",
+        )
+
+        _schema.id = cls._schema_nsp_access_rule_read.id
+        _schema.name = cls._schema_nsp_access_rule_read.name
+        _schema.properties = cls._schema_nsp_access_rule_read.properties
+        _schema.system_data = cls._schema_nsp_access_rule_read.system_data
+>>>>>>> upstream/main
         _schema.type = cls._schema_nsp_access_rule_read.type
 
 

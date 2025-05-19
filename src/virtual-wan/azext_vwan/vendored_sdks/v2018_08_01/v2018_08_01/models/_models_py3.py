@@ -3324,7 +3324,11 @@ class BGPCommunity(msrest.serialization.Model):
     :param community_name: The name of the bgp community. e.g. Skype.
     :type community_name: str
     :param community_value: The value of the bgp community. For more information:
+<<<<<<< HEAD
      https://docs.microsoft.com/en-us/azure/expressroute/expressroute-routing.
+=======
+     https://learn.microsoft.com/en-us/azure/expressroute/expressroute-routing.
+>>>>>>> upstream/main
     :type community_value: str
     :param community_prefixes: The prefixes that the bgp community contains.
     :type community_prefixes: list[str]
@@ -14428,7 +14432,11 @@ class VirtualNetworkPeering(SubResource):
     :type use_remote_gateways: bool
     :param remote_virtual_network: The reference of the remote virtual network. The remote virtual
      network can be in the same or different region (preview). See here to register for the preview
+<<<<<<< HEAD
      and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-
+=======
+     and learn more (https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-create-
+>>>>>>> upstream/main
      peering).
     :type remote_virtual_network: ~azure.mgmt.network.v2018_08_01.models.SubResource
     :param remote_address_space: The reference of the remote virtual network address space.

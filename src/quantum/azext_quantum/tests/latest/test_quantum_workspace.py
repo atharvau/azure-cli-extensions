@@ -58,6 +58,10 @@ class TestProviderDescription:
 class QuantumWorkspacesScenarioTest(ScenarioTest):
 
     @AllowLargeResponse()
+<<<<<<< HEAD
+=======
+    @live_only()
+>>>>>>> upstream/main
     def test_workspace(self):
         print("test_workspace")
         # clear
@@ -106,6 +110,20 @@ class QuantumWorkspacesScenarioTest(ScenarioTest):
                 self.check("properties.provisioningState", "Accepted")  # Status is accepted since we're not linking the storage account.
             ])
 
+<<<<<<< HEAD
+=======
+            # set
+            self.cmd(f'az quantum workspace set -g {test_resource_group} -w {test_workspace_temp} -l {test_location} -o json', checks=[
+                self.check("name", test_workspace_temp)
+            ])
+
+            # list quotas
+            results = self.cmd('az quantum workspace quotas -o json').get_output_in_json()
+            assert len(results) > 0
+            assert len(results[0]["dimension"]) > 0
+            assert (results[0]["holds"]) >= 0.0
+
+>>>>>>> upstream/main
             # delete
             self.cmd(f'az quantum workspace delete -g {test_resource_group} -w {test_workspace_temp} -o json', checks=[
                 self.check("name", test_workspace_temp),

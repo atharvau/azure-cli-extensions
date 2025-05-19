@@ -53,7 +53,11 @@ class Update(AAZCommand):
             required=True,
             id_part="child_name_2",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -62,7 +66,11 @@ class Update(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -416,7 +424,13 @@ class _UpdateHelper:
         )
         properties.revision = AAZIntType()
         properties.source = AAZStrType()
+<<<<<<< HEAD
         properties.status = AAZStrType()
+=======
+        properties.status = AAZStrType(
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
 
         system_data = _schema_workload_network_port_mirroring_read.system_data
         system_data.created_at = AAZStrType(

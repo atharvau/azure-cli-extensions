@@ -23,9 +23,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-03-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections/{}/rules/{}", "2023-03-01-preview"],
+=======
+        "version": "2024-05-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections/{}/rules/{}", "2024-05-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -122,7 +128,11 @@ class Create(AAZCommand):
             options=["next-hop-type"],
             help="Next hop type.",
             required=True,
+<<<<<<< HEAD
             enum={"Internet": "Internet", "NoNextNop": "NoNextNop", "VirtualAppliance": "VirtualAppliance", "VirtualNetworkGateway": "VirtualNetworkGateway", "VnetLocal": "VnetLocal"},
+=======
+            enum={"Internet": "Internet", "NoNextHop": "NoNextHop", "VirtualAppliance": "VirtualAppliance", "VirtualNetworkGateway": "VirtualNetworkGateway", "VnetLocal": "VnetLocal"},
+>>>>>>> upstream/main
         )
         return cls._args_schema
 
@@ -203,7 +213,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-03-01-preview",
+=======
+                    "api-version", "2024-05-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

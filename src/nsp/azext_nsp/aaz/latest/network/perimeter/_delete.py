@@ -16,13 +16,20 @@ from azure.cli.core.aaz import *
     confirmation="Are you sure you want to perform this operation?",
 )
 class Delete(AAZCommand):
+<<<<<<< HEAD
     """Deletes a network security perimeter.
 
     :example: Delete a Network Security Perimeter
+=======
+    """Delete a network security perimeter.
+
+    :example: Delete a network security perimeter
+>>>>>>> upstream/main
         az network perimeter delete -g MyResourceGroup -n MyPerimeter
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}", "2023-08-01-preview"],
@@ -33,6 +40,19 @@ class Delete(AAZCommand):
         super()._handler(command_args)
         self._execute_operations()
         return None
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}", "2024-07-01"],
+        ]
+    }
+
+    AZ_SUPPORT_NO_WAIT = True
+
+    def _handler(self, command_args):
+        super()._handler(command_args)
+        return self.build_lro_poller(self._execute_operations, None)
+>>>>>>> upstream/main
 
     _args_schema = None
 
@@ -50,15 +70,33 @@ class Delete(AAZCommand):
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
+<<<<<<< HEAD
+=======
+        _args_schema.force_deletion = AAZBoolArg(
+            options=["--force-deletion"],
+            help="Deletes the resource even if it contains any child associations.",
+        )
+>>>>>>> upstream/main
         return cls._args_schema
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         self.NetworkSecurityPerimetersDelete(ctx=self.ctx)()
+=======
+        yield self.NetworkSecurityPerimetersDelete(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -75,10 +113,40 @@ class Delete(AAZCommand):
         def __call__(self, *args, **kwargs):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
+<<<<<<< HEAD
             if session.http_response.status_code in [200]:
                 return self.on_200(session)
             if session.http_response.status_code in [204]:
                 return self.on_204(session)
+=======
+            if session.http_response.status_code in [202]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_200,
+                    self.on_error,
+                    lro_options={"final-state-via": "azure-async-operation"},
+                    path_format_arguments=self.url_parameters,
+                )
+            if session.http_response.status_code in [200]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_200,
+                    self.on_error,
+                    lro_options={"final-state-via": "azure-async-operation"},
+                    path_format_arguments=self.url_parameters,
+                )
+            if session.http_response.status_code in [204]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_204,
+                    self.on_error,
+                    lro_options={"final-state-via": "azure-async-operation"},
+                    path_format_arguments=self.url_parameters,
+                )
+>>>>>>> upstream/main
 
             return self.on_error(session.http_response)
 
@@ -119,7 +187,14 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "forceDeletion", self.ctx.args.force_deletion,
+                ),
+                **self.serialize_query_param(
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

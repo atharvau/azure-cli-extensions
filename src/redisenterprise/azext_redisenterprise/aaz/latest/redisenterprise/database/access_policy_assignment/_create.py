@@ -23,9 +23,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-09-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/accesspolicyassignments/{}", "2024-09-01-preview"],
+=======
+        "version": "2025-05-01-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/accesspolicyassignments/{}", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -59,7 +65,11 @@ class Create(AAZCommand):
             help="The name of the Redis Enterprise cluster.",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.database_name = AAZStrArg(
@@ -67,7 +77,11 @@ class Create(AAZCommand):
             help="The name of the Redis Enterprise database.",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]{1,60}$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -81,7 +95,10 @@ class Create(AAZCommand):
             options=["--access-policy-name"],
             arg_group="Properties",
             help="Name of access policy under specific access policy assignment. Only \"default\" policy is supported for now.",
+<<<<<<< HEAD
             required=True,
+=======
+>>>>>>> upstream/main
             default="default",
             fmt=AAZStrArgFormat(
                 pattern="^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$",
@@ -95,7 +112,10 @@ class Create(AAZCommand):
             options=["--object-id"],
             arg_group="User",
             help="The object ID of the user.",
+<<<<<<< HEAD
             required=True,
+=======
+>>>>>>> upstream/main
         )
         return cls._args_schema
 
@@ -188,7 +208,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -213,7 +237,11 @@ class Create(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+<<<<<<< HEAD
             _builder.set_prop("properties", AAZObjectType, ".", typ_kwargs={"flags": {"required": True, "client_flatten": True}})
+=======
+            _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+>>>>>>> upstream/main
 
             properties = _builder.get(".properties")
             if properties is not None:
@@ -222,7 +250,11 @@ class Create(AAZCommand):
 
             user = _builder.get(".properties.user")
             if user is not None:
+<<<<<<< HEAD
                 user.set_prop("objectId", AAZStrType, ".object_id", typ_kwargs={"flags": {"required": True}})
+=======
+                user.set_prop("objectId", AAZStrType, ".object_id")
+>>>>>>> upstream/main
 
             return self.serialize_content(_content_value)
 
@@ -251,7 +283,11 @@ class Create(AAZCommand):
                 flags={"read_only": True},
             )
             _schema_on_200_201.properties = AAZObjectType(
+<<<<<<< HEAD
                 flags={"required": True, "client_flatten": True},
+=======
+                flags={"client_flatten": True},
+>>>>>>> upstream/main
             )
             _schema_on_200_201.type = AAZStrType(
                 flags={"read_only": True},
@@ -273,7 +309,10 @@ class Create(AAZCommand):
             user = cls._schema_on_200_201.properties.user
             user.object_id = AAZStrType(
                 serialized_name="objectId",
+<<<<<<< HEAD
                 flags={"required": True},
+=======
+>>>>>>> upstream/main
             )
 
             return cls._schema_on_200_201

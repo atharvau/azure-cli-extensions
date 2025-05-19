@@ -22,9 +22,15 @@ class Show(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/l3isolationdomains/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/l3isolationdomains/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -49,6 +55,12 @@ class Show(AAZCommand):
             help="Name of the L3 Isolation Domain.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -120,7 +132,11 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -190,6 +206,13 @@ class Show(AAZCommand):
             properties.connected_subnet_route_policy = AAZObjectType(
                 serialized_name="connectedSubnetRoutePolicy",
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.network_fabric_id = AAZStrType(
                 serialized_name="networkFabricId",
                 flags={"required": True},
@@ -204,6 +227,18 @@ class Show(AAZCommand):
             properties.redistribute_static_routes = AAZStrType(
                 serialized_name="redistributeStaticRoutes",
             )
+<<<<<<< HEAD
+=======
+            properties.route_prefix_limit = AAZObjectType(
+                serialized_name="routePrefixLimit",
+            )
+            properties.static_route_route_policy = AAZObjectType(
+                serialized_name="staticRouteRoutePolicy",
+            )
+            properties.unique_rd_configuration = AAZObjectType(
+                serialized_name="uniqueRdConfiguration",
+            )
+>>>>>>> upstream/main
 
             aggregate_route_configuration = cls._schema_on_200.properties.aggregate_route_configuration
             aggregate_route_configuration.ipv4_routes = AAZListType(
@@ -225,6 +260,7 @@ class Show(AAZCommand):
             connected_subnet_route_policy.export_route_policy = AAZObjectType(
                 serialized_name="exportRoutePolicy",
             )
+<<<<<<< HEAD
             connected_subnet_route_policy.export_route_policy_id = AAZStrType(
                 serialized_name="exportRoutePolicyId",
                 nullable=True,
@@ -239,6 +275,35 @@ class Show(AAZCommand):
                 serialized_name="exportIpv6RoutePolicyId",
                 nullable=True,
             )
+=======
+            _ShowHelper._build_schema_l3_export_route_policy_read(connected_subnet_route_policy.export_route_policy)
+
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+            route_prefix_limit = cls._schema_on_200.properties.route_prefix_limit
+            route_prefix_limit.hard_limit = AAZIntType(
+                serialized_name="hardLimit",
+            )
+            route_prefix_limit.threshold = AAZIntType()
+
+            static_route_route_policy = cls._schema_on_200.properties.static_route_route_policy
+            static_route_route_policy.export_route_policy = AAZObjectType(
+                serialized_name="exportRoutePolicy",
+            )
+            _ShowHelper._build_schema_l3_export_route_policy_read(static_route_route_policy.export_route_policy)
+
+            unique_rd_configuration = cls._schema_on_200.properties.unique_rd_configuration
+            unique_rd_configuration.unique_rds = AAZListType(
+                serialized_name="uniqueRds",
+                flags={"read_only": True},
+            )
+
+            unique_rds = cls._schema_on_200.properties.unique_rd_configuration.unique_rds
+            unique_rds.Element = AAZStrType()
+>>>>>>> upstream/main
 
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
@@ -286,5 +351,30 @@ class _ShowHelper:
 
         _schema.prefix = cls._schema_aggregate_route_read.prefix
 
+<<<<<<< HEAD
+=======
+    _schema_l3_export_route_policy_read = None
+
+    @classmethod
+    def _build_schema_l3_export_route_policy_read(cls, _schema):
+        if cls._schema_l3_export_route_policy_read is not None:
+            _schema.export_ipv4_route_policy_id = cls._schema_l3_export_route_policy_read.export_ipv4_route_policy_id
+            _schema.export_ipv6_route_policy_id = cls._schema_l3_export_route_policy_read.export_ipv6_route_policy_id
+            return
+
+        cls._schema_l3_export_route_policy_read = _schema_l3_export_route_policy_read = AAZObjectType()
+
+        l3_export_route_policy_read = _schema_l3_export_route_policy_read
+        l3_export_route_policy_read.export_ipv4_route_policy_id = AAZStrType(
+            serialized_name="exportIpv4RoutePolicyId",
+        )
+        l3_export_route_policy_read.export_ipv6_route_policy_id = AAZStrType(
+            serialized_name="exportIpv6RoutePolicyId",
+        )
+
+        _schema.export_ipv4_route_policy_id = cls._schema_l3_export_route_policy_read.export_ipv4_route_policy_id
+        _schema.export_ipv6_route_policy_id = cls._schema_l3_export_route_policy_read.export_ipv6_route_policy_id
+
+>>>>>>> upstream/main
 
 __all__ = ["Show"]

@@ -12,6 +12,10 @@ from .__cmd_group import *
 from ._create import *
 from ._delete import *
 from ._list import *
+<<<<<<< HEAD
+=======
+from ._list_skus_for_scaling import *
+>>>>>>> upstream/main
 from ._show import *
 from ._update import *
 from ._wait import *

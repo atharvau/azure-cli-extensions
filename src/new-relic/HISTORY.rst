@@ -3,6 +3,13 @@
 Release History
 ===============
 
+<<<<<<< HEAD
+=======
+1.0.1
+++++++
+* Update module documentation.
+
+>>>>>>> upstream/main
 1.0.0b1
 ++++++
 * Initial release.

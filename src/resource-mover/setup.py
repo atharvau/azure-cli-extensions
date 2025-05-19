@@ -10,11 +10,15 @@ from codecs import open
 from setuptools import setup, find_packages
 
 # HISTORY.rst entry.
+<<<<<<< HEAD
 VERSION = '1.0.0b1'
 try:
     from azext_resource_mover.manual.version import VERSION
 except ImportError:
     pass
+=======
+VERSION = '1.0.0b2'
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -55,4 +59,8 @@ setup(
     packages=find_packages(),
     install_requires=DEPENDENCIES,
     package_data={'azext_resource_mover': ['azext_metadata.json']},
+<<<<<<< HEAD
 )
+=======
+)
+>>>>>>> upstream/main

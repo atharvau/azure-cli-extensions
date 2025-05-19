@@ -19,9 +19,15 @@ class Flush(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-03-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/flush", "2023-03-01-preview"],
+=======
+        "version": "2025-05-01-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/flush", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -47,6 +53,12 @@ class Flush(AAZCommand):
             help="The name of the RedisEnterprise cluster.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.database_name = AAZStrArg(
             options=["--database-name"],
@@ -54,6 +66,12 @@ class Flush(AAZCommand):
             required=True,
             id_part="child_name_1",
             default="default",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -69,7 +87,11 @@ class Flush(AAZCommand):
         )
 
         linked_ids = cls._args_schema.linked_ids
+<<<<<<< HEAD
         linked_ids.Element = AAZStrArg()
+=======
+        linked_ids.Element = AAZResourceIdArg()
+>>>>>>> upstream/main
         return cls._args_schema
 
     def _execute_operations(self):
@@ -153,7 +175,11 @@ class Flush(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-03-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -173,7 +199,11 @@ class Flush(AAZCommand):
             _content_value, _builder = self.new_content_builder(
                 self.ctx.args,
                 typ=AAZObjectType,
+<<<<<<< HEAD
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
+=======
+                typ_kwargs={"flags": {"client_flatten": True}}
+>>>>>>> upstream/main
             )
             _builder.set_prop("ids", AAZListType, ".linked_ids")
 

@@ -13,6 +13,10 @@ from ._create import *
 from ._delete import *
 from ._export import *
 from ._flush import *
+<<<<<<< HEAD
+=======
+from ._force_link_to_replication_group import *
+>>>>>>> upstream/main
 from ._force_unlink import *
 from ._import import *
 from ._list import *
@@ -20,4 +24,8 @@ from ._list_keys import *
 from ._regenerate_key import *
 from ._show import *
 from ._update import *
+<<<<<<< HEAD
+=======
+from ._upgrade_db_redis_version import *
+>>>>>>> upstream/main
 from ._wait import *

@@ -13,7 +13,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations?api-version=2023-09-01
   response:
@@ -33,7 +37,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:34 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:00 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -53,7 +61,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dhcp
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -73,7 +85,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:36 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:02 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -98,7 +114,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dhcp --display-name --revision --server-addresses
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -118,7 +138,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:37 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:04 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -140,7 +164,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dhcp --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -160,7 +188,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:41 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:07 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -180,7 +212,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dhcp --display-name --revision --server-addresses
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -200,7 +236,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:44 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:09 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -225,7 +265,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dhcp --display-name --revision --server-addresses
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -245,7 +289,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:44 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:09 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -271,7 +319,11 @@ interactions:
       - --resource-group --private-cloud --dhcp --display-name --revision --server-address
         --lease-time
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -291,7 +343,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:46 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:12 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -313,7 +369,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dhcp --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -333,7 +393,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:48 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:14 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -354,7 +418,11 @@ interactions:
       - --resource-group --private-cloud --dhcp --display-name --revision --server-address
         --lease-time
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -374,7 +442,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:52 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:17 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -400,7 +472,11 @@ interactions:
       - --resource-group --private-cloud --dhcp --display-name --revision --server-address
         --lease-time
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dhcpConfigurations/dhcp1?api-version=2023-09-01
   response:
@@ -420,7 +496,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:52 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:17 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -440,7 +520,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsServices?api-version=2023-09-01
   response:
@@ -460,7 +544,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:54 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:20 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -480,7 +568,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dns-service
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsServices/dnsService1?api-version=2023-09-01
   response:
@@ -500,7 +592,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:57 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:22 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -527,7 +623,11 @@ interactions:
       - --resource-group --private-cloud --dns-service --display-name --dns-service-ip
         --default-dns-zone --fqdn-zones --log-level --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsServices/dnsService1?api-version=2023-09-01
   response:
@@ -547,7 +647,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:20:58 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:24 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -568,7 +672,11 @@ interactions:
       - --resource-group --private-cloud --dns-service --display-name --dns-service-ip
         --default-dns-zone --fqdn-zones --log-level --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsServices/dnsService1?api-version=2023-09-01
   response:
@@ -588,7 +696,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:01 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:27 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -597,7 +709,11 @@ interactions:
 - request:
     body: '{"properties": {"defaultDnsZone": "defaultDnsZone1", "displayName": "testDisplayName",
       "dnsServiceIp": "5.5.5.5", "fqdnZones": ["fqdnZone1"], "logLevel": "INFO", "revision":
+<<<<<<< HEAD
       1, "status": "SUCCESS"}}'
+=======
+      1}}'
+>>>>>>> upstream/main
     headers:
       Accept:
       - application/json
@@ -608,14 +724,22 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
+<<<<<<< HEAD
       - '198'
+=======
+      - '177'
+>>>>>>> upstream/main
       Content-Type:
       - application/json
       ParameterSetName:
       - --resource-group --private-cloud --dns-service --display-name --dns-service-ip
         --default-dns-zone --fqdn-zones --log-level --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsServices/dnsService1?api-version=2023-09-01
   response:
@@ -635,7 +759,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:01 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:27 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -657,7 +785,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dns-service --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsServices/dnsService1?api-version=2023-09-01
   response:
@@ -677,7 +809,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:04 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:30 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -697,7 +833,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsZones?api-version=2023-09-01
   response:
@@ -717,7 +857,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:07 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:33 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -737,7 +881,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dns-zone
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsZones/dnsZone1?api-version=2023-09-01
   response:
@@ -757,7 +905,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:09 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:35 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -783,7 +935,11 @@ interactions:
       - --resource-group --private-cloud --dns-zone --display-name --domain --dns-server-ips
         --source-ip --dns-services --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsZones/dnsZone1?api-version=2023-09-01
   response:
@@ -803,7 +959,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:10 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:38 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -824,7 +984,11 @@ interactions:
       - --resource-group --private-cloud --dns-zone --display-name --domain --dns-server-ips
         --source-ip --dns-services --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsZones/dnsZone1?api-version=2023-09-01
   response:
@@ -844,7 +1008,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:13 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:40 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -870,7 +1038,11 @@ interactions:
       - --resource-group --private-cloud --dns-zone --display-name --domain --dns-server-ips
         --source-ip --dns-services --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsZones/dnsZone1?api-version=2023-09-01
   response:
@@ -890,7 +1062,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:13 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:40 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -912,7 +1088,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --dns-zone --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/dnsZones/dnsZone1?api-version=2023-09-01
   response:
@@ -932,7 +1112,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:16 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:43 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -952,7 +1136,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/portMirroringProfiles?api-version=2023-09-01
   response:
@@ -972,7 +1160,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:18 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:45 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -992,7 +1184,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --port-mirroring
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/portMirroringProfiles/portMirroring1?api-version=2023-09-01
   response:
@@ -1012,7 +1208,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:21 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:48 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1038,7 +1238,11 @@ interactions:
       - --resource-group --private-cloud --port-mirroring --display-name --direction
         --source --destination --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/portMirroringProfiles/portMirroring1?api-version=2023-09-01
   response:
@@ -1058,7 +1262,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:24 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:50 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1079,7 +1287,11 @@ interactions:
       - --resource-group --private-cloud --port-mirroring --display-name --direction
         --source --destination --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/portMirroringProfiles/portMirroring1?api-version=2023-09-01
   response:
@@ -1099,7 +1311,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:27 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:53 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1107,8 +1323,12 @@ interactions:
       message: OK
 - request:
     body: '{"properties": {"destination": "vmGroup2", "direction": "BIDIRECTIONAL",
+<<<<<<< HEAD
       "displayName": "testDisplayName", "revision": 1, "source": "vmGroup1", "status":
       "SUCCESS"}}'
+=======
+      "displayName": "testDisplayName", "revision": 1, "source": "vmGroup1"}}'
+>>>>>>> upstream/main
     headers:
       Accept:
       - application/json
@@ -1119,14 +1339,22 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
+<<<<<<< HEAD
       - '165'
+=======
+      - '144'
+>>>>>>> upstream/main
       Content-Type:
       - application/json
       ParameterSetName:
       - --resource-group --private-cloud --port-mirroring --display-name --direction
         --source --destination --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/portMirroringProfiles/portMirroring1?api-version=2023-09-01
   response:
@@ -1146,7 +1374,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:27 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:53 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1168,7 +1400,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --port-mirroring --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/portMirroringProfiles/portMirroring1?api-version=2023-09-01
   response:
@@ -1188,7 +1424,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:29 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:56 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1208,7 +1448,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/segments?api-version=2023-09-01
   response:
@@ -1228,7 +1472,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:32 GMT
+=======
+      - Thu, 13 Mar 2025 01:50:58 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1248,7 +1496,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --segment
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/segments/segment1?api-version=2023-09-01
   response:
@@ -1268,7 +1520,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:34 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:01 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1295,7 +1551,11 @@ interactions:
       - --resource-group --private-cloud --segment --display-name --connected-gateway
         --revision --dhcp-ranges --gateway-address
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/segments/segment1?api-version=2023-09-01
   response:
@@ -1315,7 +1575,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:37 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:03 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1336,7 +1600,11 @@ interactions:
       - --resource-group --private-cloud --segment --display-name --connected-gateway
         --revision --dhcp-ranges --gateway-address
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/segments/segment1?api-version=2023-09-01
   response:
@@ -1356,7 +1624,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:39 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:06 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1364,8 +1636,13 @@ interactions:
       message: OK
 - request:
     body: '{"properties": {"connectedGateway": "/infra/tier-1s/gateway", "displayName":
+<<<<<<< HEAD
       "testDisplayName", "revision": 1, "status": "SUCCESS", "subnet": {"dhcpRanges":
       ["40.20.0.0", "40.20.0.1"], "gatewayAddress": "40.20.20.20/16"}}}'
+=======
+      "testDisplayName", "revision": 1, "subnet": {"dhcpRanges": ["40.20.0.0", "40.20.0.1"],
+      "gatewayAddress": "40.20.20.20/16"}}}'
+>>>>>>> upstream/main
     headers:
       Accept:
       - application/json
@@ -1376,14 +1653,22 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
+<<<<<<< HEAD
       - '222'
+=======
+      - '201'
+>>>>>>> upstream/main
       Content-Type:
       - application/json
       ParameterSetName:
       - --resource-group --private-cloud --segment --display-name --connected-gateway
         --revision --dhcp-ranges --gateway-address
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/segments/segment1?api-version=2023-09-01
   response:
@@ -1403,7 +1688,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:39 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:06 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1425,7 +1714,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --segment --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/segments/segment1?api-version=2023-09-01
   response:
@@ -1445,7 +1738,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:42 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:08 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1465,7 +1762,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/publicIPs?api-version=2023-09-01
   response:
@@ -1485,7 +1786,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:44 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:11 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1505,7 +1810,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --public-ip
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/publicIPs/publicIP1?api-version=2023-09-01
   response:
@@ -1525,7 +1834,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:47 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:13 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1550,7 +1863,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --public-ip --display-name --number-of-public-ips
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/publicIPs/publicIP1?api-version=2023-09-01
   response:
@@ -1570,7 +1887,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:49 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:15 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1592,7 +1913,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --public-ip --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/publicIPs/publicIP1?api-version=2023-09-01
   response:
@@ -1612,7 +1937,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:52 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:18 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1632,7 +1961,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups?api-version=2023-09-01
   response:
@@ -1652,7 +1985,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:54 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:21 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1672,7 +2009,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --vm-group
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups/vmGroup1?api-version=2023-09-01
   response:
@@ -1692,7 +2033,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:57 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:22 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1717,7 +2062,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --vm-group --display-name --members --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups/vmGroup1?api-version=2023-09-01
   response:
@@ -1737,7 +2086,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:21:59 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:25 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1757,7 +2110,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --vm-group --display-name --members --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups/vmGroup1?api-version=2023-09-01
   response:
@@ -1777,7 +2134,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:02 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:27 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1785,7 +2146,11 @@ interactions:
       message: OK
 - request:
     body: '{"properties": {"displayName": "testDisplayName", "members": ["564d43da-fefc-2a3b-1d92-42855622fa50"],
+<<<<<<< HEAD
       "revision": 1, "status": "SUCCESS"}}'
+=======
+      "revision": 1}}'
+>>>>>>> upstream/main
     headers:
       Accept:
       - application/json
@@ -1796,13 +2161,21 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
+<<<<<<< HEAD
       - '139'
+=======
+      - '118'
+>>>>>>> upstream/main
       Content-Type:
       - application/json
       ParameterSetName:
       - --resource-group --private-cloud --vm-group --display-name --members --revision
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: PUT
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups/vmGroup1?api-version=2023-09-01
   response:
@@ -1822,7 +2195,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:02 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:27 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1844,7 +2221,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --vm-group --yes
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: DELETE
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups/vmGroup1?api-version=2023-09-01
   response:
@@ -1864,7 +2245,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:04 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:31 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1884,7 +2269,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/virtualMachines?api-version=2023-09-01
   response:
@@ -1904,7 +2293,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:07 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:34 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1924,7 +2317,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --virtual-machine
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/virtualMachines/vm1?api-version=2023-09-01
   response:
@@ -1944,7 +2341,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:09 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:36 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -1964,7 +2365,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/gateways?api-version=2023-09-01
   response:
@@ -1984,7 +2389,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:12 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:38 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:
@@ -2004,7 +2413,11 @@ interactions:
       ParameterSetName:
       - --resource-group --private-cloud --gateway
       User-Agent:
+<<<<<<< HEAD
       - AZURECLI/2.65.0 azsdk-python-core/1.28.0 Python/3.12.6 (Windows-11-10.0.22631-SP0)
+=======
+      - AZURECLI/2.68.0 azsdk-python-core/1.31.0 Python/3.12.9 (Windows-11-10.0.26100-SP0)
+>>>>>>> upstream/main
     method: GET
     uri: https://localhost/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vmware_workload_network000001/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/gateways/gateway1?api-version=2023-09-01
   response:
@@ -2024,7 +2437,11 @@ interactions:
       content-type:
       - application/json
       date:
+<<<<<<< HEAD
       - Mon, 07 Oct 2024 20:22:14 GMT
+=======
+      - Thu, 13 Mar 2025 01:51:41 GMT
+>>>>>>> upstream/main
       server:
       - Rocket
     status:

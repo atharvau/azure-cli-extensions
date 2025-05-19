@@ -15,7 +15,11 @@ from azure.cli.core.aaz import *
     "network perimeter association",
 )
 class __CMDGroup(AAZCommandGroup):
+<<<<<<< HEAD
     """Manage NSP Associations
+=======
+    """Manage Network Security Perimeter Associations.
+>>>>>>> upstream/main
     """
     pass
 

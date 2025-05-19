@@ -40,10 +40,17 @@ def step_create(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric internalnetwork create --resource-group {rg} --l3-isolation-domain-name {l3domain} --resource-name {name} --vlan-id {vlan_id}"
         " --mtu {mtu} --connected-ipv4-subnets {connectedIpv4Subnets}"
         " --static-route-configuration {staticRouteConf} --bgp-configuration {bgpConf}"
         " --import-route-policy {importRoutePolicy}",
+=======
+        "az networkfabric internalnetwork create --resource-group {rg} --l3-isolation-domain-name {l3Domain} --resource-name {name}"
+        " --vlan-id {vlanId} --native-ipv4-prefix-limit {nativeIpv4PrefixLimit} --native-ipv6-prefix-limit {nativeIpv6PrefixLimit}"
+        " --mtu {mtu} --connected-ipv4-subnets {connectedIpv4Subnets}"
+        " --static-route-configuration {staticRouteConf} --bgp-configuration {bgpConf}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -53,9 +60,16 @@ def step_update(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric internalnetwork update --resource-group {rg} --resource-name {name} --l3domain {l3domain} "
         " --connected-ipv4-subnets {updatedConnectedIpv4Subnets}  --static-route-configuration {updatedStaticRouteConf}"
         " --bgp-configuration {updatedBgpConf}",
+=======
+        "az networkfabric internalnetwork update --resource-group {rg} --resource-name {name} --l3domain {l3Domain} "
+        " --connected-ipv4-subnets {updatedConnectedIpv4Subnets}  --static-route-configuration {updatedStaticRouteConf}"
+        " --bgp-configuration {updatedBgpConf}  --native-ipv4-prefix-limit {updatedNativeIpv4PrefixLimit}"
+        " --native-ipv6-prefix-limit {updatedNativeIpv6PrefixLimit}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -65,7 +79,11 @@ def step_show(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric internalnetwork show --resource-name {name} --l3domain {l3domain} --resource-group {rg}"
+=======
+        "az networkfabric internalnetwork show --resource-name {name} --l3domain {l3Domain} --resource-group {rg}"
+>>>>>>> upstream/main
     )
 
 
@@ -74,7 +92,11 @@ def step_list_resource_group(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric internalnetwork list --resource-group {rg} --l3domain {l3domain}"
+=======
+        "az networkfabric internalnetwork list --resource-group {rg} --l3domain {l3Domain}"
+>>>>>>> upstream/main
     )
 
 
@@ -83,7 +105,11 @@ def step_delete(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric internalnetwork delete --resource-name {name} --l3domain {l3domain} --resource-group {rg}"
+=======
+        "az networkfabric internalnetwork delete --resource-name {name} --l3domain {l3Domain} --resource-group {rg}"
+>>>>>>> upstream/main
     )
 
 
@@ -96,8 +122,13 @@ class GA_InternalNetworkScenarioTest1(ScenarioTest):
             {
                 "name": CONFIG.get("INTERNAL_NETWORK", "name"),
                 "rg": CONFIG.get("INTERNAL_NETWORK", "resource_group"),
+<<<<<<< HEAD
                 "l3domain": CONFIG.get("INTERNAL_NETWORK", "l3domain"),
                 "vlan_id": CONFIG.get("INTERNAL_NETWORK", "vlan_id"),
+=======
+                "l3Domain": CONFIG.get("INTERNAL_NETWORK", "l3_domain"),
+                "vlanId": CONFIG.get("INTERNAL_NETWORK", "vlan_id"),
+>>>>>>> upstream/main
                 "mtu": CONFIG.get("INTERNAL_NETWORK", "mtu"),
                 "extension": CONFIG.get("INTERNAL_NETWORK", "extension"),
                 "isMonitoringEnabled": CONFIG.get(
@@ -121,6 +152,21 @@ class GA_InternalNetworkScenarioTest1(ScenarioTest):
                 "exportRoutePolicy": CONFIG.get(
                     "INTERNAL_NETWORK", "export_route_policy"
                 ),
+<<<<<<< HEAD
+=======
+                "nativeIpv4PrefixLimit": CONFIG.get(
+                    "INTERNAL_NETWORK", "native_ipv4_prefix_limit"
+                ),
+                "updatedNativeIpv4PrefixLimit": CONFIG.get(
+                    "INTERNAL_NETWORK", "updated_native_ipv4_prefix_limit"
+                ),
+                "nativeIpv6PrefixLimit": CONFIG.get(
+                    "INTERNAL_NETWORK", "native_ipv6_prefix_limit"
+                ),
+                "updatedNativeIpv6PrefixLimit": CONFIG.get(
+                    "INTERNAL_NETWORK", "updated_native_ipv6_prefix_limit"
+                ),
+>>>>>>> upstream/main
             }
         )
 

@@ -17,6 +17,7 @@ from azure.cli.core.aaz import *
 class Status(AAZCommand):
     """Get a StandbyContainerGroupPoolRuntimeViewResource
 
+<<<<<<< HEAD
     :example: Get standby container group pool runtime view
         az standby-container-group-pool status --resource-group myrg --name mypool --subscription 461fa159-654a-415f-853a-40b801021944 --version latest
     """
@@ -25,6 +26,16 @@ class Status(AAZCommand):
         "version": "2024-03-01",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}/runtimeviews/{}", "2024-03-01"],
+=======
+    :example: StandbyContainerGroupPoolRuntimeViews_Status
+        az standby-container-group-pool status --resource-group rgstandbypool --name pool --version latest --subscription 00000000-0000-0000-0000-000000000009
+    """
+
+    _aaz_info = {
+        "version": "2025-03-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}/runtimeviews/{}", "2025-03-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -138,7 +149,11 @@ class Status(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-03-01",
+=======
+                    "api-version", "2025-03-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -191,12 +206,25 @@ class Status(AAZCommand):
             properties = cls._schema_on_200.properties
             properties.instance_count_summary = AAZListType(
                 serialized_name="instanceCountSummary",
+<<<<<<< HEAD
                 flags={"required": True, "read_only": True},
+=======
+                flags={"read_only": True},
+            )
+            properties.prediction = AAZObjectType(
+                flags={"read_only": True},
+>>>>>>> upstream/main
             )
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.status = AAZObjectType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
 
             instance_count_summary = cls._schema_on_200.properties.instance_count_summary
             instance_count_summary.Element = AAZObjectType()
@@ -206,6 +234,10 @@ class Status(AAZCommand):
                 serialized_name="instanceCountsByState",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            _element.zone = AAZIntType()
+>>>>>>> upstream/main
 
             instance_counts_by_state = cls._schema_on_200.properties.instance_count_summary.Element.instance_counts_by_state
             instance_counts_by_state.Element = AAZObjectType()
@@ -218,6 +250,40 @@ class Status(AAZCommand):
                 flags={"required": True},
             )
 
+<<<<<<< HEAD
+=======
+            prediction = cls._schema_on_200.properties.prediction
+            prediction.forecast_info = AAZStrType(
+                serialized_name="forecastInfo",
+                flags={"read_only": True},
+            )
+            prediction.forecast_start_time = AAZStrType(
+                serialized_name="forecastStartTime",
+                flags={"read_only": True},
+            )
+            prediction.forecast_values = AAZObjectType(
+                serialized_name="forecastValues",
+                flags={"read_only": True},
+            )
+
+            forecast_values = cls._schema_on_200.properties.prediction.forecast_values
+            forecast_values.instances_requested_count = AAZListType(
+                serialized_name="instancesRequestedCount",
+                flags={"read_only": True},
+            )
+
+            instances_requested_count = cls._schema_on_200.properties.prediction.forecast_values.instances_requested_count
+            instances_requested_count.Element = AAZIntType()
+
+            status = cls._schema_on_200.properties.status
+            status.code = AAZStrType(
+                flags={"read_only": True},
+            )
+            status.message = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

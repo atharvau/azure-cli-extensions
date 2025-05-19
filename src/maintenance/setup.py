@@ -11,10 +11,13 @@ from setuptools import setup, find_packages
 
 # HISTORY.rst entry.
 VERSION = '1.7.0b2'
+<<<<<<< HEAD
 try:
     from azext_maintenance.manual.version import VERSION
 except ImportError:
     pass
+=======
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers

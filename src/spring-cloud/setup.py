@@ -16,7 +16,11 @@ except ImportError:
 
 # TODO: Confirm this is the right version number you want and it matches your
 # HISTORY.rst entry.
+<<<<<<< HEAD
 VERSION = '3.1.8'
+=======
+VERSION = '3.1.9'
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers

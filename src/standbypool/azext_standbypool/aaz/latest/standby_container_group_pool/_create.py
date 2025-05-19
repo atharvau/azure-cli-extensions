@@ -17,6 +17,7 @@ from azure.cli.core.aaz import *
 class Create(AAZCommand):
     """Create a StandbyContainerGroupPoolResource
 
+<<<<<<< HEAD
     :example: Create Standby Container Group Pool
         az standby-container-group-pool create --resource-group myrg --name mypool --subscription 461fa159-654a-415f-853a-40b801021944 --container-profile-id /subscriptions/461fa159-654a-415f-853a-40b801021944/resourceGroups/myrg/providers/Microsoft.ContainerInstance/containerGroupProfiles/mycg --profile-revision 1 --subnet-ids [0].id=/subscriptions/461fa159-654a-415f-853a-40b801021944/resourceGroups/ru-cli-test-standbypool/providers/Microsoft.Network/virtualNetworks/ru-cli-test-standbypool-vnet/subnets/testSubnet --refill-policy always --max-ready-capacity 1 --location eastus
     """
@@ -25,6 +26,16 @@ class Create(AAZCommand):
         "version": "2024-03-01",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}", "2024-03-01"],
+=======
+    :example: StandbyContainerGroupPools_CreateOrUpdate
+        az standby-container-group-pool create --resource-group rgstandbypool --name pool --max-ready-capacity 688 --refill-policy always --container-profile-id /subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile --profile-revision 1 --subnet-ids "[{id:/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet}]" --zones "[1,2,3]" --tags "{}" --location West US --subscription 00000000-0000-0000-0000-000000000009
+    """
+
+    _aaz_info = {
+        "version": "2025-03-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}", "2025-03-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -110,6 +121,21 @@ class Create(AAZCommand):
             enum={"always": "always"},
         )
 
+<<<<<<< HEAD
+=======
+        # define Arg Group "Properties"
+
+        _args_schema = cls._args_schema
+        _args_schema.zones = AAZListArg(
+            options=["--zones"],
+            arg_group="Properties",
+            help="Specifies zones of standby container group pools.",
+        )
+
+        zones = cls._args_schema.zones
+        zones.Element = AAZStrArg()
+
+>>>>>>> upstream/main
         # define Arg Group "Resource"
 
         _args_schema = cls._args_schema
@@ -212,7 +238,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-03-01",
+=======
+                    "api-version", "2025-03-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -245,6 +275,10 @@ class Create(AAZCommand):
             if properties is not None:
                 properties.set_prop("containerGroupProperties", AAZObjectType, ".", typ_kwargs={"flags": {"required": True}})
                 properties.set_prop("elasticityProfile", AAZObjectType, ".", typ_kwargs={"flags": {"required": True}})
+<<<<<<< HEAD
+=======
+                properties.set_prop("zones", AAZListType, ".zones")
+>>>>>>> upstream/main
 
             container_group_properties = _builder.get(".properties.containerGroupProperties")
             if container_group_properties is not None:
@@ -269,6 +303,13 @@ class Create(AAZCommand):
                 elasticity_profile.set_prop("maxReadyCapacity", AAZIntType, ".max_ready_capacity", typ_kwargs={"flags": {"required": True}})
                 elasticity_profile.set_prop("refillPolicy", AAZStrType, ".refill_policy")
 
+<<<<<<< HEAD
+=======
+            zones = _builder.get(".properties.zones")
+            if zones is not None:
+                zones.set_elements(AAZStrType, ".")
+
+>>>>>>> upstream/main
             tags = _builder.get(".tags")
             if tags is not None:
                 tags.set_elements(AAZStrType, ".")
@@ -327,6 +368,10 @@ class Create(AAZCommand):
                 serialized_name="provisioningState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.zones = AAZListType()
+>>>>>>> upstream/main
 
             container_group_properties = cls._schema_on_200_201.properties.container_group_properties
             container_group_properties.container_group_profile = AAZObjectType(
@@ -360,6 +405,12 @@ class Create(AAZCommand):
                 serialized_name="refillPolicy",
             )
 
+<<<<<<< HEAD
+=======
+            zones = cls._schema_on_200_201.properties.zones
+            zones.Element = AAZStrType()
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200_201.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

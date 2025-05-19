@@ -25,10 +25,17 @@ class List(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/providers/microsoft.managednetworkfabric/ipcommunities", "2024-02-15-preview"],
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/ipcommunities", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/providers/microsoft.managednetworkfabric/ipcommunities", "2024-06-15-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/ipcommunities", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -115,7 +122,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -151,7 +162,13 @@ class List(AAZCommand):
             _schema_on_200.next_link = AAZStrType(
                 serialized_name="nextLink",
             )
+<<<<<<< HEAD
             _schema_on_200.value = AAZListType()
+=======
+            _schema_on_200.value = AAZListType(
+                flags={"required": True},
+            )
+>>>>>>> upstream/main
 
             value = cls._schema_on_200.value
             value.Element = AAZObjectType()
@@ -192,6 +209,17 @@ class List(AAZCommand):
                 serialized_name="ipCommunityRules",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+            properties.network_fabric_id = AAZStrType(
+                serialized_name="networkFabricId",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -222,6 +250,14 @@ class List(AAZCommand):
             well_known_communities = cls._schema_on_200.value.Element.properties.ip_community_rules.Element.well_known_communities
             well_known_communities.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.value.Element.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.value.Element.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",
@@ -291,7 +327,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -327,7 +367,13 @@ class List(AAZCommand):
             _schema_on_200.next_link = AAZStrType(
                 serialized_name="nextLink",
             )
+<<<<<<< HEAD
             _schema_on_200.value = AAZListType()
+=======
+            _schema_on_200.value = AAZListType(
+                flags={"required": True},
+            )
+>>>>>>> upstream/main
 
             value = cls._schema_on_200.value
             value.Element = AAZObjectType()
@@ -368,6 +414,17 @@ class List(AAZCommand):
                 serialized_name="ipCommunityRules",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+            properties.network_fabric_id = AAZStrType(
+                serialized_name="networkFabricId",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -398,6 +455,14 @@ class List(AAZCommand):
             well_known_communities = cls._schema_on_200.value.Element.properties.ip_community_rules.Element.well_known_communities
             well_known_communities.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.value.Element.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.value.Element.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

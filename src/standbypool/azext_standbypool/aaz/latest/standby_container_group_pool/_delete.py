@@ -18,6 +18,7 @@ from azure.cli.core.aaz import *
 class Delete(AAZCommand):
     """Delete a StandbyContainerGroupPoolResource
 
+<<<<<<< HEAD
     :example: Delete Standby Container Group Pool
         az standby-container-group-pool delete --name mypool --subscription 461fa159-654a-415f-853a-40b801021944 --resource-group myrg
     """
@@ -26,6 +27,16 @@ class Delete(AAZCommand):
         "version": "2024-03-01",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}", "2024-03-01"],
+=======
+    :example: StandbyContainerGroupPools_Delete
+        az standby-container-group-pool delete --resource-group rgstandbypool --name pool --subscription 00000000-0000-0000-0000-000000000009
+    """
+
+    _aaz_info = {
+        "version": "2025-03-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.standbypool/standbycontainergrouppools/{}", "2025-03-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,8 +61,13 @@ class Delete(AAZCommand):
             help="The resource group",
             required=True,
         )
+<<<<<<< HEAD
         _args_schema.standby_container_group_pool_name = AAZStrArg(
             options=["-n", "--name", "--standby-container-group-pool-name"],
+=======
+        _args_schema.name = AAZStrArg(
+            options=["-n", "--name"],
+>>>>>>> upstream/main
             help="Name of the standby container group pool",
             required=True,
             id_part="name",
@@ -133,7 +149,11 @@ class Delete(AAZCommand):
                     required=True,
                 ),
                 **self.serialize_url_param(
+<<<<<<< HEAD
                     "standbyContainerGroupPoolName", self.ctx.args.standby_container_group_pool_name,
+=======
+                    "standbyContainerGroupPoolName", self.ctx.args.name,
+>>>>>>> upstream/main
                     required=True,
                 ),
                 **self.serialize_url_param(
@@ -147,7 +167,11 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-03-01",
+=======
+                    "api-version", "2025-03-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

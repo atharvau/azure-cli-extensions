@@ -10,7 +10,11 @@ from setuptools import setup, find_packages
 
 
 # HISTORY.rst entry.
+<<<<<<< HEAD
 VERSION = '3.0.0b1'
+=======
+VERSION = '3.0.0'
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -36,7 +40,11 @@ with open('HISTORY.rst', 'r', encoding='utf-8') as f:
 setup(
     name='networkcloud',
     version=VERSION,
+<<<<<<< HEAD
     description='Support for Azure Operator Nexus network cloud commands based on 2024-10-01-preview API version.',
+=======
+    description='Support for Azure Operator Nexus network cloud commands based on 2025-02-01 API version.',
+>>>>>>> upstream/main
     long_description=README + '\n\n' + HISTORY,
     license='MIT',
     author='Microsoft Corporation',

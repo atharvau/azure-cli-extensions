@@ -391,9 +391,14 @@ class Update(AAZCommand):
         _args_schema.provider_type = AAZStrArg(
             options=["--provider-type"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="The provider type.",
             nullable=True,
             enum={"AuthorizationFree": "AuthorizationFree", "External": "External", "Hidden": "Hidden", "Internal": "Internal", "LegacyRegistrationRequired": "LegacyRegistrationRequired", "NotSpecified": "NotSpecified", "RegistrationFree": "RegistrationFree", "TenantOnly": "TenantOnly"},
+=======
+            help="The provider type. Provider type options are: AuthorizationFree, External, Hidden, Internal, LegacyRegistrationRequired, NotSpecified, RegistrationFree, TenantOnly. Select multiple with comma separated string.",
+            nullable=True,
+>>>>>>> upstream/main
         )
         _args_schema.provider_version = AAZStrArg(
             options=["--provider-version"],

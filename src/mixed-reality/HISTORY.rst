@@ -3,6 +3,13 @@
 Release History
 ===============
 
+<<<<<<< HEAD
+=======
+1.0.0b1
+++++++
+* Remove commands for `az spatial-anchors-account`
+
+>>>>>>> upstream/main
 0.0.5
 ++++++
 * Migrate to CodeGen V2

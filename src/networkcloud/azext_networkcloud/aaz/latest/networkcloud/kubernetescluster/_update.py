@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud kubernetescluster update",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class Update(AAZCommand):
     """Update the properties of the provided Kubernetes cluster, or update the tags associated with the Kubernetes cluster. Properties and tag updates can be done independently.
@@ -29,9 +32,15 @@ class Update(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}", "2024-10-01-preview"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/kubernetesclusters/{}", "2025-02-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -52,6 +61,17 @@ class Update(AAZCommand):
         # define Arg Group ""
 
         _args_schema = cls._args_schema
+<<<<<<< HEAD
+=======
+        _args_schema.if_match = AAZStrArg(
+            options=["--if-match"],
+            help="The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
+        )
+        _args_schema.if_none_match = AAZStrArg(
+            options=["--if-none-match"],
+            help="Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
+        )
+>>>>>>> upstream/main
         _args_schema.kubernetes_cluster_name = AAZStrArg(
             options=["-n", "--name", "--kubernetes-cluster-name"],
             help="The name of the Kubernetes cluster.",
@@ -221,7 +241,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -231,6 +255,15 @@ class Update(AAZCommand):
         def header_parameters(self):
             parameters = {
                 **self.serialize_header_param(
+<<<<<<< HEAD
+=======
+                    "If-Match", self.ctx.args.if_match,
+                ),
+                **self.serialize_header_param(
+                    "If-None-Match", self.ctx.args.if_none_match,
+                ),
+                **self.serialize_header_param(
+>>>>>>> upstream/main
                     "Content-Type", "application/json",
                 ),
                 **self.serialize_header_param(
@@ -354,6 +387,10 @@ class _UpdateHelper:
     @classmethod
     def _build_schema_kubernetes_cluster_read(cls, _schema):
         if cls._schema_kubernetes_cluster_read is not None:
+<<<<<<< HEAD
+=======
+            _schema.etag = cls._schema_kubernetes_cluster_read.etag
+>>>>>>> upstream/main
             _schema.extended_location = cls._schema_kubernetes_cluster_read.extended_location
             _schema.id = cls._schema_kubernetes_cluster_read.id
             _schema.location = cls._schema_kubernetes_cluster_read.location
@@ -367,6 +404,12 @@ class _UpdateHelper:
         cls._schema_kubernetes_cluster_read = _schema_kubernetes_cluster_read = AAZObjectType()
 
         kubernetes_cluster_read = _schema_kubernetes_cluster_read
+<<<<<<< HEAD
+=======
+        kubernetes_cluster_read.etag = AAZStrType(
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
         kubernetes_cluster_read.extended_location = AAZObjectType(
             serialized_name="extendedLocation",
             flags={"required": True},
@@ -928,6 +971,10 @@ class _UpdateHelper:
         tags = _schema_kubernetes_cluster_read.tags
         tags.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+        _schema.etag = cls._schema_kubernetes_cluster_read.etag
+>>>>>>> upstream/main
         _schema.extended_location = cls._schema_kubernetes_cluster_read.extended_location
         _schema.id = cls._schema_kubernetes_cluster_read.id
         _schema.location = cls._schema_kubernetes_cluster_read.location

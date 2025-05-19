@@ -15,4 +15,10 @@ helps['nexusidentity'] = """
 helps['nexusidentity gen-keys'] = """
     type: command
     short-summary: Generate Nexusidentity keys.
+<<<<<<< HEAD
+=======
+    parameters:
+        - name: --algorithm
+          short-summary: Algorithm to use for generating keys. It can either be ecdsa-sk or ed25519-sk
+>>>>>>> upstream/main
 """

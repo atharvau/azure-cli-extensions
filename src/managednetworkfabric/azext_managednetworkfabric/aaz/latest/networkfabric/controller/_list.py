@@ -25,10 +25,17 @@ class List(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/providers/microsoft.managednetworkfabric/networkfabriccontrollers", "2024-02-15-preview"],
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabriccontrollers", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/providers/microsoft.managednetworkfabric/networkfabriccontrollers", "2024-06-15-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabriccontrollers", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -115,7 +122,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -151,7 +162,13 @@ class List(AAZCommand):
             _schema_on_200.next_link = AAZStrType(
                 serialized_name="nextLink",
             )
+<<<<<<< HEAD
             _schema_on_200.value = AAZListType()
+=======
+            _schema_on_200.value = AAZListType(
+                flags={"required": True},
+            )
+>>>>>>> upstream/main
 
             value = cls._schema_on_200.value
             value.Element = AAZObjectType()
@@ -197,6 +214,13 @@ class List(AAZCommand):
             properties.is_workload_management_network_enabled = AAZStrType(
                 serialized_name="isWorkloadManagementNetworkEnabled",
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.managed_resource_group_configuration = AAZObjectType(
                 serialized_name="managedResourceGroupConfiguration",
             )
@@ -218,10 +242,13 @@ class List(AAZCommand):
             properties.workload_express_route_connections = AAZListType(
                 serialized_name="workloadExpressRouteConnections",
             )
+<<<<<<< HEAD
             properties.workload_management_network = AAZBoolType(
                 serialized_name="workloadManagementNetwork",
                 flags={"read_only": True},
             )
+=======
+>>>>>>> upstream/main
             properties.workload_services = AAZObjectType(
                 serialized_name="workloadServices",
                 flags={"read_only": True},
@@ -232,6 +259,14 @@ class List(AAZCommand):
             infrastructure_express_route_connections.Element = AAZObjectType()
             _ListHelper._build_schema_express_route_connection_information_read(infrastructure_express_route_connections.Element)
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.value.Element.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             managed_resource_group_configuration = cls._schema_on_200.value.Element.properties.managed_resource_group_configuration
             managed_resource_group_configuration.location = AAZStrType()
             managed_resource_group_configuration.name = AAZStrType()
@@ -315,7 +350,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -351,7 +390,13 @@ class List(AAZCommand):
             _schema_on_200.next_link = AAZStrType(
                 serialized_name="nextLink",
             )
+<<<<<<< HEAD
             _schema_on_200.value = AAZListType()
+=======
+            _schema_on_200.value = AAZListType(
+                flags={"required": True},
+            )
+>>>>>>> upstream/main
 
             value = cls._schema_on_200.value
             value.Element = AAZObjectType()
@@ -397,6 +442,13 @@ class List(AAZCommand):
             properties.is_workload_management_network_enabled = AAZStrType(
                 serialized_name="isWorkloadManagementNetworkEnabled",
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.managed_resource_group_configuration = AAZObjectType(
                 serialized_name="managedResourceGroupConfiguration",
             )
@@ -418,10 +470,13 @@ class List(AAZCommand):
             properties.workload_express_route_connections = AAZListType(
                 serialized_name="workloadExpressRouteConnections",
             )
+<<<<<<< HEAD
             properties.workload_management_network = AAZBoolType(
                 serialized_name="workloadManagementNetwork",
                 flags={"read_only": True},
             )
+=======
+>>>>>>> upstream/main
             properties.workload_services = AAZObjectType(
                 serialized_name="workloadServices",
                 flags={"read_only": True},
@@ -432,6 +487,14 @@ class List(AAZCommand):
             infrastructure_express_route_connections.Element = AAZObjectType()
             _ListHelper._build_schema_express_route_connection_information_read(infrastructure_express_route_connections.Element)
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.value.Element.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             managed_resource_group_configuration = cls._schema_on_200.value.Element.properties.managed_resource_group_configuration
             managed_resource_group_configuration.location = AAZStrType()
             managed_resource_group_configuration.name = AAZStrType()

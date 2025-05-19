@@ -3,6 +3,12 @@
 Release History
 ===============
 
+<<<<<<< HEAD
+=======
+1.1.0
++++++++
+* General Availability release for api 2024-09-01
+>>>>>>> upstream/main
 1.1.0b3
 +++++++
 * Changing of PUT calls to PATCH calls for update
@@ -16,4 +22,8 @@ Release History
 * Add custom managed resources for customer
 0.1.0-preview
 ++++++
+<<<<<<< HEAD
 * Initial release.
+=======
+* Initial release.
+>>>>>>> upstream/main

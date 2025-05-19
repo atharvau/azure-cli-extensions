@@ -42,7 +42,11 @@ def step_create(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric tap create --resource-group {rg} --location {location} --resource-name {name} --network-packet-broker-id {npbId} --polling-type {pollingType} --destinations {destinations}",
+=======
+        "az networkfabric tap create --resource-group {rg} --location {location} --resource-name {name} --npb-id {npbId} --polling-type {pollingType} --destinations {destinations}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -68,12 +72,28 @@ def step_list_subscription(test, checks=None):
     test.cmd("az networkfabric tap list")
 
 
+<<<<<<< HEAD
+=======
+def step_update(test, checks=None):
+    """Network Tap Rule update operation"""
+    if checks is None:
+        checks = []
+    test.cmd(
+        "az networkfabric tap update --resource-name {deleteName} --resource-group {rg} --destinations {updatedDestinations} --polling-type {updatedPollingType}"
+    )
+
+
+>>>>>>> upstream/main
 def step_update_admin_state_Enable(test, checks=None):
     """Network Tap Update admin state operation"""
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric tap update-admin-state --resource-group {rg} --resource-name {name} --state {state_Enable}"
+=======
+        "az networkfabric tap update-admin-state --resource-group {rg} --resource-name {name} --state {stateEnable}"
+>>>>>>> upstream/main
     )
 
 
@@ -82,7 +102,11 @@ def step_update_admin_state_Disable(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric tap update-admin-state --resource-group {rg} --resource-name {name} --state {state_Disable}"
+=======
+        "az networkfabric tap update-admin-state --resource-group {rg} --resource-name {name} --state {stateDisable}"
+>>>>>>> upstream/main
     )
 
 
@@ -106,8 +130,17 @@ class GA_TapScenarioTest1(ScenarioTest):
                 "npbId": CONFIG.get("NETWORK_TAP", "network_packet_broker_id"),
                 "pollingType": CONFIG.get("NETWORK_TAP", "polling_type"),
                 "destinations": CONFIG.get("NETWORK_TAP", "destinations"),
+<<<<<<< HEAD
                 "state_Enable": CONFIG.get("NETWORK_TAP", "state_Enable"),
                 "state_Disable": CONFIG.get("NETWORK_TAP", "state_Disable"),
+=======
+                "stateEnable": CONFIG.get("NETWORK_TAP", "state_enable"),
+                "stateDisable": CONFIG.get("NETWORK_TAP", "state_disable"),
+                "updatedDestinations": CONFIG.get(
+                    "NETWORK_TAP", "updated_destinations"
+                ),
+                "updatedPollingType": CONFIG.get("NETWORK_TAP", "updated_polling_type"),
+>>>>>>> upstream/main
             }
         )
 

@@ -2,6 +2,16 @@
 
 Release History
 ===============
+<<<<<<< HEAD
+=======
+2.0.0
++++++
+* Modify cmd `az network manager routing-config`
+* Modify cmd `az network manager routing-config rule-collection`
+* Modify cmd `az network manager routing-config rule-collection rule`
+* Add new types `Routing` and `SecurityUser`  for commitType param for Network Manager post-commit operation
+
+>>>>>>> upstream/main
 1.3.1
 +++++
 * Fix argument regex requirement (fix: https://github.com/Azure/azure-rest-api-specs/pull/31130)

@@ -51,7 +51,10 @@ class GA_L3DomainUpdateScenarioTest1(ScenarioTest):
                 "name": CONFIG.get("L3_ISOLATION_DOMAIN", "name"),
                 "rg": CONFIG.get("L3_ISOLATION_DOMAIN", "resource_group"),
                 "location": CONFIG.get("L3_ISOLATION_DOMAIN", "location"),
+<<<<<<< HEAD
                 "nf_id": CONFIG.get("L3_ISOLATION_DOMAIN", "nf_id"),
+=======
+>>>>>>> upstream/main
                 "redistributeConnectedSubnets": CONFIG.get(
                     "L3_ISOLATION_DOMAIN", "redistribute_connected_subnets"
                 ),

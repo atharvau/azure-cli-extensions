@@ -22,9 +22,15 @@ class Delete(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/accesscontrollists/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/accesscontrollists/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,6 +56,12 @@ class Delete(AAZCommand):
             help="Name of the Access Control List",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -79,6 +91,7 @@ class Delete(AAZCommand):
                 return self.client.build_lro_polling(
                     self.ctx.args.no_wait,
                     session,
+<<<<<<< HEAD
                     self.on_200,
                     self.on_error,
                     lro_options={"final-state-via": "azure-async-operation"},
@@ -91,6 +104,11 @@ class Delete(AAZCommand):
                     self.on_200,
                     self.on_error,
                     lro_options={"final-state-via": "azure-async-operation"},
+=======
+                    self.on_200_201,
+                    self.on_error,
+                    lro_options={"final-state-via": "location"},
+>>>>>>> upstream/main
                     path_format_arguments=self.url_parameters,
                 )
             if session.http_response.status_code in [204]:
@@ -99,7 +117,20 @@ class Delete(AAZCommand):
                     session,
                     self.on_204,
                     self.on_error,
+<<<<<<< HEAD
                     lro_options={"final-state-via": "azure-async-operation"},
+=======
+                    lro_options={"final-state-via": "location"},
+                    path_format_arguments=self.url_parameters,
+                )
+            if session.http_response.status_code in [200, 201]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_200_201,
+                    self.on_error,
+                    lro_options={"final-state-via": "location"},
+>>>>>>> upstream/main
                     path_format_arguments=self.url_parameters,
                 )
 
@@ -142,16 +173,27 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
             return parameters
 
+<<<<<<< HEAD
         def on_200(self, session):
             pass
 
         def on_204(self, session):
+=======
+        def on_204(self, session):
+            pass
+
+        def on_200_201(self, session):
+>>>>>>> upstream/main
             pass
 
 

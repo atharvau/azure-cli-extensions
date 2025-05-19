@@ -22,9 +22,15 @@ class UpdateAdminState(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkdevices/{}/updateadministrativestate", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkdevices/{}/updateadministrativestate", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,6 +56,12 @@ class UpdateAdminState(AAZCommand):
             help="Name of the Network Device.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -67,7 +79,11 @@ class UpdateAdminState(AAZCommand):
             options=["--state"],
             arg_group="Body",
             help="Administrative state.",
+<<<<<<< HEAD
             enum={"Enable": "Enable", "GracefulQuarantine": "GracefulQuarantine", "Quarantine": "Quarantine", "RMA": "RMA", "Resync": "Resync", "UnderMaintenance": "UnderMaintenance"},
+=======
+            enum={"Disable": "Disable", "Enable": "Enable", "GracefulQuarantine": "GracefulQuarantine", "Quarantine": "Quarantine", "RMA": "RMA", "Resync": "Resync", "UnderMaintenance": "UnderMaintenance", "UngracefulQuarantine": "UngracefulQuarantine", "UngracefulRMA": "UngracefulRMA"},
+>>>>>>> upstream/main
         )
 
         resource_ids = cls._args_schema.resource_ids
@@ -155,7 +171,11 @@ class UpdateAdminState(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -205,7 +225,18 @@ class UpdateAdminState(AAZCommand):
                 return cls._schema_on_200
 
             cls._schema_on_200 = AAZObjectType()
+<<<<<<< HEAD
             _UpdateAdminStateHelper._build_schema_common_post_action_response_for_state_update_read(cls._schema_on_200)
+=======
+
+            _schema_on_200 = cls._schema_on_200
+            _schema_on_200.configuration_state = AAZStrType(
+                serialized_name="configurationState",
+                flags={"read_only": True},
+            )
+            _schema_on_200.error = AAZObjectType()
+            _UpdateAdminStateHelper._build_schema_error_detail_read(_schema_on_200.error)
+>>>>>>> upstream/main
 
             return cls._schema_on_200
 
@@ -213,6 +244,7 @@ class UpdateAdminState(AAZCommand):
 class _UpdateAdminStateHelper:
     """Helper class for UpdateAdminState"""
 
+<<<<<<< HEAD
     _schema_common_post_action_response_for_state_update_read = None
 
     @classmethod
@@ -235,6 +267,8 @@ class _UpdateAdminStateHelper:
         _schema.configuration_state = cls._schema_common_post_action_response_for_state_update_read.configuration_state
         _schema.error = cls._schema_common_post_action_response_for_state_update_read.error
 
+=======
+>>>>>>> upstream/main
     _schema_error_detail_read = None
 
     @classmethod

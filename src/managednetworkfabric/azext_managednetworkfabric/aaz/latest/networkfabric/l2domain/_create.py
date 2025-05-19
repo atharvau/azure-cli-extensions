@@ -22,9 +22,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/l2isolationdomains/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/l2isolationdomains/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -49,11 +55,18 @@ class Create(AAZCommand):
             options=["--resource-name"],
             help="Name of the L2 Isolation Domain.",
             required=True,
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Body"
 
         _args_schema = cls._args_schema
@@ -74,39 +87,97 @@ class Create(AAZCommand):
         tags = cls._args_schema.tags
         tags.Element = AAZStrArg()
 
+=======
+>>>>>>> upstream/main
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
         _args_schema.annotation = AAZStrArg(
             options=["--annotation"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Description for underlying resource.",
+=======
+            help="Switch configuration description.",
+        )
+        _args_schema.extended_vlan = AAZStrArg(
+            options=["--extended-vlan"],
+            arg_group="Properties",
+            help="Extended VLAN status, default value is Disabled.",
+            default="Disabled",
+            enum={"Disabled": "Disabled", "Enabled": "Enabled"},
+>>>>>>> upstream/main
         )
         _args_schema.mtu = AAZIntArg(
             options=["--mtu"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Maximum transmission unit. The value should be between 64 to 9200. Default value is 1500. Example: 1500.",
+=======
+            help="Maximum transmission unit. Default value is 1500.",
+            default=1500,
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=9200,
                 minimum=64,
             ),
         )
+<<<<<<< HEAD
         _args_schema.nf_id = AAZResourceIdArg(
             options=["--nf-id"],
+=======
+        _args_schema.network_fabric_id = AAZResourceIdArg(
+            options=["--nf-id", "--network-fabric-id"],
+>>>>>>> upstream/main
             arg_group="Properties",
             help="ARM Resource ID of the Network Fabric.",
             required=True,
         )
+<<<<<<< HEAD
         _args_schema.vlan_id = AAZIntArg(
             options=["--vlan-id"],
             arg_group="Properties",
             help="Vlan Identifier of the Network Fabric. The value should be between 100 to 4094. Example: 501.",
+=======
+        _args_schema.network_to_network_interconnect_id = AAZResourceIdArg(
+            options=["--nni-id", "--network-to-network-interconnect-id"],
+            arg_group="Properties",
+            help="ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource.",
+        )
+        _args_schema.vlan_id = AAZIntArg(
+            options=["--vlan-id"],
+            arg_group="Properties",
+            help="Vlan Identifier of the Network Fabric. Example: 501.",
+>>>>>>> upstream/main
             required=True,
             fmt=AAZIntArgFormat(
                 maximum=4094,
                 minimum=100,
             ),
         )
+<<<<<<< HEAD
+=======
+
+        # define Arg Group "Resource"
+
+        _args_schema = cls._args_schema
+        _args_schema.location = AAZResourceLocationArg(
+            arg_group="Resource",
+            help="The geo-location where the resource lives",
+            required=True,
+            fmt=AAZResourceLocationArgFormat(
+                resource_group_arg="resource_group",
+            ),
+        )
+        _args_schema.tags = AAZDictArg(
+            options=["--tags"],
+            arg_group="Resource",
+            help="Resource tags.",
+        )
+
+        tags = cls._args_schema.tags
+        tags.Element = AAZStrArg()
+>>>>>>> upstream/main
         return cls._args_schema
 
     def _execute_operations(self):
@@ -190,7 +261,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -222,8 +297,15 @@ class Create(AAZCommand):
             properties = _builder.get(".properties")
             if properties is not None:
                 properties.set_prop("annotation", AAZStrType, ".annotation")
+<<<<<<< HEAD
                 properties.set_prop("mtu", AAZIntType, ".mtu")
                 properties.set_prop("networkFabricId", AAZStrType, ".nf_id", typ_kwargs={"flags": {"required": True}})
+=======
+                properties.set_prop("extendedVlan", AAZStrType, ".extended_vlan")
+                properties.set_prop("mtu", AAZIntType, ".mtu")
+                properties.set_prop("networkFabricId", AAZStrType, ".network_fabric_id", typ_kwargs={"flags": {"required": True}})
+                properties.set_prop("networkToNetworkInterconnectId", AAZStrType, ".network_to_network_interconnect_id")
+>>>>>>> upstream/main
                 properties.set_prop("vlanId", AAZIntType, ".vlan_id", typ_kwargs={"flags": {"required": True}})
 
             tags = _builder.get(".tags")
@@ -281,11 +363,27 @@ class Create(AAZCommand):
                 serialized_name="configurationState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.extended_vlan = AAZStrType(
+                serialized_name="extendedVlan",
+            )
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.mtu = AAZIntType()
             properties.network_fabric_id = AAZStrType(
                 serialized_name="networkFabricId",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.network_to_network_interconnect_id = AAZStrType(
+                serialized_name="networkToNetworkInterconnectId",
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -295,6 +393,14 @@ class Create(AAZCommand):
                 flags={"required": True},
             )
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200_201.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200_201.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

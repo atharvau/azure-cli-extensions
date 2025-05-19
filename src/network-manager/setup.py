@@ -10,7 +10,11 @@ from codecs import open
 from setuptools import setup, find_packages
 
 # HISTORY.rst entry.
+<<<<<<< HEAD
 VERSION = '1.3.1'
+=======
+VERSION = '2.0.0'
+>>>>>>> upstream/main
 
 # The full list of classifiers is available at
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers

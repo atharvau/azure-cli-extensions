@@ -50,7 +50,11 @@ class Create(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -61,7 +65,11 @@ class Create(AAZCommand):
             help="NSX VM Group identifier. Generally the same as the VM Group's display name",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
 
@@ -257,7 +265,13 @@ class Create(AAZCommand):
                 flags={"read_only": True},
             )
             properties.revision = AAZIntType()
+<<<<<<< HEAD
             properties.status = AAZStrType()
+=======
+            properties.status = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
 
             members = cls._schema_on_200_201.properties.members
             members.Element = AAZStrType()

@@ -19,6 +19,7 @@ class DatastoreNetappVolumeCreate(_DatastoreCreate):
     def _build_arguments_schema(cls, *args, **kwargs):
         args_schema = super()._build_arguments_schema(*args, **kwargs)
 
+<<<<<<< HEAD
         args_schema.net_app_volume._required = True
 
         args_schema.lun_name._registered = False
@@ -26,6 +27,13 @@ class DatastoreNetappVolumeCreate(_DatastoreCreate):
         args_schema.target_id._registered = False
 
         args_schema.elastic_san_volume._registered = False
+=======
+        setattr(args_schema.net_app_volume, '_required', True)
+        setattr(args_schema.lun_name, '_registered', False)
+        setattr(args_schema.mount_option, '_registered', False)
+        setattr(args_schema.target_id, '_registered', False)
+        setattr(args_schema.elastic_san_volume, '_registered', False)
+>>>>>>> upstream/main
 
         return args_schema
 
@@ -41,12 +49,19 @@ class DatastoreDiskPoolVolumeCreate(_DatastoreCreate):
     def _build_arguments_schema(cls, *args, **kwargs):
         args_schema = super()._build_arguments_schema(*args, **kwargs)
 
+<<<<<<< HEAD
         args_schema.net_app_volume._registered = False
 
         args_schema.lun_name._required = True
         args_schema.target_id._required = True
 
         args_schema.elastic_san_volume._registered = False
+=======
+        setattr(args_schema.net_app_volume, '_registered', False)
+        setattr(args_schema.lun_name, '_required', True)
+        setattr(args_schema.target_id, '_required', True)
+        setattr(args_schema.elastic_san_volume, '_registered', False)
+>>>>>>> upstream/main
 
         return args_schema
 
@@ -62,6 +77,7 @@ class DatastoreElasticVsanVolumeCreate(_DatastoreCreate):
     def _build_arguments_schema(cls, *args, **kwargs):
         args_schema = super()._build_arguments_schema(*args, **kwargs)
 
+<<<<<<< HEAD
         args_schema.net_app_volume._registered = False
 
         args_schema.lun_name._registered = False
@@ -69,5 +85,12 @@ class DatastoreElasticVsanVolumeCreate(_DatastoreCreate):
         args_schema.target_id._registered = False
 
         args_schema.elastic_san_volume._required = True
+=======
+        setattr(args_schema.net_app_volume, '_registered', False)
+        setattr(args_schema.lun_name, '_registered', False)
+        setattr(args_schema.mount_option, '_registered', False)
+        setattr(args_schema.target_id, '_registered', False)
+        setattr(args_schema.elastic_san_volume, '_required', True)
+>>>>>>> upstream/main
 
         return args_schema

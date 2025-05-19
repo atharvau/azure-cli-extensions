@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command(
     "networkcloud cluster bmckeyset list",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class List(AAZCommand):
     """List baseboard management controller key sets of the cluster.
@@ -23,9 +26,15 @@ class List(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clusters/{}/bmckeysets", "2024-10-01-preview"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clusters/{}/bmckeysets", "2025-02-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -125,7 +134,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -167,6 +180,12 @@ class List(AAZCommand):
             value.Element = AAZObjectType()
 
             _element = cls._schema_on_200.value.Element
+<<<<<<< HEAD
+=======
+            _element.etag = AAZStrType(
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             _element.extended_location = AAZObjectType(
                 serialized_name="extendedLocation",
                 flags={"required": True},

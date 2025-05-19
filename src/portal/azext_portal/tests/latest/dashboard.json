@@ -1,5 +1,6 @@
 {
   "properties": {
+<<<<<<< HEAD
     "lenses": {
       "0": {
         "order": 0,
@@ -37,6 +38,28 @@
         }
       }
     },
+=======
+    "lenses": [
+      {
+        "order": 0,
+        "parts": [
+          {
+            "metadata": {
+              "inputs": [],
+              "settings": {},
+              "type": "Extension/HubsExtension/PartType/MarkdownPart"
+            },
+            "position": {
+              "colSpan": 5,
+              "rowSpan": 3,
+              "x": 0,
+              "y": 0
+            }
+          }
+        ]
+      }
+    ],
+>>>>>>> upstream/main
     "metadata": {
       "model": {
         "timeRange": {
@@ -51,10 +74,20 @@
       }
     }
   },
+<<<<<<< HEAD
   "name": "7c0464ec-b1cd-4a98-a4a5-1ebe2d980260",
   "type": "Microsoft.Portal/dashboards",
   "location": "eastus",
   "tags": {
     "hidden-title": "test dashboard"
   }
+=======
+  "name": "dashboard",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "eastus",
+  "tags": {
+    "hidden-title": "dashboard"
+  },
+  "apiVersion": "2022-12-01-preview"
+>>>>>>> upstream/main
 }

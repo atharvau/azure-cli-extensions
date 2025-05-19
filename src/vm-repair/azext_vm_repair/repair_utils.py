@@ -526,11 +526,24 @@ def _fetch_compatible_windows_os_urn_v2(source_vm):
 
 
 def _select_distro_linux(distro):
+<<<<<<< HEAD
     image_lookup = {
         'rhel7': 'RedHat:rhel-raw:7-raw:latest',
         'rhel8': 'RedHat:rhel-raw:8-raw:latest',
         'ubuntu18': 'Canonical:UbuntuServer:18.04-LTS:latest',
         'ubuntu20': 'Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest',
+=======
+    # list of images needs to be added to before the docs reflect, and the docs need to remove the keywords long before we remove the reference from the extension
+    # https://learn.microsoft.com/cli/azure/vm/repair?view=azure-cli-latest#az-vm-repair-create-optional-parameters
+    image_lookup = {
+        'rhel7': 'RedHat:rhel-raw:7-raw:latest',
+        'rhel8': 'RedHat:rhel-raw:8-raw:latest',
+        'rhel9': 'RedHat:rhel-raw:9-raw:latest',
+        'ubuntu18': 'Canonical:UbuntuServer:18.04-LTS:latest',
+        'ubuntu20': 'Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest',
+        'ubuntu22': 'Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest',
+        'ubuntu24': 'Canonical:ubuntu-24_04-lts:server-gen1:latest',
+>>>>>>> upstream/main
         'centos6': 'OpenLogic:CentOS:6.10:latest',
         'centos7': 'OpenLogic:CentOS:7_9:latest',
         'centos8': 'OpenLogic:CentOS:8_4:latest',
@@ -547,16 +560,32 @@ def _select_distro_linux(distro):
             os_image_urn = distro
         else:
             logger.info('No specific distro was provided , using the default Ubuntu distro')
+<<<<<<< HEAD
             os_image_urn = "Ubuntu2204"
+=======
+            os_image_urn = "Canonical:ubuntu-24_04-lts:server-gen1:latest"
+>>>>>>> upstream/main
     return os_image_urn
 
 
 def _select_distro_linux_Arm64(distro):
+<<<<<<< HEAD
     image_lookup = {
         'rhel8': 'RedHat:rhel-arm64:8_8-arm64-gen2:latest',
         'rhel9': 'RedHat:rhel-arm64:9_2-arm64:latest',
         'ubuntu18': 'Canonical:UbuntuServer:18_04-lts-arm64:latest',
         'ubuntu20': 'Canonical:0001-com-ubuntu-server-focal:20_04-lts-arm64:latest',
+=======
+    # list of images needs to be added to before the docs reflect, and the docs need to remove the keywords long before we remove the reference from the extension
+    # https://learn.microsoft.com/cli/azure/vm/repair?view=azure-cli-latest#az-vm-repair-create-optional-parameters
+    image_lookup = {
+        'rhel8': 'RedHat:rhel-arm64:8_8-arm64-gen2:latest',
+        'rhel9': 'RedHat:rhel-arm64:9_3-arm64:latest',
+        'ubuntu18': 'Canonical:UbuntuServer:18_04-lts-arm64:latest',
+        'ubuntu20': 'Canonical:0001-com-ubuntu-server-focal:20_04-lts-arm64:latest',
+        'ubuntu22': 'Canonical:0001-com-ubuntu-server-jammy:22_04-lts-arm64:latest',
+        'ubuntu24': 'Canonical:ubuntu-24_04-lts:server-arm64:latest',
+>>>>>>> upstream/main
         'centos7': 'OpenLogic:CentOS:7_9-arm64:latest',
     }
     if distro in image_lookup:
@@ -567,23 +596,44 @@ def _select_distro_linux_Arm64(distro):
             os_image_urn = distro
         else:
             logger.info('No specific distro was provided , using the default ARM64 Ubuntu distro')
+<<<<<<< HEAD
             os_image_urn = "Canonical:UbuntuServer:18_04-lts-arm64:latest"
+=======
+            os_image_urn = "Canonical:ubuntu-24_04-lts:server-arm64:latest"
+>>>>>>> upstream/main
     return os_image_urn
 
 
 def _select_distro_linux_gen2(distro):
+<<<<<<< HEAD
     # base on the document : https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2#generation-2-vm-images-in-azure-marketplace
     image_lookup = {
         'rhel7': 'RedHat:rhel-raw:7-raw-gen2:latest',
         'rhel8': 'RedHat:rhel-raw:8-raw-gen2:latest',
         'ubuntu18': 'Canonical:UbuntuServer:18_04-lts-gen2:latest',
         'ubuntu20': 'Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest',
+=======
+    # list of images needs to be added to before the docs reflect, and the docs need to remove the keywords long before we remove the reference from the extension
+    # https://learn.microsoft.com/cli/azure/vm/repair?view=azure-cli-latest#az-vm-repair-create-optional-parameters
+    image_lookup = {
+        'rhel7': 'RedHat:rhel-raw:7-raw-gen2:latest',
+        'rhel8': 'RedHat:rhel-raw:8-raw-gen2:latest',
+        'rhel9': 'RedHat:rhel-raw:9-raw-gen2:latest',
+        'ubuntu18': 'Canonical:UbuntuServer:18_04-lts-gen2:latest',
+        'ubuntu20': 'Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest',
+        'ubuntu22': 'Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest',
+        'ubuntu24': 'Canonical:ubuntu-24_04-lts:server:latest',
+>>>>>>> upstream/main
         'centos7': 'OpenLogic:CentOS:7_9-gen2:latest',
         'centos8': 'OpenLogic:CentOS:8_4-gen2:latest',
         'oracle7': 'Oracle:Oracle-Linux:ol79-gen2:latest',
         'oracle8': 'Oracle:Oracle-Linux:ol82-gen2:latest',
         'sles12': 'SUSE:sles-12-sp5:gen2:latest',
+<<<<<<< HEAD
         'sles15': 'SUSE:sles-15-sp3:gen2:latest',
+=======
+        'sles15': 'SUSE:sles-15-sp6:gen2:latest',
+>>>>>>> upstream/main
     }
     if distro in image_lookup:
         os_image_urn = image_lookup[distro]
@@ -594,10 +644,17 @@ def _select_distro_linux_gen2(distro):
                 os_image_urn = distro
             else:
                 logger.info('The provided URN does not contain Gen2 in it and this VM is a gen2 , dropping to default image')
+<<<<<<< HEAD
                 os_image_urn = "Canonical:UbuntuServer:18_04-lts-gen2:latest"
         else:
             logger.info('No specific distro was provided , using the default Ubuntu distro')
             os_image_urn = "Canonical:UbuntuServer:18_04-lts-gen2:latest"
+=======
+                os_image_urn = "Canonical:ubuntu-24_04-lts:server:latest"
+        else:
+            logger.info('No specific distro was provided , using the default Ubuntu distro')
+            os_image_urn = "Canonical:ubuntu-24_04-lts:server:latest"
+>>>>>>> upstream/main
     return os_image_urn
 
 
@@ -660,9 +717,21 @@ def _process_bash_parameters(parameters):
     Example: [param1=1, param2=2] => 1 2
     """
     param_string = ''
+<<<<<<< HEAD
     for param in parameters:
         if '=' in param:
             param = param.split('=', 1)[1]
+=======
+
+    for param in parameters:
+        if param.startswith("++"):
+            # Retain the entire string after the `++` prefix
+            param = param[2:]
+        elif '=' in param:
+            # Split and keep only the value after `=`
+            param = param.split('=', 1)[1]
+        # Ensure safe output for bash scripts
+>>>>>>> upstream/main
         param_string += '{p} '.format(p=param)
 
     return param_string.strip(' ')
@@ -803,4 +872,8 @@ def _make_public_ip_name(repair_vm_name, associate_public_ip):
     public_ip_name = '""'
     if associate_public_ip:
         public_ip_name = repair_vm_name + "PublicIP"
+<<<<<<< HEAD
     return public_ip_name
+=======
+    return public_ip_name
+>>>>>>> upstream/main

@@ -13,7 +13,10 @@ from azure.core.pipeline import policies
 from .._version import VERSION
 
 if TYPE_CHECKING:
+<<<<<<< HEAD
     # pylint: disable=unused-import,ungrouped-imports
+=======
+>>>>>>> upstream/main
     from azure.core.credentials_async import AsyncTokenCredential
 
 
@@ -23,19 +26,31 @@ class LoadTestAdministrationClientConfiguration:  # pylint: disable=too-many-ins
     Note that all parameters used to create this instance are saved as instance
     attributes.
 
+<<<<<<< HEAD
     :param endpoint: These APIs allow end users to create, view and run load tests using Azure Load
      Test Service. Required.
+=======
+    :param endpoint: Required.
+>>>>>>> upstream/main
     :type endpoint: str
     :param credential: Credential used to authenticate requests to the service. Required.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
     :keyword api_version: The API version to use for this operation. Default value is
+<<<<<<< HEAD
      "2024-05-01-preview". Note that overriding this default value may result in unsupported
+=======
+     "2025-03-01-preview". Note that overriding this default value may result in unsupported
+>>>>>>> upstream/main
      behavior.
     :paramtype api_version: str
     """
 
     def __init__(self, endpoint: str, credential: "AsyncTokenCredential", **kwargs: Any) -> None:
+<<<<<<< HEAD
         api_version: str = kwargs.pop("api_version", "2024-05-01-preview")
+=======
+        api_version: str = kwargs.pop("api_version", "2025-03-01-preview")
+>>>>>>> upstream/main
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
@@ -66,25 +81,41 @@ class LoadTestAdministrationClientConfiguration:  # pylint: disable=too-many-ins
             )
 
 
+<<<<<<< HEAD
 class LoadTestRunClientConfiguration:  # pylint: disable=too-many-instance-attributes,name-too-long
+=======
+class LoadTestRunClientConfiguration:  # pylint: disable=too-many-instance-attributes
+>>>>>>> upstream/main
     """Configuration for LoadTestRunClient.
 
     Note that all parameters used to create this instance are saved as instance
     attributes.
 
+<<<<<<< HEAD
     :param endpoint: These APIs allow end users to create, view and run load tests using Azure Load
      Test Service. Required.
+=======
+    :param endpoint: Required.
+>>>>>>> upstream/main
     :type endpoint: str
     :param credential: Credential used to authenticate requests to the service. Required.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
     :keyword api_version: The API version to use for this operation. Default value is
+<<<<<<< HEAD
      "2024-05-01-preview". Note that overriding this default value may result in unsupported
+=======
+     "2025-03-01-preview". Note that overriding this default value may result in unsupported
+>>>>>>> upstream/main
      behavior.
     :paramtype api_version: str
     """
 
     def __init__(self, endpoint: str, credential: "AsyncTokenCredential", **kwargs: Any) -> None:
+<<<<<<< HEAD
         api_version: str = kwargs.pop("api_version", "2024-05-01-preview")
+=======
+        api_version: str = kwargs.pop("api_version", "2025-03-01-preview")
+>>>>>>> upstream/main
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")

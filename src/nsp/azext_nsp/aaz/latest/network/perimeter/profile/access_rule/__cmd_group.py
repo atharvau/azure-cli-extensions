@@ -15,7 +15,11 @@ from azure.cli.core.aaz import *
     "network perimeter profile access-rule",
 )
 class __CMDGroup(AAZCommandGroup):
+<<<<<<< HEAD
     """Manage Access Rules of a Profile inside an NSP
+=======
+    """Manage Network Security Perimeter Profile Access Rules.
+>>>>>>> upstream/main
     """
     pass
 

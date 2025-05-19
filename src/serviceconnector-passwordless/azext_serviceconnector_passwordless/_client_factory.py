@@ -13,7 +13,11 @@ def cf_connection_cl(cli_ctx, *_):
     os.environ['AZURE_HTTP_USER_AGENT'] = (os.environ.get('AZURE_HTTP_USER_AGENT')
                                            or '') + " CliExtension/{}({})".format(NAME, VERSION)
     return get_mgmt_service_client(cli_ctx, ServiceLinkerManagementClient,
+<<<<<<< HEAD
                                    subscription_bound=False, api_version="2023-04-01-preview")
+=======
+                                   subscription_bound=False, api_version="2024-07-01-preview")
+>>>>>>> upstream/main
 
 
 def cf_linker(cli_ctx, *_):

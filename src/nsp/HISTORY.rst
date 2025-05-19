@@ -4,6 +4,22 @@ Release History
 ===============
 ===============
 
+<<<<<<< HEAD
+=======
+##### 1.0.0
+++++++
+New commands added:
+* perimeter associable-resource-type: list
+* perimeter logging-configuration: list
+
+Existing commands updated:
+* perimeter delete: added --force-deletion parameter.
+* Flattened output reponse for all commands.
+
+Removed commands:
+* perimeter onboarded-resources: list
+
+>>>>>>> upstream/main
 ##### 1.0.0b3
 ++++++
 New commands added:

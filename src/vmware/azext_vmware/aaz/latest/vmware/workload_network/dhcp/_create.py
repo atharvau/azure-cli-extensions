@@ -44,7 +44,11 @@ class Create(AAZCommand):
             help="NSX DHCP identifier. Generally the same as the DHCP display name",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.private_cloud = AAZStrArg(
@@ -52,7 +56,11 @@ class Create(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -85,6 +93,13 @@ class Create(AAZCommand):
         relay.server_addresses = AAZListArg(
             options=["server-addresses"],
             help="DHCP Relay Addresses. Max 3.",
+<<<<<<< HEAD
+=======
+            fmt=AAZListArgFormat(
+                max_length=3,
+                min_length=1,
+            ),
+>>>>>>> upstream/main
         )
 
         server_addresses = cls._args_schema.relay.server_addresses

@@ -20,7 +20,11 @@ class Wait(AAZWaitCommand):
 
     _aaz_info = {
         "resources": [
+<<<<<<< HEAD
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/internetgatewayrules/{}", "2024-02-15-preview"],
+=======
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/internetgatewayrules/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -45,6 +49,12 @@ class Wait(AAZWaitCommand):
             help="Name of the Internet Gateway rule.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -116,7 +126,11 @@ class Wait(AAZWaitCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -176,6 +190,13 @@ class Wait(AAZWaitCommand):
                 serialized_name="internetGatewayIds",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},
@@ -188,18 +209,62 @@ class Wait(AAZWaitCommand):
             internet_gateway_ids = cls._schema_on_200.properties.internet_gateway_ids
             internet_gateway_ids.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             rule_properties = cls._schema_on_200.properties.rule_properties
             rule_properties.action = AAZStrType(
                 flags={"required": True},
             )
             rule_properties.address_list = AAZListType(
                 serialized_name="addressList",
+<<<<<<< HEAD
                 flags={"required": True},
+=======
+            )
+            rule_properties.condition = AAZStrType()
+            rule_properties.destination_address_list = AAZListType(
+                serialized_name="destinationAddressList",
+            )
+            rule_properties.header_address_list = AAZListType(
+                serialized_name="headerAddressList",
+            )
+            rule_properties.source_address_list = AAZListType(
+                serialized_name="sourceAddressList",
+>>>>>>> upstream/main
             )
 
             address_list = cls._schema_on_200.properties.rule_properties.address_list
             address_list.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            destination_address_list = cls._schema_on_200.properties.rule_properties.destination_address_list
+            destination_address_list.Element = AAZStrType()
+
+            header_address_list = cls._schema_on_200.properties.rule_properties.header_address_list
+            header_address_list.Element = AAZObjectType()
+
+            _element = cls._schema_on_200.properties.rule_properties.header_address_list.Element
+            _element.address_list = AAZListType(
+                serialized_name="addressList",
+            )
+            _element.header_name = AAZStrType(
+                serialized_name="headerName",
+            )
+
+            address_list = cls._schema_on_200.properties.rule_properties.header_address_list.Element.address_list
+            address_list.Element = AAZStrType()
+
+            source_address_list = cls._schema_on_200.properties.rule_properties.source_address_list
+            source_address_list.Element = AAZStrType()
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

@@ -25,9 +25,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabriccontrollers/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabriccontrollers/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -52,11 +58,18 @@ class Create(AAZCommand):
             options=["--resource-name"],
             help="Name of the Network Fabric Controller.",
             required=True,
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Body"
 
         _args_schema = cls._args_schema
@@ -77,23 +90,38 @@ class Create(AAZCommand):
         tags = cls._args_schema.tags
         tags.Element = AAZStrArg()
 
+=======
+>>>>>>> upstream/main
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
         _args_schema.annotation = AAZStrArg(
             options=["--annotation"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Description for underlying resource.",
         )
         _args_schema.infra_er_connections = AAZListArg(
             options=["--infra-er-connections"],
             arg_group="Properties",
             help="Infra ER connections to manage infra resources.",
+=======
+            help="Switch configuration description.",
+        )
+        _args_schema.infrastructure_express_route_connections = AAZListArg(
+            options=["--infra-er-connections", "--infrastructure-express-route-connections"],
+            arg_group="Properties",
+            help="As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)",
+>>>>>>> upstream/main
         )
         _args_schema.ipv4_address_space = AAZStrArg(
             options=["--ipv4-address-space"],
             arg_group="Properties",
             help="IPv4 Network Fabric Controller Address Space.",
+<<<<<<< HEAD
+=======
+            default="10.0.0.0/19",
+>>>>>>> upstream/main
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
@@ -102,6 +130,10 @@ class Create(AAZCommand):
             options=["--ipv6-address-space"],
             arg_group="Properties",
             help="IPv6 Network Fabric Controller Address Space.",
+<<<<<<< HEAD
+=======
+            default="FC00::/59",
+>>>>>>> upstream/main
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
@@ -109,7 +141,12 @@ class Create(AAZCommand):
         _args_schema.is_workload_management_network_enabled = AAZStrArg(
             options=["--is-workload-management-network-enabled"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. Default value is True.",
+=======
+            help="A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.",
+            default="True",
+>>>>>>> upstream/main
             enum={"False": "False", "True": "True"},
         )
         _args_schema.managed_resource_group_configuration = AAZObjectArg(
@@ -121,6 +158,7 @@ class Create(AAZCommand):
             options=["--nfc-sku"],
             arg_group="Properties",
             help="Network Fabric Controller SKU.",
+<<<<<<< HEAD
             enum={"Basic": "Basic", "HighPerformance": "HighPerformance", "Standard": "Standard"},
         )
         _args_schema.workload_er_connections = AAZListArg(
@@ -132,6 +170,20 @@ class Create(AAZCommand):
         infra_er_connections = cls._args_schema.infra_er_connections
         infra_er_connections.Element = AAZObjectArg()
         cls._build_args_express_route_connection_information_create(infra_er_connections.Element)
+=======
+            default="Standard",
+            enum={"Basic": "Basic", "HighPerformance": "HighPerformance", "Standard": "Standard"},
+        )
+        _args_schema.workload_express_route_connections = AAZListArg(
+            options=["--workload-er-connections", "--workload-express-route-connections"],
+            arg_group="Properties",
+            help="As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).",
+        )
+
+        infrastructure_express_route_connections = cls._args_schema.infrastructure_express_route_connections
+        infrastructure_express_route_connections.Element = AAZObjectArg()
+        cls._build_args_express_route_connection_information_create(infrastructure_express_route_connections.Element)
+>>>>>>> upstream/main
 
         managed_resource_group_configuration = cls._args_schema.managed_resource_group_configuration
         managed_resource_group_configuration.location = AAZStrArg(
@@ -143,9 +195,35 @@ class Create(AAZCommand):
             help="The NFC service will be hosted in a Managed resource group.",
         )
 
+<<<<<<< HEAD
         workload_er_connections = cls._args_schema.workload_er_connections
         workload_er_connections.Element = AAZObjectArg()
         cls._build_args_express_route_connection_information_create(workload_er_connections.Element)
+=======
+        workload_express_route_connections = cls._args_schema.workload_express_route_connections
+        workload_express_route_connections.Element = AAZObjectArg()
+        cls._build_args_express_route_connection_information_create(workload_express_route_connections.Element)
+
+        # define Arg Group "Resource"
+
+        _args_schema = cls._args_schema
+        _args_schema.location = AAZResourceLocationArg(
+            arg_group="Resource",
+            help="The geo-location where the resource lives",
+            required=True,
+            fmt=AAZResourceLocationArgFormat(
+                resource_group_arg="resource_group",
+            ),
+        )
+        _args_schema.tags = AAZDictArg(
+            options=["--tags"],
+            arg_group="Resource",
+            help="Resource tags.",
+        )
+
+        tags = cls._args_schema.tags
+        tags.Element = AAZStrArg()
+>>>>>>> upstream/main
         return cls._args_schema
 
     _args_express_route_connection_information_create = None
@@ -160,7 +238,11 @@ class Create(AAZCommand):
         cls._args_express_route_connection_information_create = AAZObjectArg()
 
         express_route_connection_information_create = cls._args_express_route_connection_information_create
+<<<<<<< HEAD
         express_route_connection_information_create.express_route_authorization_key = AAZStrArg(
+=======
+        express_route_connection_information_create.express_route_authorization_key = AAZPasswordArg(
+>>>>>>> upstream/main
             options=["express-route-authorization-key"],
             help="Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute.",
             required=True,
@@ -255,7 +337,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -287,13 +373,21 @@ class Create(AAZCommand):
             properties = _builder.get(".properties")
             if properties is not None:
                 properties.set_prop("annotation", AAZStrType, ".annotation")
+<<<<<<< HEAD
                 properties.set_prop("infrastructureExpressRouteConnections", AAZListType, ".infra_er_connections")
+=======
+                properties.set_prop("infrastructureExpressRouteConnections", AAZListType, ".infrastructure_express_route_connections")
+>>>>>>> upstream/main
                 properties.set_prop("ipv4AddressSpace", AAZStrType, ".ipv4_address_space")
                 properties.set_prop("ipv6AddressSpace", AAZStrType, ".ipv6_address_space")
                 properties.set_prop("isWorkloadManagementNetworkEnabled", AAZStrType, ".is_workload_management_network_enabled")
                 properties.set_prop("managedResourceGroupConfiguration", AAZObjectType, ".managed_resource_group_configuration")
                 properties.set_prop("nfcSku", AAZStrType, ".nfc_sku")
+<<<<<<< HEAD
                 properties.set_prop("workloadExpressRouteConnections", AAZListType, ".workload_er_connections")
+=======
+                properties.set_prop("workloadExpressRouteConnections", AAZListType, ".workload_express_route_connections")
+>>>>>>> upstream/main
 
             infrastructure_express_route_connections = _builder.get(".properties.infrastructureExpressRouteConnections")
             if infrastructure_express_route_connections is not None:
@@ -372,6 +466,13 @@ class Create(AAZCommand):
             properties.is_workload_management_network_enabled = AAZStrType(
                 serialized_name="isWorkloadManagementNetworkEnabled",
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.managed_resource_group_configuration = AAZObjectType(
                 serialized_name="managedResourceGroupConfiguration",
             )
@@ -393,10 +494,13 @@ class Create(AAZCommand):
             properties.workload_express_route_connections = AAZListType(
                 serialized_name="workloadExpressRouteConnections",
             )
+<<<<<<< HEAD
             properties.workload_management_network = AAZBoolType(
                 serialized_name="workloadManagementNetwork",
                 flags={"read_only": True},
             )
+=======
+>>>>>>> upstream/main
             properties.workload_services = AAZObjectType(
                 serialized_name="workloadServices",
                 flags={"read_only": True},
@@ -407,6 +511,14 @@ class Create(AAZCommand):
             infrastructure_express_route_connections.Element = AAZObjectType()
             _CreateHelper._build_schema_express_route_connection_information_read(infrastructure_express_route_connections.Element)
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200_201.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             managed_resource_group_configuration = cls._schema_on_200_201.properties.managed_resource_group_configuration
             managed_resource_group_configuration.location = AAZStrType()
             managed_resource_group_configuration.name = AAZStrType()

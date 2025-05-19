@@ -87,7 +87,11 @@ class VmwareScenarioTest(ScenarioTest):
 
         # delete identity source
         self.cmd(
+<<<<<<< HEAD
             'vmware private-cloud delete-identity-source -g {rg} -c {privatecloud} -n group1 --alias groupAlias --domain domain1 --yes')
+=======
+            'vmware private-cloud delete-identity-source -g {rg} -c {privatecloud} -n group1 --yes')
+>>>>>>> upstream/main
 
         # cluster list should report 0
         count = len(self.cmd('vmware cluster list -g {rg} -c {privatecloud}').get_output_in_json())

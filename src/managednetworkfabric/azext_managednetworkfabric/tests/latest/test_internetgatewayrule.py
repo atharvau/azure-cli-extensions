@@ -77,6 +77,19 @@ def step_delete(test, checks=None):
     )
 
 
+<<<<<<< HEAD
+=======
+def step_update(test, checks=None):
+    """Internet Gateway Rule update operation"""
+    if checks is None:
+        checks = []
+    test.cmd(
+        "az networkfabric internetgatewayrule update --resource-group {rg} --resource-name {name} --tags {tag}",
+        checks=checks,
+    )
+
+
+>>>>>>> upstream/main
 class GA_InternetGatewayRuleScenarioTest1(ScenarioTest):
     """Internet Gateway Rule Scenario test"""
 
@@ -90,6 +103,10 @@ class GA_InternetGatewayRuleScenarioTest1(ScenarioTest):
                 "ruleProperties": CONFIG.get(
                     "INTERNET_GATEWAY_RULE", "rule_properties"
                 ),
+<<<<<<< HEAD
+=======
+                "tag": CONFIG.get("INTERNET_GATEWAY_RULE", "tag"),
+>>>>>>> upstream/main
             }
         )
 

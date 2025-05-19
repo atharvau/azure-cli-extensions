@@ -9,7 +9,11 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
+<<<<<<< HEAD
       - python-requests/2.31.0
+=======
+      - python-requests/2.32.3
+>>>>>>> upstream/main
     method: GET
     uri: https://aka.ms/azure-cli-extension-index-v1
   response:
@@ -23,15 +27,25 @@ interactions:
       content-length:
       - '0'
       date:
+<<<<<<< HEAD
       - Mon, 04 Mar 2024 17:18:43 GMT
       expires:
       - Mon, 04 Mar 2024 17:18:43 GMT
+=======
+      - Tue, 04 Mar 2025 22:51:02 GMT
+      expires:
+      - Tue, 04 Mar 2025 22:51:02 GMT
+>>>>>>> upstream/main
       location:
       - https://azcliextensionsync.blob.core.windows.net/index1/index.json
       pragma:
       - no-cache
       request-context:
+<<<<<<< HEAD
       - appId=cid-v1:26ef1154-5995-4d24-ad78-ef0b04f11587
+=======
+      - appId=cid-v1:d94c0f68-64bf-4036-8409-a0e761bb7ee1
+>>>>>>> upstream/main
       server:
       - Kestrel
       strict-transport-security:
@@ -51,7 +65,11 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
+<<<<<<< HEAD
       - python-requests/2.31.0
+=======
+      - python-requests/2.32.3
+>>>>>>> upstream/main
     method: GET
     uri: https://aka.ms/azure-cli-extension-index-v1
   response:
@@ -65,15 +83,25 @@ interactions:
       content-length:
       - '0'
       date:
+<<<<<<< HEAD
       - Mon, 04 Mar 2024 17:18:47 GMT
       expires:
       - Mon, 04 Mar 2024 17:18:47 GMT
+=======
+      - Tue, 04 Mar 2025 22:51:05 GMT
+      expires:
+      - Tue, 04 Mar 2025 22:51:05 GMT
+>>>>>>> upstream/main
       location:
       - https://azcliextensionsync.blob.core.windows.net/index1/index.json
       pragma:
       - no-cache
       request-context:
+<<<<<<< HEAD
       - appId=cid-v1:26ef1154-5995-4d24-ad78-ef0b04f11587
+=======
+      - appId=cid-v1:d94c0f68-64bf-4036-8409-a0e761bb7ee1
+>>>>>>> upstream/main
       server:
       - Kestrel
       strict-transport-security:
@@ -93,7 +121,11 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
+<<<<<<< HEAD
       - python-requests/2.31.0
+=======
+      - python-requests/2.32.3
+>>>>>>> upstream/main
     method: GET
     uri: https://aka.ms/azure-cli-extension-index-v1
   response:
@@ -107,15 +139,25 @@ interactions:
       content-length:
       - '0'
       date:
+<<<<<<< HEAD
       - Mon, 04 Mar 2024 17:18:50 GMT
       expires:
       - Mon, 04 Mar 2024 17:18:50 GMT
+=======
+      - Tue, 04 Mar 2025 22:51:07 GMT
+      expires:
+      - Tue, 04 Mar 2025 22:51:07 GMT
+>>>>>>> upstream/main
       location:
       - https://azcliextensionsync.blob.core.windows.net/index1/index.json
       pragma:
       - no-cache
       request-context:
+<<<<<<< HEAD
       - appId=cid-v1:26ef1154-5995-4d24-ad78-ef0b04f11587
+=======
+      - appId=cid-v1:d94c0f68-64bf-4036-8409-a0e761bb7ee1
+>>>>>>> upstream/main
       server:
       - Kestrel
       strict-transport-security:

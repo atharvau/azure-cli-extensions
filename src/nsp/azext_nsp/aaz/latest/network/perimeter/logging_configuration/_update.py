@@ -15,16 +15,28 @@ from azure.cli.core.aaz import *
     "network perimeter logging-configuration update",
 )
 class Update(AAZCommand):
+<<<<<<< HEAD
     """Update NSP logging configuration.
 
     :example: Update Nsp Logging Configuration
+=======
+    """Cerate or update a network security perimeter logging configuration.
+
+    :example: Update a network security perimeter logging configuration
+>>>>>>> upstream/main
         az network perimeter logging-configuration update --perimeter-name nsp1 --resource-group rg1 --enabled-log-categories "[NspPublicInboundPerimeterRulesDenied,NspPublicOutboundPerimeterRulesDenied]"
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/loggingconfigurations/{}", "2023-08-01-preview"],
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/loggingconfigurations/{}", "2024-07-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -51,12 +63,26 @@ class Update(AAZCommand):
             help="The name of the NSP logging configuration. Accepts 'instance' as name.",
             required=True,
             id_part="child_name_1",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -86,12 +112,20 @@ class Update(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         self.NspLoggingConfigurationGet(ctx=self.ctx)()
+=======
+        self.NetworkSecurityPerimeterLoggingConfigurationsGet(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.pre_instance_update(self.ctx.vars.instance)
         self.InstanceUpdateByJson(ctx=self.ctx)()
         self.InstanceUpdateByGeneric(ctx=self.ctx)()
         self.post_instance_update(self.ctx.vars.instance)
+<<<<<<< HEAD
         self.NspLoggingConfigurationCreateOrUpdate(ctx=self.ctx)()
+=======
+        self.NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdate(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -114,7 +148,11 @@ class Update(AAZCommand):
         result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
         return result
 
+<<<<<<< HEAD
     class NspLoggingConfigurationGet(AAZHttpOperation):
+=======
+    class NetworkSecurityPerimeterLoggingConfigurationsGet(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -166,7 +204,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -201,14 +243,23 @@ class Update(AAZCommand):
 
             return cls._schema_on_200
 
+<<<<<<< HEAD
     class NspLoggingConfigurationCreateOrUpdate(AAZHttpOperation):
+=======
+    class NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdate(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
+<<<<<<< HEAD
             if session.http_response.status_code in [200]:
                 return self.on_200(session)
+=======
+            if session.http_response.status_code in [200, 201]:
+                return self.on_200_201(session)
+>>>>>>> upstream/main
 
             return self.on_error(session.http_response)
 
@@ -253,7 +304,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -280,11 +335,16 @@ class Update(AAZCommand):
 
             return self.serialize_content(_content_value)
 
+<<<<<<< HEAD
         def on_200(self, session):
+=======
+        def on_200_201(self, session):
+>>>>>>> upstream/main
             data = self.deserialize_http_content(session)
             self.ctx.set_var(
                 "instance",
                 data,
+<<<<<<< HEAD
                 schema_builder=self._build_schema_on_200
             )
 
@@ -299,6 +359,22 @@ class Update(AAZCommand):
             _UpdateHelper._build_schema_nsp_logging_configuration_read(cls._schema_on_200)
 
             return cls._schema_on_200
+=======
+                schema_builder=self._build_schema_on_200_201
+            )
+
+        _schema_on_200_201 = None
+
+        @classmethod
+        def _build_schema_on_200_201(cls):
+            if cls._schema_on_200_201 is not None:
+                return cls._schema_on_200_201
+
+            cls._schema_on_200_201 = AAZObjectType()
+            _UpdateHelper._build_schema_nsp_logging_configuration_read(cls._schema_on_200_201)
+
+            return cls._schema_on_200_201
+>>>>>>> upstream/main
 
     class InstanceUpdateByJson(AAZJsonInstanceUpdateOperation):
 
@@ -311,7 +387,11 @@ class Update(AAZCommand):
                 value=instance,
                 typ=AAZObjectType
             )
+<<<<<<< HEAD
             _builder.set_prop("properties", AAZObjectType)
+=======
+            _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+>>>>>>> upstream/main
 
             properties = _builder.get(".properties")
             if properties is not None:
@@ -341,26 +421,46 @@ class _UpdateHelper:
     @classmethod
     def _build_schema_nsp_logging_configuration_read(cls, _schema):
         if cls._schema_nsp_logging_configuration_read is not None:
+<<<<<<< HEAD
             _schema.etag = cls._schema_nsp_logging_configuration_read.etag
             _schema.id = cls._schema_nsp_logging_configuration_read.id
             _schema.name = cls._schema_nsp_logging_configuration_read.name
             _schema.properties = cls._schema_nsp_logging_configuration_read.properties
+=======
+            _schema.id = cls._schema_nsp_logging_configuration_read.id
+            _schema.name = cls._schema_nsp_logging_configuration_read.name
+            _schema.properties = cls._schema_nsp_logging_configuration_read.properties
+            _schema.system_data = cls._schema_nsp_logging_configuration_read.system_data
+>>>>>>> upstream/main
             _schema.type = cls._schema_nsp_logging_configuration_read.type
             return
 
         cls._schema_nsp_logging_configuration_read = _schema_nsp_logging_configuration_read = AAZObjectType()
 
         nsp_logging_configuration_read = _schema_nsp_logging_configuration_read
+<<<<<<< HEAD
         nsp_logging_configuration_read.etag = AAZStrType(
             flags={"read_only": True},
         )
+=======
+>>>>>>> upstream/main
         nsp_logging_configuration_read.id = AAZStrType(
             flags={"read_only": True},
         )
         nsp_logging_configuration_read.name = AAZStrType(
             flags={"read_only": True},
         )
+<<<<<<< HEAD
         nsp_logging_configuration_read.properties = AAZObjectType()
+=======
+        nsp_logging_configuration_read.properties = AAZObjectType(
+            flags={"client_flatten": True},
+        )
+        nsp_logging_configuration_read.system_data = AAZObjectType(
+            serialized_name="systemData",
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
         nsp_logging_configuration_read.type = AAZStrType(
             flags={"read_only": True},
         )
@@ -374,10 +474,37 @@ class _UpdateHelper:
         enabled_log_categories = _schema_nsp_logging_configuration_read.properties.enabled_log_categories
         enabled_log_categories.Element = AAZStrType()
 
+<<<<<<< HEAD
         _schema.etag = cls._schema_nsp_logging_configuration_read.etag
         _schema.id = cls._schema_nsp_logging_configuration_read.id
         _schema.name = cls._schema_nsp_logging_configuration_read.name
         _schema.properties = cls._schema_nsp_logging_configuration_read.properties
+=======
+        system_data = _schema_nsp_logging_configuration_read.system_data
+        system_data.created_at = AAZStrType(
+            serialized_name="createdAt",
+        )
+        system_data.created_by = AAZStrType(
+            serialized_name="createdBy",
+        )
+        system_data.created_by_type = AAZStrType(
+            serialized_name="createdByType",
+        )
+        system_data.last_modified_at = AAZStrType(
+            serialized_name="lastModifiedAt",
+        )
+        system_data.last_modified_by = AAZStrType(
+            serialized_name="lastModifiedBy",
+        )
+        system_data.last_modified_by_type = AAZStrType(
+            serialized_name="lastModifiedByType",
+        )
+
+        _schema.id = cls._schema_nsp_logging_configuration_read.id
+        _schema.name = cls._schema_nsp_logging_configuration_read.name
+        _schema.properties = cls._schema_nsp_logging_configuration_read.properties
+        _schema.system_data = cls._schema_nsp_logging_configuration_read.system_data
+>>>>>>> upstream/main
         _schema.type = cls._schema_nsp_logging_configuration_read.type
 
 

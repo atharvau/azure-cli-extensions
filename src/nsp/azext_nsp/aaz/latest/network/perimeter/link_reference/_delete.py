@@ -16,16 +16,28 @@ from azure.cli.core.aaz import *
     confirmation="Are you sure you want to perform this operation?",
 )
 class Delete(AAZCommand):
+<<<<<<< HEAD
     """Delete an NSP LinkReference resource.
 
     :example: Delete a link reference
+=======
+    """Delete a network security perimeter link reference.
+
+    :example: Delete a network security perimeter link reference
+>>>>>>> upstream/main
         az network perimeter link-reference delete --perimeter-name nsp2 --resource-group rg1 --name linkref2
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/linkreferences/{}", "2023-08-01-preview"],
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/linkreferences/{}", "2024-07-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -51,12 +63,26 @@ class Delete(AAZCommand):
             help="The name of the NSP linkReference.",
             required=True,
             id_part="child_name_1",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -65,7 +91,11 @@ class Delete(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         yield self.NspLinkReferencesDelete(ctx=self.ctx)()
+=======
+        yield self.NetworkSecurityPerimeterLinkReferencesDelete(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -76,7 +106,11 @@ class Delete(AAZCommand):
     def post_operations(self):
         pass
 
+<<<<<<< HEAD
     class NspLinkReferencesDelete(AAZHttpOperation):
+=======
+    class NetworkSecurityPerimeterLinkReferencesDelete(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -153,7 +187,11 @@ class Delete(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

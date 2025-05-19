@@ -7,6 +7,10 @@
 from azure.cli.core.commands import CliCommandType
 
 from azure.cli.command_modules.serviceconnector._resource_config import (
+<<<<<<< HEAD
+=======
+    RESOURCE,
+>>>>>>> upstream/main
     SOURCE_RESOURCES,
     TARGET_RESOURCES_DEPRECATED
 )
@@ -31,6 +35,12 @@ def load_command_table(self, _):
         client_factory=cf_connector)
 
     for target in PASSWORDLESS_TARGET_RESOURCES:
+<<<<<<< HEAD
+=======
+        # FabricSql is not supported for Local Connector
+        if target == RESOURCE.FabricSql:
+            continue
+>>>>>>> upstream/main
         with self.command_group('connection create',
                                 local_connection_type, client_factory=cf_connector) as ig:
             if target in TARGET_RESOURCES_DEPRECATED:
@@ -45,6 +55,11 @@ def load_command_table(self, _):
         # only when the extension is installed
         if should_load_source(source):
             for target in PASSWORDLESS_TARGET_RESOURCES:
+<<<<<<< HEAD
+=======
+                if source == RESOURCE.KubernetesCluster and target == RESOURCE.FabricSql:
+                    continue
+>>>>>>> upstream/main
                 with self.command_group(f'{source.value} connection create',
                                         connection_type, client_factory=cf_linker) as ig:
                     if target in TARGET_RESOURCES_DEPRECATED:

@@ -19,9 +19,15 @@ class Show(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-10-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clustermanagers/{}", "2024-10-01-preview", "identity"],
+=======
+        "version": "2025-02-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.networkcloud/clustermanagers/{}", "2025-02-01", "identity"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -131,7 +137,11 @@ class Show(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-10-01-preview",
+=======
+                    "api-version", "2025-02-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -175,6 +185,10 @@ class _ShowHelper:
     @classmethod
     def _build_schema_cluster_manager_read(cls, _schema):
         if cls._schema_cluster_manager_read is not None:
+<<<<<<< HEAD
+=======
+            _schema.etag = cls._schema_cluster_manager_read.etag
+>>>>>>> upstream/main
             _schema.id = cls._schema_cluster_manager_read.id
             _schema.identity = cls._schema_cluster_manager_read.identity
             _schema.location = cls._schema_cluster_manager_read.location
@@ -188,6 +202,12 @@ class _ShowHelper:
         cls._schema_cluster_manager_read = _schema_cluster_manager_read = AAZObjectType()
 
         cluster_manager_read = _schema_cluster_manager_read
+<<<<<<< HEAD
+=======
+        cluster_manager_read.etag = AAZStrType(
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
         cluster_manager_read.id = AAZStrType(
             flags={"read_only": True},
         )
@@ -330,6 +350,10 @@ class _ShowHelper:
         tags = _schema_cluster_manager_read.tags
         tags.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+        _schema.etag = cls._schema_cluster_manager_read.etag
+>>>>>>> upstream/main
         _schema.id = cls._schema_cluster_manager_read.id
         _schema.identity = cls._schema_cluster_manager_read.identity
         _schema.location = cls._schema_cluster_manager_read.location

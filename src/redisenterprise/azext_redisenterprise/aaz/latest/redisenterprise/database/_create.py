@@ -19,9 +19,15 @@ class Create(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-09-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}", "2024-09-01-preview"],
+=======
+        "version": "2025-05-01-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -47,7 +53,11 @@ class Create(AAZCommand):
             help="The name of the RedisEnterprise cluster.",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.database_name = AAZStrArg(
@@ -56,7 +66,11 @@ class Create(AAZCommand):
             required=True,
             default="default",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]{1,60}$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -94,7 +108,10 @@ class Create(AAZCommand):
             options=["--access-keys-auth", "--access-keys-authentication"],
             arg_group="Properties",
             help="Access database using keys - default is enabled. This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.",
+<<<<<<< HEAD
             is_preview=True,
+=======
+>>>>>>> upstream/main
             enum={"Disabled": "Disabled", "Enabled": "Enabled"},
         )
         _args_schema.client_protocol = AAZStrArg(
@@ -107,7 +124,11 @@ class Create(AAZCommand):
             options=["--clustering-policy"],
             arg_group="Properties",
             help="Clustering policy - default is OSSCluster. Specified at create time.",
+<<<<<<< HEAD
             enum={"EnterpriseCluster": "EnterpriseCluster", "OSSCluster": "OSSCluster"},
+=======
+            enum={"EnterpriseCluster": "EnterpriseCluster", "NoCluster": "NoCluster", "OSSCluster": "OSSCluster"},
+>>>>>>> upstream/main
         )
         _args_schema.defer_upgrade = AAZStrArg(
             options=["--defer-upgrade"],
@@ -258,7 +279,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }

@@ -15,16 +15,28 @@ from azure.cli.core.aaz import *
     "network perimeter link list",
 )
 class List(AAZCommand):
+<<<<<<< HEAD
     """List the NSP Link resources in the specified network security perimeter.
 
     :example: Lists NSP links in a parameter
+=======
+    """List all network security perimeter links.
+
+    :example: List all network security perimeter links
+>>>>>>> upstream/main
         az network perimeter link list --perimeter-name nsp1 --resource-group rg1
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/links", "2023-08-01-preview"],
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/links", "2024-07-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -49,6 +61,13 @@ class List(AAZCommand):
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -69,7 +88,11 @@ class List(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         self.NspLinksList(ctx=self.ctx)()
+=======
+        self.NetworkSecurityPerimeterLinksList(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -81,11 +104,19 @@ class List(AAZCommand):
         pass
 
     def _output(self, *args, **kwargs):
+<<<<<<< HEAD
         result = self.deserialize_output(self.ctx.vars.instance.value, client_flatten=False)
         next_link = self.deserialize_output(self.ctx.vars.instance.next_link)
         return result, next_link
 
     class NspLinksList(AAZHttpOperation):
+=======
+        result = self.deserialize_output(self.ctx.vars.instance.value, client_flatten=True)
+        next_link = self.deserialize_output(self.ctx.vars.instance.next_link)
+        return result, next_link
+
+    class NetworkSecurityPerimeterLinksList(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -139,7 +170,11 @@ class List(AAZCommand):
                     "$top", self.ctx.args.top,
                 ),
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -181,16 +216,29 @@ class List(AAZCommand):
             value.Element = AAZObjectType()
 
             _element = cls._schema_on_200.value.Element
+<<<<<<< HEAD
             _element.etag = AAZStrType(
                 flags={"read_only": True},
             )
+=======
+>>>>>>> upstream/main
             _element.id = AAZStrType(
                 flags={"read_only": True},
             )
             _element.name = AAZStrType(
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
             _element.properties = AAZObjectType()
+=======
+            _element.properties = AAZObjectType(
+                flags={"client_flatten": True},
+            )
+            _element.system_data = AAZObjectType(
+                serialized_name="systemData",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             _element.type = AAZStrType(
                 flags={"read_only": True},
             )
@@ -242,6 +290,29 @@ class List(AAZCommand):
             remote_outbound_profiles = cls._schema_on_200.value.Element.properties.remote_outbound_profiles
             remote_outbound_profiles.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            system_data = cls._schema_on_200.value.Element.system_data
+            system_data.created_at = AAZStrType(
+                serialized_name="createdAt",
+            )
+            system_data.created_by = AAZStrType(
+                serialized_name="createdBy",
+            )
+            system_data.created_by_type = AAZStrType(
+                serialized_name="createdByType",
+            )
+            system_data.last_modified_at = AAZStrType(
+                serialized_name="lastModifiedAt",
+            )
+            system_data.last_modified_by = AAZStrType(
+                serialized_name="lastModifiedBy",
+            )
+            system_data.last_modified_by_type = AAZStrType(
+                serialized_name="lastModifiedByType",
+            )
+
+>>>>>>> upstream/main
             return cls._schema_on_200
 
 

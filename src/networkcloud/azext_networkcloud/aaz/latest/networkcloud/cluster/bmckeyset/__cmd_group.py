@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command_group(
     "networkcloud cluster bmckeyset",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class __CMDGroup(AAZCommandGroup):
     """Manage cluster's baseboard management controller key set

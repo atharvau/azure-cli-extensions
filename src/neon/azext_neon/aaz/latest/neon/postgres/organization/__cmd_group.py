@@ -13,7 +13,10 @@ from azure.cli.core.aaz import *
 
 @register_command_group(
     "neon postgres organization",
+<<<<<<< HEAD
     is_preview=True,
+=======
+>>>>>>> upstream/main
 )
 class __CMDGroup(AAZCommandGroup):
     """Manage a Neon organization

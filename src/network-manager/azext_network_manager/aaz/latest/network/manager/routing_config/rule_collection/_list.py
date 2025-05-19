@@ -23,9 +23,15 @@ class List(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-03-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections", "2023-03-01-preview"],
+=======
+        "version": "2024-05-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networkmanagers/{}/routingconfigurations/{}/rulecollections", "2024-05-01"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -155,7 +161,11 @@ class List(AAZCommand):
                     "$top", self.ctx.args.top,
                 ),
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-03-01-preview",
+=======
+                    "api-version", "2024-05-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -226,10 +236,13 @@ class List(AAZCommand):
             properties.disable_bgp_route_propagation = AAZStrType(
                 serialized_name="disableBgpRoutePropagation",
             )
+<<<<<<< HEAD
             properties.local_route_setting = AAZStrType(
                 serialized_name="localRouteSetting",
                 flags={"required": True},
             )
+=======
+>>>>>>> upstream/main
             properties.provisioning_state = AAZStrType(
                 serialized_name="provisioningState",
                 flags={"read_only": True},

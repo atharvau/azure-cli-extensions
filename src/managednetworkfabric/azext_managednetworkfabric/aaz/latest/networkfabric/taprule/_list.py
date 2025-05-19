@@ -25,10 +25,17 @@ class List(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/providers/microsoft.managednetworkfabric/networktaprules", "2024-02-15-preview"],
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networktaprules", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/providers/microsoft.managednetworkfabric/networktaprules", "2024-06-15-preview"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networktaprules", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -115,7 +122,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -151,7 +162,13 @@ class List(AAZCommand):
             _schema_on_200.next_link = AAZStrType(
                 serialized_name="nextLink",
             )
+<<<<<<< HEAD
             _schema_on_200.value = AAZListType()
+=======
+            _schema_on_200.value = AAZListType(
+                flags={"required": True},
+            )
+>>>>>>> upstream/main
 
             value = cls._schema_on_200.value
             value.Element = AAZObjectType()
@@ -195,6 +212,16 @@ class List(AAZCommand):
             properties.dynamic_match_configurations = AAZListType(
                 serialized_name="dynamicMatchConfigurations",
             )
+<<<<<<< HEAD
+=======
+            properties.global_network_tap_rule_actions = AAZObjectType(
+                serialized_name="globalNetworkTapRuleActions",
+            )
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.last_synced_time = AAZStrType(
                 serialized_name="lastSyncedTime",
                 flags={"read_only": True},
@@ -206,7 +233,11 @@ class List(AAZCommand):
                 serialized_name="networkTapId",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
             properties.polling_interval_in_seconds = AAZIntType(
+=======
+            properties.polling_interval_in_seconds = AAZFloatType(
+>>>>>>> upstream/main
                 serialized_name="pollingIntervalInSeconds",
             )
             properties.provisioning_state = AAZStrType(
@@ -266,6 +297,20 @@ class List(AAZCommand):
             vlans = cls._schema_on_200.value.Element.properties.dynamic_match_configurations.Element.vlan_groups.Element.vlans
             vlans.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            global_network_tap_rule_actions = cls._schema_on_200.value.Element.properties.global_network_tap_rule_actions
+            global_network_tap_rule_actions.enable_count = AAZStrType(
+                serialized_name="enableCount",
+            )
+            global_network_tap_rule_actions.truncate = AAZStrType()
+
+            last_operation = cls._schema_on_200.value.Element.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             match_configurations = cls._schema_on_200.value.Element.properties.match_configurations
             match_configurations.Element = AAZObjectType()
 
@@ -447,7 +492,11 @@ class List(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -483,7 +532,13 @@ class List(AAZCommand):
             _schema_on_200.next_link = AAZStrType(
                 serialized_name="nextLink",
             )
+<<<<<<< HEAD
             _schema_on_200.value = AAZListType()
+=======
+            _schema_on_200.value = AAZListType(
+                flags={"required": True},
+            )
+>>>>>>> upstream/main
 
             value = cls._schema_on_200.value
             value.Element = AAZObjectType()
@@ -527,6 +582,16 @@ class List(AAZCommand):
             properties.dynamic_match_configurations = AAZListType(
                 serialized_name="dynamicMatchConfigurations",
             )
+<<<<<<< HEAD
+=======
+            properties.global_network_tap_rule_actions = AAZObjectType(
+                serialized_name="globalNetworkTapRuleActions",
+            )
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.last_synced_time = AAZStrType(
                 serialized_name="lastSyncedTime",
                 flags={"read_only": True},
@@ -538,7 +603,11 @@ class List(AAZCommand):
                 serialized_name="networkTapId",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
             properties.polling_interval_in_seconds = AAZIntType(
+=======
+            properties.polling_interval_in_seconds = AAZFloatType(
+>>>>>>> upstream/main
                 serialized_name="pollingIntervalInSeconds",
             )
             properties.provisioning_state = AAZStrType(
@@ -598,6 +667,20 @@ class List(AAZCommand):
             vlans = cls._schema_on_200.value.Element.properties.dynamic_match_configurations.Element.vlan_groups.Element.vlans
             vlans.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            global_network_tap_rule_actions = cls._schema_on_200.value.Element.properties.global_network_tap_rule_actions
+            global_network_tap_rule_actions.enable_count = AAZStrType(
+                serialized_name="enableCount",
+            )
+            global_network_tap_rule_actions.truncate = AAZStrType()
+
+            last_operation = cls._schema_on_200.value.Element.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             match_configurations = cls._schema_on_200.value.Element.properties.match_configurations
             match_configurations.Element = AAZObjectType()
 

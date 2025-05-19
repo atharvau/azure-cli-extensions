@@ -22,9 +22,15 @@ class ValidateConfiguration(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabrics/{}/validateconfiguration", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabrics/{}/validateconfiguration", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,6 +56,12 @@ class ValidateConfiguration(AAZCommand):
             help="Name of the Network Fabric.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
@@ -63,9 +75,12 @@ class ValidateConfiguration(AAZCommand):
             arg_group="Body",
             help="Validate action that to be performed",
             enum={"Cabling": "Cabling", "Configuration": "Configuration", "Connectivity": "Connectivity"},
+<<<<<<< HEAD
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
+=======
+>>>>>>> upstream/main
         )
         return cls._args_schema
 
@@ -150,7 +165,11 @@ class ValidateConfiguration(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -195,7 +214,19 @@ class ValidateConfiguration(AAZCommand):
                 return cls._schema_on_200
 
             cls._schema_on_200 = AAZObjectType()
+<<<<<<< HEAD
             _ValidateConfigurationHelper._build_schema_validate_configuration_response_read(cls._schema_on_200)
+=======
+
+            _schema_on_200 = cls._schema_on_200
+            _schema_on_200.configuration_state = AAZStrType(
+                serialized_name="configurationState",
+                flags={"read_only": True},
+            )
+            _schema_on_200.error = AAZObjectType()
+            _ValidateConfigurationHelper._build_schema_error_detail_read(_schema_on_200.error)
+            _schema_on_200.url = AAZStrType()
+>>>>>>> upstream/main
 
             return cls._schema_on_200
 
@@ -256,6 +287,7 @@ class _ValidateConfigurationHelper:
         _schema.message = cls._schema_error_detail_read.message
         _schema.target = cls._schema_error_detail_read.target
 
+<<<<<<< HEAD
     _schema_validate_configuration_response_read = None
 
     @classmethod
@@ -281,5 +313,7 @@ class _ValidateConfigurationHelper:
         _schema.error = cls._schema_validate_configuration_response_read.error
         _schema.url = cls._schema_validate_configuration_response_read.url
 
+=======
+>>>>>>> upstream/main
 
 __all__ = ["ValidateConfiguration"]

@@ -10,6 +10,10 @@
 
 from .__cmd_group import *
 from ._list import *
+<<<<<<< HEAD
+=======
+from ._reboot import *
+>>>>>>> upstream/main
 from ._run_ro import *
 from ._run_rw import *
 from ._show import *

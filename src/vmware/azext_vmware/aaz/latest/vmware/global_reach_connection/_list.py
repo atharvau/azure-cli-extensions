@@ -47,7 +47,11 @@ class List(AAZCommand):
             help="Name of the private cloud",
             required=True,
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -192,6 +196,10 @@ class List(AAZCommand):
             )
             properties.circuit_connection_status = AAZStrType(
                 serialized_name="circuitConnectionStatus",
+<<<<<<< HEAD
+=======
+                flags={"read_only": True},
+>>>>>>> upstream/main
             )
             properties.express_route_id = AAZStrType(
                 serialized_name="expressRouteId",

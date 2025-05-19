@@ -26,7 +26,11 @@ class NspScenario(ScenarioTest):
 
         self.cmd('network perimeter delete -g {rg} --name {name} --yes')
 
+<<<<<<< HEAD
         self.cmd('network perimeter onboarded-resources list -l eastus2euap')
+=======
+        self.cmd('network perimeter associable-resource-type list -l eastus2euap')
+>>>>>>> upstream/main
 
     @ResourceGroupPreparer(name_prefix='test_nsp_profile_crud', location='eastus2euap')
     def test_nsp_profile_crud(self, resource_group):
@@ -60,13 +64,21 @@ class NspScenario(ScenarioTest):
         self.cmd('az network perimeter profile access-rule create --name {accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg} --fqdn "[\'www.abc.com\', \'www.google.com\']" --direction "Outbound"')
 
         self.cmd('az network perimeter profile access-rule show --name {accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg}', checks=[
+<<<<<<< HEAD
             self.check('properties.fullyQualifiedDomainNames', "[\'www.abc.com\', \'www.google.com\']")
+=======
+            self.check('fullyQualifiedDomainNames', "[\'www.abc.com\', \'www.google.com\']")
+>>>>>>> upstream/main
         ])
 
         self.cmd('az network perimeter profile access-rule update --name {accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg} --fqdn "[\'www.abc.com\']" --direction "Outbound"')
 
         self.cmd('az network perimeter profile access-rule show --name {accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg}', checks=[
+<<<<<<< HEAD
             self.check('properties.fullyQualifiedDomainNames', "[\'www.abc.com\']")
+=======
+            self.check('fullyQualifiedDomainNames', "[\'www.abc.com\']")
+>>>>>>> upstream/main
         ])
 
         self.cmd('network perimeter profile access-rule list --perimeter-name {nsp_name} --profile-name {profile_name} --resource-group {rg}')
@@ -92,12 +104,20 @@ class NspScenario(ScenarioTest):
 
         # IP based access rule
         self.cmd('az network perimeter profile access-rule create --name {ip_accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg} --address-prefixes "[10.10.0.0/16]"', checks=[
+<<<<<<< HEAD
             self.check('properties.addressPrefixes', "['10.10.0.0/16']")
+=======
+            self.check('addressPrefixes', "['10.10.0.0/16']")
+>>>>>>> upstream/main
         ])
 
         # Subscription based access rule
         self.cmd('az network perimeter profile access-rule create --name {sub_accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg} --subscriptions [0].id="/subscriptions/{sub}"', checks=[
+<<<<<<< HEAD
             self.check('properties.subscriptions[0].id', "/subscriptions/{sub}")
+=======
+            self.check('subscriptions[0].id', "/subscriptions/{sub}")
+>>>>>>> upstream/main
         ])
 
         """
@@ -105,7 +125,11 @@ class NspScenario(ScenarioTest):
         self.cmd('network perimeter create --name nsp_for_rule -l eastus2euap --resource-group {rg}')
 
         self.cmd('az network perimeter profile access-rule create --name {nsp_accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg} --nsp [0].id="/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Network/networkSecurityPerimeters/nsp_for_rule"', checks=[
+<<<<<<< HEAD
             self.check('properties.networkSecurityPerimeters[0].id', "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Network/networkSecurityPerimeters/nsp_for_rule")
+=======
+            self.check('networkSecurityPerimeters[0].id', "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Network/networkSecurityPerimeters/nsp_for_rule")
+>>>>>>> upstream/main
         ])
         """
 
@@ -117,7 +141,11 @@ class NspScenario(ScenarioTest):
 
         # ServiceTag based access rule
         self.cmd('az network perimeter profile access-rule create --name {servicetag_accessrule_name} --profile-name {profile_name} --perimeter-name {nsp_name} --resource-group {rg} --service-tags  [MicrosoftPublicIPSpace]', checks=[
+<<<<<<< HEAD
             self.check('properties.serviceTags', "['MicrosoftPublicIPSpace']")
+=======
+            self.check('serviceTags', "['MicrosoftPublicIPSpace']")
+>>>>>>> upstream/main
         ])
         
     @ResourceGroupPreparer(name_prefix='test_nsp_association_crud', location='eastus2euap')
@@ -127,7 +155,11 @@ class NspScenario(ScenarioTest):
             'nsp_name': 'TestNetworkSecurityPerimeter',
             'profile_name': 'TestNspProfile',
             'association_name': 'TestNspAssociation',
+<<<<<<< HEAD
             'resource_name': 'kvclinsp18',
+=======
+            'resource_name': 'kvclinsp19-test',
+>>>>>>> upstream/main
             'sub': self.get_subscription_id()
         })
 
@@ -141,7 +173,11 @@ class NspScenario(ScenarioTest):
                  '--profile id="/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Network/networkSecurityPerimeters/{nsp_name}/profiles/{profile_name}"')
 
         self.cmd('network perimeter association show --name {association_name} --perimeter-name {nsp_name} --resource-group {rg}', checks=[
+<<<<<<< HEAD
             self.check('properties.accessMode', 'Learning')
+=======
+            self.check('accessMode', 'Learning')
+>>>>>>> upstream/main
         ])
 
         self.cmd('network perimeter association update --name {association_name} --perimeter-name {nsp_name} --resource-group {rg} --access-mode Enforced '
@@ -149,7 +185,11 @@ class NspScenario(ScenarioTest):
                  '--profile id="/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Network/networkSecurityPerimeters/{nsp_name}/profiles/{profile_name}"')
 
         self.cmd('network perimeter association show --name {association_name} --perimeter-name {nsp_name} --resource-group {rg}', checks=[
+<<<<<<< HEAD
             self.check('properties.accessMode', 'Enforced')
+=======
+            self.check('accessMode', 'Enforced')
+>>>>>>> upstream/main
         ])
 
         self.cmd('network perimeter association list --perimeter-name {nsp_name} --resource-group {rg}')
@@ -215,7 +255,11 @@ class NspScenario(ScenarioTest):
 
         # Show logging configuration and verify the enabled log categories
         self.cmd('network perimeter logging-configuration show --perimeter-name {nsp_name} --resource-group {rg}', checks=[
+<<<<<<< HEAD
             self.check('properties.enabledLogCategories', "[\'NspPublicInboundPerimeterRulesDenied\']")
+=======
+            self.check('enabledLogCategories', "[\'NspPublicInboundPerimeterRulesDenied\']")
+>>>>>>> upstream/main
         ])
 
         # Update logging configuration
@@ -223,7 +267,11 @@ class NspScenario(ScenarioTest):
 
         # Show logging configuration and verify the updated enabled log categories
         self.cmd('network perimeter logging-configuration show --perimeter-name {nsp_name} --resource-group {rg}', checks=[
+<<<<<<< HEAD
             self.check('properties.enabledLogCategories', "[\'NspPublicInboundPerimeterRulesDenied\', \'NspPublicOutboundPerimeterRulesDenied\']")
+=======
+            self.check('enabledLogCategories', "[\'NspPublicInboundPerimeterRulesDenied\', \'NspPublicOutboundPerimeterRulesDenied\']")
+>>>>>>> upstream/main
         ])
 
         # Delete logging configuration

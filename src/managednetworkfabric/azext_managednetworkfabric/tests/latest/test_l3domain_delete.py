@@ -47,7 +47,11 @@ class GA_L3DomainDeleteScenarioTest1(ScenarioTest):
         super().__init__(*args, **kwargs)
         self.kwargs.update(
             {
+<<<<<<< HEAD
                 "name": CONFIG.get("L3_ISOLATION_DOMAIN", "deletename"),
+=======
+                "name": CONFIG.get("L3_ISOLATION_DOMAIN", "delete_name"),
+>>>>>>> upstream/main
                 "rg": CONFIG.get("L3_ISOLATION_DOMAIN", "delete_resource_group"),
             }
         )

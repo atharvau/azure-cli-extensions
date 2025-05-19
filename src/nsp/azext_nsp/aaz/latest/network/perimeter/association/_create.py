@@ -15,13 +15,20 @@ from azure.cli.core.aaz import *
     "network perimeter association create",
 )
 class Create(AAZCommand):
+<<<<<<< HEAD
     """Creates or updates a NSP resource association.
 
     :example: Create NSP Association
+=======
+    """Create a network security perimeter association.
+
+    :example: Create a network security perimeter association
+>>>>>>> upstream/main
         az network perimeter association create -n MyAssociation --perimeter-name MyPerimeter -g MyResourceGroup --access-mode Learning --private-link-resource "{id:<PaaSArmID>}" --profile "{id:<ProfileArmID>}"
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2023-08-01-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/resourceassociations/{}", "2023-08-01-preview"],
@@ -32,6 +39,19 @@ class Create(AAZCommand):
         super()._handler(command_args)
         self._execute_operations()
         return self._output()
+=======
+        "version": "2024-07-01",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.network/networksecurityperimeters/{}/resourceassociations/{}", "2024-07-01"],
+        ]
+    }
+
+    AZ_SUPPORT_NO_WAIT = True
+
+    def _handler(self, command_args):
+        super()._handler(command_args)
+        return self.build_lro_poller(self._execute_operations, self._output)
+>>>>>>> upstream/main
 
     _args_schema = None
 
@@ -48,16 +68,31 @@ class Create(AAZCommand):
             options=["-n", "--name", "--association-name"],
             help="The name of the NSP association.",
             required=True,
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.perimeter_name = AAZStrArg(
             options=["--perimeter-name"],
             help="The name of the network security perimeter.",
             required=True,
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="(^[a-zA-Z0-9]+[a-zA-Z0-9_.-]*[a-zA-Z0-9_]+$)|(^[a-zA-Z0-9]$)",
+                max_length=80,
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Parameters"
 
         _args_schema = cls._args_schema
@@ -77,6 +112,8 @@ class Create(AAZCommand):
         tags = cls._args_schema.tags
         tags.Element = AAZStrArg()
 
+=======
+>>>>>>> upstream/main
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
@@ -120,7 +157,11 @@ class Create(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
+<<<<<<< HEAD
         self.NspAssociationsCreateOrUpdate(ctx=self.ctx)()
+=======
+        yield self.NetworkSecurityPerimeterAssociationsCreateOrUpdate(ctx=self.ctx)()
+>>>>>>> upstream/main
         self.post_operations()
 
     @register_callback
@@ -132,17 +173,45 @@ class Create(AAZCommand):
         pass
 
     def _output(self, *args, **kwargs):
+<<<<<<< HEAD
         result = self.deserialize_output(self.ctx.vars.instance, client_flatten=False)
         return result
 
     class NspAssociationsCreateOrUpdate(AAZHttpOperation):
+=======
+        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
+        return result
+
+    class NetworkSecurityPerimeterAssociationsCreateOrUpdate(AAZHttpOperation):
+>>>>>>> upstream/main
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
+<<<<<<< HEAD
             if session.http_response.status_code in [200, 201]:
                 return self.on_200_201(session)
+=======
+            if session.http_response.status_code in [202]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_200_201,
+                    self.on_error,
+                    lro_options={"final-state-via": "azure-async-operation"},
+                    path_format_arguments=self.url_parameters,
+                )
+            if session.http_response.status_code in [200, 201]:
+                return self.client.build_lro_polling(
+                    self.ctx.args.no_wait,
+                    session,
+                    self.on_200_201,
+                    self.on_error,
+                    lro_options={"final-state-via": "azure-async-operation"},
+                    path_format_arguments=self.url_parameters,
+                )
+>>>>>>> upstream/main
 
             return self.on_error(session.http_response)
 
@@ -187,7 +256,11 @@ class Create(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2023-08-01-preview",
+=======
+                    "api-version", "2024-07-01",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -212,10 +285,14 @@ class Create(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+<<<<<<< HEAD
             _builder.set_prop("location", AAZStrType, ".location")
             _builder.set_prop("name", AAZStrType, ".association_name")
             _builder.set_prop("properties", AAZObjectType)
             _builder.set_prop("tags", AAZDictType, ".tags")
+=======
+            _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+>>>>>>> upstream/main
 
             properties = _builder.get(".properties")
             if properties is not None:
@@ -223,10 +300,13 @@ class Create(AAZCommand):
                 _CreateHelper._build_schema_sub_resource_create(properties.set_prop("privateLinkResource", AAZObjectType, ".private_link_resource"))
                 _CreateHelper._build_schema_sub_resource_create(properties.set_prop("profile", AAZObjectType, ".profile"))
 
+<<<<<<< HEAD
             tags = _builder.get(".tags")
             if tags is not None:
                 tags.set_elements(AAZStrType, ".")
 
+=======
+>>>>>>> upstream/main
             return self.serialize_content(_content_value)
 
         def on_200_201(self, session):
@@ -245,6 +325,7 @@ class Create(AAZCommand):
                 return cls._schema_on_200_201
 
             cls._schema_on_200_201 = AAZObjectType()
+<<<<<<< HEAD
 
             _schema_on_200_201 = cls._schema_on_200_201
             _schema_on_200_201.id = AAZStrType(
@@ -279,6 +360,9 @@ class Create(AAZCommand):
 
             tags = cls._schema_on_200_201.tags
             tags.Element = AAZStrType()
+=======
+            _CreateHelper._build_schema_nsp_association_read(cls._schema_on_200_201)
+>>>>>>> upstream/main
 
             return cls._schema_on_200_201
 
@@ -292,6 +376,86 @@ class _CreateHelper:
             return
         _builder.set_prop("id", AAZStrType, ".id")
 
+<<<<<<< HEAD
+=======
+    _schema_nsp_association_read = None
+
+    @classmethod
+    def _build_schema_nsp_association_read(cls, _schema):
+        if cls._schema_nsp_association_read is not None:
+            _schema.id = cls._schema_nsp_association_read.id
+            _schema.name = cls._schema_nsp_association_read.name
+            _schema.properties = cls._schema_nsp_association_read.properties
+            _schema.system_data = cls._schema_nsp_association_read.system_data
+            _schema.type = cls._schema_nsp_association_read.type
+            return
+
+        cls._schema_nsp_association_read = _schema_nsp_association_read = AAZObjectType()
+
+        nsp_association_read = _schema_nsp_association_read
+        nsp_association_read.id = AAZStrType(
+            flags={"read_only": True},
+        )
+        nsp_association_read.name = AAZStrType(
+            flags={"read_only": True},
+        )
+        nsp_association_read.properties = AAZObjectType(
+            flags={"client_flatten": True},
+        )
+        nsp_association_read.system_data = AAZObjectType(
+            serialized_name="systemData",
+            flags={"read_only": True},
+        )
+        nsp_association_read.type = AAZStrType(
+            flags={"read_only": True},
+        )
+
+        properties = _schema_nsp_association_read.properties
+        properties.access_mode = AAZStrType(
+            serialized_name="accessMode",
+        )
+        properties.has_provisioning_issues = AAZStrType(
+            serialized_name="hasProvisioningIssues",
+            flags={"read_only": True},
+        )
+        properties.private_link_resource = AAZObjectType(
+            serialized_name="privateLinkResource",
+        )
+        cls._build_schema_sub_resource_read(properties.private_link_resource)
+        properties.profile = AAZObjectType()
+        cls._build_schema_sub_resource_read(properties.profile)
+        properties.provisioning_state = AAZStrType(
+            serialized_name="provisioningState",
+            flags={"read_only": True},
+        )
+
+        system_data = _schema_nsp_association_read.system_data
+        system_data.created_at = AAZStrType(
+            serialized_name="createdAt",
+        )
+        system_data.created_by = AAZStrType(
+            serialized_name="createdBy",
+        )
+        system_data.created_by_type = AAZStrType(
+            serialized_name="createdByType",
+        )
+        system_data.last_modified_at = AAZStrType(
+            serialized_name="lastModifiedAt",
+        )
+        system_data.last_modified_by = AAZStrType(
+            serialized_name="lastModifiedBy",
+        )
+        system_data.last_modified_by_type = AAZStrType(
+            serialized_name="lastModifiedByType",
+        )
+
+        _schema.id = cls._schema_nsp_association_read.id
+        _schema.name = cls._schema_nsp_association_read.name
+        _schema.properties = cls._schema_nsp_association_read.properties
+        _schema.system_data = cls._schema_nsp_association_read.system_data
+        _schema.type = cls._schema_nsp_association_read.type
+
+>>>>>>> upstream/main
     _schema_sub_resource_read = None
 
     @classmethod

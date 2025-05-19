@@ -9,7 +9,14 @@
 # flake8: noqa
 
 from .__cmd_group import *
+<<<<<<< HEAD
 from ._delete import *
 from ._list import *
 from ._show import *
+=======
+from ._list import *
+from ._show import *
+from ._update import *
+from ._update_admin_state import *
+>>>>>>> upstream/main
 from ._wait import *

@@ -8,7 +8,11 @@
 from io import open
 from setuptools import setup, find_packages
 
+<<<<<<< HEAD
 VERSION = "7.1.0"
+=======
+VERSION = "7.2.0"
+>>>>>>> upstream/main
 
 with open('README.md', encoding='utf-8') as f:
     readme = f.read()

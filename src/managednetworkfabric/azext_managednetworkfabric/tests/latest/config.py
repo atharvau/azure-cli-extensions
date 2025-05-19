@@ -5,7 +5,11 @@
 # --------------------------------------------------------------------------------------------
 # pylint: disable=too-few-public-methods
 
+<<<<<<< HEAD
 """ ManagedNetworkFabric resource specific configuration"""
+=======
+"""ManagedNetworkFabric resource specific configuration"""
+>>>>>>> upstream/main
 
 import configparser
 from os import path

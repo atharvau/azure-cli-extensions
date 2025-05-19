@@ -22,9 +22,15 @@ class Update(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkdevices/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkdevices/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -50,11 +56,18 @@ class Update(AAZCommand):
             help="Name of the Network Device.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Body"
 
         _args_schema = cls._args_schema
@@ -67,18 +80,30 @@ class Update(AAZCommand):
         tags = cls._args_schema.tags
         tags.Element = AAZStrArg()
 
+=======
+>>>>>>> upstream/main
         # define Arg Group "Properties"
 
         _args_schema = cls._args_schema
         _args_schema.annotation = AAZStrArg(
             options=["--annotation"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Description for underlying resource.",
+=======
+            help="Switch configuration description.",
+            nullable=True,
+>>>>>>> upstream/main
         )
         _args_schema.host_name = AAZStrArg(
             options=["--host-name"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="The Host Name of the device. All Network Device names should follow the format `<Fabric Name>-<Rack Type>-<Device Type>`. Example: AustinNF-AR-CE1.",
+=======
+            help="The host name of the device.",
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
@@ -86,11 +111,27 @@ class Update(AAZCommand):
         _args_schema.serial_number = AAZStrArg(
             options=["--serial-number"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969",
+=======
+            help="Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.",
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
         )
+<<<<<<< HEAD
+=======
+        _args_schema.tags = AAZDictArg(
+            options=["--tags"],
+            arg_group="Properties",
+            help="Resource tags.",
+        )
+
+        tags = cls._args_schema.tags
+        tags.Element = AAZStrArg()
+>>>>>>> upstream/main
         return cls._args_schema
 
     def _execute_operations(self):
@@ -174,7 +215,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -199,14 +244,24 @@ class Update(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+<<<<<<< HEAD
             _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
+=======
+            _builder.set_prop("properties", AAZObjectType)
+>>>>>>> upstream/main
             _builder.set_prop("tags", AAZDictType, ".tags")
 
             properties = _builder.get(".properties")
             if properties is not None:
+<<<<<<< HEAD
                 properties.set_prop("annotation", AAZStrType, ".annotation")
                 properties.set_prop("hostName", AAZStrType, ".host_name")
                 properties.set_prop("serialNumber", AAZStrType, ".serial_number")
+=======
+                properties.set_prop("annotation", AAZStrType, ".annotation", typ_kwargs={"nullable": True})
+                properties.set_prop("hostName", AAZStrType, ".host_name", typ_kwargs={"nullable": True})
+                properties.set_prop("serialNumber", AAZStrType, ".serial_number", typ_kwargs={"nullable": True})
+>>>>>>> upstream/main
 
             tags = _builder.get(".tags")
             if tags is not None:
@@ -266,6 +321,13 @@ class Update(AAZCommand):
             properties.host_name = AAZStrType(
                 serialized_name="hostName",
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.management_ipv4_address = AAZStrType(
                 serialized_name="managementIpv4Address",
                 flags={"read_only": True},
@@ -289,6 +351,13 @@ class Update(AAZCommand):
                 serialized_name="provisioningState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.rw_device_config = AAZStrType(
+                serialized_name="rwDeviceConfig",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.serial_number = AAZStrType(
                 serialized_name="serialNumber",
                 flags={"required": True},
@@ -297,6 +366,14 @@ class Update(AAZCommand):
                 flags={"read_only": True},
             )
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",

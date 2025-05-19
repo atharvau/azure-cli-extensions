@@ -6,4 +6,8 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
+<<<<<<< HEAD
 VERSION = "0.0.0.1"
+=======
+VERSION = "0.0.1"
+>>>>>>> upstream/main

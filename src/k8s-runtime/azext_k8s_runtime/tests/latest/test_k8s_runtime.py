@@ -8,7 +8,10 @@
 import os
 import subprocess
 import tempfile
+<<<<<<< HEAD
 import azext_k8s_runtime.custom_commands.storage_class as sc
+=======
+>>>>>>> upstream/main
 import azext_k8s_runtime.custom_commands.load_balancer as lb
 
 from azure.cli.testsdk import ScenarioTest, ResourceGroupPreparer, live_only
@@ -49,6 +52,7 @@ class K8sRuntimeScenario(ScenarioTest):
 
     @live_only()
     @ResourceGroupPreparer(name_prefix='k8srttest', random_name_length=16)
+<<<<<<< HEAD
     def test_storage_class_enable_disable(self, resource_group):
         self.create_connected_cluster(resource_group)
 
@@ -111,6 +115,8 @@ class K8sRuntimeScenario(ScenarioTest):
 
     @live_only()
     @ResourceGroupPreparer(name_prefix='k8srttest', random_name_length=16)
+=======
+>>>>>>> upstream/main
     def test_load_balancer_enable_disable(self, resource_group):
         self.create_connected_cluster(resource_group)
 

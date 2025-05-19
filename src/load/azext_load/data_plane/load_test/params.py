@@ -27,13 +27,26 @@ def load_arguments(self, _):
         c.argument(
             "key_vault_reference_identity", argtypes.key_vault_reference_identity
         )
+<<<<<<< HEAD
+=======
+        c.argument(
+            "metrics_reference_identity", argtypes.metrics_reference_identity, help="The identity that will be used to access the metrics. This will be defaulted to SystemAssigned if not given."
+        )
+>>>>>>> upstream/main
         c.argument("engine_instances", argtypes.engine_instances)
         c.argument("custom_no_wait", argtypes.custom_no_wait)
         c.argument("disable_public_ip", argtypes.disable_public_ip)
         c.argument("autostop", argtypes.autostop)
         c.argument("autostop_error_rate", argtypes.autostop_error_rate)
         c.argument("autostop_error_rate_time_window", argtypes.autostop_error_rate_time_window)
+<<<<<<< HEAD
         c.argument("regionwise_engines", argtypes.regionwise_engines)
+=======
+        c.argument("autostop_maximum_virtual_users_per_engine", argtypes.autostop_maximum_virtual_users_per_engine)
+        c.argument("regionwise_engines", argtypes.regionwise_engines)
+        c.argument("engine_ref_id_type", argtypes.engine_ref_id_type)
+        c.argument("engine_ref_ids", argtypes.engine_ref_ids)
+>>>>>>> upstream/main
 
     with self.argument_context("load test update") as c:
         c.argument("load_test_config_file", argtypes.load_test_config_file)
@@ -46,6 +59,12 @@ def load_arguments(self, _):
         c.argument(
             "key_vault_reference_identity", argtypes.key_vault_reference_identity, help="The identity that will be used to access the key vault. Provide `null` or `None` to use the system assigned identity of the load test resource."
         )
+<<<<<<< HEAD
+=======
+        c.argument(
+            "metrics_reference_identity", argtypes.metrics_reference_identity, help="The identity that will be used to access the metrics. Provide `null` or `None` to use the system assigned identity of the load test resource."
+        )
+>>>>>>> upstream/main
         c.argument("engine_instances", argtypes.engine_instances)
         c.argument("subnet_id", argtypes.subnet_id)
         c.argument("split_csv", argtypes.split_csv)
@@ -54,7 +73,14 @@ def load_arguments(self, _):
         c.argument("autostop", argtypes.autostop)
         c.argument("autostop_error_rate", argtypes.autostop_error_rate)
         c.argument("autostop_error_rate_time_window", argtypes.autostop_error_rate_time_window)
+<<<<<<< HEAD
         c.argument("regionwise_engines", argtypes.regionwise_engines)
+=======
+        c.argument("autostop_maximum_virtual_users_per_engine", argtypes.autostop_maximum_virtual_users_per_engine)
+        c.argument("regionwise_engines", argtypes.regionwise_engines)
+        c.argument("engine_ref_id_type", argtypes.engine_ref_id_type)
+        c.argument("engine_ref_ids", argtypes.engine_ref_ids)
+>>>>>>> upstream/main
 
     with self.argument_context("load test set-baseline") as c:
         c.argument("test_run_id", argtypes.test_run_id)

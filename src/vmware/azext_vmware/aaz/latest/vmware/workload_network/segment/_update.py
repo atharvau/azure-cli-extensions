@@ -53,7 +53,11 @@ class Update(AAZCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -65,7 +69,11 @@ class Update(AAZCommand):
             required=True,
             id_part="child_name_2",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[-\w\._]+$",
+=======
+                pattern="^[-\\w\\._]+$",
+>>>>>>> upstream/main
             ),
         )
 
@@ -436,7 +444,13 @@ class _UpdateHelper:
             flags={"read_only": True},
         )
         properties.revision = AAZIntType()
+<<<<<<< HEAD
         properties.status = AAZStrType()
+=======
+        properties.status = AAZStrType(
+            flags={"read_only": True},
+        )
+>>>>>>> upstream/main
         properties.subnet = AAZObjectType()
 
         port_vif = _schema_workload_network_segment_read.properties.port_vif

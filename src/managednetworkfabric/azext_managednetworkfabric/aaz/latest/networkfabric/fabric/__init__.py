@@ -9,14 +9,29 @@
 # flake8: noqa
 
 from .__cmd_group import *
+<<<<<<< HEAD
+=======
+from ._arm_configuration_diff import *
+from ._commit_batch_status import *
+>>>>>>> upstream/main
 from ._commit_configuration import *
 from ._create import *
 from ._delete import *
 from ._deprovision import *
+<<<<<<< HEAD
 from ._list import *
+=======
+from ._discard_commit_batch import *
+from ._list import *
+from ._lock_fabric import *
+>>>>>>> upstream/main
 from ._provision import *
 from ._show import *
 from ._update import *
 from ._upgrade import *
 from ._validate_configuration import *
+<<<<<<< HEAD
+=======
+from ._view_device_configuration import *
+>>>>>>> upstream/main
 from ._wait import *

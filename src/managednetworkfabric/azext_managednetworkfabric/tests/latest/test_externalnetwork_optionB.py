@@ -27,10 +27,17 @@ def cleanup_scenario1(test):
 def call_scenario1(test):
     """# Testcase: scenario1"""
     setup_scenario1(test)
+<<<<<<< HEAD
     # step_create_s1(test, checks=[])
     # step_show(test, checks=[])
     # step_list_resource_group(test, checks=[])
     # step_delete(test, checks=[])
+=======
+    step_create_s1(test, checks=[])
+    step_show(test, checks=[])
+    step_list_resource_group(test, checks=[])
+    step_delete(test, checks=[])
+>>>>>>> upstream/main
     cleanup_scenario1(test)
 
 
@@ -39,7 +46,11 @@ def step_create_s1(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric externalnetwork create --resource-group {rg} --l3domain {l3domain} --resource-name {name} --peering-option {s1_peering_option} --option-b-properties {optionBProperties} --import-route-policy {importRoutePolicy} --export-route-policy {exportRoutePolicy}",
+=======
+        "az networkfabric externalnetwork create --resource-group {rg} --l3domain {l3Domain} --resource-name {name} --peering-option {s1PeeringOption} --option-b-properties {optionBProperties} --import-route-policy {importRoutePolicy} --export-route-policy {exportRoutePolicy}",
+>>>>>>> upstream/main
         checks=checks,
     )
 
@@ -49,7 +60,11 @@ def step_show(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric externalnetwork show --resource-name {name} --l3domain {l3domain} --resource-group {rg}"
+=======
+        "az networkfabric externalnetwork show --resource-name {name} --l3domain {l3Domain} --resource-group {rg}"
+>>>>>>> upstream/main
     )
 
 
@@ -58,7 +73,11 @@ def step_list_resource_group(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric externalnetwork list --resource-group {rg} --l3domain {l3domain}"
+=======
+        "az networkfabric externalnetwork list --resource-group {rg} --l3domain {l3Domain}"
+>>>>>>> upstream/main
     )
 
 
@@ -67,7 +86,11 @@ def step_delete(test, checks=None):
     if checks is None:
         checks = []
     test.cmd(
+<<<<<<< HEAD
         "az networkfabric externalnetwork delete --resource-name {name} --l3domain {l3domain} --resource-group {rg}"
+=======
+        "az networkfabric externalnetwork delete --resource-name {name} --l3domain {l3Domain} --resource-group {rg}"
+>>>>>>> upstream/main
     )
 
 
@@ -78,6 +101,7 @@ class GA_ExternalNetworkOptionBScenarioTest1(ScenarioTest):
         super().__init__(*args, **kwargs)
         self.kwargs.update(
             {
+<<<<<<< HEAD
                 "name": CONFIG.get("EXTERNAL_NETWORK", "name"),
                 "rg": CONFIG.get("EXTERNAL_NETWORK", "resource_group"),
                 "l3domain": CONFIG.get("EXTERNAL_NETWORK", "l3domain"),
@@ -87,6 +111,12 @@ class GA_ExternalNetworkOptionBScenarioTest1(ScenarioTest):
                 "s2_peering_option": CONFIG.get(
                     "EXTERNAL_NETWORK", "s2_peering_option"
                 ),
+=======
+                "name": CONFIG.get("EXTERNAL_NETWORK", "optionb_name"),
+                "rg": CONFIG.get("EXTERNAL_NETWORK", "optionb_resource_group"),
+                "l3Domain": CONFIG.get("EXTERNAL_NETWORK", "optionb_l3_domain"),
+                "s1PeeringOption": CONFIG.get("EXTERNAL_NETWORK", "s1_peering_option"),
+>>>>>>> upstream/main
                 "importRoutePolicy": CONFIG.get(
                     "EXTERNAL_NETWORK", "import_route_policy"
                 ),
@@ -96,6 +126,7 @@ class GA_ExternalNetworkOptionBScenarioTest1(ScenarioTest):
                 "optionBProperties": CONFIG.get(
                     "EXTERNAL_NETWORK", "option_b_properties"
                 ),
+<<<<<<< HEAD
                 "updatedOptionBProperties": CONFIG.get(
                     "EXTERNAL_NETWORK", "updated_option_b_properties"
                 ),
@@ -106,6 +137,8 @@ class GA_ExternalNetworkOptionBScenarioTest1(ScenarioTest):
                     "EXTERNAL_NETWORK", "updated_option_a_properties"
                 ),
                 "nni_Id": CONFIG.get("EXTERNAL_NETWORK", "nni_Id"),
+=======
+>>>>>>> upstream/main
             }
         )
 

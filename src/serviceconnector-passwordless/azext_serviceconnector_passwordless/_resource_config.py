@@ -34,7 +34,12 @@ PASSWORDLESS_TARGET_RESOURCES = [
     # RESOURCE.Postgres,
     RESOURCE.PostgresFlexible,
     RESOURCE.MysqlFlexible,
+<<<<<<< HEAD
     RESOURCE.Sql
+=======
+    RESOURCE.Sql,
+    RESOURCE.FabricSql
+>>>>>>> upstream/main
 ]
 
 # pylint: disable=line-too-long
@@ -58,6 +63,10 @@ for resourceType in PASSWORDLESS_SOURCE_RESOURCES:
             RESOURCE.PostgresFlexible: [AUTH_TYPE.Secret, AUTH_TYPE.SystemIdentity, AUTH_TYPE.UserIdentity, AUTH_TYPE.ServicePrincipalSecret],
             RESOURCE.MysqlFlexible: [AUTH_TYPE.Secret, AUTH_TYPE.SystemIdentity, AUTH_TYPE.UserIdentity, AUTH_TYPE.ServicePrincipalSecret],
             RESOURCE.Sql: [AUTH_TYPE.Secret, AUTH_TYPE.SystemIdentity, AUTH_TYPE.UserIdentity, AUTH_TYPE.ServicePrincipalSecret],
+<<<<<<< HEAD
+=======
+            RESOURCE.FabricSql: [AUTH_TYPE.SystemIdentity, AUTH_TYPE.UserIdentity],
+>>>>>>> upstream/main
         }
 
 TARGET_RESOURCES_PARAMS = {
@@ -130,6 +139,21 @@ TARGET_RESOURCES_PARAMS = {
             'placeholder': 'MyDB'
         }
     },
+<<<<<<< HEAD
+=======
+    RESOURCE.FabricSql: {
+        'fabric_workspace_uuid': {
+            'options': ['--fabric-workspace-uuid'],
+            'help': 'UUID of Fabric workspace which contains the target SQL database',
+            'placeholder': 'TargetFabricWorkspaceUUID'
+        },
+        'fabric_sql_db_uuid': {
+            'options': ['--fabric-sql-db-uuid'],
+            'help': 'UUID of the target Fabric SQL database',
+            'placeholder': 'TargetFabricSQLDatabaseUUID'
+        }
+    }
+>>>>>>> upstream/main
 }
 
 AUTH_TYPE_PARAMS = {

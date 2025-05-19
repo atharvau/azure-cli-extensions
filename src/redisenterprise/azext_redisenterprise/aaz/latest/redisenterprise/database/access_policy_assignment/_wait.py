@@ -20,7 +20,11 @@ class Wait(AAZWaitCommand):
 
     _aaz_info = {
         "resources": [
+<<<<<<< HEAD
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/accesspolicyassignments/{}", "2024-09-01-preview"],
+=======
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.cache/redisenterprise/{}/databases/{}/accesspolicyassignments/{}", "2025-05-01-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -55,7 +59,11 @@ class Wait(AAZWaitCommand):
             required=True,
             id_part="name",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.database_name = AAZStrArg(
@@ -64,7 +72,11 @@ class Wait(AAZWaitCommand):
             required=True,
             id_part="child_name_1",
             fmt=AAZStrArgFormat(
+<<<<<<< HEAD
                 pattern="^[A-Za-z0-9]{1,60}$",
+=======
+                pattern="^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$",
+>>>>>>> upstream/main
             ),
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
@@ -145,7 +157,11 @@ class Wait(AAZWaitCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-09-01-preview",
+=======
+                    "api-version", "2025-05-01-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -185,7 +201,11 @@ class Wait(AAZWaitCommand):
                 flags={"read_only": True},
             )
             _schema_on_200.properties = AAZObjectType(
+<<<<<<< HEAD
                 flags={"required": True, "client_flatten": True},
+=======
+                flags={"client_flatten": True},
+>>>>>>> upstream/main
             )
             _schema_on_200.type = AAZStrType(
                 flags={"read_only": True},
@@ -207,7 +227,10 @@ class Wait(AAZWaitCommand):
             user = cls._schema_on_200.properties.user
             user.object_id = AAZStrType(
                 serialized_name="objectId",
+<<<<<<< HEAD
                 flags={"required": True},
+=======
+>>>>>>> upstream/main
             )
 
             return cls._schema_on_200

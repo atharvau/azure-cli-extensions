@@ -30,9 +30,15 @@ class Update(AAZCommand):
     """
 
     _aaz_info = {
+<<<<<<< HEAD
         "version": "2024-02-15-preview",
         "resources": [
             ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabrics/{}", "2024-02-15-preview"],
+=======
+        "version": "2024-06-15-preview",
+        "resources": [
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.managednetworkfabric/networkfabrics/{}", "2024-06-15-preview"],
+>>>>>>> upstream/main
         ]
     }
 
@@ -58,11 +64,18 @@ class Update(AAZCommand):
             help="Name of the Network Fabric.",
             required=True,
             id_part="name",
+<<<<<<< HEAD
+=======
+            fmt=AAZStrArgFormat(
+                pattern="^[a-zA-Z]{1}[a-zA-Z0-9-_]{2,127}$",
+            ),
+>>>>>>> upstream/main
         )
         _args_schema.resource_group = AAZResourceGroupNameArg(
             required=True,
         )
 
+<<<<<<< HEAD
         # define Arg Group "Body"
 
         _args_schema = cls._args_schema
@@ -74,6 +87,26 @@ class Update(AAZCommand):
 
         tags = cls._args_schema.tags
         tags.Element = AAZStrArg()
+=======
+        # define Arg Group "Identity"
+
+        _args_schema = cls._args_schema
+        _args_schema.mi_system_assigned = AAZStrArg(
+            options=["--system-assigned", "--mi-system-assigned"],
+            arg_group="Identity",
+            help="Set the system managed identity.",
+            blank="True",
+        )
+        _args_schema.mi_user_assigned = AAZListArg(
+            options=["--user-assigned", "--mi-user-assigned"],
+            arg_group="Identity",
+            help="Set the user managed identities.",
+            blank=[],
+        )
+
+        mi_user_assigned = cls._args_schema.mi_user_assigned
+        mi_user_assigned.Element = AAZStrArg()
+>>>>>>> upstream/main
 
         # define Arg Group "Properties"
 
@@ -81,21 +114,54 @@ class Update(AAZCommand):
         _args_schema.annotation = AAZStrArg(
             options=["--annotation"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Description for underlying resource.",
+=======
+            help="Switch configuration description.",
+            nullable=True,
+        )
+        _args_schema.control_plane_acls = AAZListArg(
+            options=["--control-plane-acls"],
+            arg_group="Properties",
+            help="Control Plane Access Control List ARM resource IDs.",
+            nullable=True,
+>>>>>>> upstream/main
         )
         _args_schema.fabric_asn = AAZIntArg(
             options=["--fabric-asn"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="ASN of CE devices for CE/PE connectivity. The value should be between 1 to 4294967295. Example: 65123",
+=======
+            help="ASN of CE devices for CE/PE connectivity.",
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=4294967295,
                 minimum=1,
             ),
         )
+<<<<<<< HEAD
+=======
+        _args_schema.hardware_alert_threshold = AAZIntArg(
+            options=["--hardware-alert-threshold"],
+            arg_group="Properties",
+            help="Hardware alert threshold percentage. Possible values are from 20 to 100.",
+            nullable=True,
+            fmt=AAZIntArgFormat(
+                maximum=100,
+                minimum=20,
+            ),
+        )
+>>>>>>> upstream/main
         _args_schema.ipv4_prefix = AAZStrArg(
             options=["--ipv4-prefix"],
             arg_group="Properties",
             help="IPv4Prefix for Management Network. Example: 10.1.0.0/19.",
+<<<<<<< HEAD
+=======
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
@@ -104,19 +170,36 @@ class Update(AAZCommand):
             options=["--ipv6-prefix"],
             arg_group="Properties",
             help="IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.",
+<<<<<<< HEAD
+=======
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
         )
+<<<<<<< HEAD
         _args_schema.managed_network_config = AAZObjectArg(
             options=["--managed-network-config"],
             arg_group="Properties",
             help="Configuration to be used to setup the management network.",
+=======
+        _args_schema.management_network_configuration = AAZObjectArg(
+            options=["--managed-network-config", "--management-network-configuration"],
+            arg_group="Properties",
+            help="Configuration to be used to setup the management network.",
+            nullable=True,
+>>>>>>> upstream/main
         )
         _args_schema.rack_count = AAZIntArg(
             options=["--rack-count"],
             arg_group="Properties",
+<<<<<<< HEAD
             help="Number of compute racks associated to Network Fabric. Possible values are from 1-8.",
+=======
+            help="Number of compute racks associated to Network Fabric.",
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=8,
                 minimum=1,
@@ -126,11 +209,16 @@ class Update(AAZCommand):
             options=["--server-count-per-rack"],
             arg_group="Properties",
             help="Number of servers.Possible values are from 1-16.",
+<<<<<<< HEAD
+=======
+            nullable=True,
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=16,
                 minimum=1,
             ),
         )
+<<<<<<< HEAD
         _args_schema.ts_config = AAZObjectArg(
             options=["--ts-config"],
             arg_group="Properties",
@@ -151,11 +239,82 @@ class Update(AAZCommand):
 
         ts_config = cls._args_schema.ts_config
         ts_config.password = AAZStrArg(
+=======
+        _args_schema.storage_account_configuration = AAZObjectArg(
+            options=["--storage-account-config", "--storage-account-configuration"],
+            arg_group="Properties",
+            help="Bring your own storage account configurations for Network Fabric.",
+            nullable=True,
+        )
+        _args_schema.terminal_server_configuration = AAZObjectArg(
+            options=["--ts-config", "--terminal-server-configuration"],
+            arg_group="Properties",
+            help="Network and credentials configuration already applied to terminal server.",
+            nullable=True,
+        )
+        _args_schema.trusted_ip_prefixes = AAZListArg(
+            options=["--trusted-ip-prefixes"],
+            arg_group="Properties",
+            help="Trusted IP Prefix ARM resource IDs.",
+            nullable=True,
+        )
+        _args_schema.unique_rd_configuration = AAZObjectArg(
+            options=["--unique-rd-config", "--unique-rd-configuration"],
+            arg_group="Properties",
+            help="Unique Route Distinguisher configuration",
+            nullable=True,
+        )
+        _args_schema.tags = AAZDictArg(
+            options=["--tags"],
+            arg_group="Properties",
+            help="Resource tags.",
+        )
+
+        control_plane_acls = cls._args_schema.control_plane_acls
+        control_plane_acls.Element = AAZResourceIdArg()
+
+        management_network_configuration = cls._args_schema.management_network_configuration
+        management_network_configuration.infrastructure_vpn_configuration = AAZObjectArg(
+            options=["infrastructure-vpn-configuration"],
+            help="VPN Configuration properties.",
+        )
+        cls._build_args_vpn_configuration_patchable_properties_update(management_network_configuration.infrastructure_vpn_configuration)
+        management_network_configuration.workload_vpn_configuration = AAZObjectArg(
+            options=["workload-vpn-configuration"],
+            help="VPN Configuration properties.",
+        )
+        cls._build_args_vpn_configuration_patchable_properties_update(management_network_configuration.workload_vpn_configuration)
+
+        storage_account_configuration = cls._args_schema.storage_account_configuration
+        storage_account_configuration.storage_account_id = AAZResourceIdArg(
+            options=["storage-account-id"],
+            help="Network Fabric storage account resource identifier.",
+        )
+        storage_account_configuration.storage_account_identity = AAZObjectArg(
+            options=["storage-account-identity"],
+            help="The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned.",
+        )
+
+        storage_account_identity = cls._args_schema.storage_account_configuration.storage_account_identity
+        storage_account_identity.identity_type = AAZStrArg(
+            options=["identity-type"],
+            help="The type of managed identity that is being selected.",
+            enum={"SystemAssignedIdentity": "SystemAssignedIdentity", "UserAssignedIdentity": "UserAssignedIdentity"},
+        )
+        storage_account_identity.user_assigned_identity_resource_id = AAZResourceIdArg(
+            options=["user-assigned-identity-resource-id"],
+            help="The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        )
+
+        terminal_server_configuration = cls._args_schema.terminal_server_configuration
+        terminal_server_configuration.password = AAZPasswordArg(
+>>>>>>> upstream/main
             options=["password"],
             help="Password for the terminal server connection.",
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
+<<<<<<< HEAD
         )
         ts_config.primary_ipv4_prefix = AAZStrArg(
             options=["primary-ipv4-prefix"],
@@ -176,19 +335,67 @@ class Update(AAZCommand):
             nullable=True,
         )
         ts_config.serial_number = AAZStrArg(
+=======
+            blank=AAZPromptPasswordInput(
+                msg="Password:",
+            ),
+        )
+        terminal_server_configuration.primary_ipv4_prefix = AAZStrArg(
+            options=["primary-ipv4-prefix"],
+            help="IPv4 Address Prefix.",
+        )
+        terminal_server_configuration.primary_ipv6_prefix = AAZStrArg(
+            options=["primary-ipv6-prefix"],
+            help="IPv6 Address Prefix.",
+        )
+        terminal_server_configuration.secondary_ipv4_prefix = AAZStrArg(
+            options=["secondary-ipv4-prefix"],
+            help="Secondary IPv4 Address Prefix.",
+        )
+        terminal_server_configuration.secondary_ipv6_prefix = AAZStrArg(
+            options=["secondary-ipv6-prefix"],
+            help="Secondary IPv6 Address Prefix.",
+        )
+        terminal_server_configuration.serial_number = AAZStrArg(
+>>>>>>> upstream/main
             options=["serial-number"],
             help="Serial Number of Terminal server.",
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
         )
+<<<<<<< HEAD
         ts_config.username = AAZStrArg(
+=======
+        terminal_server_configuration.username = AAZStrArg(
+>>>>>>> upstream/main
             options=["username"],
             help="Username for the terminal server connection.",
             fmt=AAZStrArgFormat(
                 min_length=1,
             ),
         )
+<<<<<<< HEAD
+=======
+
+        trusted_ip_prefixes = cls._args_schema.trusted_ip_prefixes
+        trusted_ip_prefixes.Element = AAZResourceIdArg()
+
+        unique_rd_configuration = cls._args_schema.unique_rd_configuration
+        unique_rd_configuration.nni_derived_unique_rd_configuration_state = AAZStrArg(
+            options=["nni-derived-unique-rd-configuration-state"],
+            help="NNI derived unique Route Distinguisher state. Default is Disabled.",
+            enum={"Disabled": "Disabled", "Enabled": "Enabled"},
+        )
+        unique_rd_configuration.unique_rd_configuration_state = AAZStrArg(
+            options=["unique-rd-configuration-state"],
+            help="Unique Route Distinguisher configuration state. Default is Enabled.",
+            enum={"Disabled": "Disabled", "Enabled": "Enabled"},
+        )
+
+        tags = cls._args_schema.tags
+        tags.Element = AAZStrArg()
+>>>>>>> upstream/main
         return cls._args_schema
 
     _args_vpn_configuration_patchable_properties_update = None
@@ -211,11 +418,19 @@ class Update(AAZCommand):
         )
         vpn_configuration_patchable_properties_update.option_a_properties = AAZObjectArg(
             options=["option-a-properties"],
+<<<<<<< HEAD
             help="option A properties.",
         )
         vpn_configuration_patchable_properties_update.option_b_properties = AAZObjectArg(
             options=["option-b-properties"],
             help="option B properties.",
+=======
+            help="option A properties",
+        )
+        vpn_configuration_patchable_properties_update.option_b_properties = AAZObjectArg(
+            options=["option-b-properties"],
+            help="option B properties",
+>>>>>>> upstream/main
         )
         vpn_configuration_patchable_properties_update.peering_option = AAZStrArg(
             options=["peering-option"],
@@ -230,7 +445,11 @@ class Update(AAZCommand):
         )
         option_a_properties.mtu = AAZIntArg(
             options=["mtu"],
+<<<<<<< HEAD
             help="MTU to use for option A peering. The value should be between 64 to 9200. Default value is 1500. Example: 1500",
+=======
+            help="MTU to use for option A peering.",
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=9200,
                 minimum=64,
@@ -238,7 +457,11 @@ class Update(AAZCommand):
         )
         option_a_properties.peer_asn = AAZIntArg(
             options=["peer-asn"],
+<<<<<<< HEAD
             help="Peer ASN number. The value should be between 1 to 4294967295. Example: 28.",
+=======
+            help="Peer ASN number.Example : 28",
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=4294967295,
                 minimum=1,
@@ -246,6 +469,7 @@ class Update(AAZCommand):
         )
         option_a_properties.primary_ipv4_prefix = AAZStrArg(
             options=["primary-ipv4-prefix"],
+<<<<<<< HEAD
             help="IPv4 Address Prefix. Example: 172.31.0.0/31.",
         )
         option_a_properties.primary_ipv6_prefix = AAZStrArg(
@@ -265,6 +489,25 @@ class Update(AAZCommand):
         option_a_properties.vlan_id = AAZIntArg(
             options=["vlan-id"],
             help="Vlan Id. The value should be between 501 to 4094. Example: 501",
+=======
+            help="IPv4 Address Prefix.",
+        )
+        option_a_properties.primary_ipv6_prefix = AAZStrArg(
+            options=["primary-ipv6-prefix"],
+            help="IPv6 Address Prefix.",
+        )
+        option_a_properties.secondary_ipv4_prefix = AAZStrArg(
+            options=["secondary-ipv4-prefix"],
+            help="Secondary IPv4 Address Prefix.",
+        )
+        option_a_properties.secondary_ipv6_prefix = AAZStrArg(
+            options=["secondary-ipv6-prefix"],
+            help="Secondary IPv6 Address Prefix.",
+        )
+        option_a_properties.vlan_id = AAZIntArg(
+            options=["vlan-id"],
+            help="Vlan Id.Example : 501",
+>>>>>>> upstream/main
             fmt=AAZIntArgFormat(
                 maximum=4094,
                 minimum=501,
@@ -274,11 +517,19 @@ class Update(AAZCommand):
         bfd_configuration = cls._args_vpn_configuration_patchable_properties_update.option_a_properties.bfd_configuration
         bfd_configuration.interval_in_milli_seconds = AAZIntArg(
             options=["interval-in-milli-seconds"],
+<<<<<<< HEAD
             help="Interval in milliseconds. Default Value is 300. Example: 300.",
         )
         bfd_configuration.multiplier = AAZIntArg(
             options=["multiplier"],
             help="Multiplier for the Bfd Configuration. Default Value is 5. Example: 5.",
+=======
+            help="Interval in milliseconds. Example: 300.",
+        )
+        bfd_configuration.multiplier = AAZIntArg(
+            options=["multiplier"],
+            help="Multiplier for the Bfd Configuration. Example: 5.",
+>>>>>>> upstream/main
         )
 
         option_b_properties = cls._args_vpn_configuration_patchable_properties_update.option_b_properties
@@ -305,27 +556,37 @@ class Update(AAZCommand):
         route_targets.export_ipv4_route_targets = AAZListArg(
             options=["export-ipv4-route-targets"],
             help="Route Targets to be applied for outgoing routes into CE.",
+<<<<<<< HEAD
             fmt=AAZListArgFormat(
                 min_length=1,
             ),
+=======
+>>>>>>> upstream/main
         )
         route_targets.export_ipv6_route_targets = AAZListArg(
             options=["export-ipv6-route-targets"],
             help="Route Targets to be applied for outgoing routes from CE.",
+<<<<<<< HEAD
             fmt=AAZListArgFormat(
                 min_length=1,
             ),
+=======
+>>>>>>> upstream/main
         )
         route_targets.import_ipv4_route_targets = AAZListArg(
             options=["import-ipv4-route-targets"],
             help="Route Targets to be applied for incoming routes into CE.",
+<<<<<<< HEAD
             fmt=AAZListArgFormat(
                 min_length=1,
             ),
+=======
+>>>>>>> upstream/main
         )
         route_targets.import_ipv6_route_targets = AAZListArg(
             options=["import-ipv6-route-targets"],
             help="Route Targets to be applied for incoming routes from CE.",
+<<<<<<< HEAD
             fmt=AAZListArgFormat(
                 min_length=1,
             ),
@@ -358,6 +619,21 @@ class Update(AAZCommand):
                 min_length=1,
             ),
         )
+=======
+        )
+
+        export_ipv4_route_targets = cls._args_vpn_configuration_patchable_properties_update.option_b_properties.route_targets.export_ipv4_route_targets
+        export_ipv4_route_targets.Element = AAZStrArg()
+
+        export_ipv6_route_targets = cls._args_vpn_configuration_patchable_properties_update.option_b_properties.route_targets.export_ipv6_route_targets
+        export_ipv6_route_targets.Element = AAZStrArg()
+
+        import_ipv4_route_targets = cls._args_vpn_configuration_patchable_properties_update.option_b_properties.route_targets.import_ipv4_route_targets
+        import_ipv4_route_targets.Element = AAZStrArg()
+
+        import_ipv6_route_targets = cls._args_vpn_configuration_patchable_properties_update.option_b_properties.route_targets.import_ipv6_route_targets
+        import_ipv6_route_targets.Element = AAZStrArg()
+>>>>>>> upstream/main
 
         _schema.network_to_network_interconnect_id = cls._args_vpn_configuration_patchable_properties_update.network_to_network_interconnect_id
         _schema.option_a_properties = cls._args_vpn_configuration_patchable_properties_update.option_a_properties
@@ -445,7 +721,11 @@ class Update(AAZCommand):
         def query_parameters(self):
             parameters = {
                 **self.serialize_query_param(
+<<<<<<< HEAD
                     "api-version", "2024-02-15-preview",
+=======
+                    "api-version", "2024-06-15-preview",
+>>>>>>> upstream/main
                     required=True,
                 ),
             }
@@ -470,6 +750,7 @@ class Update(AAZCommand):
                 typ=AAZObjectType,
                 typ_kwargs={"flags": {"required": True, "client_flatten": True}}
             )
+<<<<<<< HEAD
             _builder.set_prop("properties", AAZObjectType, typ_kwargs={"flags": {"client_flatten": True}})
             _builder.set_prop("tags", AAZDictType, ".tags")
 
@@ -483,22 +764,87 @@ class Update(AAZCommand):
                 properties.set_prop("rackCount", AAZIntType, ".rack_count")
                 properties.set_prop("serverCountPerRack", AAZIntType, ".server_count_per_rack")
                 properties.set_prop("terminalServerConfiguration", AAZObjectType, ".ts_config")
+=======
+            _builder.set_prop("identity", AAZIdentityObjectType)
+            _builder.set_prop("properties", AAZObjectType)
+            _builder.set_prop("tags", AAZDictType, ".tags")
+
+            identity = _builder.get(".identity")
+            if identity is not None:
+                identity.set_prop("userAssigned", AAZListType, ".mi_user_assigned", typ_kwargs={"flags": {"action": "create"}})
+                identity.set_prop("systemAssigned", AAZStrType, ".mi_system_assigned", typ_kwargs={"flags": {"action": "create"}})
+
+            user_assigned = _builder.get(".identity.userAssigned")
+            if user_assigned is not None:
+                user_assigned.set_elements(AAZStrType, ".")
+
+            properties = _builder.get(".properties")
+            if properties is not None:
+                properties.set_prop("annotation", AAZStrType, ".annotation", typ_kwargs={"nullable": True})
+                properties.set_prop("controlPlaneAcls", AAZListType, ".control_plane_acls", typ_kwargs={"nullable": True})
+                properties.set_prop("fabricASN", AAZIntType, ".fabric_asn", typ_kwargs={"nullable": True})
+                properties.set_prop("hardwareAlertThreshold", AAZIntType, ".hardware_alert_threshold", typ_kwargs={"nullable": True})
+                properties.set_prop("ipv4Prefix", AAZStrType, ".ipv4_prefix", typ_kwargs={"nullable": True})
+                properties.set_prop("ipv6Prefix", AAZStrType, ".ipv6_prefix", typ_kwargs={"nullable": True})
+                properties.set_prop("managementNetworkConfiguration", AAZObjectType, ".management_network_configuration", typ_kwargs={"nullable": True})
+                properties.set_prop("rackCount", AAZIntType, ".rack_count", typ_kwargs={"nullable": True})
+                properties.set_prop("serverCountPerRack", AAZIntType, ".server_count_per_rack", typ_kwargs={"nullable": True})
+                properties.set_prop("storageAccountConfiguration", AAZObjectType, ".storage_account_configuration", typ_kwargs={"nullable": True})
+                properties.set_prop("terminalServerConfiguration", AAZObjectType, ".terminal_server_configuration", typ_kwargs={"nullable": True})
+                properties.set_prop("trustedIpPrefixes", AAZListType, ".trusted_ip_prefixes", typ_kwargs={"nullable": True})
+                properties.set_prop("uniqueRdConfiguration", AAZObjectType, ".unique_rd_configuration", typ_kwargs={"nullable": True})
+
+            control_plane_acls = _builder.get(".properties.controlPlaneAcls")
+            if control_plane_acls is not None:
+                control_plane_acls.set_elements(AAZStrType, ".")
+>>>>>>> upstream/main
 
             management_network_configuration = _builder.get(".properties.managementNetworkConfiguration")
             if management_network_configuration is not None:
                 _UpdateHelper._build_schema_vpn_configuration_patchable_properties_update(management_network_configuration.set_prop("infrastructureVpnConfiguration", AAZObjectType, ".infrastructure_vpn_configuration"))
                 _UpdateHelper._build_schema_vpn_configuration_patchable_properties_update(management_network_configuration.set_prop("workloadVpnConfiguration", AAZObjectType, ".workload_vpn_configuration"))
 
+<<<<<<< HEAD
+=======
+            storage_account_configuration = _builder.get(".properties.storageAccountConfiguration")
+            if storage_account_configuration is not None:
+                storage_account_configuration.set_prop("storageAccountId", AAZStrType, ".storage_account_id")
+                storage_account_configuration.set_prop("storageAccountIdentity", AAZObjectType, ".storage_account_identity")
+
+            storage_account_identity = _builder.get(".properties.storageAccountConfiguration.storageAccountIdentity")
+            if storage_account_identity is not None:
+                storage_account_identity.set_prop("identityType", AAZStrType, ".identity_type")
+                storage_account_identity.set_prop("userAssignedIdentityResourceId", AAZStrType, ".user_assigned_identity_resource_id")
+
+>>>>>>> upstream/main
             terminal_server_configuration = _builder.get(".properties.terminalServerConfiguration")
             if terminal_server_configuration is not None:
                 terminal_server_configuration.set_prop("password", AAZStrType, ".password", typ_kwargs={"flags": {"secret": True}})
                 terminal_server_configuration.set_prop("primaryIpv4Prefix", AAZStrType, ".primary_ipv4_prefix")
+<<<<<<< HEAD
                 terminal_server_configuration.set_prop("primaryIpv6Prefix", AAZStrType, ".primary_ipv6_prefix", typ_kwargs={"nullable": True})
                 terminal_server_configuration.set_prop("secondaryIpv4Prefix", AAZStrType, ".secondary_ipv4_prefix")
                 terminal_server_configuration.set_prop("secondaryIpv6Prefix", AAZStrType, ".secondary_ipv6_prefix", typ_kwargs={"nullable": True})
                 terminal_server_configuration.set_prop("serialNumber", AAZStrType, ".serial_number")
                 terminal_server_configuration.set_prop("username", AAZStrType, ".username")
 
+=======
+                terminal_server_configuration.set_prop("primaryIpv6Prefix", AAZStrType, ".primary_ipv6_prefix")
+                terminal_server_configuration.set_prop("secondaryIpv4Prefix", AAZStrType, ".secondary_ipv4_prefix")
+                terminal_server_configuration.set_prop("secondaryIpv6Prefix", AAZStrType, ".secondary_ipv6_prefix")
+                terminal_server_configuration.set_prop("serialNumber", AAZStrType, ".serial_number")
+                terminal_server_configuration.set_prop("username", AAZStrType, ".username")
+
+            trusted_ip_prefixes = _builder.get(".properties.trustedIpPrefixes")
+            if trusted_ip_prefixes is not None:
+                trusted_ip_prefixes.set_elements(AAZStrType, ".")
+
+            unique_rd_configuration = _builder.get(".properties.uniqueRdConfiguration")
+            if unique_rd_configuration is not None:
+                unique_rd_configuration.set_prop("nniDerivedUniqueRdConfigurationState", AAZStrType, ".nni_derived_unique_rd_configuration_state")
+                unique_rd_configuration.set_prop("uniqueRdConfigurationState", AAZStrType, ".unique_rd_configuration_state")
+
+>>>>>>> upstream/main
             tags = _builder.get(".tags")
             if tags is not None:
                 tags.set_elements(AAZStrType, ".")
@@ -526,6 +872,10 @@ class Update(AAZCommand):
             _schema_on_200.id = AAZStrType(
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            _schema_on_200.identity = AAZIdentityObjectType()
+>>>>>>> upstream/main
             _schema_on_200.location = AAZStrType(
                 flags={"required": True},
             )
@@ -544,7 +894,46 @@ class Update(AAZCommand):
                 flags={"read_only": True},
             )
 
+<<<<<<< HEAD
             properties = cls._schema_on_200.properties
+=======
+            identity = cls._schema_on_200.identity
+            identity.principal_id = AAZStrType(
+                serialized_name="principalId",
+                flags={"read_only": True},
+            )
+            identity.tenant_id = AAZStrType(
+                serialized_name="tenantId",
+                flags={"read_only": True},
+            )
+            identity.type = AAZStrType(
+                flags={"required": True},
+            )
+            identity.user_assigned_identities = AAZDictType(
+                serialized_name="userAssignedIdentities",
+            )
+
+            user_assigned_identities = cls._schema_on_200.identity.user_assigned_identities
+            user_assigned_identities.Element = AAZObjectType(
+                nullable=True,
+            )
+
+            _element = cls._schema_on_200.identity.user_assigned_identities.Element
+            _element.client_id = AAZStrType(
+                serialized_name="clientId",
+                flags={"read_only": True},
+            )
+            _element.principal_id = AAZStrType(
+                serialized_name="principalId",
+                flags={"read_only": True},
+            )
+
+            properties = cls._schema_on_200.properties
+            properties.active_commit_batches = AAZListType(
+                serialized_name="activeCommitBatches",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.administrative_state = AAZStrType(
                 serialized_name="administrativeState",
                 flags={"read_only": True},
@@ -554,13 +943,36 @@ class Update(AAZCommand):
                 serialized_name="configurationState",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.control_plane_acls = AAZListType(
+                serialized_name="controlPlaneAcls",
+            )
+>>>>>>> upstream/main
             properties.fabric_asn = AAZIntType(
                 serialized_name="fabricASN",
                 flags={"required": True},
             )
+<<<<<<< HEAD
             properties.fabric_version = AAZStrType(
                 serialized_name="fabricVersion",
             )
+=======
+            properties.fabric_locks = AAZListType(
+                serialized_name="fabricLocks",
+                flags={"read_only": True},
+            )
+            properties.fabric_version = AAZStrType(
+                serialized_name="fabricVersion",
+            )
+            properties.feature_flags = AAZListType(
+                serialized_name="featureFlags",
+                flags={"read_only": True},
+            )
+            properties.hardware_alert_threshold = AAZIntType(
+                serialized_name="hardwareAlertThreshold",
+            )
+>>>>>>> upstream/main
             properties.ipv4_prefix = AAZStrType(
                 serialized_name="ipv4Prefix",
                 flags={"required": True},
@@ -576,6 +988,13 @@ class Update(AAZCommand):
                 serialized_name="l3IsolationDomains",
                 flags={"read_only": True},
             )
+<<<<<<< HEAD
+=======
+            properties.last_operation = AAZObjectType(
+                serialized_name="lastOperation",
+                flags={"read_only": True},
+            )
+>>>>>>> upstream/main
             properties.management_network_configuration = AAZObjectType(
                 serialized_name="managementNetworkConfiguration",
                 flags={"required": True},
@@ -606,10 +1025,56 @@ class Update(AAZCommand):
                 serialized_name="serverCountPerRack",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.storage_account_configuration = AAZObjectType(
+                serialized_name="storageAccountConfiguration",
+            )
+            properties.storage_array_count = AAZIntType(
+                serialized_name="storageArrayCount",
+            )
+>>>>>>> upstream/main
             properties.terminal_server_configuration = AAZObjectType(
                 serialized_name="terminalServerConfiguration",
                 flags={"required": True},
             )
+<<<<<<< HEAD
+=======
+            properties.trusted_ip_prefixes = AAZListType(
+                serialized_name="trustedIpPrefixes",
+            )
+            properties.unique_rd_configuration = AAZObjectType(
+                serialized_name="uniqueRdConfiguration",
+            )
+
+            active_commit_batches = cls._schema_on_200.properties.active_commit_batches
+            active_commit_batches.Element = AAZStrType()
+
+            control_plane_acls = cls._schema_on_200.properties.control_plane_acls
+            control_plane_acls.Element = AAZStrType()
+
+            fabric_locks = cls._schema_on_200.properties.fabric_locks
+            fabric_locks.Element = AAZObjectType()
+
+            _element = cls._schema_on_200.properties.fabric_locks.Element
+            _element.lock_state = AAZStrType(
+                serialized_name="lockState",
+            )
+            _element.lock_type = AAZStrType(
+                serialized_name="lockType",
+            )
+
+            feature_flags = cls._schema_on_200.properties.feature_flags
+            feature_flags.Element = AAZObjectType()
+
+            _element = cls._schema_on_200.properties.feature_flags.Element
+            _element.feature_flag_name = AAZStrType(
+                serialized_name="featureFlagName",
+            )
+            _element.feature_flag_value = AAZStrType(
+                serialized_name="featureFlagValue",
+            )
+>>>>>>> upstream/main
 
             l2_isolation_domains = cls._schema_on_200.properties.l2_isolation_domains
             l2_isolation_domains.Element = AAZStrType()
@@ -617,6 +1082,14 @@ class Update(AAZCommand):
             l3_isolation_domains = cls._schema_on_200.properties.l3_isolation_domains
             l3_isolation_domains.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            last_operation = cls._schema_on_200.properties.last_operation
+            last_operation.details = AAZStrType(
+                flags={"read_only": True},
+            )
+
+>>>>>>> upstream/main
             management_network_configuration = cls._schema_on_200.properties.management_network_configuration
             management_network_configuration.infrastructure_vpn_configuration = AAZObjectType(
                 serialized_name="infrastructureVpnConfiguration",
@@ -635,6 +1108,26 @@ class Update(AAZCommand):
             router_ids = cls._schema_on_200.properties.router_ids
             router_ids.Element = AAZStrType()
 
+<<<<<<< HEAD
+=======
+            storage_account_configuration = cls._schema_on_200.properties.storage_account_configuration
+            storage_account_configuration.storage_account_id = AAZStrType(
+                serialized_name="storageAccountId",
+            )
+            storage_account_configuration.storage_account_identity = AAZObjectType(
+                serialized_name="storageAccountIdentity",
+            )
+
+            storage_account_identity = cls._schema_on_200.properties.storage_account_configuration.storage_account_identity
+            storage_account_identity.identity_type = AAZStrType(
+                serialized_name="identityType",
+                flags={"required": True},
+            )
+            storage_account_identity.user_assigned_identity_resource_id = AAZStrType(
+                serialized_name="userAssignedIdentityResourceId",
+            )
+
+>>>>>>> upstream/main
             terminal_server_configuration = cls._schema_on_200.properties.terminal_server_configuration
             terminal_server_configuration.network_device_id = AAZStrType(
                 serialized_name="networkDeviceId",
@@ -649,7 +1142,10 @@ class Update(AAZCommand):
             )
             terminal_server_configuration.primary_ipv6_prefix = AAZStrType(
                 serialized_name="primaryIpv6Prefix",
+<<<<<<< HEAD
                 nullable=True,
+=======
+>>>>>>> upstream/main
             )
             terminal_server_configuration.secondary_ipv4_prefix = AAZStrType(
                 serialized_name="secondaryIpv4Prefix",
@@ -657,7 +1153,10 @@ class Update(AAZCommand):
             )
             terminal_server_configuration.secondary_ipv6_prefix = AAZStrType(
                 serialized_name="secondaryIpv6Prefix",
+<<<<<<< HEAD
                 nullable=True,
+=======
+>>>>>>> upstream/main
             )
             terminal_server_configuration.serial_number = AAZStrType(
                 serialized_name="serialNumber",
@@ -666,6 +1165,27 @@ class Update(AAZCommand):
                 flags={"required": True},
             )
 
+<<<<<<< HEAD
+=======
+            trusted_ip_prefixes = cls._schema_on_200.properties.trusted_ip_prefixes
+            trusted_ip_prefixes.Element = AAZStrType()
+
+            unique_rd_configuration = cls._schema_on_200.properties.unique_rd_configuration
+            unique_rd_configuration.nni_derived_unique_rd_configuration_state = AAZStrType(
+                serialized_name="nniDerivedUniqueRdConfigurationState",
+            )
+            unique_rd_configuration.unique_rd_configuration_state = AAZStrType(
+                serialized_name="uniqueRdConfigurationState",
+            )
+            unique_rd_configuration.unique_rds = AAZListType(
+                serialized_name="uniqueRds",
+                flags={"read_only": True},
+            )
+
+            unique_rds = cls._schema_on_200.properties.unique_rd_configuration.unique_rds
+            unique_rds.Element = AAZStrType()
+
+>>>>>>> upstream/main
             system_data = cls._schema_on_200.system_data
             system_data.created_at = AAZStrType(
                 serialized_name="createdAt",
@@ -710,9 +1230,15 @@ class _UpdateHelper:
             option_a_properties.set_prop("mtu", AAZIntType, ".mtu")
             option_a_properties.set_prop("peerASN", AAZIntType, ".peer_asn")
             option_a_properties.set_prop("primaryIpv4Prefix", AAZStrType, ".primary_ipv4_prefix")
+<<<<<<< HEAD
             option_a_properties.set_prop("primaryIpv6Prefix", AAZStrType, ".primary_ipv6_prefix", typ_kwargs={"nullable": True})
             option_a_properties.set_prop("secondaryIpv4Prefix", AAZStrType, ".secondary_ipv4_prefix")
             option_a_properties.set_prop("secondaryIpv6Prefix", AAZStrType, ".secondary_ipv6_prefix", typ_kwargs={"nullable": True})
+=======
+            option_a_properties.set_prop("primaryIpv6Prefix", AAZStrType, ".primary_ipv6_prefix")
+            option_a_properties.set_prop("secondaryIpv4Prefix", AAZStrType, ".secondary_ipv4_prefix")
+            option_a_properties.set_prop("secondaryIpv6Prefix", AAZStrType, ".secondary_ipv6_prefix")
+>>>>>>> upstream/main
             option_a_properties.set_prop("vlanId", AAZIntType, ".vlan_id")
 
         bfd_configuration = _builder.get(".optionAProperties.bfdConfiguration")
@@ -804,14 +1330,20 @@ class _UpdateHelper:
         )
         option_a_properties.primary_ipv6_prefix = AAZStrType(
             serialized_name="primaryIpv6Prefix",
+<<<<<<< HEAD
             nullable=True,
+=======
+>>>>>>> upstream/main
         )
         option_a_properties.secondary_ipv4_prefix = AAZStrType(
             serialized_name="secondaryIpv4Prefix",
         )
         option_a_properties.secondary_ipv6_prefix = AAZStrType(
             serialized_name="secondaryIpv6Prefix",
+<<<<<<< HEAD
             nullable=True,
+=======
+>>>>>>> upstream/main
         )
         option_a_properties.vlan_id = AAZIntType(
             serialized_name="vlanId",

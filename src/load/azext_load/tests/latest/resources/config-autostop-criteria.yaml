@@ -17,4 +17,9 @@ env:
 splitAllCSVs: True
 autoStop:
   errorPercentage: 85
+<<<<<<< HEAD
   timeWindow: 120
+=======
+  timeWindow: 120
+  maximumVirtualUsersPerEngine: 1500
+>>>>>>> upstream/main

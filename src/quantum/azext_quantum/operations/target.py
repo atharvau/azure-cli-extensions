@@ -6,6 +6,10 @@
 # pylint: disable=line-too-long,redefined-builtin
 
 from .._client_factory import cf_providers
+<<<<<<< HEAD
+=======
+from .._list_helper import repack_response_json
+>>>>>>> upstream/main
 from .workspace import WorkspaceInfo
 
 
@@ -53,8 +57,14 @@ def list(cmd, resource_group_name, workspace_name, location):
     Get the list of providers and their targets in an Azure Quantum workspace.
     """
     info = WorkspaceInfo(cmd, resource_group_name, workspace_name, location)
+<<<<<<< HEAD
     client = cf_providers(cmd.cli_ctx, info.subscription, info.resource_group, info.name, info.location)
     return client.get_status()
+=======
+    client = cf_providers(cmd.cli_ctx, info.subscription, info.location)
+    response = client.list(info.subscription, info.resource_group, info.name)
+    return repack_response_json(response)
+>>>>>>> upstream/main
 
 
 def clear(cmd):
@@ -85,9 +95,15 @@ def get_provider(cmd, target_id, resource_group_name, workspace_name, location):
     provider_list = list(cmd, resource_group_name, workspace_name, location)
     if provider_list is not None:
         for item in provider_list:
+<<<<<<< HEAD
             for target_item in item.targets:
                 if target_item.id.lower() == target_id.lower():
                     provider_id = item.id
+=======
+            for target_item in item["targets"]:
+                if target_item["id"].lower() == target_id.lower():
+                    provider_id = item["id"]
+>>>>>>> upstream/main
                     break
             if provider_id is not None:
                 break
