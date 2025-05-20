@@ -55,7 +55,7 @@ class BulkDeploySolution(AAZCommand):
             ),
         )
         _args_schema.solution_template_version_name = AAZStrArg(
-            options=["--solution-template-version-name"],
+            options=["--version"],
             help="The name of the SolutionTemplateVersion",
             required=True,
             id_part="child_name_1",
