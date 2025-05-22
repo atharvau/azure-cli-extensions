@@ -18,3 +18,4 @@ from ._show import *
 from _bulk_deploy_solution import *
 # from ._update import *
 from ._wait import *
+from _bulk_deploy_solution import *
