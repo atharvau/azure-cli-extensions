@@ -65,7 +65,7 @@ class WorkloadOrchestrationTest(ScenarioTest):
     def test_full_wom_workflow(self):
         # Get existing context and update capabilities
         context = self.cmd(
-            f'az workload-orchestration context show --subscription {self.context_subscription_id} --resource-group {self.context_rg} --name {self.context_name}'
+            f'az workload-orchestration context show --resource-group {self.context_rg} --name {self.context_name}'
         ).get_output_in_json()
 
         # Add new capabilities
@@ -85,7 +85,6 @@ class WorkloadOrchestrationTest(ScenarioTest):
         # Act: create context with updated capabilities and hierarchies
         self.cmd(
             f'az workload-orchestration context create '
-            f'--subscription {self.context_subscription_id} '
             f'--resource-group {self.context_rg} '
             f'--location {self.context_location} '
             f'--name {self.context_name} '
@@ -95,7 +94,7 @@ class WorkloadOrchestrationTest(ScenarioTest):
 
         # List contexts and check for created entry
         result = self.cmd(
-            f'az workload-orchestration context list --subscription {self.context_subscription_id} --resource-group {self.context_rg}'
+            f'az workload-orchestration context list --resource-group {self.context_rg}'
         ).get_output_in_json()
         assert any(item.get("name") == self.context_name for item in result), f"{self.context_name} not found in context list"
         rg = self.rg
@@ -305,7 +304,6 @@ class WorkloadOrchestrationTest(ScenarioTest):
             assert show_result["properties"]["description"] == description
             assert show_result["properties"]["provisioningState"] == "Succeeded"
 
-   
 
             # List config-templates and check for created entry
             list_result = self.cmd(
