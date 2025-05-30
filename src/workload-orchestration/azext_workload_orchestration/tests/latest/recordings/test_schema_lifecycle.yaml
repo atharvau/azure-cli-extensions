@@ -297,7 +297,7 @@ interactions:
       x-ms-operation-identifier:
       - tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b12b2079-2031-4146-9a67-f7637e660a5a/jioindiacentral/fb7075f4-d214-4eed-9d9e-da884bceb3ca
       x-ms-ratelimit-remaining-subscription-global-reads:
-      - '16499'
+      - '16498'
       x-msedge-ref:
       - 'Ref A: 888C7E822579441DA2B747DDF5BE4DC8 Ref B: MAA201060513045 Ref C: 2025-05-30T09:37:39Z'
     status:
@@ -457,9 +457,9 @@ interactions:
       x-ms-providerhub-traffic:
       - 'True'
       x-ms-ratelimit-remaining-subscription-global-writes:
-      - '11999'
+      - '11998'
       x-ms-ratelimit-remaining-subscription-writes:
-      - '799'
+      - '798'
       x-msedge-ref:
       - 'Ref A: 6F35FD698E0C484E9680B3D59C7A4DA6 Ref B: MAA201060515025 Ref C: 2025-05-30T09:37:45Z'
     status:
