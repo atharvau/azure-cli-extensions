@@ -173,7 +173,8 @@ class Create(AAZCommand):
                     lro_options={"final-state-via": "azure-async-operation"},
                     path_format_arguments=self.url_parameters,
                 )
-           
+            
+
 
             return self.on_error(session.http_response)
 
