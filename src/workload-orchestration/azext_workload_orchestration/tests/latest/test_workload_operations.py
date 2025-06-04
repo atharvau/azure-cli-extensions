@@ -8,10 +8,6 @@
 from azure.cli.testsdk import *
 
 
-class StorageAccountTests(ScenarioTest):
- 
-    @ResourceGroupPreparer(parameter_name='group_name', parameter_name_for_location='group_location')
-    def test_create_storage_account(self, group_name, group_location):
-        self.cmd('az account list-locations', checks=[
-            self.check("[?name=='westus'].displayName | [0]", 'West US')
-        ])
+class WorkloadOperationsScenario(ScenarioTest):
+    # TODO: add tests here
+    pass
