@@ -21,7 +21,7 @@ class BulkDeploySolution(AAZCommand):
     _aaz_info = {
         "version": "2025-06-01",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/solutiontemplates/{}/versions/{}/bulkdeploysolution", "2025-06-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/private.edge/solutiontemplates/{}/versions/{}/bulkdeploysolution", "2025-06-01"],
         ]
     }
 
@@ -119,7 +119,7 @@ class BulkDeploySolution(AAZCommand):
         @property
         def url(self):
             return self.client.format_url(
-                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkDeploySolution",
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkDeploySolution",
                 **self.url_parameters
             )
 
