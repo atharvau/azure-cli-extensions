@@ -12,7 +12,7 @@ from azure.cli.core.aaz import *
 
 
 @register_command(
-    "workload-orchestration solution-template version bulk-publish-solution",
+    "workload-orchestration solution-template bulk-publish",
 )
 class BulkPublishSolution(AAZCommand):
     """Post request to bulk publish
