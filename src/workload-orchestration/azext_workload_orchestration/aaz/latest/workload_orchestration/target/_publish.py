@@ -17,13 +17,13 @@ from azure.cli.core.aaz import *
 class Publish(AAZCommand):
     """Post request to publish
     :example:
-        az workload-orchestration target publish -g {rg} -n {target_name} --solution-version-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Edge/solutionVersions/mySolutionVersion
+        az workload-orchestration target publish -g {rg} -n {target_name} --solution-template-version-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.edge/solutionVersions/mySolutionVersion
     """
 
     _aaz_info = {
         "version": "2025-06-01",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/targets/{}/publishsolutionversion", "2025-06-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/Microsoft.edge/targets/{}/publishsolutionversion", "2025-06-01"],
         ]
     }
 
@@ -84,7 +84,7 @@ class Publish(AAZCommand):
         
         # Add new parameter (v2025_06_01)
         _args_schema.solution_version_id = AAZStrArg(
-            options=["--solution-version-id"],
+            options=["--solution-template-version-id"],
             arg_group="Body",
             help="Solution Version ARM Id",
             required=True,
@@ -138,7 +138,7 @@ class Publish(AAZCommand):
         @property
         def url(self):
             return self.client.format_url(
-                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/publishSolutionVersion",
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.edge/targets/{targetName}/publishSolutionVersion",
                 **self.url_parameters
             )
 
