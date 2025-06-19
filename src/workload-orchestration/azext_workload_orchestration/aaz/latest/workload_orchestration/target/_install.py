@@ -17,7 +17,7 @@ from azure.cli.core.aaz import *
 class Install(AAZCommand):
     """Post request to install a solution
     :example: Install a solution to a target
-        az workload-orchestration target install -g rg1 -n target1 --solution-version-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Edge/solutionVersions/mySolutionVersion
+        az workload-orchestration target install -g rg1 -n target1 --solution-template-version-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Edge/solutionVersions/mySolutionVersion
     """
 
     _aaz_info = {
