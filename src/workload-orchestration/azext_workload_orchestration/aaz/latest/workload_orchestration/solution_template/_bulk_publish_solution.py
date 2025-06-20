@@ -29,7 +29,11 @@ class BulkPublishSolution(AAZCommand):
 
     def _handler(self, command_args):
         super()._handler(command_args)
-        return self.build_lro_poller(self._execute_operations, None)
+        return self.build_lro_poller(self._execute_operations, self._output)
+        
+    def _output(self, *args, **kwargs):
+        result = self.deserialize_output(self.ctx.vars.instance, client_flatten=True)
+        return result
 
     _args_schema = None
 
@@ -184,17 +188,100 @@ class BulkPublishSolution(AAZCommand):
         def __call__(self, *args, **kwargs):
             request = self.make_request()
             session = self.client.send_request(request=request, stream=False, **kwargs)
-            if session.http_response.status_code in [202]:
+            if session.http_response.status_code in [200,201,202]:
                 return self.client.build_lro_polling(
                     self.ctx.args.no_wait,
                     session,
-                    None,
+                    self.on_200,
                     self.on_error,
                     lro_options={"final-state-via": "location"},
                     path_format_arguments=self.url_parameters,
                 )
 
             return self.on_error(session.http_response)
+        
+        def on_200(self, session):
+                    data = self.deserialize_http_content(session)
+                    self.ctx.set_var(
+                        "instance",
+                        data,
+                        schema_builder=self._build_schema_on_200
+        )
+                    
+
+        _schema_on_200 = None
+        @classmethod
+        def _build_schema_on_200(cls):
+            if cls._schema_on_200 is not None:
+                return cls._schema_on_200
+
+            cls._schema_on_200 = AAZObjectType()
+
+            _schema_on_200 = cls._schema_on_200
+            _schema_on_200.id = AAZStrType(
+                flags={"read_only": True},
+            )
+            _schema_on_200.name = AAZStrType(
+                flags={"read_only": True},
+            )
+            _schema_on_200.resource_id = AAZStrType(
+                serialized_name="resourceId",
+                flags={"read_only": True},
+            )
+            _schema_on_200.status = AAZStrType(
+                flags={"read_only": True},
+            )
+            _schema_on_200.start_time = AAZStrType(
+                serialized_name="startTime",
+                flags={"read_only": True},
+            )
+            _schema_on_200.end_time = AAZStrType(
+                serialized_name="endTime",
+                flags={"read_only": True},
+            )
+            _schema_on_200.properties = AAZObjectType()
+
+            properties = cls._schema_on_200.properties
+            properties.solution_template_version_id = AAZStrType(
+                serialized_name="SolutionTemplateVersionId",
+                flags={"read_only": True},
+            )
+            properties.published_targets = AAZListType(
+                serialized_name="publishedTargets",
+                flags={"read_only": True},
+            )
+            properties.external_validation_pending = AAZListType(
+                serialized_name="externalValidationPending",
+                flags={"read_only": True},
+            )
+
+            published_targets = cls._schema_on_200.properties.published_targets
+            published_targets.Element = AAZObjectType()
+
+            published_target = published_targets.Element
+            published_target.solution_version_id = AAZStrType(
+                serialized_name="solutionVersionId",
+                flags={"read_only": True},
+            )
+            published_target.target_id = AAZStrType(
+                serialized_name="targetId",
+                flags={"read_only": True},
+            )
+
+            external_validation_pending = cls._schema_on_200.properties.external_validation_pending
+            external_validation_pending.Element = AAZObjectType()
+
+            external_validation_item = external_validation_pending.Element
+            external_validation_item.solution_version_id = AAZStrType(
+                serialized_name="solutionVersionId",
+                flags={"read_only": True},
+            )
+            external_validation_item.target_id = AAZStrType(
+                serialized_name="targetId",
+                flags={"read_only": True},
+            )
+
+            return cls._schema_on_200
 
         @property
         def url(self):
@@ -289,10 +376,10 @@ class _BulkPublishSolutionHelper:
         _builder.set_prop("dependencies", AAZListType, ".dependencies")
         _builder.set_prop("solutionInstanceName", AAZStrType, ".solution_instance_name")
         _builder.set_prop("solutionTemplateId", AAZStrType, ".solution_template_id")
-        _builder.set_prop("solutionTemplateVersion", AAZStrType, ".solution_template_version")
-        _builder.set_prop("solutionVersionId", AAZStrType, ".solution_version_id")
-        _builder.set_prop("targetId", AAZStrType, ".target_id")
 
+        _builder.set_prop("targetId", AAZStrType, ".target_id")        
+        _builder.set_prop("solutionVersionId", AAZStrType, ".solution_version_id")        
+        _builder.set_prop("solutionTemplateVersion", AAZStrType, ".solution_template_version")        
         dependencies = _builder.get(".dependencies")
         if dependencies is not None:
             cls._build_schema_solution_dependency_parameter_create(dependencies.set_elements(AAZObjectType, "."))

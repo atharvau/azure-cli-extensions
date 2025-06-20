@@ -167,11 +167,11 @@ class BulkDeploySolution(AAZCommand):
 
             properties = cls._schema_on_200.properties
             properties.solution_template_version_id = AAZStrType(
-                serialized_name="SolutionTemplateVersionId",
+                serialized_name="solutionTemplateVersionId",
                 flags={"read_only": True},
             )
             properties.deployed_targets = AAZListType(
-                serialized_name="DeployedTargets",
+                serialized_name="deployedTargets",
                 flags={"read_only": True},
             )
 
@@ -180,11 +180,11 @@ class BulkDeploySolution(AAZCommand):
 
             deployed_target = deployed_targets.Element
             deployed_target.solution_version_id = AAZStrType(
-                serialized_name="SolutionVersionId",
+                serialized_name="solutionVersionId",
                 flags={"read_only": True},
             )
             deployed_target.target_id = AAZStrType(
-                serialized_name="TargetId",
+                serialized_name="targetId",
                 flags={"read_only": True},
             )
 
