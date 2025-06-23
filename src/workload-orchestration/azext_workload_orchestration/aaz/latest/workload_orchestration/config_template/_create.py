@@ -64,6 +64,7 @@ class Create(AAZCommand):
             options=["--description"],
             arg_group="Properties",
             help="Description of config template",
+            required=True,
         )
 
         # define Arg Group "Resource"
