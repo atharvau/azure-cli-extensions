@@ -42,7 +42,7 @@ class RemoveVersion(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.config_template_name = AAZStrArg(
-            options=["--config-template-name"],
+            options=["--config-template-name","--name", "-n"],
             help="The name of the ConfigTemplate",
             required=True,
             id_part="name",
@@ -58,7 +58,7 @@ class RemoveVersion(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.version = AAZStrArg(
-            options=["--version"],
+            options=["--version","-v"],
             arg_group="Body",
             help="Version of the Resource",
             required=True,

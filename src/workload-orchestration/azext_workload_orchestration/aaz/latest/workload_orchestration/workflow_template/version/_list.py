@@ -46,7 +46,7 @@ class List(AAZCommand):
             required=True,
         )
         _args_schema.workflow_template_name = AAZStrArg(
-            options=["--workflow-template-name"],
+            options=["-n", "--name", "--workflow-template-name"],
             help="The name of the WorkflowTemplate",
             required=True,
             fmt=AAZStrArgFormat(

@@ -48,7 +48,7 @@ class Resolve(AAZCommand):
             required=True,
         )
         _args_schema.target_name = AAZStrArg(
-            options=["--target-name"],
+            options=["--target-name", "--name", "-n"],
             help="Name of the target",
             required=True,
             id_part="name",
@@ -83,7 +83,7 @@ class Resolve(AAZCommand):
             required=True,
         )
         _args_schema.solution_template_version = AAZStrArg(
-            options=["--solution-version","--solution-template-version"],
+            options=["--solution-version","--solution-template-version","-version","-v"],
             arg_group="Body",
             help="Solution Template Version Name",
             required=True,

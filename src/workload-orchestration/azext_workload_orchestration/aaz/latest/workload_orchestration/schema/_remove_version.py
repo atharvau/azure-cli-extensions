@@ -45,7 +45,7 @@ class RemoveVersion(AAZCommand):
             required=True,
         )
         _args_schema.schema_name = AAZStrArg(
-            options=["--schema-name"],
+            options=["-n", "--name", "--schema-name"],
             help="The name of the Schema",
             required=True,
             id_part="name",
@@ -58,7 +58,7 @@ class RemoveVersion(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.version = AAZStrArg(
-            options=["--version"],
+            options=["--version","-v"],
             arg_group="Body",
             help="Version of the Resource",
             required=True,

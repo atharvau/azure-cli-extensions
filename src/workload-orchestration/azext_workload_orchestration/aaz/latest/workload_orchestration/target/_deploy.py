@@ -49,7 +49,7 @@ class Deploy(AAZCommand):
             required=True,
         )
         _args_schema.target_name = AAZStrArg(
-            options=["--target-name"],
+            options=["--target-name","--name", "-n"],
             help="Name of the target",
             required=True,
             id_part="name",

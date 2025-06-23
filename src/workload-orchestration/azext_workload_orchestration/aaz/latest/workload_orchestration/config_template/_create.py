@@ -92,7 +92,7 @@ class Create(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.version = AAZStrArg(
-            options=["--version"],
+            options=["--version","-v"],
             arg_group="Body",
             help="Version of the config template",
             required=False

@@ -81,7 +81,7 @@ class Create(AAZCommand):
         )
        
         _args_schema.version = AAZStrArg(
-            options=["--version"],
+            options=["--version","-v"],
             arg_group="Body",
             help="Version of the solution template",
             required=False,

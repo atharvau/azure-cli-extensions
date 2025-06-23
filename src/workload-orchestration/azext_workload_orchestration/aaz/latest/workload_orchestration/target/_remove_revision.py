@@ -48,7 +48,7 @@ class RemoveRevision(AAZCommand):
             required=True,
         )
         _args_schema.target_name = AAZStrArg(
-            options=["--target-name"],
+            options=["--target-name", "--name", "-n"],
             help="Name of the target",
             required=True,
             id_part="name",
@@ -69,7 +69,7 @@ class RemoveRevision(AAZCommand):
             required=True,
         )
         _args_schema.solution_version = AAZStrArg(
-            options=["--solution-version"],
+            options=["--solution-version", "--version", "-v"],
             arg_group="Body",
             help="Solution Version Name",
             required=True,
