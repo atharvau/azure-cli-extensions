@@ -17,6 +17,8 @@ from azure.cli.core.aaz import *
 )
 class ListUntitled1(AAZCommand):
     """List by subscription
+    :example: List Targets
+        az workload-orchestration target list-subscriptions
     """
 
     _aaz_info = {

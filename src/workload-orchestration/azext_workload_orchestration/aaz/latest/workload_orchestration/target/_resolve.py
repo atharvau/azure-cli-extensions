@@ -16,7 +16,7 @@ from azure.cli.core.aaz import *
 )
 class Resolve(AAZCommand):
     """Post request to resolve configuration
-    :example:
+    :example: Resolve configuration for a target
         az workload-orchestration target resolve -g MyResourceGroup -n MyTarget --solution-name MySolutionTemplate --solution-version 1.0.0 --solution-instance-name MySolutionInstanceName
     """
 

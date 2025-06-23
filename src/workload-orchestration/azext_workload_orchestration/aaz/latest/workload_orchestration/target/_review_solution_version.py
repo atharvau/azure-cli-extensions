@@ -16,7 +16,7 @@ from azure.cli.core.aaz import *
 )
 class ReviewSolutionVersion(AAZCommand):
     """Post request to review configuration
-    :example:
+    :example: Remote review solution version
         az workload-orchestration target review --target-name MyTarget --resource-group MyResourceGroup --solution-template-version-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.edge/solutionTemplateVersions/mySolutionTemplateVersion
     """
 

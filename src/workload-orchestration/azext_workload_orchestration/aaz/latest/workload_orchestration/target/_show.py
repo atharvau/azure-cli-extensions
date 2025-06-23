@@ -16,6 +16,8 @@ from azure.cli.core.aaz import *
 )
 class Show(AAZCommand):
     """Get a Target Resource
+    :example: Show a Target
+        az workload-orchestration target show -n myTarget -g myResourceGroup
     """
 
     _aaz_info = {

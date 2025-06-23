@@ -16,7 +16,7 @@ from azure.cli.core.aaz import *
 )
 class UpdateExternalValidationStatus(AAZCommand):
     """Post request to update external validation status
-    :example:
+    :example: Update external validation status for a target
         az workload-orchestration target update-external-validation-status -g rg --target-name target --external-validation-id externalValidationId --solution-version-id solutionVersionId --validation-status Valid
     """
 

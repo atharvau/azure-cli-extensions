@@ -17,6 +17,8 @@ from azure.cli.core.aaz import *
 )
 class DeleteVersion(AAZCommand):
     """Delete Solution Template Version Resource
+    :example: Delete a Solution Template Version
+        az workload-orchestration solution-template delete-version -n mySolutionTemplate -g myResourceGroup --version 1.0.0
     """
 
     _aaz_info = {

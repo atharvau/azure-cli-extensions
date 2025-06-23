@@ -16,6 +16,8 @@ from azure.cli.core.aaz import *
 )
 class List(AAZCommand):
     """List by Resource-Group
+    :example: List Targets
+        az workload-orchestration target list -g myResourceGroup
     """
 
     _aaz_info = {

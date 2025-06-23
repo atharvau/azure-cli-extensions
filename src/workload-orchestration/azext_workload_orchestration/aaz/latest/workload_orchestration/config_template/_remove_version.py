@@ -16,6 +16,8 @@ from azure.cli.core.aaz import *
 )
 class RemoveVersion(AAZCommand):
     """Remove Config Template Version Resource
+    :example: Remove a Config Template Version
+        az workload-orchestration config-template remove-version -n myConfigTemplate -g myResource
     """
 
     _aaz_info = {

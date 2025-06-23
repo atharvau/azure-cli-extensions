@@ -17,6 +17,7 @@ from azure.cli.core.aaz import *
 class RemoveRevision(AAZCommand):
     """Post request to remove solution version revision
     :example:
+        Remove a revision from a target
         az workload-orchestration target remove-revision -g MyResourceGroup -n MyTarget --solution-template-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Edge/solutionTemplates/mySolutionTemplate --solution-version 1.0
     """
 

@@ -16,6 +16,8 @@ from azure.cli.core.aaz import *
 )
 class RemoveVersion(AAZCommand):
     """Remove Schema Version Resource
+    :example: Remove a Schema Version
+        az workload-orchestration schema remove-version -n mySchema -g myResourceGroup --version 1.0
     """
 
     _aaz_info = {

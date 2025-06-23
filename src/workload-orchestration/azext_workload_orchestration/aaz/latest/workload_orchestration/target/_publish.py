@@ -16,7 +16,7 @@ from azure.cli.core.aaz import *
 )
 class Publish(AAZCommand):
     """Post request to publish
-    :example:
+    :example: Publish a solution version to a target
         az workload-orchestration target publish -g {rg} -n {target_name} --solution-version-id /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.edge/solutionVersions/mySolutionVersion
     """
 
