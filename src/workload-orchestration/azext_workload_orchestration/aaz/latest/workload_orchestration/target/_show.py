@@ -195,6 +195,9 @@ class Show(AAZCommand):
             properties.capabilities = AAZListType(
                 flags={"required": True},
             )
+            properties.context_id = AAZStrType(
+                serialized_name="contextId",
+            )
             properties.description = AAZStrType(
                 flags={"required": True},
             )
