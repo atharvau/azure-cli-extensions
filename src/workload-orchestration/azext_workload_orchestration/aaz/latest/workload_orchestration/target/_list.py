@@ -219,7 +219,9 @@ class List(AAZCommand):
                 serialized_name="targetSpecification",
                 flags={"required": True},
             )
-
+            properties.context_id = AAZStrType(
+                serialized_name="contextId",
+            )
             capabilities = cls._schema_on_200.value.Element.properties.capabilities
             capabilities.Element = AAZStrType()
 
@@ -410,6 +412,9 @@ class List(AAZCommand):
             properties = cls._schema_on_200.value.Element.properties
             properties.capabilities = AAZListType(
                 flags={"required": True},
+            )
+            properties.context_id = AAZStrType(
+                serialized_name="contextId",
             )
             properties.description = AAZStrType(
                 flags={"required": True},
