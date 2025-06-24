@@ -23,7 +23,7 @@ logger = get_logger(__name__)
 class Create(AAZCommand):
     """Create a Solution Template Resource
     :example: Create Solution Template
-        az workload-orchestration solution-template create -n mySolutionTemplate --description "My Solution Template" --capabilities "capability1" "capability2" --location eastus --resource-group myResourceGroup --config-template-file ./solution_template.yaml --specification @./specification.json --enable-external-validation true
+        az workload-orchestration solution-template create -n mySolutionTemplate --description "My Solution Template" --capabilities "capability1" --location eastus --resource-group myResourceGroup --config-template-file ./solution_template.yaml --specification @./specification.json --enable-external-validation true
     """
 
     _aaz_info = {
@@ -90,7 +90,7 @@ class Create(AAZCommand):
 
 
         _args_schema.configurations = AAZFileArg(
-            options=["--config-template-file","--configuration-template-file"],
+            options=["--config-template-file","--configuration-template-file","-f"],
             help="Link to File containing Config expressions  for this solution version",
         )
     
