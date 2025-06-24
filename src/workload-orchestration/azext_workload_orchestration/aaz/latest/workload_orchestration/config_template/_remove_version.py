@@ -60,7 +60,7 @@ class RemoveVersion(AAZCommand):
 
         _args_schema = cls._args_schema
         _args_schema.version = AAZStrArg(
-            options=["--version","-v"],
+            options=["--version","-v","--config-template-version"],
             arg_group="Body",
             help="Version of the Resource",
             required=True,

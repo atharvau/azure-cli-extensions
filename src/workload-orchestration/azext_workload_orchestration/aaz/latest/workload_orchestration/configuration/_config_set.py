@@ -75,7 +75,7 @@ class ShowConfig2(AAZCommand):
         )
 
         _args_schema.file_path = AAZFileArg(
-            options=["--file"],
+            options=["--file","-f"],
             help="Path to a file containing the configuration values. If provided, the editor will not be opened.",
             required=False,
         )

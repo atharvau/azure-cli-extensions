@@ -89,7 +89,7 @@ class Create(AAZCommand):
             )
 
         _args_schema.value = AAZFileArg(
-                options=["--schema-file"],
+                options=["--schema-file","-f"],
                 help="Path to the schema file",
         )
         

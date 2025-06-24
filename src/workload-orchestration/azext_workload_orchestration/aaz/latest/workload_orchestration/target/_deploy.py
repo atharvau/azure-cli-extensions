@@ -76,7 +76,7 @@ class Deploy(AAZCommand):
             required=True,
         )
         _args_schema.solution_version = AAZStrArg(
-            options=["--version"],
+            options=["--version","-v"],
             arg_group="Body",
             help="Solution Version Name",
             required=True,
