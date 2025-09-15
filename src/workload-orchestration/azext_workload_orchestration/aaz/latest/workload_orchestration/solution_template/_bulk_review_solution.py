@@ -12,16 +12,16 @@ from azure.cli.core.aaz import *
 
 
 @register_command(
-    "workload-orchestration solution-template bulk-publish-solution",
+    "workload-orchestration solution-template bulk-review-solution",
 )
-class BulkPublishSolution(AAZCommand):
-    """Post request for bulk publish
+class BulkReviewSolution(AAZCommand):
+    """Post request for bulk review
     """
 
     _aaz_info = {
         "version": "2025-08-01",
         "resources": [
-            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/solutiontemplates/{}/versions/{}/bulkpublishsolution", "2025-08-01"],
+            ["mgmt-plane", "/subscriptions/{}/resourcegroups/{}/providers/microsoft.edge/solutiontemplates/{}/versions/{}/bulkreviewsolution", "2025-08-01"],
         ]
     }
 
@@ -113,10 +113,6 @@ class BulkPublishSolution(AAZCommand):
                 pattern="^(?!v-)(?!.*-v-)[a-zA-Z0-9]([-a-zA-Z0-9]*[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([-a-zA-Z0-9]*[a-zA-Z0-9])?)*$",
             ),
         )
-        _element.solution_version_id = AAZResourceIdArg(
-            options=["solution-version-id"],
-            help="ArmId of Target Solution Version",
-        )
         _element.target_id = AAZResourceIdArg(
             options=["target-id"],
             help="ArmId of Target",
@@ -182,7 +178,7 @@ class BulkPublishSolution(AAZCommand):
 
     def _execute_operations(self):
         self.pre_operations()
-        yield self.SolutionTemplateVersionsBulkPublishSolution(ctx=self.ctx)()
+        yield self.SolutionTemplateVersionsBulkReviewSolution(ctx=self.ctx)()
         self.post_operations()
 
     @register_callback
@@ -193,7 +189,7 @@ class BulkPublishSolution(AAZCommand):
     def post_operations(self):
         pass
 
-    class SolutionTemplateVersionsBulkPublishSolution(AAZHttpOperation):
+    class SolutionTemplateVersionsBulkReviewSolution(AAZHttpOperation):
         CLIENT_TYPE = "MgmtClient"
 
         def __call__(self, *args, **kwargs):
@@ -214,7 +210,7 @@ class BulkPublishSolution(AAZCommand):
         @property
         def url(self):
             return self.client.format_url(
-                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkPublishSolution",
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkReviewSolution",
                 **self.url_parameters
             )
 
@@ -281,7 +277,7 @@ class BulkPublishSolution(AAZCommand):
 
             solution_dependencies = _builder.get(".solutionDependencies")
             if solution_dependencies is not None:
-                _BulkPublishSolutionHelper._build_schema_solution_dependency_parameter_create(solution_dependencies.set_elements(AAZObjectType, "."))
+                _BulkReviewSolutionHelper._build_schema_solution_dependency_parameter_create(solution_dependencies.set_elements(AAZObjectType, "."))
 
             targets = _builder.get(".targets")
             if targets is not None:
@@ -291,14 +287,13 @@ class BulkPublishSolution(AAZCommand):
             if _elements is not None:
                 _elements.set_prop("solutionConfiguration", AAZStrType, ".solution_configuration")
                 _elements.set_prop("solutionInstanceName", AAZStrType, ".solution_instance_name")
-                _elements.set_prop("solutionVersionId", AAZStrType, ".solution_version_id")
                 _elements.set_prop("targetId", AAZStrType, ".target_id", typ_kwargs={"flags": {"required": True}})
 
             return self.serialize_content(_content_value)
 
 
-class _BulkPublishSolutionHelper:
-    """Helper class for BulkPublishSolution"""
+class _BulkReviewSolutionHelper:
+    """Helper class for BulkReviewSolution"""
 
     @classmethod
     def _build_schema_solution_dependency_parameter_create(cls, _builder):
@@ -316,4 +311,4 @@ class _BulkPublishSolutionHelper:
             cls._build_schema_solution_dependency_parameter_create(dependencies.set_elements(AAZObjectType, "."))
 
 
-__all__ = ["BulkPublishSolution"]
+__all__ = ["BulkReviewSolution"]
