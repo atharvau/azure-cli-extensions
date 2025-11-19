@@ -281,7 +281,7 @@ class HelmChartProcessor(BaseInputProcessor):
         )
         for template in chart.get_templates():
             # Loop through each line in the template.
-            for index in range(len(template.data)):
+            for index, line in enumerate(template.data):
                 count = 0
                 # If the line contains 'imagePullSecrets:' we check if there is a
                 # value path matching the regex. If there is, we add it to the

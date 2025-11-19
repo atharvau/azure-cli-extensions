@@ -52,7 +52,7 @@ def case_insensitive_dict_get(dictionary, search_key) -> Any:
     if possible_match:
         return possible_match
     # case insensitive get and return reference instead of just value
-    for key in dictionary.keys():
+    for key in dictionary:
         if key.lower() == search_key.lower():
             return dictionary[key]
     return None
@@ -610,7 +610,7 @@ def process_mounts(image_properties: dict, volumes: List[dict]) -> List[Dict[str
 
         # figure out mount type
         mount_type_value = ""
-        for i in filtered_volume.keys():
+        for i in filtered_volume:
             if i in mount_source_table_keys:
                 mount_type_value = i
 
@@ -716,7 +716,7 @@ def get_values_for_params(input_parameter_json: dict, all_params: dict) -> Dict[
             f'Field ["{config.ACI_FIELD_TEMPLATE_PARAMETERS}"] is empty or cannot be found in Parameter file'
         )
 
-    for key in input_parameter_values_json.keys():
+    for key in input_parameter_values_json:
         if case_insensitive_dict_get(all_params, key):
             all_params[key]["value"] = case_insensitive_dict_get(
                 case_insensitive_dict_get(input_parameter_values_json, key), "value"
@@ -1318,7 +1318,7 @@ def get_container_group_name(
         input_parameter_values_json = case_insensitive_dict_get(
             input_parameter_json, config.ACI_FIELD_TEMPLATE_PARAMETERS
         )
-        for key in input_parameter_values_json.keys():
+        for key in input_parameter_values_json:
             if case_insensitive_dict_get(all_params, key):
                 all_params[key]["value"] = case_insensitive_dict_get(
                     case_insensitive_dict_get(input_parameter_values_json, key), "value"
