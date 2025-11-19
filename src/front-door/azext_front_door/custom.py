@@ -830,8 +830,8 @@ def add_azure_managed_rule_set(cmd, resource_group_name, policy_name, rule_set_t
         policy.managed_rules.managed_rule_sets = [rule_set]
     else:
         found = False
-        for i in range(len(policy_rule_sets)):
-            if policy_rule_sets[i].rule_set_type.upper() == rule_set_type.upper():
+        for i, existing_rule_set in enumerate(policy_rule_sets):
+            if existing_rule_set.rule_set_type.upper() == rule_set_type.upper():
                 policy_rule_sets[i] = rule_set
                 found = True
                 break

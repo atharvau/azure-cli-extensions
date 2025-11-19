@@ -591,8 +591,8 @@ class CustomJsonParsing(unittest.TestCase):
                 "44e8e0480dc3c0d04564ba87b3ba851cfab008717abdf6be83baf47963599614"
             ]
             self.assertEqual(len(layers), len(expected_layers))
-            for i in range(len(expected_layers)):
-                self.assertEqual(layers[i], expected_layers[i])
+            for i, expected_layer in enumerate(expected_layers):
+                self.assertEqual(layers[i], expected_layer)
 
     def test_docker_pull(self):
         custom_json = """

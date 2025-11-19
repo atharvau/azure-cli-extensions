@@ -572,8 +572,8 @@ class Connectedk8sScenarioTest(LiveScenarioTest):
 
         # checking if the output is correct with original list of cluster names
         cluster_name_list.sort()
-        for i in range(len(cluster_name_list)):
-            assert cluster_name_list[i] == managed_cluster_list[i]
+        for i, cluster_name in enumerate(cluster_name_list):
+            assert cluster_name == managed_cluster_list[i]
 
         # deleting the clusters
         self.cmd(
@@ -677,11 +677,9 @@ only supported when auto-upgrade is set to false",
         )
         jsonData = json.loads(response.text)
         repo_path = jsonData["repositoryPath"]
-        index_value = 0
-        for ind in range(len(repo_path)):
-            if repo_path[ind] == ":":
-                break
-            index_value += 1
+        index_value = repo_path.find(":")
+        if index_value == -1:
+            index_value = 0
 
         self.cmd(
             "connectedk8s show -g {rg} -n {name}",

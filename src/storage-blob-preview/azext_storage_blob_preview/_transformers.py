@@ -72,7 +72,7 @@ def transform_entities_result(result):
 
 
 def transform_entity_result(entity):
-    for key in entity.keys():
+    for key in entity:
         entity_property = entity[key]
         if hasattr(entity_property, 'value') and isinstance(entity_property.value, bytes):
             entity_property.value = base64.b64encode(entity_property.value).decode()

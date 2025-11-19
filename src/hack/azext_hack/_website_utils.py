@@ -69,9 +69,7 @@ class Website:
         self.host_name = 'https://' + webapp.host_names[0]
 
     def update_settings(self, settings):
-        app_settings = []
-        for key in settings:
-            app_settings.append('{}={}'.format(key, settings[key]))
+        app_settings = ['{}={}'.format(key, settings[key]) for key in settings]
         if app_settings:
             update_app_settings(self.__cmd, resource_group_name=self.resource_group,
                                 name=self.name, settings=app_settings)
